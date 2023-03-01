@@ -1,3 +1,5 @@
+import BG_1 from ""
+
 
 function Home() {
     return "Home";
