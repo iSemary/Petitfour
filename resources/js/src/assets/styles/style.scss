@@ -1,6 +1,36 @@
-h1 {
-    color:red;
+@font-face {
+    font-family: Lato;
+    src: url("../fonts/Lato/Lato-Regular.ttf");
 }
-h2 {
-    color:green;
+@font-face {
+    font-family: Montserrat;
+    src: url("../fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+* {
+    font-family: Lato;
+}
+.main-nav .nav-links .row {
+    justify-content: space-evenly;
+}
+.main-nav .nav-links .links div > a {
+    color: black;
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+    }
+}
+.main-nav .nav-links .row > * {
+    width: fit-content;
+}
+.main-logo {
+    font-size: 25px;
+    span:first-of-type {
+        color: black;
+    }
+    span:nth-of-type(2) {
+        color: green;
+    }
+    span:last-of-type {
+        color: black;
+    }
 }

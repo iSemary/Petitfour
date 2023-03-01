@@ -5,7 +5,7 @@ import Skills from "../pages/Skills";
 
 function Router() {
     return (
-        <div className="App">
+        <div className="content">
             {/* <Header /> */}
             <Routes>
                 <Route path="/" element={<Home />} />
