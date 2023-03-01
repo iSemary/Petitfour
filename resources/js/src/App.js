@@ -1,8 +1,14 @@
 import React from "react";
 import Router from "./config/Router";
+import Header from "./Partials/Header";
 
 function App() {
-    return <Router />;
+    return (
+        <>
+            <Header />
+            <Router />
+        </>
+    );
 }
 
 export default App;

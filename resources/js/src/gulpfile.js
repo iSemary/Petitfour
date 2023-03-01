@@ -13,13 +13,13 @@ const { dest } = require("gulp"),
 
 gulp.task("css", async function () {
     return gulp
-        .src("src/assets/styles/*.scss") // Get SCSS files from Guest folder
+        .src("assets/styles/*.scss") // Get SCSS files from Guest folder
         .pipe(sass({ outputStyle: "compressed" })) // Convert SCSS to CSS file
         .pipe(prefix("last 2 versions")) // Prefix css files for the last 2 browsers versions
-        .pipe(dest("src/assets/styles")); // copy inside public folder
+        .pipe(dest("assets/styles")); // copy inside public folder
 });
 
 gulp.task("watch-sass", async function () {
-    gulp.watch("src/assets/styles/*.scss", gulp.task("css"));
+    gulp.watch("assets/styles/*.scss", gulp.task("css"));
 });
 
