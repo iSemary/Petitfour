@@ -28,11 +28,9 @@ function Header() {
                             <Link to="/">Home</Link>
                         </Col>
                         <Col md={1}>
-                            {" "}
                             <Link to="/skills">Skills</Link>
                         </Col>
                         <Col md={1}>
-                            {" "}
                             <Link to="/projects">Projects</Link>
                         </Col>
                         <Col md={9}>
@@ -42,6 +40,7 @@ function Header() {
                                         <Col title="Default Mode" md={4}>
                                             <button
                                                 data-type="default"
+                                                type="button"
                                                 onClick={(e) => changeMode(e)}
                                                 className="transparent-button"
                                             >
@@ -55,6 +54,7 @@ function Header() {
                                         <Col title="Pharaoh Mode" md={4}>
                                             <button
                                                 data-type="pharaoh"
+                                                type="button"
                                                 onClick={(e) => changeMode(e)}
                                                 className="transparent-button"
                                             >
@@ -68,6 +68,7 @@ function Header() {
                                         <Col title="Code Mode" md={4}>
                                             <button
                                                 data-type="code"
+                                                type="button"
                                                 onClick={(e) => changeMode(e)}
                                                 className="transparent-button"
                                             >
