@@ -3,6 +3,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Navbar from "react-bootstrap/navbar";
 import { Link } from "react-router-dom";
+import IMG_CODE from "../assets/images/icons/code.png";
+import IMG_PHARAOH from "../assets/images/icons/pharaoh.png";
+import IMG_DEFAULT from "../assets/images/icons/default.png";
+
+const changeMode = (e) => {};
 
 function Header() {
     return (
@@ -20,7 +25,7 @@ function Header() {
                 <Col md={6} className="nav-links">
                     <Row className="links">
                         <Col md={1}>
-                            <Link to="/">Hi</Link>
+                            <Link to="/">Home</Link>
                         </Col>
                         <Col md={1}>
                             {" "}
@@ -34,9 +39,45 @@ function Header() {
                             <Row>
                                 <Col md={6}>
                                     <Row>
-                                        <Col title="Normal Mode" md={4}>N</Col>
-                                        <Col title="Pharos" md={4}>P</Col>
-                                        <Col title="Coding" md={4}>C</Col>
+                                        <Col title="Default Mode" md={4}>
+                                            <button
+                                                data-type="default"
+                                                onClick={(e) => changeMode(e)}
+                                                className="transparent-button"
+                                            >
+                                                <img
+                                                    src={IMG_DEFAULT}
+                                                    alt="Default Icon"
+                                                    className="mode-icon"
+                                                />
+                                            </button>
+                                        </Col>
+                                        <Col title="Pharaoh Mode" md={4}>
+                                            <button
+                                                data-type="pharaoh"
+                                                onClick={(e) => changeMode(e)}
+                                                className="transparent-button"
+                                            >
+                                                <img
+                                                    src={IMG_PHARAOH}
+                                                    alt="Pharos Icon"
+                                                    className="mode-icon"
+                                                />
+                                            </button>
+                                        </Col>
+                                        <Col title="Code Mode" md={4}>
+                                            <button
+                                                data-type="code"
+                                                onClick={(e) => changeMode(e)}
+                                                className="transparent-button"
+                                            >
+                                                <img
+                                                    src={IMG_CODE}
+                                                    alt="Coding Icon"
+                                                    className="mode-icon"
+                                                />
+                                            </button>
+                                        </Col>
                                     </Row>{" "}
                                 </Col>
                                 <Col md={6}>
