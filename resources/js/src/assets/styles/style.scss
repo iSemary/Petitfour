@@ -20,7 +20,8 @@
     position: absolute;
     width: 100%;
 }
-.main-nav .nav-links .links div > a {
+
+.no-link {
     color: #f7f7f7;
     text-decoration: none;
     &:hover {

@@ -1,4 +1,3 @@
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Navbar from "react-bootstrap/navbar";
@@ -15,7 +14,7 @@ function Header() {
             <Row className="w-100">
                 <Col md={6}>
                     <Col md={12} className="ps-5 pt-1 main-logo">
-                        <Link to="/">
+                        <Link to="/" className="no-link">
                             <span>abdelrahman</span>
                             <span>.</span>
                             <span>online</span>
@@ -25,13 +24,13 @@ function Header() {
                 <Col md={6} className="nav-links">
                     <Row className="links">
                         <Col md={1}>
-                            <Link to="/">Home</Link>
+                            <Link to="/" className="no-link">Home</Link>
                         </Col>
                         <Col md={1}>
-                            <Link to="/skills">Skills</Link>
+                            <Link to="/skills" className="no-link">Skills</Link>
                         </Col>
                         <Col md={1}>
-                            <Link to="/projects">Projects</Link>
+                            <Link to="/projects" className="no-link">Projects</Link>
                         </Col>
                         <Col md={9}>
                             <Row>
@@ -82,7 +81,7 @@ function Header() {
                                     </Row>{" "}
                                 </Col>
                                 <Col md={6}>
-                                    <Link to="/connect">Let's connect</Link>
+                                    <Link to="/connect" className="no-link">Let's connect</Link>
                                 </Col>
                             </Row>
                         </Col>

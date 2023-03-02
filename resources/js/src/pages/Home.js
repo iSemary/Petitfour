@@ -17,13 +17,16 @@ function Home() {
                         <Col md={6}>
                             <h1>Full Stack Engineer</h1>
                             <p>
-                                Lorem Ipsum is simply dummy text of the printing
-                                and typesetting industry. Lorem Ipsum has been
-                                the industry's standard dummy text ever since
-                                the 1500s, when an unknown printer took a galley
-                                of type and scrambled it to make a type specimen
-                                book. It has survived not only five centuries,
-                                but also the leap into ele
+                                I specialize in creating fast and responsive web
+                                applications that deliver seamless user
+                                experiences. With my expertise in both front-end
+                                and back-end development, I'm able to build
+                                robust solutions that meet the unique needs of
+                                each project. From the initial concept to the
+                                final product, I'm dedicated to delivering
+                                high-quality work that exceeds expectations.
+                                Let's work together to bring your vision to
+                                life.
                             </p>
                         </Col>
                         <Col md={6}>{/* Gif Graph  */}</Col>
