@@ -8,6 +8,7 @@ import MiniProjects from "./Components/MiniProjects";
 import GithubRepos from "./Components/GithubRepos";
 import SideSkills from "./Components/SideSkills";
 
+
 function Home() {
     return (
         <>
