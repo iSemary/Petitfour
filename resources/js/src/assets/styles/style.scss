@@ -169,3 +169,31 @@ $black: #282936;
         }
     }
 }
+
+.social-icons {
+    a {
+        font-size: 20px;
+    }
+    a:first-of-type {
+        svg {
+            fill: #0961B8;
+        }
+    }
+    a:nth-of-type(2) {
+        svg {
+            fill: #1A1D21;
+        }
+    }
+    a:nth-of-type(3) {
+        svg {
+            fill: #E87921;
+        }
+    }
+    
+    a:nth-of-type(4) {
+        svg {
+            fill: #0053F2;
+        }
+    }
+}
+

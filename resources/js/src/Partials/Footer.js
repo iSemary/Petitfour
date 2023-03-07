@@ -20,17 +20,33 @@ function Footer() {
                 <div className="me-5 d-none d-lg-block">
                     <span>Get connected with us on social networks:</span>
                 </div>
-                <div>
-                    <a href="" className="me-4 text-reset">
+                <div className="social-icons">
+                    <a
+                        href="https://www.linkedin.com/in/isemary"
+                        className="me-4 text-reset"
+                        target="_blank"
+                    >
                         <BsLinkedin />
                     </a>
-                    <a href="" className="me-4 text-reset">
+                    <a
+                        href="https://github.com/isemary"
+                        className="me-4 text-reset"
+                        target="_blank"
+                    >
                         <SiGithub />
                     </a>
-                    <a href="" className="me-4 text-reset">
+                    <a
+                        href="https://stackoverflow.com/users/9735658/abdelrahman-samir?tab=profile"
+                        className="me-4 text-reset"
+                        target="_blank"
+                    >
                         <BsStackOverflow />
                     </a>
-                    <a href="" className="me-4 text-reset">
+                    <a
+                        href="https://www.behance.net/isemary"
+                        className="me-4 text-reset"
+                        target="_blank"
+                    >
                         <ImBehance2 />
                     </a>
                 </div>
@@ -83,7 +99,9 @@ function Footer() {
                                 <FaGlobeAfrica /> Cairo, Egypt
                             </p>
                             <p>
-                                <BsMailbox2 /> abdelrahmansamirmostafa@gmail.com
+                                <a href="mailto:abdelrahmansamirmostafa@gmail.com" className="text-reset">
+                                    <BsMailbox2 /> abdelrahmansamirmostafa@gmail.com
+                                </a>
                             </p>
                             <p>
                                 <FiPhoneCall /> (+20) 102 701 2337
@@ -97,9 +115,9 @@ function Footer() {
                 className="text-center p-4"
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
             >
-                © 2021 Copyright:
+                © {new Date().getFullYear()} Copyright, All rights reserved&nbsp;&nbsp;
                 <a className="text-reset fw-bold" href="https://ootstrap.com/">
-                    ootstrap.com
+                    abdelrahman.online
                 </a>
             </div>
         </footer>
