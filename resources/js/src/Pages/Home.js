@@ -40,6 +40,7 @@ function Home() {
                 <MiniProjects />
                 <GithubRepos />
                 <SideSkills />
+                {/* <LinkedInTestimonal/> */}
             </Container>
         </>
     );
