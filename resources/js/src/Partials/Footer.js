@@ -18,34 +18,33 @@ function Footer() {
         >
             <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
                 <div className="me-5 d-none d-lg-block">
-                    <span>Get connected with us on social networks:</span>
                 </div>
                 <div className="social-icons">
                     <a
                         href="https://www.linkedin.com/in/isemary"
                         className="me-4 text-reset"
-                        target="_blank"
+                        target="_blank" rel="noreferrer" 
                     >
                         <BsLinkedin />
                     </a>
                     <a
                         href="https://github.com/isemary"
                         className="me-4 text-reset"
-                        target="_blank"
+                        target="_blank" rel="noreferrer" 
                     >
                         <SiGithub />
                     </a>
                     <a
                         href="https://stackoverflow.com/users/9735658/abdelrahman-samir?tab=profile"
                         className="me-4 text-reset"
-                        target="_blank"
+                        target="_blank" rel="noreferrer" 
                     >
                         <BsStackOverflow />
                     </a>
                     <a
                         href="https://www.behance.net/isemary"
                         className="me-4 text-reset"
-                        target="_blank"
+                        target="_blank" rel="noreferrer" 
                     >
                         <ImBehance2 />
                     </a>
@@ -99,7 +98,7 @@ function Footer() {
                                 <FaGlobeAfrica /> Cairo, Egypt
                             </p>
                             <p>
-                                <a href="mailto:abdelrahmansamirmostafa@gmail.com" className="text-reset">
+                                <a href="mailto:abdelrahmansamirmostafa@gmail.com"  rel="noreferrer" className="text-reset">
                                     <BsMailbox2 /> abdelrahmansamirmostafa@gmail.com
                                 </a>
                             </p>
