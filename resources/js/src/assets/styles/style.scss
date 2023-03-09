@@ -176,24 +176,32 @@ $black: #282936;
     }
     a:first-of-type {
         svg {
-            fill: #0961B8;
+            fill: #0961b8;
         }
     }
     a:nth-of-type(2) {
         svg {
-            fill: #1A1D21;
+            fill: #1a1d21;
         }
     }
     a:nth-of-type(3) {
         svg {
-            fill: #E87921;
+            fill: #e87921;
         }
     }
-    
+
     a:nth-of-type(4) {
         svg {
-            fill: #0053F2;
+            fill: #0053f2;
         }
     }
 }
 
+.glass-effect {
+    background: rgba(255, 255, 255, 0.38);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.3px);
+    -webkit-backdrop-filter: blur(7.3px);
+    border: 1px solid rgba(255, 255, 255, 0.31);
+}

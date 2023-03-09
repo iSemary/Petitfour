@@ -54,13 +54,13 @@ function Footer() {
             <section className="">
                 <Container className="text-center text-md-start mt-5">
                     <Row className="mt-3">
-                        <Col md="4" lg="5" xl="3" className="mx-auto mb-4">
+                        <Col md="4" lg="4" xl="4" className="mx-auto mb-4">
                             <h6 className="text-uppercase fw-bold mb-4">
                                 <CgProfile /> Abdelrahman Samir Mostafa
                             </h6>
                             <p>Bref on me</p>
                         </Col>
-                        <Col md="3" lg="2" xl="2" className="mx-auto mb-4">
+                        <Col md="3" lg="4" xl="4" className="mx-auto mb-4">
                             <h6 className="text-uppercase fw-bold mb-4">
                                 Useful links
                             </h6>
@@ -85,11 +85,7 @@ function Footer() {
                                 </a>
                             </p>
                         </Col>
-                        <Col
-                            md="4"
-                            lg="3"
-                            xl="3"
-                            className="mx-auto mb-md-0 mb-4"
+                        <Col md="4" lg="4" xl="4" className="mx-auto mb-md-0 mb-4"
                         >
                             <h6 className="text-uppercase fw-bold mb-4">
                                 Contact
