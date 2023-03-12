@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getSkills } from "../actions/skillsSlice";
 import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
@@ -6,15 +9,23 @@ import vue from "../assets/images/icons/vue.png";
 import jquery from "../assets/images/icons/jquery.png";
 import SkillLoader from "./Loaders/SkillLoader";
 
-
-let SkillsSection = null;
-
-
 function Skills() {
+    const skills = useSelector((state) => state.skills);
+    const dispatch = useDispatch();
+
+    let SkillsSection = null;
+    useEffect(() => {
+        dispatch(getSkills);
+    }, [dispatch]);
+
+    useEffect(() => {
+        // console.log(skills);
+    }, [skills]);
+
     return (
         <>
             <Container>
-                <SkillLoader/>
+                <SkillLoader />
                 <Row>
                     <Col md={12}>
                         <Row>

@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `skills` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `type_id` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
   `priority` tinyint(2) NOT NULL DEFAULT 0,
   `icon` varchar(255) NOT NULL,
   `start_date` datetime DEFAULT NULL,
@@ -42,16 +42,16 @@ CREATE TABLE `skills` (
 -- Dumping data for table `skills`
 --
 
-INSERT INTO `skills` (`id`, `name`, `type_id`, `priority`, `icon`, `start_date`, `updated_at`, `created_at`) VALUES
+INSERT INTO `skills` (`id`, `name`, `category_id`, `priority`, `icon`, `start_date`, `updated_at`, `created_at`) VALUES
 (1, 'React', 1, 1, 'react.png', NULL, '2023-03-12 16:15:13', '2023-03-12 16:15:13');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `types`
+-- Table structure for table `categories`
 --
 
-CREATE TABLE `types` (
+CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -62,10 +62,10 @@ CREATE TABLE `types` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `types`
+-- Dumping data for table `categories`
 --
 
-INSERT INTO `types` (`id`, `name`, `title`, `description`, `priority`, `updated_at`, `created_at`) VALUES
+INSERT INTO `categories` (`id`, `name`, `title`, `description`, `priority`, `updated_at`, `created_at`) VALUES
 (1, 'Front End', 'Front', 'Front', 1, '2023-03-12 16:17:34', '2023-03-12 16:17:34'),
 (2, 'Back End', 'Back', 'Back', 2, '2023-03-12 16:17:34', '2023-03-12 16:17:34'),
 (3, 'Server Side', 'Server Side', 'Server Side', 2, '2023-03-12 16:17:34', '2023-03-12 16:17:34');
@@ -79,12 +79,12 @@ INSERT INTO `types` (`id`, `name`, `title`, `description`, `priority`, `updated_
 --
 ALTER TABLE `skills`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `type_id` (`type_id`);
+  ADD KEY `category_id` (`category_id`);
 
 --
--- Indexes for table `types`
+-- Indexes for table `categories`
 --
-ALTER TABLE `types`
+ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -98,9 +98,9 @@ ALTER TABLE `skills`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `types`
+-- AUTO_INCREMENT for table `categories`
 --
-ALTER TABLE `types`
+ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -111,7 +111,7 @@ ALTER TABLE `types`
 -- Constraints for table `skills`
 --
 ALTER TABLE `skills`
-  ADD CONSTRAINT `skills_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
+  ADD CONSTRAINT `skills_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
