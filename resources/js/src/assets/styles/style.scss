@@ -17,8 +17,12 @@
     justify-content: space-evenly;
 }
 .main-nav {
-    position: absolute;
     width: 100%;
+    .nav-pages {
+        .links {
+            // color: red;
+        }
+    }   
 }
 
 .no-link {
@@ -27,6 +31,9 @@
     &:hover {
         text-decoration: none;
     }
+}
+.text-reset {
+    text-decoration: none;
 }
 
 .main-nav .nav-links .row > * {
@@ -204,4 +211,20 @@ $black: #282936;
     backdrop-filter: blur(7.3px);
     -webkit-backdrop-filter: blur(7.3px);
     border: 1px solid rgba(255, 255, 255, 0.31);
+}
+.contact-form {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+    backdrop-filter: blur(5px);
+
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
 }

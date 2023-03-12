@@ -1,7 +1,7 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Navbar from "react-bootstrap/navbar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import IMG_CODE from "../assets/images/icons/code.png";
 import IMG_PHARAOH from "../assets/images/icons/pharaoh.png";
 import IMG_DEFAULT from "../assets/images/icons/default.png";
@@ -9,8 +9,10 @@ import { RiRadioButtonLine } from "react-icons/ri";
 const changeMode = (e) => {};
 
 function Header() {
+    const location = useLocation();
+
     return (
-        <Navbar className="main-nav">
+        <Navbar className={"main-nav " + (location.pathname === "/" ? "position-absolute" : "nav-pages") }>
             <Row className="w-100">
                 <Col md={6}>
                     <Col md={12} className="ps-5 pt-1 main-logo">

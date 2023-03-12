@@ -91,15 +91,15 @@ function Footer() {
                                 Contact
                             </h6>
                             <p>
-                                <FaGlobeAfrica /> Cairo, Egypt
+                                <FaGlobeAfrica />&nbsp;&nbsp;Cairo, Egypt
                             </p>
                             <p>
                                 <a href="mailto:abdelrahmansamirmostafa@gmail.com"  rel="noreferrer" className="text-reset">
-                                    <BsMailbox2 /> abdelrahmansamirmostafa@gmail.com
+                                    <BsMailbox2 />&nbsp;&nbsp;abdelrahmansamirmostafa@gmail.com
                                 </a>
                             </p>
                             <p>
-                                <FiPhoneCall /> (+20) 102 701 2337
+                                <FiPhoneCall />&nbsp;&nbsp;(+20) 102 701 2337
                             </p>
                         </Col>
                     </Row>

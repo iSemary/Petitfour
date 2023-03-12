@@ -9,7 +9,7 @@ import "./assets/styles/style.css";
 function App() {
     return (
         <>
-            <Header />
+            <Header  />
             <Router />
             <Footer />
         </>
