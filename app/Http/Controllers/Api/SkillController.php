@@ -18,11 +18,13 @@ class SkillController extends Controller {
         $types = Type::select(['id', 'name', 'title', 'description'])->orderBy('priority', 'DESC')->get();
 
         $data = [];
+        /* Looping through the types and adding the skills to the data array. */
         foreach ($types as $key => $type) {
             $data[$key] = $type;
             $data[$key]['skills'] = Skill::select(['id', 'name', 'icon'])->where('type_id', $type['id'])->orderBy('priority', 'DESC')->get();
         }
 
+        /* Returning a json response with the data. */
         return response()->json([
             'success' => true,
             'status' => 200,
