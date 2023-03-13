@@ -12,7 +12,7 @@ function Header() {
     const location = useLocation();
 
     return (
-        <Navbar className={"main-nav " + (location.pathname === "/" ? "position-absolute" : "nav-pages") }>
+        <Navbar className={"main-nav bg-main " + (location.pathname === "/" ? "position-absolute" : "nav-pages") }>
             <Row className="w-100">
                 <Col md={6}>
                     <Col md={12} className="ps-5 pt-1 main-logo">

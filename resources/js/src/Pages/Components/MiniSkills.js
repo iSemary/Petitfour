@@ -65,12 +65,12 @@ function MiniSkills() {
                 </Row>
                 <div className="mt-4">
                     <Link to="skills" className="discover-more-btn">
-                        <span class="discover-circle" aria-hidden="true">
+                        <span className="discover-circle" aria-hidden="true">
                             <span>
                             <BiNavigation className="discover-icon" />
                             </span>
                         </span>
-                        <span class="discover-button-text">Discover More</span>
+                        <span className="discover-button-text">Discover More</span>
                     </Link>
                 </div>
             </div>

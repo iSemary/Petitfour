@@ -12,7 +12,7 @@ import SideSkills from "./Components/SideSkills";
 function Home() {
     return (
         <>
-            <div class="main-background-cover">
+            <div className="main-background-cover">
                 <Container className="top-content">
                     <Row>
                         <Col md={6}>

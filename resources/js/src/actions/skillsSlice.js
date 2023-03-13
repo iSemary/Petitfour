@@ -2,8 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getSkills = createAsyncThunk("skills", async () => {
-    const response = await axios.get(process.env.REACT_API_APP_URL + "skills");
-    console.log(response)
+    const response = await axios.get(process.env.REACT_APP_API_URL + "skills");
     return response;
 });
 
@@ -17,9 +16,9 @@ export const skillsSlice = createSlice({
     reducers: {},
     extraReducers: {
         [getSkills.fulfilled]: (state, { payload }) => {
-            state.data = payload;
-            state.status = payload;
-            state.success = payload;
+            state.data = payload.data.data;
+            state.status = payload.data.status;
+            state.success = payload.data.success;
         },
         [getSkills.pending]: (state) => {
             state.status = 202;

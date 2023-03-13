@@ -13,7 +13,7 @@ import { FiPhoneCall } from "react-icons/fi";
 function Footer() {
     return (
         <footer
-            className="text-center text-lg-start text-muted"
+            className="text-center bg-main text-lg-start text-muted"
         >
             <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
                 <div className="me-5 d-none d-lg-block">
