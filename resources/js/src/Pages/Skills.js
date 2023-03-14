@@ -33,10 +33,11 @@ function Skills() {
                     <Row>
                         <Col md={6}>
                             <div className="major-skills">
-                                <div>
+                                <div className="text-center row">
                                     {skill.skills.map((majorSkill, i) => {
                                         return (
-                                            <div className="" key={i}>
+
+                                            <div className="col-6" key={i}>
                                                 <OverlayTrigger
                                                     placement="bottom"
                                                     overlay={
@@ -53,13 +54,14 @@ function Skills() {
                                                             {...triggerHandler}
                                                             ref={ref}
                                                             alt=""
-                                                            src={react}
+                                                            src={majorSkill.icon}
                                                             width="50px"
                                                             height="50px"
                                                         />
                                                     )}
                                                 </OverlayTrigger>
                                             </div>
+
                                         );
                                     })}
                                 </div>
@@ -75,7 +77,7 @@ function Skills() {
                                     return (
                                         <Col
                                             key={i}
-                                            md={3}
+                                            // md={3}
                                             className="me-2 p-0"
                                         >
                                             <OverlayTrigger
@@ -93,11 +95,12 @@ function Skills() {
                                                     <img
                                                         {...triggerHandler}
                                                         ref={ref}
+                                                        class="side-skill"
                                                         alt={
                                                             sideSkill.name +
                                                             " side skill"
                                                         }
-                                                        src={react}
+                                                        src={sideSkill.icon}
                                                         width="25px"
                                                         height="25px"
                                                     />
