@@ -72,7 +72,7 @@ function Skills() {
                             <h5>{skill.title}</h5>
                             <p>{skill.description}</p>
 
-                            <Row className="width-fit-content">
+                            <Row className="width-fit-content">Z
                                 {skill.sides.map((sideSkill, i) => {
                                     return (
                                         <Col
