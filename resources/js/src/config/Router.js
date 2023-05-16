@@ -4,6 +4,9 @@ import Home from "../Pages/Home";
 import Skills from "../Pages/Skills";
 import Connect from "../Pages/Connect";
 import Projects from "../Pages/Projects";
+import Project from "../Pages/Project";
+import Blog from "../Pages/Blog";
+import Blogs from "../Pages/Blogs";
 
 function Router() {
     return (
@@ -12,7 +15,10 @@ function Router() {
                 <Route path="/" element={<Home />} />
                 <Route path="/skills" element={<Skills />} />
                 <Route path="/projects" element={<Projects />} />
+                <Route path="/projects/:slug" element={<Project />} />
                 <Route path="/connect" element={<Connect />} />
+                <Route path="/blogs" element={<Blogs />} />
+                <Route path="/blogs/:slug" element={<Blog />} />
             </Routes>
         </div>
     );

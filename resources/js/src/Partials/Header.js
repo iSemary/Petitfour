@@ -1,6 +1,6 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Navbar from "react-bootstrap/navbar";
+import { Navbar } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import IMG_CODE from "../assets/images/icons/code.png";
 import IMG_PHARAOH from "../assets/images/icons/pharaoh.png";
@@ -12,7 +12,12 @@ function Header() {
     const location = useLocation();
 
     return (
-        <Navbar className={"main-nav bg-main " + (location.pathname === "/" ? "position-absolute" : "nav-pages") }>
+        <Navbar
+            className={
+                "main-nav bg-main " +
+                (location.pathname === "/" ? "position-absolute" : "nav-pages")
+            }
+        >
             <Row className="w-100">
                 <Col md={6}>
                     <Col md={12} className="ps-5 pt-1 main-logo">
@@ -42,7 +47,12 @@ function Header() {
                                 Projects
                             </Link>
                         </Col>
-                        <Col md={9}>
+                        <Col md={1}>
+                            <Link to="/blogs" className="no-link">
+                                Blogs
+                            </Link>
+                        </Col>
+                        {/* <Col md={9}>
                             <Row>
                                 <Col md={6}>
                                     <Row>
@@ -96,7 +106,7 @@ function Header() {
                                     </Link>
                                 </Col>
                             </Row>
-                        </Col>
+                        </Col> */}
                     </Row>
                 </Col>
             </Row>
