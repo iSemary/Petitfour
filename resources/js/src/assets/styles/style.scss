@@ -11,21 +11,28 @@
     src: url("../fonts/Pharaoh/AlphacodePharaohRegular.ttf");
 }
 
-$primaryColor: #1E2629;
-$secondaryColor: #0D161E;
+$primaryColor: #1e2629;
+$secondaryColor: #0d161e;
 
 * {
     font-family: Lato;
 }
-.main-nav .nav-links .row {
-    justify-content: space-evenly;
-}
 
 .main-nav {
-    width: 100%;
-    .nav-pages {
+    .nav-links {
+        display: flex;
+        justify-content: flex-end;
         .links {
-            // color: red;
+            display: flex;
+            justify-content: space-between;
+            width: 335px;
+        }
+    }
+}
+.nav-links {
+    .links {
+        a {
+            font-weight: bold !important;
         }
     }
 }
@@ -51,9 +58,6 @@ $secondaryColor: #0D161E;
     text-decoration: none;
 }
 
-.main-nav .nav-links .row > * {
-    width: fit-content;
-}
 .main-logo {
     font-size: 25px;
     span:first-of-type {
