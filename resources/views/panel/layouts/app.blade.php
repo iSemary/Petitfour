@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="_token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description"
         content="A dynamic portfolio showcasing my work in web development. Browse through my projects, explore my skills and experience, and witness my creative expertise in design, development, and SaSS.">
@@ -23,7 +24,10 @@
         href="{{ asset('assets/panel/images/icons/apple-icon-180x180.png') }}">
     <meta name="theme-color" content="#ffffff">
     {{-- CSS files --}}
+    <link rel="stylesheet" href="{{ asset('assets/panel/vendors/bootstrap/bootstrap.min.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/panel/vendors/jquery-ui/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/panel/vendors/sweetalert/sweetalert2.min.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/simplebar/css/simplebar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/panel/css/vendors/simplebar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/DataTables/datatables.min.css') }}" media="screen">
@@ -46,6 +50,9 @@
             </div>
             @include('panel.layouts.footer')
         </div>
+        @include('panel.layouts.utilities.image-modal')
+        @include('panel.layouts.utilities.edit-modal')
+        @include('panel.layouts.utilities.create-modal')
     @endauth
     @guest
         @yield('content')
@@ -53,6 +60,8 @@
 
     {{-- Js files --}}
     <script src="{{ asset('assets/panel/vendors/jquery/jquery-3.7.0.min.js') }}"></script>
+    <script src="{{ asset('assets/panel/vendors/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/panel/vendors/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/DataTables/datatables.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/simplebar/js/simplebar.min.js') }}"></script>
@@ -62,10 +71,13 @@
     <script src="{{ asset('assets/panel/vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/panel/vendors/sweetalert2/sweetalert2.all.min.js') }}"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
     <script src="{{ asset('assets/panel/js/main.js') }}"></script>
 
     @yield('scripts')
+    @stack('scripts')
+
 </body>
 
 </html>

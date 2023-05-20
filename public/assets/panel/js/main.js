@@ -3,28 +3,11 @@ headerParams = {
 };
 const CsrfToken = $('meta[name="_token"]').attr("content");
 const LoadingSpan = `<span><i class="fa fa-spinner fa-spin"></i> Please wait, processing...</span>`;
-
-// Delete Form
-$(document).on("click", "#DeleteForm button", function (e) {
-    e.preventDefault();
-    let DeleteForm = $(this).parent("form");
-    let ModelDeleteType = DeleteForm.attr("data-delete-type");
-    Swal.fire({
-        title: lang.are_you_sure,
-        text: lang.you_want_delete_this + ModelDeleteType + "?",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#d33",
-        cancelButtonColor: "#3085d6",
-        confirmButtonText: lang.delete,
-        cancelButtonText: lang.cancel,
-    }).then((result) => {
-        if (result.value) {
-            DeleteForm.submit();
-        }
-    });
+$.ajaxSetup({
+    headers: {
+        "X-CSRF-TOKEN": CsrfToken,
+    },
 });
-
 // DataTables Config
 $.extend(true, $.fn.dataTable.defaults, {
     lengthMenu: [
@@ -32,7 +15,6 @@ $.extend(true, $.fn.dataTable.defaults, {
         [10, 25, 50, "All"],
     ],
     dom: "Blfrtip",
-    // dom: "lpftrip",
     buttons: ["copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5", "print"],
 });
 
@@ -66,8 +48,6 @@ $(document).on("change", "#uploadImg", function (e) {
     }
 });
 
-const LargeModalStrings = [""];
-
 /**
  *
  * ===== Create Modal Section
@@ -75,23 +55,10 @@ const LargeModalStrings = [""];
  */
 
 function OpenCreateModal(url) {
-    // $("#CreateModal").modal("show");
-    $("#CreateModal").modal({
-        backdrop: true,
-        show: true,
-    });
+    $("#CreateModal").modal("show");
     $(".modal-dialog").draggable({
         handle: ".modal-header",
     });
-
-    for (i = 0; i < LargeModalStrings.length; i++) {
-        if (url.includes(LargeModalStrings[i])) {
-            $("#ModalCreateDialog").addClass("modal-lg");
-            break;
-        } else {
-            $("#ModalCreateDialog").removeClass("modal-lg");
-        }
-    }
 
     $("#CreateTargetModal")
         .html(LoadingSpan)
@@ -110,11 +77,6 @@ $(document).on("submit", "#CreateForm", function (e) {
     let formID = "#" + $(this).attr("id");
     let formUrl = $(this).attr("action");
 
-    // Custom Configs for creating products
-    if ($(this).attr("data-type") == "product") {
-        createProductConfigs();
-    }
-
     $.ajax({
         type: "POST",
         dataType: "json",
@@ -125,18 +87,13 @@ $(document).on("submit", "#CreateForm", function (e) {
         processData: false,
         beforeSend: function () {
             $(".create-status").html(
-                `<h6 class="text-muted"><i class="fas fa-circle-notch fa-spin"></i> ` +
-                    lang.creating +
-                    ` ...` +
-                    `</h6>`
+                `<h6 class="text-muted"><i class="fas fa-circle-notch fa-spin"></i> Creating, please wait...</h6>`
             );
             formBtn.prop("disabled", true);
         },
         success: function (data) {
             $(".create-status").html(
-                `<h6 class="text-success"><i class="fas fa-check-circle"></i> ` +
-                    lang.created +
-                    `</h6>`
+                `<h6 class="text-success"><i class="fas fa-check-circle"></i> Created successfully!</h6>`
             );
             formBtn.prop("disabled", false);
             $("input, textarea", formID)
@@ -149,11 +106,10 @@ $(document).on("submit", "#CreateForm", function (e) {
         error: function (data) {
             $(".create-status").html("");
             formBtn.prop("disabled", false);
-            console.log(data);
             // $.each(xhr.responseJSON.errors, function(key, value) {
             $(".create-status").append(
                 `<h6 class="text-danger"><i class="fas fa-exclamation-triangle"></i> ` +
-                    (data.responseJSON ?? lang.something_went_wrong_404) +
+                    (data.responseJSON ?? "Something went wrong!") +
                     `</h6>`
             );
             // });
@@ -170,22 +126,11 @@ $(document).on("submit", "#CreateForm", function (e) {
 
 function OpenEditModal(url) {
     // $("#EditModal").modal("show");
-    $("#EditModal").modal({
-        backdrop: true,
-        show: true,
-    });
+    $("#EditModal").modal("show");
     $(".modal-dialog").draggable({
         handle: ".modal-header",
     });
 
-    for (i = 0; i < LargeModalStrings.length; i++) {
-        if (url.includes(LargeModalStrings[i])) {
-            $("#ModalEditDialog").addClass("modal-lg");
-            break;
-        } else {
-            $("#ModalEditDialog").removeClass("modal-lg");
-        }
-    }
     $("#EditTargetModal")
         .html(LoadingSpan)
         .load(url, function () {
@@ -213,18 +158,13 @@ $(document).on("submit", "#EditForm", function (e) {
         processData: false,
         beforeSend: function () {
             $(".edit-status").html(
-                `<h6 class="text-muted"><i class="fas fa-circle-notch fa-spin"></i> ` +
-                    lang.updating +
-                    ` ...` +
-                    `</h6>`
+                `<h6 class="text-muted"><i class="fas fa-circle-notch fa-spin"></i> Updating, please wait...</h6>`
             );
             formBtn.prop("disabled", true);
         },
         success: function (data) {
             $(".edit-status").html(
-                `<h6 class="text-success"><i class="fas fa-check-circle"></i> ` +
-                    lang.updated +
-                    `</h6>`
+                `<h6 class="text-success"><i class="fas fa-check-circle"></i> Updated successfully!</h6>`
             );
             formBtn.prop("disabled", false);
             $(".dataTable").DataTable().ajax.reload();
@@ -257,14 +197,14 @@ $("#CreateModal").on("hidden.bs.modal", function () {
 
 function DeleteRow(link, ModelDeleteType) {
     Swal.fire({
-        title: lang.are_you_sure,
-        text: lang.you_want_delete_this + ModelDeleteType + " ?",
+        title: "Are you sure ?",
+        text: "You want to delete this " + ModelDeleteType + " ?",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
         cancelButtonColor: "#3085d6",
-        confirmButtonText: lang.delete,
-        cancelButtonText: lang.cancel,
+        confirmButtonText: "Delete",
+        cancelButtonText: "Cancel",
     }).then((result) => {
         if (result.value) {
             $.ajax({
@@ -275,28 +215,19 @@ function DeleteRow(link, ModelDeleteType) {
                 },
             })
                 .done(function (data) {
-                    if (data.status == 200) {
-                        Swal.fire({
-                            text: lang.deleted_successfully,
-                            confirmButtonText: lang.ok,
-                            type: "success",
-                            toast: true,
-                            position: "bottom",
-                        });
-                    } else {
-                        Swal.fire({
-                            text: data.response,
-                            confirmButtonText: lang.ok,
-                            type: "error",
-                            toast: true,
-                            position: "bottom",
-                        });
-                    }
+                    Swal.fire({
+                        text: "Deleted Successfully!",
+                        confirmButtonText: "Ok",
+                        type: "success",
+                        toast: true,
+                        position: "bottom",
+                    });
+
                     $(".dataTable").DataTable().ajax.reload();
                 })
                 .fail(function (data) {
                     Swal.fire({
-                        text: data.response,
+                        text: data.response ?? "Something went wrong!",
                         type: "error",
                         toast: true,
                         position: "bottom",

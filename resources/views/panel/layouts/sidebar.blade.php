@@ -18,7 +18,7 @@
                                     <i class="nav-icon fas fa-tachometer-alt"></i> Dashboard
                                 </a>
                             </li>
-                            <li class="nav-title">Basics</li>
+                            <li class="nav-title mt-0">Basics</li>
                             <li class="nav-group">
                                 <a class="nav-link nav-group-toggle {{ strpos(Request::url(), 'skills') ? 'active' : '' }}"
                                     href="#">
@@ -26,11 +26,12 @@
                                 </a>
                                 <ul class="nav-group-items">
                                     <li class="nav-item"><a class="nav-link" href="{{ route('skills.index') }}">
-                                            <i class="nav-icon fas fa-users"></i> Skills
+                                            <i class="nav-icon fas fa-fill-drip"></i> Skills
                                         </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link create-btn" href="#" data-url="{{ route('skills.create') }}">
-                                            <i class="nav-icon fas fa-users"></i> Add Skill
+                                    <li class="nav-item"><a class="nav-link create-btn" href="#"
+                                            data-url="{{ route('skills.create') }}">
+                                            <i class="fas nav-icon fa-plus"></i> Add Skill
                                         </a>
                                     </li>
                                 </ul>
@@ -45,7 +46,8 @@
                                             <i class="fas nav-icon fa-briefcase"></i> Experiences
                                         </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link create-btn" href="#" data-url="{{ route('experiences.create') }}">
+                                    <li class="nav-item"><a class="nav-link create-btn" href="#"
+                                            data-url="{{ route('experiences.create') }}">
                                             <i class="fas nav-icon fa-plus"></i> Add Experience
                                         </a>
                                     </li>
@@ -61,7 +63,8 @@
                                             <i class="nav-icon fas fa-users"></i> Projects
                                         </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link create-btn" href="#" data-url="{{ route('projects.create') }}">
+                                    <li class="nav-item"><a class="nav-link create-btn" href="#"
+                                            data-url="{{ route('projects.create') }}">
                                             <i class="fas nav-icon fa-plus"></i> Add Project
                                         </a>
                                     </li>
@@ -77,7 +80,8 @@
                                             <i class="fas nav-icon fa-rss"></i> Blogs
                                         </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link create-btn" href="#" data-url="{{ route('blogs.create') }}">
+                                    <li class="nav-item"><a class="nav-link create-btn" href="#"
+                                            data-url="{{ route('blogs.create') }}">
                                             <i class="fas nav-icon fa-plus"></i> Add Blog
                                         </a>
                                     </li>

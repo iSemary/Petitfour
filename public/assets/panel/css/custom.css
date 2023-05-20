@@ -7,6 +7,46 @@
     flex: 0;
 }
 
-.simplebar-content-wrapper{
+.simplebar-content-wrapper {
     overflow-y: scroll !important;
+}
+
+#EditModal .modal-header,
+#CreateModal .modal-header {
+    cursor: all-scroll;
+}
+
+/* DataTables Classes */
+
+.dataTables_wrapper .dataTables_filter input {
+    border-radius: 25px;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus-visible {
+    box-shadow: inset #1f2d3da1 0px 0px 2px !important;
+    border: 1px solid #343a4047;
+    outline: 1px solid #343a4057;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border: 1px solid #343a4087 !important;
+    border-radius: 5px !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+.paginate_button.current,
+.paginate_button.item.active {
+    background: #343a40;
+    color: #fff !important;
+}
+
+.modal-dialog {
+    max-width: 750px;
+    width: 700px;
+}
+
+#previewImg {
+    width: 50px;
+}
+.header-content {
+    justify-content: end;
 }
