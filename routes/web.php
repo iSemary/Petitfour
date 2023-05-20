@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/login', [UserController::class, 'login'])->name("login");
+Route::post('/login', [UserController::class, 'submitLogin'])->name("login.submit");
+Route::get("logout", [UserController::class, 'logout'])->name('logout');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::resources([
+        'skills' => SkillController::class,
+    ]);
 });
