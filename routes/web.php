@@ -25,7 +25,14 @@ Route::get("logout", [UserController::class, 'logout'])->name('logout');
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::resources([
-        'skills' => SkillController::class,
-    ]);
+    Route::resources(['skills' => SkillController::class]);
+    Route::resources(['projects' => ProjectController::class]);
+    Route::resources(['experiences' => ExperienceController::class]);
+    Route::resources(['blogs' => BlogController::class]);
+
+    Route::get('config/user', [ConfigController::class, 'user'])->name("config.user");
+    Route::get('config/design', [ConfigController::class, 'design'])->name("config.design");
+
+    Route::get('contacts', [ContactController::class, 'messages'])->name("contacts.index");
+
 });

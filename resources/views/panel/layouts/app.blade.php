@@ -29,7 +29,8 @@
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/DataTables/datatables.min.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/select2/select2.min.css') }}" media="screen">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css">
-    <link href="{{ asset('assets/panel/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/panel/css/style.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/panel/css/custom.css') }}" rel="stylesheet">
 </head>
 
 <body>

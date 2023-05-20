@@ -1,11 +1,6 @@
 <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
     <div class="sidebar-brand d-none d-md-flex">
-        <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-            <use xlink:href="assets/brand/coreui.svg#full"></use>
-        </svg>
-        <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
-            <use xlink:href="assets/brand/coreui.svg#signet"></use>
-        </svg>
+        <img src="{{ asset('assets/panel/images/biscuits.png') }}" width="35px" />&nbsp;<span>Petitfour Dashboard</span>
     </div>
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="init">
         <div class="simplebar-wrapper" style="margin: 0px;">
@@ -17,68 +12,99 @@
                     <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content"
                         style="height: 100%; overflow: hidden;">
                         <div class="simplebar-content" style="padding: 0px;">
-                            <li class="nav-item"><a class="nav-link active" href="index.html">
-                                    <svg class="nav-icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
-                                    </svg> Dashboard<span class="badge badge-sm bg-info ms-auto">NEW</span></a></li>
-
-
-
-                            <li class="nav-title">Components</li>
-                            <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                                    <svg class="nav-icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
-                                    </svg> Base</a>
+                            <li class="nav-item">
+                                <a class="nav-link {{ strpos(Request::url(), '/index') ? 'active' : '' }}"
+                                    href="index.html">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-title">Basics</li>
+                            <li class="nav-group">
+                                <a class="nav-link nav-group-toggle {{ strpos(Request::url(), 'skills') ? 'active' : '' }}"
+                                    href="#">
+                                    <i class="nav-icon fas fa-fill-drip"></i> Skills
+                                </a>
                                 <ul class="nav-group-items">
-                                    <li class="nav-item"><a class="nav-link" href="base/accordion.html"><span
-                                                class="nav-icon"></span> Accordion</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/breadcrumb.html"><span
-                                                class="nav-icon"></span> Breadcrumb</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/cards.html"><span
-                                                class="nav-icon"></span> Cards</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/carousel.html"><span
-                                                class="nav-icon"></span> Carousel</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/collapse.html"><span
-                                                class="nav-icon"></span> Collapse</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/list-group.html"><span
-                                                class="nav-icon"></span> List group</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/navs-tabs.html"><span
-                                                class="nav-icon"></span> Navs &amp; Tabs</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/pagination.html"><span
-                                                class="nav-icon"></span> Pagination</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/placeholders.html"><span
-                                                class="nav-icon"></span> Placeholders</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/popovers.html"><span
-                                                class="nav-icon"></span> Popovers</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/progress.html"><span
-                                                class="nav-icon"></span> Progress</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/scrollspy.html"><span
-                                                class="nav-icon"></span> Scrollspy</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/spinners.html"><span
-                                                class="nav-icon"></span> Spinners</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/tables.html"><span
-                                                class="nav-icon"></span> Tables</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="base/tooltips.html"><span
-                                                class="nav-icon"></span> Tooltips</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('skills.index') }}">
+                                            <i class="nav-icon fas fa-users"></i> Skills
+                                        </a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link create-btn" href="#" data-url="{{ route('skills.create') }}">
+                                            <i class="nav-icon fas fa-users"></i> Add Skill
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
-
-                            <li class="nav-item"><a class="nav-link" href="charts.html">
-                                    <svg class="nav-icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-chart-pie"></use>
-                                    </svg> Charts</a></li>
+                            <li class="nav-group">
+                                <a class="nav-link nav-group-toggle {{ strpos(Request::url(), 'experiences') ? 'active' : '' }}"
+                                    href="#">
+                                    <i class="fas nav-icon fa-briefcase"></i> Experiences
+                                </a>
+                                <ul class="nav-group-items">
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('experiences.index') }}">
+                                            <i class="fas nav-icon fa-briefcase"></i> Experiences
+                                        </a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link create-btn" href="#" data-url="{{ route('experiences.create') }}">
+                                            <i class="fas nav-icon fa-plus"></i> Add Experience
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-group">
+                                <a class="nav-link nav-group-toggle {{ strpos(Request::url(), 'projects') ? 'active' : '' }}"
+                                    href="#">
+                                    <i class="nav-icon fas fa-fill-drip"></i> Projects
+                                </a>
+                                <ul class="nav-group-items">
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('projects.index') }}">
+                                            <i class="nav-icon fas fa-users"></i> Projects
+                                        </a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link create-btn" href="#" data-url="{{ route('projects.create') }}">
+                                            <i class="fas nav-icon fa-plus"></i> Add Project
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-group">
+                                <a class="nav-link nav-group-toggle {{ strpos(Request::url(), 'blogs') ? 'active' : '' }}"
+                                    href="#">
+                                    <i class="fas nav-icon fa-rss"></i> Blogs
+                                </a>
+                                <ul class="nav-group-items">
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('blogs.index') }}">
+                                            <i class="fas nav-icon fa-rss"></i> Blogs
+                                        </a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link create-btn" href="#" data-url="{{ route('blogs.create') }}">
+                                            <i class="fas nav-icon fa-plus"></i> Add Blog
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-title">Configuration</li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('config.user') }}">
+                                    <i class="fas fa-user-cog nav-icon"></i> User
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('config.design') }}">
+                                    <i class="nav-icon fas fa-pencil-ruler"></i> Design
+                                </a>
+                            </li>
+                            <li class="nav-title">Trackers</li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('contacts.index') }}">
+                                    <i class="nav-icon fas fa-inbox"></i> Connect Messages
+                                </a>
+                            </li>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="simplebar-placeholder" style="width: 256px; height: 509px;"></div>
-        </div>
-        <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
-            <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
-        </div>
-        <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
-            <div class="simplebar-scrollbar"
-                style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;"></div>
         </div>
     </ul>
     <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>

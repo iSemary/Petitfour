@@ -22,47 +22,47 @@
 
 @section('scripts')
     <script>
-        $(document).ready(function() {
-            $('#skills-table').DataTable({
-                processing: true,
-                serverSide: true,
-                columns: [{
-                        data: 'id',
-                        name: 'id'
-                    },
-                    {
-                        data: 'name',
-                        name: 'name'
-                    },
-                    {
-                        data: 'category_id',
-                        name: 'category_id'
-                    },
-                    {
-                        data: 'type',
-                        name: 'type'
-                    },
-                    {
-                        data: 'priority',
-                        name: 'priority'
-                    },
-                    {
-                        data: 'icon',
-                        name: 'icon'
-                    },
-                    {
-                        data: 'start_date',
-                        name: 'start_date'
-                    },
-                    {
-                        data: 'actions',
-                        name: 'actions',
-                        orderable: false,
-                        searchable: false,
-                        width: '100px',
-                    },
-                ]
-            });
-        });
+        // $(document).ready(function() {
+        //     $('#skills-table').DataTable({
+        //         processing: true,
+        //         serverSide: true,
+        //         columns: [{
+        //                 data: 'id',
+        //                 name: 'id'
+        //             },
+        //             {
+        //                 data: 'name',
+        //                 name: 'name'
+        //             },
+        //             {
+        //                 data: 'category_id',
+        //                 name: 'category_id'
+        //             },
+        //             {
+        //                 data: 'type',
+        //                 name: 'type'
+        //             },
+        //             {
+        //                 data: 'priority',
+        //                 name: 'priority'
+        //             },
+        //             {
+        //                 data: 'icon',
+        //                 name: 'icon'
+        //             },
+        //             {
+        //                 data: 'start_date',
+        //                 name: 'start_date'
+        //             },
+        //             {
+        //                 data: 'actions',
+        //                 name: 'actions',
+        //                 orderable: false,
+        //                 searchable: false,
+        //                 width: '100px',
+        //             },
+        //         ]
+        //     });
+        // });
     </script>
 @endsection

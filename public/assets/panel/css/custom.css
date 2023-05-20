@@ -1,0 +1,12 @@
+.sidebar-nav .nav-group .nav-group-items,
+.sidebar-nav .nav-group .nav-group-items i {
+    font-size: 15px;
+}
+
+.sidebar-brand {
+    flex: 0;
+}
+
+.simplebar-content-wrapper{
+    overflow-y: scroll !important;
+}
