@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/bootstrap/bootstrap.min.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/jquery-ui/jquery-ui.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/panel/vendors/sweetalert/sweetalert2.min.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/simplebar/css/simplebar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/panel/css/vendors/simplebar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/DataTables/datatables.min.css') }}" media="screen">
@@ -61,13 +60,11 @@
     {{-- Js files --}}
     <script src="{{ asset('assets/panel/vendors/jquery/jquery-3.7.0.min.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/panel/vendors/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/panel/vendors/bootstrap/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/DataTables/datatables.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/simplebar/js/simplebar.min.js') }}"></script>
     <!-- Plugins and scripts required by this view-->
-    <script src="{{ asset('assets/panel/vendors/chart.js/js/chart.min.js') }}"></script>
-    <script src="{{ asset('assets/panel/vendors/@coreui/chart.js/js/coreui-chartjs.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/select2/select2.min.js') }}"></script>
