@@ -35,7 +35,7 @@
                             <div class="card-body text-center">
                                 <div>
                                     <h2>{{ env('APP_NAME') }}</h2>
-                                    <p>This is dashboard login credentials will be available soon.</p>
+                                    <p>Dashboard login credentials will be available soon. [For test uses]</p>
                                     <a class="btn btn-lg btn-outline-light mt-3" target="_blank"
                                         href="https://github.com/isemary/petitfour">Build your own project!</a>
                                 </div>
