@@ -35,8 +35,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resources(['blogs' => BlogController::class]);
 
     Route::get('config/user', [ConfigController::class, 'user'])->name("config.user");
-    Route::get('config/design', [ConfigController::class, 'design'])->name("config.design");
-
+    Route::get('config/system', [ConfigController::class, 'system'])->name("config.system");
     Route::get('contacts', [ContactController::class, 'messages'])->name("contacts.index");
-
 });
