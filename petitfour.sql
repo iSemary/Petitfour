@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1deb5ubuntu1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 21, 2023 at 01:40 AM
--- Server version: 8.0.33-0ubuntu0.22.04.2
--- PHP Version: 8.1.18
+-- Host: 127.0.0.1
+-- Generation Time: May 21, 2023 at 03:40 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,16 +28,16 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `blogs` (
-  `id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `content` text COLLATE utf8mb4_general_ci,
-  `description` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `content` text DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `published_at` datetime DEFAULT NULL,
-  `status` tinyint UNSIGNED DEFAULT '0'
+  `status` tinyint(3) UNSIGNED DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -47,9 +47,9 @@ CREATE TABLE `blogs` (
 --
 
 CREATE TABLE `blog_skills` (
-  `id` int NOT NULL,
-  `blog_id` int NOT NULL,
-  `skill_id` int NOT NULL
+  `id` int(11) NOT NULL,
+  `blog_id` int(11) NOT NULL,
+  `skill_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -59,11 +59,12 @@ CREATE TABLE `blog_skills` (
 --
 
 CREATE TABLE `blog_views` (
-  `id` int NOT NULL,
-  `blog_id` int NOT NULL,
-  `ip` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `blog_id` int(11) NOT NULL,
+  `ip` varchar(255) NOT NULL,
+  `agent` varchar(1024) DEFAULT NULL,
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -73,13 +74,13 @@ CREATE TABLE `blog_views` (
 --
 
 CREATE TABLE `categories` (
-  `id` int NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` mediumtext COLLATE utf8mb4_general_ci NOT NULL,
-  `priority` tinyint NOT NULL DEFAULT '0',
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` mediumtext NOT NULL,
+  `priority` tinyint(4) NOT NULL DEFAULT 0,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -94,25 +95,32 @@ INSERT INTO `categories` (`id`, `name`, `title`, `description`, `priority`, `upd
 -- --------------------------------------------------------
 
 --
--- Table structure for table `design_config`
+-- Table structure for table `experiences`
 --
 
-CREATE TABLE `design_config` (
-  `id` int NOT NULL,
-  `primary_color` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `secondary_color` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE `experiences` (
+  `id` int(11) NOT NULL,
+  `company_name` varchar(255) NOT NULL,
+  `company_logo` varchar(255) NOT NULL,
+  `company_location` varchar(255) NOT NULL,
+  `position_title` varchar(255) NOT NULL,
+  `summary` text NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date DEFAULT NULL,
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `experiences`
+-- Table structure for table `experience_skills`
 --
 
-CREATE TABLE `experiences` (
-  `id` int NOT NULL
+CREATE TABLE `experience_skills` (
+  `id` int(11) NOT NULL,
+  `experience_id` int(11) NOT NULL,
+  `skill_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -122,15 +130,15 @@ CREATE TABLE `experiences` (
 --
 
 CREATE TABLE `skills` (
-  `id` int NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `category_id` int DEFAULT NULL,
-  `type` tinyint(1) NOT NULL DEFAULT '1',
-  `priority` tinyint NOT NULL DEFAULT '0',
-  `icon` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `type` tinyint(1) NOT NULL DEFAULT 1,
+  `priority` tinyint(4) NOT NULL DEFAULT 0,
+  `icon` varchar(255) NOT NULL,
   `start_date` date DEFAULT NULL,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -178,11 +186,29 @@ INSERT INTO `skills` (`id`, `name`, `category_id`, `type`, `priority`, `icon`, `
 --
 
 CREATE TABLE `social_links` (
-  `id` int NOT NULL,
-  `link` varchar(1024) COLLATE utf8mb4_general_ci NOT NULL,
-  `type` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `url` varchar(1024) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `priority` tinyint(4) NOT NULL DEFAULT 0,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_config`
+--
+
+CREATE TABLE `system_config` (
+  `id` int(11) NOT NULL,
+  `primary_color` varchar(255) DEFAULT NULL,
+  `secondary_color` varchar(255) DEFAULT NULL,
+  `contact_email` varchar(255) DEFAULT NULL,
+  `openai_api_token` int(11) NOT NULL,
+  `google_analytics_id` int(11) NOT NULL,
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -192,12 +218,12 @@ CREATE TABLE `social_links` (
 --
 
 CREATE TABLE `users` (
-  `id` int NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -214,19 +240,35 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_a
 --
 
 CREATE TABLE `user_config` (
-  `id` int NOT NULL,
-  `first_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `last_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `country` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `city` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone_number` int DEFAULT NULL,
-  `country_code` tinyint DEFAULT NULL,
-  `address` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `position` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `bio` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `phone_number` int(11) DEFAULT NULL,
+  `country_code` tinyint(4) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `position` varchar(255) DEFAULT NULL,
+  `bio` varchar(1024) DEFAULT NULL,
+  `slogan` varchar(1024) DEFAULT NULL,
+  `home_image` varchar(255) DEFAULT NULL,
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `views_type`
+--
+
+CREATE TABLE `views_type` (
+  `id` int(11) NOT NULL,
+  `type` tinyint(4) NOT NULL DEFAULT 0,
+  `ip` varchar(255) NOT NULL,
+  `agent` varchar(1024) NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -240,15 +282,15 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `design_config`
---
-ALTER TABLE `design_config`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `experiences`
 --
 ALTER TABLE `experiences`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `experience_skills`
+--
+ALTER TABLE `experience_skills`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -265,6 +307,12 @@ ALTER TABLE `social_links`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `system_config`
+--
+ALTER TABLE `system_config`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -277,6 +325,12 @@ ALTER TABLE `user_config`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `views_type`
+--
+ALTER TABLE `views_type`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -284,43 +338,55 @@ ALTER TABLE `user_config`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `design_config`
---
-ALTER TABLE `design_config`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `experiences`
 --
 ALTER TABLE `experiences`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `experience_skills`
+--
+ALTER TABLE `experience_skills`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `social_links`
 --
 ALTER TABLE `social_links`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `system_config`
+--
+ALTER TABLE `system_config`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_config`
 --
 ALTER TABLE `user_config`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `views_type`
+--
+ALTER TABLE `views_type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
