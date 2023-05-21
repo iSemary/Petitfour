@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\ConfigController;
 use Illuminate\Support\Facades\Route;
 
 /*

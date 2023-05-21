@@ -19,7 +19,8 @@
     <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('assets/panel/images/icons/apple-icon-114x114.png') }}">
     <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/panel/images/icons/apple-icon-120x120.png') }}">
     <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('assets/panel/images/icons/apple-icon-144x144.png') }}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('assets/panel/images/icons/apple-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152"
+        href="{{ asset('assets/panel/images/icons/apple-icon-152x152.png') }}">
     <link rel="apple-touch-icon" sizes="180x180"
         href="{{ asset('assets/panel/images/icons/apple-icon-180x180.png') }}">
     <meta name="theme-color" content="#ffffff">
@@ -69,7 +70,8 @@
     <script src="{{ asset('assets/panel/vendors/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/select2/select2.min.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/sweetalert2/sweetalert2.all.min.js') }}"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/plugins/codesnippet/plugin.js"></script>
     <script src="{{ asset('assets/panel/js/main.js') }}"></script>
 
     @yield('scripts')

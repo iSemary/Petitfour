@@ -45,7 +45,10 @@
                 </div>
 
                 <div class="form-group d-flex justify-content-between">
-                    <input type="file" name="icon" accept="image/*" id="uploadImg">
+                    <div>
+                        <label>Icon</label><br/>
+                        <input type="file" name="icon" accept="image/*" id="uploadImg">
+                    </div>
                     <img src="{{ isset($skill) ? asset($skill->icon) : '' }}" class="img-thumbnail img-md d-block"
                         id="previewImg" alt="">
                 </div>
