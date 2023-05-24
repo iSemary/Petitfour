@@ -37,7 +37,7 @@
                     <select name="skill_id[]" style="width:100%" class="form-control select2" multiple required>
                         <option value="">Choose Skills</option>
                         @foreach ($skills as $skill)
-                            <option value="{{ $skill->id }}" {{-- TODO fix this --}}
+                            <option value="{{ $skill->id }}"
                                 {{ isset($blog) && $blog->skills->contains($skill->id) ? 'selected' : '' }}>
                                 {{ $skill->name }}</option>
                         @endforeach

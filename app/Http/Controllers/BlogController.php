@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Blog;
 use App\Models\Skill;
 use Illuminate\Http\Request;
@@ -12,10 +11,6 @@ use \Image;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller {
-    protected $type;
-    public function __construct() {
-        $this->type = [];
-    }
     public function index() {
         if (request()->ajax()) {
             $blogs = Blog::orderBy("id", "DESC")->get();

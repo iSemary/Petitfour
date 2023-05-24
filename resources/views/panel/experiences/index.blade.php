@@ -1,77 +1,65 @@
 @extends('panel.layouts.app')
-@section('title', __('Skills'))
+@section('title', __('Experiences'))
 @section('content')
-    <h1>Skills</h1>
-    <table id="skills-table" class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Category ID</th>
-                <th>Type</th>
-                <th>Priority</th>
-                <th>Icon</th>
-                <th>Start Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <div id="editor">This is some sample content.</div>
+    <section class="content">
+        <div class="card card-success">
+            <div class="card-header d-flex justify-content-between">
+                <h3>Experiences</h3>
+                <a href="#" data-url={{ route('experiences.create') }} class="btn btn-primary create-btn">
+                    <i class="fas fa-plus"></i> Add new experience
+                </a>
+            </div>
+            <div class="card-body">
 
-        <tbody>
-        </tbody>
-    </table>
+                <table id="experiences-table" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Company Name</th>
+                            <th>Company Location</th>
+                            <th>Position Title</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 @endsection
 
 @section('scripts')
     <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-
         $(document).ready(function() {
-            $('#skills-table').DataTable({
+            $('#experiences-table').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
                 processing: true,
                 serverSide: true,
+                url: `{{ route('experiences.index') }}`,
                 columns: [{
                         data: 'id',
                         name: 'id'
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'company_name',
+                        name: 'company_name'
                     },
                     {
-                        data: 'category_id',
-                        name: 'category_id'
+                        data: 'company_location',
+                        name: 'company_location'
                     },
                     {
-                        data: 'type',
-                        name: 'type'
+                        data: 'position_title',
+                        name: 'position_title'
                     },
                     {
-                        data: 'priority',
-                        name: 'priority'
-                    },
-                    {
-                        data: 'icon',
-                        name: 'icon'
-                    },
-                    {
-                        data: 'start_date',
-                        name: 'start_date'
-                    },
-                    {
-                        data: 'actions',
-                        name: 'actions',
+                        data: 'action',
+                        name: 'action',
                         orderable: false,
                         searchable: false,
-                        width: '100px',
                     },
                 ]
             });

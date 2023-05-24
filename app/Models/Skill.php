@@ -15,4 +15,8 @@ class Skill extends Model {
     public function blogs() {
         return $this->belongsToMany(Blog::class, 'blog_skills');
     }
+
+    public function experiences() {
+        return $this->belongsToMany(Experience::class, 'experience_skills');
+    }
 }

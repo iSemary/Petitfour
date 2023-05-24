@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
 
-                <table id="skills-table" class="table table-striped">
+                <table id="blogs-table" class="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -32,7 +32,7 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            $('#skills-table').DataTable({
+            $('#blogs-table').DataTable({
                 order: [
                     [0, 'desc']
                 ],
