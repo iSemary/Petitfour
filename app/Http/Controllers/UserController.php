@@ -19,12 +19,13 @@ class UserController extends Controller {
         if (Auth::attempt($credentials)) {
             // Authentication successful
             return response()->json([
-                'message' => "Successful login"
+                'message' => "Welcome back, redirecting to home...",
+                'route'=> route("dashboard.index")
             ], 200);
         } else {
             // Authentication failed
             return response()->json([
-                'message' => 'Invalid credentials'
+                'message' => 'Invalid credentials!'
             ], 400);
         }
     }

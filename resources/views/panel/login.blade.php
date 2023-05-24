@@ -8,7 +8,7 @@
                     <div class="card-group d-block d-md-flex row">
                         <div class="card col-md-7 p-4 mb-0">
                             <div class="card-body">
-                                <form method="POST" action="{{ route('login.submit') }}">
+                                <form method="POST" id="loginForm" action="{{ route('login.submit') }}">
                                     @csrf
                                     {{ method_field('POST') }}
                                     <h1>Login</h1>
@@ -22,6 +22,9 @@
                                                 class="fas fa-lock"></i></span>
                                         <input class="form-control" name="password" id="passwordField" type="password"
                                             placeholder="Password">
+                                    </div>
+                                    <div class="create-status">
+
                                     </div>
                                     <div class="row">
                                         <div class="col-6">
@@ -46,4 +49,52 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        // Use jQuery or any other library to handle AJAX requests
+        $(document).ready(function() {
+            $(document).on("submit", "#loginForm", function(e) {
+                e.preventDefault();
+                let formBtn = $(this).find(":submit");
+                let formData = new FormData(this);
+                let formID = "#" + $(this).attr("id");
+                let formUrl = $(this).attr("action");
+
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: formUrl,
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function() {
+                        $(".create-status").html(
+                            `<h6 class="text-muted"><i class="fas fa-circle-notch fa-spin"></i> Signing in, please wait...</h6>`
+                        );
+                        formBtn.prop("disabled", true);
+                    },
+                    success: function(data) {
+                        $(".create-status").html(
+                            `<h6 class="text-success"><i class="fas fa-check-circle"></i>`+data.message+`</h6>`
+                        );
+                        window.location.href = data.route
+                    },
+                    error: function(data) {
+                        $(".create-status").html("");
+                        formBtn.prop("disabled", false);
+                        $(".create-status").append(
+                            `<h6 class="text-danger"><i class="fas fa-exclamation-triangle"></i> ` +
+                            data.message +
+                            `</h6>`
+                        );
+                        formBtn.prop("disabled", false);
+                    },
+                });
+            });
+
+        });
+    </script>
 @endsection

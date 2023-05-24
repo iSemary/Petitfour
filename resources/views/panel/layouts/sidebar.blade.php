@@ -94,7 +94,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('config.design') }}">
+                                <a class="nav-link" href="{{ route('config.system') }}">
                                     <i class="nav-icon fas fa-pencil-ruler"></i> Design
                                 </a>
                             </li>

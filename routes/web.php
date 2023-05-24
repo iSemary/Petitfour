@@ -1,11 +1,15 @@
 <?php
 
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\SkillController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ExperienceController;
-use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\{
+    BlogController,
+    SkillController,
+    UserController,
+    ProjectController,
+    DashboardController,
+    ExperienceController,
+    ConfigController
+};
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,12 +27,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [UserController::class, 'login'])->name("login");
-Route::post('/login', [UserController::class, 'submitLogin'])->name("login.submit");
-Route::get("logout", [UserController::class, 'logout'])->name('logout');
+
+Route::middleware(['guest'])->group(function () {
+    Route::get('login', [UserController::class, 'login'])->name("login");
+    Route::post('login', [UserController::class, 'submitLogin'])->name("login.submit");
+});
 
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/', [DashboardController::class, 'home'])->name('dashboard.index');
+
+    Route::get("logout", [UserController::class, 'logout'])->name('logout');
     Route::resources(['skills' => SkillController::class]);
     Route::resources(['projects' => ProjectController::class]);
     Route::resources(['experiences' => ExperienceController::class]);
