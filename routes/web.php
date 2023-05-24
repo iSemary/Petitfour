@@ -4,6 +4,7 @@ use App\Http\Controllers\{
     BlogController,
     SkillController,
     UserController,
+    ContactController,
     ProjectController,
     DashboardController,
     ExperienceController,
@@ -45,5 +46,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('config/user', [ConfigController::class, 'user'])->name("config.user");
     Route::get('config/system', [ConfigController::class, 'system'])->name("config.system");
-    Route::get('contacts', [ContactController::class, 'messages'])->name("contacts.index");
+    Route::get('contacts', [ContactController::class, 'index'])->name("contacts.index");
+    Route::post('contacts/reply/{id}', [ContactController::class, 'reply'])->name("contacts.reply");
 });
