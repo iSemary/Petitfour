@@ -1,5 +1,5 @@
 @extends('panel.layouts.app')
-@section('title', __('Blogs'))
+@section('title', __('Contact Messages'))
 @section('content')
     <section class="content">
         <div class="card card-success">

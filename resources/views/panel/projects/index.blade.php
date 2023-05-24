@@ -1,43 +1,46 @@
 @extends('panel.layouts.app')
-@section('title', __('Skills'))
+@section('title', __('Projects'))
 @section('content')
-    <h1>Skills</h1>
-    <table id="skills-table" class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Category ID</th>
-                <th>Type</th>
-                <th>Priority</th>
-                <th>Icon</th>
-                <th>Start Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <div id="editor">This is some sample content.</div>
-
-        <tbody>
-        </tbody>
-    </table>
+    <section class="content">
+        <div class="card card-success">
+            <div class="card-header d-flex justify-content-between">
+                <h3>Projects</h3>
+                <a href="#" data-url={{ route('projects.create') }} class="btn btn-primary create-btn">
+                    <i class="fas fa-plus"></i> Add new project
+                </a>
+            </div>
+            <div class="card-body">
+                <table id="projects-table" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Type</th>
+                            <th>Priority</th>
+                            <th>Icon</th>
+                            <th>Start Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 @endsection
 
 @section('scripts')
     <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-
         $(document).ready(function() {
-            $('#skills-table').DataTable({
+            $('#projects-table').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
                 processing: true,
                 serverSide: true,
+                url: `{{ route('projects.index') }}`,
                 columns: [{
                         data: 'id',
                         name: 'id'
@@ -47,8 +50,8 @@
                         name: 'name'
                     },
                     {
-                        data: 'category_id',
-                        name: 'category_id'
+                        data: 'category_name',
+                        name: 'category_name'
                     },
                     {
                         data: 'type',
@@ -67,11 +70,10 @@
                         name: 'start_date'
                     },
                     {
-                        data: 'actions',
-                        name: 'actions',
+                        data: 'action',
+                        name: 'action',
                         orderable: false,
                         searchable: false,
-                        width: '100px',
                     },
                 ]
             });
