@@ -9,6 +9,10 @@ class Skill extends Model {
     protected $appends = ['icon'];
 
     public function getIconAttribute() {
-        return asset("images/logo/" . $this->attributes['icon']);
+        return asset("storage/skills/" . $this->attributes['icon']);
+    }
+
+    public function blogs() {
+        return $this->belongsToMany(Blog::class, 'blog_skills');
     }
 }

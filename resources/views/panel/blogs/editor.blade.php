@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label>Slug</label>
                     <input type="text" minlength="1" maxlength="225" class="form-control" name="slug"
-                        value="{{ isset($skill) ? $skill->slug : '' }}"id="blogSlug" placeholder="Slug" required />
+                        value="{{ isset($blog) ? $blog->slug : '' }}"id="blogSlug" placeholder="Slug" required />
                 </div>
                 <div class="form-group">
                     <label>Description</label>
@@ -29,8 +29,8 @@
 
                 <div class="form-group">
                     <label>Published Date</label>
-                    <input type="datetime-local" name="published_date"
-                        value="{{ isset($blog) ? $blog->published_date : '' }}" class="form-control" required>
+                    <input type="datetime-local" name="published_at"
+                        value="{{ isset($blog) ? $blog->published_at : '' }}" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Skills</label>
@@ -38,9 +38,20 @@
                         <option value="">Choose Skills</option>
                         @foreach ($skills as $skill)
                             <option value="{{ $skill->id }}" {{-- TODO fix this --}}
-                                {{ isset($blog) && $skill->id == $blog->id ? 'selected' : '' }}>
+                                {{ isset($blog) && $blog->skills->contains($skill->id) ? 'selected' : '' }}>
                                 {{ $skill->name }}</option>
                         @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Status</label>
+                    <select name="status" style="width:100%" class="select2" required>
+                        <option value="0" {{ isset($blog) && $blog->status == '0' ? 'selected' : '' }}>In active
+                        </option>
+                        <option value="1" {{ isset($blog) && $blog->status == '1' ? 'selected' : '' }}>Active
+                        </option>
+                        <option value="2" {{ isset($blog) && $blog->status == '2' ? 'selected' : '' }}>Publish on
+                            date</option>
                     </select>
                 </div>
                 <div class="form-group d-flex justify-content-between">
@@ -64,9 +75,13 @@
         </div>
     </div>
 </section>
+<script src="{{ asset('assets/panel/vendors/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('assets/panel/vendors/ckeditor/config.js') }}"></script>
+
 <script>
     CKEDITOR.replace('blogContent', {
-        extraPlugins: 'codesnippet'
+        extraPlugins: 'codesnippet',
+        codeSnippet_theme: 'monokai_sublime'
     });
 
     // Trigger input event

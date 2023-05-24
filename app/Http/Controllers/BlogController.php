@@ -20,19 +20,13 @@ class BlogController extends Controller {
         if (request()->ajax()) {
             $blogs = Blog::orderBy("id", "DESC")->get();
             return DataTables::of($blogs)
-                ->editColumn('type', function ($row) {
-                    return $this->type[$row->type];
-                })
-                ->addColumn('icon', function ($row) {
-                    return "<img src='$row->icon' width='45px' />";
-                })
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     $btn .= '<button type="button" data-url="' . route('blogs.edit', $row->id) . '" class="btn btn-info btn-sm edit-btn text-white mr-1"><i class="far fa-edit"></i> Edit</button>';
                     $btn .= '<button type="button" data-delete-type="Blog" data-url="' . route('blogs.destroy', $row->id) . '" class="btn btn-danger btn-sm delete-btn text-white mr-1"><i class="fa fa-trash"></i> Delete</button>';
                     return $btn;
                 })
-                ->rawColumns(['icon', 'action'])
+                ->rawColumns(['action'])
                 ->make(true);
         }
 
@@ -48,37 +42,43 @@ class BlogController extends Controller {
     public function store(Request $request) {
         // Validate the input
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:blogs',
-            'category_id' => 'required',
-            'type' => 'required',
-            'priority' => 'required',
-            'start_date' => 'required',
+            'title' => 'required',
+            'slug' => 'required|unique:blogs',
+            'content' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+            'published_at' => 'required',
+            'status' => 'required',
         ]);
+
         // Check if the validation fails
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
         // Get the icon image file from the request
-        $iconImage = $request->file('icon');
+        $Image = $request->file('image');
         // Generate a unique file name for the image
         $filename = uniqid() . '.webp';
         // Convert and save the image as WebP
-        $image = Image::make($iconImage)->encode('webp');
+        $image = Image::make($Image)->encode('webp');
         // Save the image to the storage directory
         Storage::disk('public')->put('blogs/' . $filename, $image);
 
 
         $blog = Blog::create([
-            'name' => $request->input('name'),
-            'category_id' => $request->input('category_id'),
-            'type' => $request->input('type'),
-            'priority' => $request->input('priority'),
-            'icon' => $filename,
-            'start_date' => $request->input('start_date'),
+            'title' => $request->input('title'),
+            'slug' => $request->input('slug'),
+            'content' => $request->input('content'),
+            'description' => $request->input('description'),
+            'image' => $filename,
+            'published_at' => $request->input('published_at'),
+            'status' => $request->input('status'),
         ]);
 
         if ($blog) {
+            $blog->skills()->sync($request->input('skill_id'));
+
             return response()->json(['message' => "Blog added successfully"], 200);
         } else {
             return response()->json(['message' => "Something went wrong"], 400);
@@ -94,11 +94,12 @@ class BlogController extends Controller {
     public function update(Request $request, $id) {
         // Validate the input
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:blogs,name,' . $id,
-            'category_id' => 'required',
-            'type' => 'required',
-            'priority' => 'required',
-            'start_date' => 'required',
+            'title' => 'required',
+            'slug' => 'required|unique:blogs,slug,' . $id,
+            'content' => 'required',
+            'description' => 'required',
+            'published_at' => 'required',
+            'status' => 'required',
         ]);
 
         // Check if the validation fails
@@ -107,42 +108,49 @@ class BlogController extends Controller {
         }
 
         // Get the blog by ID
-        $blog = Blog::findOrFail($id);
+        $blog = Blog::find($id);
 
-        // Get the icon image file from the request
-        $iconImage = $request->file('icon');
+        if (!$blog) {
+            return response()->json(['message' => 'Blog not found'], 404);
+        }
 
-        if ($iconImage) {
+        // Get the image file from the request
+        $image = $request->file('image');
+
+        if ($image) {
             // Generate a unique file name for the image
             $filename = uniqid() . '.webp';
             // Convert and save the image as WebP
-            $image = Image::make($iconImage)->encode('webp');
+            $image = Image::make($image)->encode('webp');
             // Save the image to the storage directory
             Storage::disk('public')->put('blogs/' . $filename, $image);
 
-            // Delete the previous icon image if it exists
-            if ($blog->icon && Storage::disk('public')->exists('blogs/' . $blog->icon)) {
-                Storage::disk('public')->delete('blogs/' . $blog->icon);
+            // Delete the previous image if it exists
+            if ($blog->image) {
+                Storage::disk('public')->delete('blogs/' . $blog->image);
             }
 
-            // Update the blog with the new icon filename
-            $blog->icon = $filename;
+            // Update the image filename
+            $blog->image = $filename;
         }
 
-        // Update other blog properties
-        $blog->name = $request->input('name');
-        $blog->category_id = $request->input('category_id');
-        $blog->type = $request->input('type');
-        $blog->priority = $request->input('priority');
-        $blog->start_date = $request->input('start_date');
-        $blog->save();
+        $blog->title = $request->input('title');
+        $blog->slug = $request->input('slug');
+        $blog->content = $request->input('content');
+        $blog->description = $request->input('description');
+        $blog->published_at = $request->input('published_at');
+        $blog->status = $request->input('status');
 
-        if ($blog) {
+        // Save the updated blog
+        if ($blog->save()) {
+            $blog->skills()->sync($request->input('skill_id'));
+
             return response()->json(['message' => "Blog updated successfully"], 200);
         } else {
             return response()->json(['message' => "Something went wrong"], 400);
         }
     }
+
 
     public function destroy($id) {
         $blog = Blog::findOrFail($id);

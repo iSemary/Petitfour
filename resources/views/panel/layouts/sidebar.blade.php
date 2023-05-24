@@ -29,7 +29,7 @@
                                             <i class="nav-icon fas fa-fill-drip"></i> Skills
                                         </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link create-btn" href="#"
+                                    <li class="nav-item"><a class="nav-link create-btn" href="#skills"
                                             data-url="{{ route('skills.create') }}">
                                             <i class="fas nav-icon fa-plus"></i> Add Skill
                                         </a>
@@ -46,7 +46,7 @@
                                             <i class="fas nav-icon fa-briefcase"></i> Experiences
                                         </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link create-btn" href="#"
+                                    <li class="nav-item"><a class="nav-link create-btn" href="#experience"
                                             data-url="{{ route('experiences.create') }}">
                                             <i class="fas nav-icon fa-plus"></i> Add Experience
                                         </a>
@@ -63,7 +63,7 @@
                                             <i class="nav-icon fas fa-users"></i> Projects
                                         </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link create-btn" href="#"
+                                    <li class="nav-item"><a class="nav-link create-btn" href="#projects"
                                             data-url="{{ route('projects.create') }}">
                                             <i class="fas nav-icon fa-plus"></i> Add Project
                                         </a>
@@ -80,7 +80,7 @@
                                             <i class="fas nav-icon fa-rss"></i> Blogs
                                         </a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link create-btn" href="#"
+                                    <li class="nav-item"><a class="nav-link create-btn" href="#blogs"
                                             data-url="{{ route('blogs.create') }}">
                                             <i class="fas nav-icon fa-plus"></i> Add Blog
                                         </a>

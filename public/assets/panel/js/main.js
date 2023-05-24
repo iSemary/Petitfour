@@ -55,10 +55,15 @@ $(document).on("change", "#uploadImg", function (e) {
  */
 
 function OpenCreateModal(url) {
+    $("#CreateModal").modal({
+        focus: false,
+    });
     $("#CreateModal").modal("show");
+
     $(".modal-dialog").draggable({
         handle: ".modal-header",
     });
+    $("#EditTargetModal").empty();
 
     $("#CreateTargetModal")
         .html(LoadingSpan)
@@ -125,12 +130,15 @@ $(document).on("submit", "#CreateForm", function (e) {
  */
 
 function OpenEditModal(url) {
-    // $("#EditModal").modal("show");
+    $("#EditModal").modal({
+        focus: false,
+    });
     $("#EditModal").modal("show");
+
     $(".modal-dialog").draggable({
         handle: ".modal-header",
     });
-
+    $("#CreateTargetModal").empty();
     $("#EditTargetModal")
         .html(LoadingSpan)
         .load(url, function () {
@@ -181,12 +189,6 @@ $(document).on("submit", "#EditForm", function (e) {
             });
         },
     });
-});
-$("#EditModal").on("hidden.bs.modal", function () {
-    $("#EditTargetModal").html("");
-});
-$("#CreateModal").on("hidden.bs.modal", function () {
-    $("#CreateTargetModal").html("");
 });
 
 /**
