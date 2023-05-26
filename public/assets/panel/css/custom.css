@@ -64,3 +64,8 @@
 .tagify__input {
     min-width: auto;
 }
+.image-uploaded-preview {
+    border: 2px solid #1e253c;
+    border-radius: 18px;
+    background-color: #fff;
+}

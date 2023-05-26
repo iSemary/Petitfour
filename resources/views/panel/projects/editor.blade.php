@@ -6,7 +6,7 @@
         </div>
         <div class="card-body">
             <form action="{{ isset($project) ? route('projects.update', $project->id) : route('projects.store') }}"
-                id="{{ isset($project) ? 'EditForm' : 'CreateForm' }}" method="POST">
+                id="{{ isset($project) ? 'EditForm' : 'CreateForm' }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 {{ isset($project) ? method_field('PUT') : method_field('POST') }}
                 <div class="form-group">
@@ -23,6 +23,11 @@
                     <label>Repository Link</label>
                     <input type="text" minlength="1" maxlength="225" class="form-control" name="repository_link"
                         value="{{ isset($project) ? $project->repository_link : '' }}" placeholder="repository_link" />
+                </div>
+                <div class="form-group">
+                    <label>Priority</label>
+                    <input type="number" minlength="1" maxlength="100" class="form-control" name="priority"
+                        value="{{ isset($project) ? $project->priority : '' }}" placeholder="Priority" />
                 </div>
                 <div class="form-group">
                     <label>Start Date</label>
@@ -56,16 +61,24 @@
                 </div>
                 <div class="form-group">
                     <label>Tags</label></br>
-                    <input name="tags" style="width: 100%" value="{{ isset($project) ? $project->tags : "" }}" id="tags">
+                    <input name="tags" style="width: 100%" value="{{ isset($project) ? $project->tags : '' }}"
+                        id="tags">
                 </div>
-                <div class="form-group d-flex justify-content-between">
+                <div class="form-group">
                     <div>
                         <label>Images</label><br />
-                        <input type="file" name="images" accept="image/*" id="uploadImg">
+                        <input type="file" name="images[]" id="images" accept="image/*" multiple>
                     </div>
-
-                    IMAGES CONTENT
                 </div>
+                @if (isset($project))
+                    <div class="row">
+                        @foreach ($project->images as $image)
+                            <div class="col-md-3">
+                                <img src="{{ $image->project_image }}" class="image-uploaded-preview" width="150px" height="150px" alt="">
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
                 <div class="form-group">
                     <label class="{{ isset($project) ? 'edit' : 'create' }}-status"></label>
                 </div>
@@ -79,10 +92,14 @@
         </div>
     </div>
 </section>
-<link rel="stylesheet" href="{{ asset("assets/panel/vendors/tagify/tagify.min.css") }}">
-<script src="{{ asset("assets/panel/vendors/tagify/tagify.min.js") }}"></script>
+<link rel="stylesheet" href="{{ asset('assets/panel/vendors/tagify/tagify.min.css') }}">
+<script src="{{ asset('assets/panel/vendors/tagify/tagify.min.js') }}"></script>
 <script>
-    var input = document.querySelector('input[name=tags]');
+    $(document).ready(function() {
+        var input = document.querySelector("input[name='tags'");
+        new Tagify(input);
 
-    new Tagify(input)
+
+        $("input[name='images[]']").imageuploadify();
+    })
 </script>

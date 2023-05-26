@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{{ asset('assets/panel/css/vendors/simplebar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/DataTables/datatables.min.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/select2/select2.min.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ asset('assets/panel/vendors/imageuploadify/imageuploadify.min.css') }}" media="screen">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css">
     <link href="{{ asset('assets/panel/css/style.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/panel/css/custom.css') }}" rel="stylesheet">
@@ -69,6 +70,7 @@
     <script src="{{ asset('assets/panel/vendors/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/select2/select2.min.js') }}"></script>
     <script src="{{ asset('assets/panel/vendors/sweetalert2/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('assets/panel/vendors/imageuploadify/imageuploadify.min.js') }}"></script>
     <script src="{{ asset('assets/panel/js/main.js') }}"></script>
 
     @yield('scripts')

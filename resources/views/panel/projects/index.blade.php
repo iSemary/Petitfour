@@ -15,11 +15,9 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Category</th>
+                            <th>Description</th>
                             <th>Type</th>
                             <th>Priority</th>
-                            <th>Icon</th>
-                            <th>Start Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -50,8 +48,8 @@
                         name: 'name'
                     },
                     {
-                        data: 'category_name',
-                        name: 'category_name'
+                        data: 'description',
+                        name: 'description'
                     },
                     {
                         data: 'type',
@@ -60,14 +58,6 @@
                     {
                         data: 'priority',
                         name: 'priority'
-                    },
-                    {
-                        data: 'icon',
-                        name: 'icon'
-                    },
-                    {
-                        data: 'start_date',
-                        name: 'start_date'
                     },
                     {
                         data: 'action',
