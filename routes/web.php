@@ -28,24 +28,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::middleware(['guest'])->group(function () {
-    Route::get('login', [UserController::class, 'login'])->name("login");
-    Route::post('login', [UserController::class, 'submitLogin'])->name("login.submit");
-});
+Route::prefix('dashboard')->group(function () {
 
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/', [DashboardController::class, 'home'])->name('dashboard.index');
+    Route::middleware(['guest'])->group(function () {
+        Route::get('login', [UserController::class, 'login'])->name("login");
+        Route::post('login', [UserController::class, 'submitLogin'])->name("login.submit");
+    });
 
-    Route::get("logout", [UserController::class, 'logout'])->name('logout');
-    Route::resources(['skills' => SkillController::class]);
-    Route::resources(['projects' => ProjectController::class]);
-    Route::resources(['experiences' => ExperienceController::class]);
-    Route::resources(['blogs' => BlogController::class]);
+    Route::middleware(['auth'])->group(function () {
+        Route::get('index', [DashboardController::class, 'home'])->name('dashboard.index');
 
-    Route::get('config/user', [ConfigController::class, 'user'])->name("config.user");
-    Route::get('config/system', [ConfigController::class, 'system'])->name("config.system");
-    Route::get('contacts', [ContactController::class, 'index'])->name("contacts.index");
-    Route::post('contacts/reply/{id}', [ContactController::class, 'reply'])->name("contacts.reply");
+        Route::get("logout", [UserController::class, 'logout'])->name('logout');
+        Route::resources(['skills' => SkillController::class]);
+        Route::resources(['projects' => ProjectController::class]);
+        Route::resources(['experiences' => ExperienceController::class]);
+        Route::resources(['blogs' => BlogController::class]);
+
+        Route::prefix('config')->name('config.')->group(function () {
+            Route::get('user', [ConfigController::class, 'userConfig'])->name('user');
+            Route::get('system', [ConfigController::class, 'systemConfig'])->name('system');
+            Route::match(['put', 'patch'], 'user/update', [ConfigController::class, 'updateUserConfig'])->name('user.update');
+            Route::match(['put', 'patch'], 'system/update', [ConfigController::class, 'updateSystemConfig'])->name('system.update');
+        });
+
+        Route::prefix('contacts')->name('contacts.')->group(function () {
+            Route::get('/', [ContactController::class, 'index'])->name("index");
+            Route::post('reply/{id}', [ContactController::class, 'reply'])->name("reply");
+        });
+    });
 });

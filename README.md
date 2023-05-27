@@ -16,6 +16,7 @@ The following technologies were used in the dashboard:
 -   CKEditor
 -   FontAwesome
 -   SweetAlert
+-   intlTelInput
 
 ## Website Technologies Used
 

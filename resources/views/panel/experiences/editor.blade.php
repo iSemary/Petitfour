@@ -64,7 +64,7 @@
                 </div>
                 <br />
                 <div class="form-group">
-                    <button type="submit" class="btn btn-{{ isset($experience) ? 'primary' : 'success' }}">
+                    <button type="submit" class="text-white btn btn-{{ isset($experience) ? 'primary' : 'success' }}">
                         <i class="fas fa-save"></i>
                         {{ isset($experience) ? 'Update' : 'Add' }}</button>
                 </div>

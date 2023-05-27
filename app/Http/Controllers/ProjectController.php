@@ -69,7 +69,7 @@ class ProjectController extends Controller {
 
         if ($project) {
             $project->skills()->sync($request->input('skill_id'));
-            $this->syncImages($project, $request->images);
+            $request->images ? $this->syncImages($project, $request->images) : null;
             return response()->json(['message' => "Project added successfully"], 200);
         } else {
             return response()->json(['message' => "Something went wrong"], 400);
@@ -120,7 +120,7 @@ class ProjectController extends Controller {
 
         if ($project->save()) {
             $project->skills()->sync($request->input('skill_id'));
-            $this->syncImages($project, $request->images);
+            $request->images ? $this->syncImages($project, $request->images) : null;
         }
         return response()->json(['message' => "Project updated successfully"], 200);
     }
@@ -163,7 +163,7 @@ class ProjectController extends Controller {
 
     public function destroy($id) {
         $project = Project::findOrFail($id);
-        $projectImages = Project::where("project_id", $id);
+        $projectImages = ProjectImage::where("project_id", $id);
         // Delete the project Images
         foreach ($projectImages->get() as $projectImage) {
             if (Storage::disk('public')->exists('projects/' . $projectImage->project_image)) {

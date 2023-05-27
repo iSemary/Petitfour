@@ -69,3 +69,7 @@
     border-radius: 18px;
     background-color: #fff;
 }
+.image-preview {
+    border: 2px solid;
+    width: 100px;
+}

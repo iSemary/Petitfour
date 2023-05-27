@@ -48,6 +48,17 @@ $(document).on("change", "#uploadImg", function (e) {
     }
 });
 
+$(document).on("change", ".form-control-file", function (e) {
+    var inputFile = $(this);
+    if (this.files && this.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            inputFile.parent('.form-group').find(".image-preview").attr("src", e.target.result);
+        };
+        reader.readAsDataURL(this.files[0]); // convert to base64 string
+    }
+});
+
 /**
  *
  * ===== Create Modal Section

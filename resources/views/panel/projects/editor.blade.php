@@ -84,7 +84,7 @@
                 </div>
                 <br />
                 <div class="form-group">
-                    <button type="submit" class="btn btn-{{ isset($project) ? 'primary' : 'success' }}">
+                    <button type="submit" class="text-white btn btn-{{ isset($project) ? 'primary' : 'success' }}">
                         <i class="fas fa-save"></i>
                         {{ isset($project) ? 'Update' : 'Add' }}</button>
                 </div>

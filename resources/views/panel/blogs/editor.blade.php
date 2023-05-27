@@ -67,7 +67,7 @@
                 </div>
                 <br />
                 <div class="form-group">
-                    <button type="submit" class="btn btn-{{ isset($blog) ? 'primary' : 'success' }}">
+                    <button type="submit" class="text-white btn btn-{{ isset($blog) ? 'primary' : 'success' }}">
                         <i class="fas fa-save"></i>
                         {{ isset($blog) ? 'Update' : 'Add' }}</button>
                 </div>
