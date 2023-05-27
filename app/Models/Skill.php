@@ -5,11 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model {
-    protected $fillable = ['name', 'category_id', 'type', 'priority', 'icon', 'start_date'];
-    protected $appends = ['icon'];
+    protected $fillable = ['name', 'category_id', 'type', 'priority', 'icon', 'theme_icon', 'start_date'];
+    protected $appends = ['icon', 'theme_icon'];
 
     public function getIconAttribute() {
         return asset("storage/skills/" . $this->attributes['icon']);
+    }
+
+    public function getThemeIconAttribute() {
+        return asset("storage/skills/" . $this->attributes['theme_icon']);
     }
 
     public function blogs() {

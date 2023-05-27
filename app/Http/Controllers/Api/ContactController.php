@@ -17,7 +17,7 @@ class ContactController extends Controller {
             'message' => 'required',
         ]);
 
-        if (strlen($validatedData['body']) > 1820) {
+        if (strlen($validatedData['message']) > 1820) {
             response()->json([
                 'success' => false,
                 'status' => 400,
