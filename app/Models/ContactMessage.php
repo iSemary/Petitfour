@@ -9,7 +9,7 @@ class ContactMessage extends Model {
         'name',
         'email',
         'subject',
-        'body',
+        'message',
         'seen',
     ];
 

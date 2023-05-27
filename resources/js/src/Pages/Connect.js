@@ -37,28 +37,25 @@ function Connect() {
                         <div className="contact-form">
                             <h1>Any place in your app!</h1>
                             <Form>
-                                <Form.Group
-                                    className="mb-3"
-                                    controlId="formBasicEmail"
-                                >
+                                <Form.Group className="mb-3">
                                     <Form.Label>Full Name</Form.Label>
                                     <Form.Control
-                                        type="email"
-                                        placeholder="Enter email"
+                                        type="text"
+                                        name="name"
+                                        placeholder="Enter your name"
                                     />
                                 </Form.Group>
-                                <Form.Group
-                                    className="mb-3"
-                                    controlId="formBasicEmail"
-                                >
+                                <Form.Group className="mb-3">
                                     <Form.Label>Email address</Form.Label>
                                     <Form.Control
                                         type="email"
-                                        placeholder="Enter full name"
+                                        name="email"
+                                        placeholder="Enter your email"
                                     />
                                 </Form.Group>
                                 <Form.Group
                                     className="mb-3"
+                                    name="subject"
                                     controlId="formBasicEmail"
                                 >
                                     <Form.Label>Subject</Form.Label>
@@ -77,11 +74,11 @@ function Connect() {
                                     className="mb-3"
                                     controlId="formBasicSubject"
                                 >
-                                    <Form.Label>Subject</Form.Label>
+                                    <Form.Label>Message</Form.Label>
                                     <Form.Control
                                         as="textarea"
                                         name="message"
-                                        placeholder="Leave a comment here"
+                                        placeholder="Leave a your message"
                                     />
                                 </Form.Group>
                                 <Button variant="primary" type="submit">

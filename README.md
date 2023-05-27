@@ -2,9 +2,9 @@
 
 Project Description goes here...
 
-## Dashboard Technologies Used
+## Technologies Used
 
-The following technologies were used in the dashboard:
+### The following technologies were used in the dashboard:
 
 -   Bootstrap
 -   jQuery
@@ -18,9 +18,13 @@ The following technologies were used in the dashboard:
 -   SweetAlert
 -   intlTelInput
 
-## Website Technologies Used
+### The following technologies used in the APIs:
+
+-   JWT
+
 
 The website utilizes the following technologies:
+
 
 ### Laravel Commands
 
@@ -32,6 +36,10 @@ _First use only_
 
 ```
 php artisan storage:link
+```
+
+```
+php artisan jwt:secret
 ```
 
 ---
