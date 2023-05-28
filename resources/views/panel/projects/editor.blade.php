@@ -22,7 +22,7 @@
                 <div class="form-group">
                     <label>Repository Link</label>
                     <input type="text" minlength="1" maxlength="225" class="form-control" name="repository_link"
-                        value="{{ isset($project) ? $project->repository_link : '' }}" placeholder="repository_link" />
+                        value="{{ isset($project) ? $project->repository_link : '' }}" placeholder="Repository link" />
                 </div>
                 <div class="form-group">
                     <label>Priority</label>

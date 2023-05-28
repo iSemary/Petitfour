@@ -150,25 +150,23 @@ class ProjectController extends Controller {
             // Save the image to the storage directory
             Storage::disk('public')->put('projects/' . $filename, $uploadedImage);
 
-            // create mockup image from the uploaded image
-
+            /*
+                 create mockup image from the uploaded image
+            */
             // Load the mockup image
-            $mockupImage = Image::make(public_path('images/laptop-mockup.png'));
+            $mockupImage = Image::make(public_path('images/mockup/laptop-mockup.png'));
 
             // Load the uploaded image
             $uploadedImage = Image::make(public_path('storage/projects/' . $filename));
 
-            // // Resize the uploaded image if needed
-            // $uploadedImage->resize(300, 300);
+            // Resize the uploaded image if needed
+            $uploadedImage->resize(768, 476);
 
             // Composite the uploaded image on the mockup image
-            $mockupImage->insert($uploadedImage, 'top-left', 100, 100);
+            $mockupImage->insert($uploadedImage, 'center', 5, -18);
 
             // Save the final image
-            // $mockupImage->save(public_path('path/to/output.jpg'));
-
-            Storage::disk('public')->put('projects/mocked/' . $filename, $mockupImage);
-
+            $mockupImage->save(public_path('storage/projects/mocked/' . $filename));
 
             // Create a new project image record
             ProjectImage::create([
