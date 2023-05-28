@@ -13,6 +13,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('skills', [SkillController::class, 'index']);
 
     Route::get('blogs', [BlogController::class, 'index']);
+    Route::get('blogs/{slug}', [BlogController::class, 'show']);
 
     Route::post('contact', [ContactController::class, 'store']);
 });
