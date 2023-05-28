@@ -89,6 +89,13 @@
                             <img src="{{ isset($config->theme_home_image) ? asset($config->theme_home_image) : '' }}"
                                 class="img-thumbnail img-md d-block image-preview" alt="">
                         </div>
+                        <div class="col-4 form-group">
+                            <label for="resume">Resume:</label>
+                            <input type="file" name="resume" class="form-control-file" id="resume">
+                            @if (isset($config->resume) && basename($config->resume) != "config")
+                                <a href="{{ $config->resume }}" class="btn btn-sm btn-primary mt-2" target="_blank">{{  basename($config->resume) }}</a>
+                            @endif
+                        </div>
                     </div>
                     <hr>
                     <h5>Social Links</h5>

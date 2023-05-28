@@ -42,10 +42,22 @@ class ConfigController extends Controller {
             $image = Image::make($request->theme_home_image)->encode('webp');
             // Save the image to the storage directory
             Storage::disk('public')->put('config/' . $themeHomeImage, $image);
-
             // Delete the previous icon image if it exists
             if ($config->theme_home_image && Storage::disk('public')->exists('config/' . $config->theme_home_image)) {
                 Storage::disk('public')->delete('config/' . $config->theme_home_image);
+            }
+        }
+
+        $resume = basename($config->resume);
+        if ($request->file('resume')) {
+            // Generate a unique file name for the image
+            $resume = uniqid() . '.' . $request->file('resume')->getClientOriginalExtension();
+
+            $request->file('resume')->storeAs('public/config/resume', $resume);
+
+            // Delete the previous icon image if it exists
+            if ($config->resume && Storage::disk('public')->exists('config/resume/' . basename($config->resume))) {
+                Storage::disk('public')->delete('config/resume/' . basename($config->resume));
             }
         }
 
@@ -63,17 +75,20 @@ class ConfigController extends Controller {
             'slogan' => $request->slogan,
             'home_image' => $homeImage,
             'theme_home_image' => $themeHomeImage,
+            'resume' => $resume,
         ]);
 
 
         // Update social links
         foreach ($request->social_link_id as $socialLink) {
-            $data = [
-                'url' => $request->url[$socialLink],
-                'type' => $request->type[$socialLink],
-                'priority' => $request->priority[$socialLink],
-            ];
-            SocialLink::updateOrCreate(['id' => $socialLink], $data);
+            if ($request->url[$socialLink] != "") {
+                $data = [
+                    'url' => $request->url[$socialLink],
+                    'type' => $request->type[$socialLink],
+                    'priority' => $request->priority[$socialLink],
+                ];
+                SocialLink::updateOrCreate(['id' => $socialLink], $data);
+            }
         }
 
         return response()->json(['message' => "User config saved successfully"], 200);

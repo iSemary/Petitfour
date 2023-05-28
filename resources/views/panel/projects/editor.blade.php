@@ -66,7 +66,9 @@
                 </div>
                 <div class="form-group">
                     <div>
-                        <label>Images</label><br />
+                        <label>Images</label><br/>  
+                        <small><b>Please note that when you upload images, It will be uploaded into 2 folders <code>storage/projects/</code> and <code>storage/projects/mocked/</code> which the mocked folder contains the uploaded image with laptop mockup </b></small>
+                        <br/><br />
                         <input type="file" name="images[]" id="images" accept="image/*" multiple>
                     </div>
                 </div>

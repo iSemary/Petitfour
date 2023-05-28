@@ -6,6 +6,7 @@ Project Description goes here...
 
 ### The following technologies were used in the dashboard:
 
+-   Intervention
 -   Bootstrap
 -   jQuery
 -   Select2
