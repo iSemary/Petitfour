@@ -149,6 +149,7 @@ class BlogController extends Controller {
 
     public function destroy($id) {
         $blog = Blog::findOrFail($id);
+        $blog->skills()->sync([]);
         // Delete the image file if exists
         if (Storage::disk('public')->exists('blogs/' . $blog->icon)) {
             Storage::disk('public')->delete('blogs/' . $blog->icon);

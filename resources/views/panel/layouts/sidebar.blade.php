@@ -56,11 +56,11 @@
                             <li class="nav-group">
                                 <a class="nav-link nav-group-toggle {{ strpos(Request::url(), 'projects') ? 'active' : '' }}"
                                     href="#">
-                                    <i class="nav-icon fas fa-fill-drip"></i> Projects
+                                    <i class="fas nav-icon fa-laptop-code"></i> Projects
                                 </a>
                                 <ul class="nav-group-items">
                                     <li class="nav-item"><a class="nav-link" href="{{ route('projects.index') }}">
-                                            <i class="nav-icon fas fa-users"></i> Projects
+                                            <i class="fas nav-icon fa-laptop-code"></i> Projects
                                         </a>
                                     </li>
                                     <li class="nav-item"><a class="nav-link create-btn" href="#projects"

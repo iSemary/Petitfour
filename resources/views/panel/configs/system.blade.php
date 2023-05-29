@@ -35,6 +35,13 @@
                         <input type="text" name="google_analytics_id" value="{{ $config->google_analytics_id }}"
                             class="form-control" id="googleAnalyticsId" placeholder="Google Analytics ID">
                     </div>
+                    <div class="col-4 form-group">
+                        <label for="logo">Logo:</label>
+                        <input type="file" name="logo" accept="image/*" class="form-control-file"
+                            id="logo">
+                        <img src="{{ isset($config->logo) ? asset($config->logo) : '' }}"
+                            class="img-thumbnail img-md d-block image-preview" alt="">
+                    </div>
                     <div class="form-group">
                         <label class="edit-status"></label>
                     </div>

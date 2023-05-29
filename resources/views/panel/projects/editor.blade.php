@@ -22,7 +22,7 @@
                 <div class="form-group">
                     <label>Repository Link</label>
                     <input type="text" minlength="1" maxlength="225" class="form-control" name="repository_link"
-                        value="{{ isset($project) ? $project->repository_link : '' }}" placeholder="repository_link" />
+                        value="{{ isset($project) ? $project->repository_link : '' }}" placeholder="Repository link" />
                 </div>
                 <div class="form-group">
                     <label>Priority</label>
@@ -66,7 +66,9 @@
                 </div>
                 <div class="form-group">
                     <div>
-                        <label>Images</label><br />
+                        <label>Images</label><br/>  
+                        <small><b>Please note that when you upload images, It will be uploaded into 2 folders <code>storage/projects/</code> and <code>storage/projects/mocked/</code> which the mocked folder contains the uploaded image with laptop mockup </b></small>
+                        <br/><br />
                         <input type="file" name="images[]" id="images" accept="image/*" multiple>
                     </div>
                 </div>

@@ -144,14 +144,29 @@ class ProjectController extends Controller {
             $filename = uniqid() . '.webp';
 
             // Store the image in the public disk under the 'projects' directory
-            $path = $image->storeAs('projects', $filename, 'public');
-
+            $uploadedImage = $image->storeAs('projects', $filename, 'public');
             // Convert and save the image as WebP
-            $path = Image::make($image)->encode('webp');
+            $uploadedImage = Image::make($image)->encode('webp');
             // Save the image to the storage directory
-            Storage::disk('public')->put('projects/' . $filename, $path);
+            Storage::disk('public')->put('projects/' . $filename, $uploadedImage);
 
+            /*
+                 create mockup image from the uploaded image
+            */
+            // Load the mockup image
+            $mockupImage = Image::make(public_path('images/mockup/laptop-mockup.png'));
 
+            // Load the uploaded image
+            $uploadedImage = Image::make(public_path('storage/projects/' . $filename));
+
+            // Resize the uploaded image if needed
+            $uploadedImage->resize(768, 476);
+
+            // Composite the uploaded image on the mockup image
+            $mockupImage->insert($uploadedImage, 'center', 5, -18);
+
+            // Save the final image
+            $mockupImage->save(public_path('storage/projects/mocked/' . $filename));
 
             // Create a new project image record
             ProjectImage::create([

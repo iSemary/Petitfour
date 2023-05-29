@@ -17,11 +17,15 @@ function Connect() {
         },
         {
             id: 2,
-            name: "Vacancy Job",
+            name: "Opportunity",
         },
         {
             id: 3,
             name: "Per Hour",
+        },
+        {
+            id: 4,
+            name: "Question",
         },
     ];
 
@@ -35,33 +39,37 @@ function Connect() {
                 <Row>
                     <Col md={6}>
                         <div className="contact-form">
-                            <h1>Any place in your app!</h1>
+                            <h1>Let's connect now 🪄</h1>
+                            <p>
+                                I'm thrilled that you'd like to get in touch
+                                with me. If you have any questions,
+                                opportunities, or simply want to connect, please
+                                feel free to reach out using any of the methods
+                                below:
+                            </p>
                             <Form>
-                                <Form.Group
-                                    className="mb-3"
-                                    controlId="formBasicEmail"
-                                >
-                                    <Form.Label>Full Name</Form.Label>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>What's your awesome <b>name</b>?</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="name"
+                                        placeholder="Enter your name"
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Where can I reach you? (Your <b>email</b>, please!)</Form.Label>
                                     <Form.Control
                                         type="email"
-                                        placeholder="Enter email"
+                                        name="email"
+                                        placeholder="Enter your email"
                                     />
                                 </Form.Group>
                                 <Form.Group
                                     className="mb-3"
+                                    name="subject"
                                     controlId="formBasicEmail"
                                 >
-                                    <Form.Label>Email address</Form.Label>
-                                    <Form.Control
-                                        type="email"
-                                        placeholder="Enter full name"
-                                    />
-                                </Form.Group>
-                                <Form.Group
-                                    className="mb-3"
-                                    controlId="formBasicEmail"
-                                >
-                                    <Form.Label>Subject</Form.Label>
+                                    <Form.Label>What's on your mind? Give me a <b>subject</b> hint!</Form.Label>
                                     <Form.Select aria-label="Default select example">
                                         <option value="">
                                             Select your subject
@@ -77,15 +85,15 @@ function Connect() {
                                     className="mb-3"
                                     controlId="formBasicSubject"
                                 >
-                                    <Form.Label>Subject</Form.Label>
+                                    <Form.Label>Tell me all about it! I'm eager to hear your <b>message</b> from you.</Form.Label>
                                     <Form.Control
                                         as="textarea"
                                         name="message"
-                                        placeholder="Leave a comment here"
+                                        placeholder="Share your thoughts, questions, or ideas here."
                                     />
                                 </Form.Group>
                                 <Button variant="primary" type="submit">
-                                    <FiSend /> Submit
+                                    <FiSend /> Send your awesome message!
                                 </Button>
                             </Form>
                         </div>

@@ -77,16 +77,84 @@
                         </div>
                         <div class="col-4 form-group">
                             <label for="home_image">Home Image:</label>
-                            <input type="file" name="home_image" accept="image/*" class="form-control-file" id="home_image">
-                            <img src="{{ isset($config->home_image) ? asset($config->home_image) : '' }}" class="img-thumbnail img-md d-block image-preview" alt="">
+                            <input type="file" name="home_image" accept="image/*" class="form-control-file"
+                                id="home_image">
+                            <img src="{{ isset($config->home_image) ? asset($config->home_image) : '' }}"
+                                class="img-thumbnail img-md d-block image-preview" alt="">
                         </div>
                         <div class="col-4 form-group">
                             <label for="home_image">Theme Home Image:</label>
-                            <input type="file" name="theme_home_image" accept="image/*" class="form-control-file" id="theme_home_image">
-                            <img src="{{ isset($config->theme_home_image) ? asset($config->theme_home_image) : '' }}" class="img-thumbnail img-md d-block image-preview" alt="">
+                            <input type="file" name="theme_home_image" accept="image/*" class="form-control-file"
+                                id="theme_home_image">
+                            <img src="{{ isset($config->theme_home_image) ? asset($config->theme_home_image) : '' }}"
+                                class="img-thumbnail img-md d-block image-preview" alt="">
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="resume">Resume:</label>
+                            <input type="file" name="resume" class="form-control-file" id="resume">
+                            @if (isset($config->resume) && basename($config->resume) != "config")
+                                <a href="{{ $config->resume }}" class="btn btn-sm btn-primary mt-2" target="_blank">{{  basename($config->resume) }}</a>
+                            @endif
                         </div>
                     </div>
+                    <hr>
+                    <h5>Social Links</h5>
+                    @php
+                        $urlOptions = ['Select type', 'LinkedIn', 'Github', 'Behance', 'Facebook', 'Mail', 'Instagram', 'Twitter', 'Stack over flow'];
+                    @endphp
+                    <div>
+                        <div class="row">
+                            <div class="col-4 form-group">
+                                <input type="hidden" name="social_link_id[]" value="0">
+                                <label>Type</label><br />
+                                <select name="type[0]" style="width:100%" class="select2">
+                                    @foreach ($urlOptions as $key => $urlOption)
+                                        <option value="{{ $key }}">{{ $urlOption }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-4 form-group">
+                                <label>URL</label>
+                                <input type="text" name="url[0]" placeholder="URL" class="form-control"
+                                    id="url">
+                            </div>
+                            <div class="col-4 form-group">
+                                <label>Priority</label>
+                                <input type="text" name="priority[0]" placeholder="Priority" class="form-control"
+                                    id="url">
+                            </div>
+                        </div>
 
+                        {{-- Old Links --}}
+                        @foreach ($socialLinks as $key => $socialLink)
+                            <hr />
+                            <div class="row">
+                                <div class="col-4 form-group">
+                                    <input type="hidden" name="social_link_id[]" value="{{ $socialLink->id }}">
+                                    <label>Type</label><br />
+                                    <select name="type[{{ $socialLink->id }}]" style="width:100%" class="select2">
+                                        @foreach ($urlOptions as $i => $urlOption)
+                                            <option value="{{ $i }}"
+                                                {{ $i == $socialLink->type ? 'selected' : '' }}>{{ $urlOption }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-4 form-group">
+                                    <label>URL</label>
+                                    <input type="text" name="url[{{ $socialLink->id }}]"
+                                        value="{{ $socialLink->url }}" placeholder="URL" class="form-control"
+                                        id="url">
+                                </div>
+                                <div class="col-4 form-group">
+                                    <label>Priority</label>
+                                    <input type="text" name="priority[{{ $socialLink->id }}]"
+                                        value="{{ $socialLink->priority }}" placeholder="Priority" class="form-control"
+                                        id="url">
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                     <div class="form-group">
                         <label class="edit-status"></label>
                     </div>

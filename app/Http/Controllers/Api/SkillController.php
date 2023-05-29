@@ -21,8 +21,8 @@ class SkillController extends Controller {
         /* Looping through the types and adding the skills to the data array. */
         foreach ($categories as $key => $category) {
             $data[$key] = $category;
-            $data[$key]['skills'] = Skill::select(['id', 'name', 'icon', 'type'])->where('category_id', $category['id'])->where('type', 1)->orderBy('priority', 'DESC')->get();
-            $data[$key]['sides'] = Skill::select(['id', 'name', 'icon'])->where('category_id', $category['id'])->where('type', 0)->orderBy('priority', 'DESC')->get();
+            $data[$key]['skills'] = Skill::select(['id', 'name', 'icon', 'theme_icon', 'type'])->where('category_id', $category['id'])->where('type', 1)->orderBy('priority', 'DESC')->get();
+            $data[$key]['sides'] = Skill::select(['id', 'name', 'icon', 'theme_icon'])->where('category_id', $category['id'])->where('type', 0)->orderBy('priority', 'DESC')->get();
         }
 
         /* Returning a json response with the data. */
