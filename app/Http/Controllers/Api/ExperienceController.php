@@ -34,7 +34,7 @@ class ExperienceController extends Controller {
                 'data' => []
             ]);
         }
-        $experience = {};
+        // $experience = {};
 
         if (!$experience) {
             return response()->json([

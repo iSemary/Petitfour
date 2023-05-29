@@ -20,6 +20,10 @@
                         value="{{ isset($project) ? $project->description : '' }}" placeholder="Description" required />
                 </div>
                 <div class="form-group">
+                    <label>Content</label>
+                    <textarea class="form-control" id="projectContent" name="content" placeholder="Content" required>{{ isset($project) ? $project->content : '' }}</textarea>
+                </div>
+                <div class="form-group">
                     <label>Repository Link</label>
                     <input type="text" minlength="1" maxlength="225" class="form-control" name="repository_link"
                         value="{{ isset($project) ? $project->repository_link : '' }}" placeholder="Repository link" />
@@ -66,9 +70,11 @@
                 </div>
                 <div class="form-group">
                     <div>
-                        <label>Images</label><br/>  
-                        <small><b>Please note that when you upload images, It will be uploaded into 2 folders <code>storage/projects/</code> and <code>storage/projects/mocked/</code> which the mocked folder contains the uploaded image with laptop mockup </b></small>
-                        <br/><br />
+                        <label>Images</label><br />
+                        <small><b>Please note that when you upload images, It will be uploaded into 2 folders
+                                <code>storage/projects/</code> and <code>storage/projects/mocked/</code> which the
+                                mocked folder contains the uploaded image with laptop mockup </b></small>
+                        <br /><br />
                         <input type="file" name="images[]" id="images" accept="image/*" multiple>
                     </div>
                 </div>
@@ -76,7 +82,10 @@
                     <div class="row">
                         @foreach ($project->images as $image)
                             <div class="col-md-3">
-                                <img src="{{ $image->project_image }}" class="image-uploaded-preview" width="150px" height="150px" alt="">
+                                <img src="{{ $image->project_image['image'] }}" class="image-uploaded-preview" width="150px"
+                                    height="150px" alt="">
+                                <img src="{{ $image->project_image['mocked'] }}" class="image-uploaded-preview" width="150px"
+                                    height="150px" alt="">
                             </div>
                         @endforeach
                     </div>
@@ -96,8 +105,18 @@
 </section>
 <link rel="stylesheet" href="{{ asset('assets/panel/vendors/tagify/tagify.min.css') }}">
 <script src="{{ asset('assets/panel/vendors/tagify/tagify.min.js') }}"></script>
+<script src="{{ asset('assets/panel/vendors/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('assets/panel/vendors/ckeditor/config.js') }}"></script>
+
 <script>
     $(document).ready(function() {
+        CKEDITOR.replace('projectContent', {
+            extraPlugins: 'codesnippet',
+            codeSnippet_theme: 'monokai_sublime'
+        });
+
+
+
         var input = document.querySelector("input[name='tags'");
         new Tagify(input);
 

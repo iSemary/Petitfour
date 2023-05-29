@@ -43,6 +43,7 @@ class ProjectController extends Controller {
             'id',
             'name',
             'description',
+            'content',
             'repository_link',
             'tags',
             'type',

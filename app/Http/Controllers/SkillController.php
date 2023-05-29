@@ -152,4 +152,21 @@ class SkillController extends Controller {
         $skill->delete();
         return response()->json(['message' => "Skill deleted successfully"], 200);
     }
+
+    public function sort() {
+        $skills = Skill::select(['id', 'name', 'priority'])->orderBy('priority')->get();
+        return view('panel.skills.sortable', compact('skills'));
+    }
+
+    public function updateSort(Request $request) {
+
+        if (isset($request->id) && is_array($request->id) && count($request->id)) {
+            foreach ($request->id as $key => $id) {
+                Skill::where('id', $id)->update([
+                    'priority' => $key + 1
+                ]);
+            }
+        }
+        return response()->json(['message' => "Skills sorted successfully"], 200);
+    }
 }

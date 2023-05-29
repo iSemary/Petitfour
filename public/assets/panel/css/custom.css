@@ -77,3 +77,8 @@
     height: 38px;
     padding-top: 5px;
 }
+
+
+.sortable-items {
+    list-style: decimal;
+}

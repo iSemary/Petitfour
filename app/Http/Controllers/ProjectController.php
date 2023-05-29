@@ -59,6 +59,7 @@ class ProjectController extends Controller {
         $project = Project::create([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
+            'content' => $request->input('content'),
             'type' => $request->input('type'),
             'tags' => $tags,
             'priority' => $request->input('priority'),
@@ -111,6 +112,7 @@ class ProjectController extends Controller {
 
         $project->name = $request->input('name');
         $project->description = $request->input('description');
+        $project->content = $request->input('content');
         $project->type = $request->input('type');
         $project->tags = $tags;
         $project->priority = $request->input('priority');
@@ -129,8 +131,11 @@ class ProjectController extends Controller {
         $projectImages = ProjectImage::where('project_id', $project->id);
 
         foreach ($projectImages->get() as $projectImage) {
-            if (Storage::disk('public')->exists('projects/' . $projectImage->project_image)) {
-                Storage::disk('public')->delete('projects/' . $projectImage->project_image);
+            if (Storage::disk('public')->exists('projects/' . $projectImage->project_image['image'])) {
+                Storage::disk('public')->delete('projects/' . $projectImage->project_image['image']);
+            }
+            if (Storage::disk('public')->exists('projects/' . $projectImage->project_image['mocked'])) {
+                Storage::disk('public')->delete('projects/mocked/' . $projectImage->project_image['mocked']);
             }
         }
 
@@ -189,5 +194,22 @@ class ProjectController extends Controller {
         $project->delete();
         $projectImages->delete();
         return response()->json(['message' => "Project deleted successfully"], 200);
+    }
+
+    public function sort() {
+        $projects = Project::select(['id', 'name'])->orderBy('priority')->get();
+        return view('panel.projects.sortable', compact('projects'));
+    }
+
+    public function updateSort(Request $request) {
+
+        if (isset($request->id) && is_array($request->id) && count($request->id)) {
+            foreach ($request->id as $key => $id) {
+                Project::where('id', $id)->update([
+                    'priority' => $key + 1
+                ]);
+            }
+        }
+        return response()->json(['message' => "Projects sorted successfully"], 200);
     }
 }
