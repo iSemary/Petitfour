@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Api\SkillController;
-use App\Http\Controllers\Api\ContactController;
-use App\Http\Controllers\Api\HomeController;
-use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\{
+    BlogController,
+    SkillController,
+    ContactController,
+    ProjectController,
+};
 
 Route::group(['prefix' => 'v1'], function () {
     Route::get('home', [HomeController::class, 'index']);
@@ -14,6 +16,9 @@ Route::group(['prefix' => 'v1'], function () {
 
     Route::get('blogs', [BlogController::class, 'index']);
     Route::get('blogs/{slug}', [BlogController::class, 'show']);
+
+    Route::get('projects', [ProjectController::class, 'index']);
+    Route::get('projects/{name}', [ProjectController::class, 'show']);
 
     Route::post('contact', [ContactController::class, 'store']);
 });
