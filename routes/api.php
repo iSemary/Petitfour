@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\{
     SkillController,
     ContactController,
     ProjectController,
+    HomeController,
     ExperienceController,
 };
 

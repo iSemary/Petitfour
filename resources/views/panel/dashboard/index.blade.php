@@ -56,6 +56,14 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-6">
+                <button class="create-btn btn btn-primary" data-url="" type="button"><i class="fas fa-sort-amount-down"></i> Sort Skills</button>
+                <button class="create-btn btn btn-primary" data-url="" type="button"><i class="fas fa-sort-amount-down"></i> Sort Projects</button>
+            </div>
+            <div class="col-6">
+            </div>
+        </div>
     </section>
 @endsection
 
