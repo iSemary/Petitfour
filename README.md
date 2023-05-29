@@ -23,9 +23,7 @@ Project Description goes here...
 
 -   JWT
 
-
 The website utilizes the following technologies:
-
 
 ### Laravel Commands
 
@@ -33,23 +31,44 @@ First, run the following command only once:
 
 <h1>Laravel Commands</h1>
 
-_First use only_
+## _First use only_ <br/>
+
+Create a link for storage folder into public to access it
 
 ```
 php artisan storage:link
 ```
 
+Generate new JWT secret token
+
 ```
 php artisan jwt:secret
 ```
 
+Migrate the database tables
+
+```
+php artisan migrate
+```
+
+Setting up server permissions for storage folder
+
+```
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache
+```
+
 ---
 
+<h1>React Commands</h1>
+Install required dependencies
+
 ```
-php artisan serve
+npm install
 ```
 
-<h1>React Commands</h1>
+Start react project on local
 
 ```
 npm start
@@ -57,9 +76,13 @@ npm start
 
 <h1>Gulp Commands</h1>
 
+Keep watching SASS/SCSS files on changes to be converted to css
+
 ```
 gulp watch-sass
 ```
+
+Convert SASS/SCSS files to css after long work
 
 ```
 gulp css

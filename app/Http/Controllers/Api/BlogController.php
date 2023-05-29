@@ -22,7 +22,7 @@ class BlogController extends Controller {
             'description',
             'published_at',
             'image',
-        ])->where('status', 1)->orderBy("published_at", 'DESC')->get();
+        ])->where('status', 1)->orderBy("published_at", 'DESC')->paginate(10);
 
         $blogs->transform(function ($blog) {
             $blog->published_at = Carbon::parse($blog->published_at)->format('d M Y');

@@ -9,7 +9,10 @@ class ProjectImage extends Model {
     protected $appends = ['project_image'];
 
     public function getProjectImageAttribute() {
-        return asset("storage/projects/" . $this->attributes['project_image']);
+        return [
+            'image' => asset("storage/projects/" . $this->attributes['project_image']),
+            'mocked' => asset("storage/projects/mocked/" . $this->attributes['project_image'])
+        ];
     }
     public $timestamps = false;
 }

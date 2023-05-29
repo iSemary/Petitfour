@@ -32,4 +32,15 @@ class SkillController extends Controller {
             'data' => $data
         ]);
     }
+
+    public function show($skill = null): JsonResponse {
+        $data = [];
+
+        /* Returning a json response with the data. */
+        return response()->json([
+            'success' => true,
+            'status' => 200,
+            'data' => $data
+        ]);
+    }
 }
