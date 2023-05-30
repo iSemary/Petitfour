@@ -3,18 +3,59 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
+use App\Models\ProjectImage;
+use App\Models\Skill;
 use App\Models\SocialLink;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use stdClass;
 
 class HomeController extends Controller {
 
     public function index(Request $request): JsonResponse {
         $data = new stdClass();
+        $mockedImagePath = asset('storage/projects/mocked/');
+
+        /* This code is selecting highlighted skills from the `skills` table in the database. It selects the
+        `id`, `name`, `icon`, and `theme_icon` columns from the table where the `highlight` column has a
+        value of 1. The results are ordered by the `priority` column and stored in the
+        `->highlighted_skills` variable. */
+        $data->highlighted_skills = Skill::select([
+            'id',
+            'name',
+            'icon',
+            'theme_icon',
+        ])->where('highlight', 1)->orderBy('priority')->get();
+
+        /**
+         * The code selects the top 3 highlighted projects along with their skills and mocked images. It uses a left join to combine the `project_images` and 
+         * `projects` tables based on their respective columns. The selected columns from the `projects` table are `id`, `name`, and `description`.
+         *  The code creates a new column called `project_mocked_image` by concatenating a variable with the `project_image` column from the `project_images` table.
+         *  The results are filtered to include only projects with a highlight value of 1 and are ordered by the `priority` column. 
+         * It also loads the associated skills for each project, selecting specific columns from the `skills` table using a closure function.
+         */
+        $data->top_projects = Project::leftJoin('project_images', 'project_images.project_id', 'projects.id')->select([
+            'projects.id',
+            'projects.name',
+            'projects.description',
+            DB::raw("CONCAT('$mockedImagePath/', project_images.project_image) AS project_mocked_image"),
+        ])
+            ->where('project_images.highlight', 1)
+            ->orderBy("projects.priority")
+            ->limit(3)
+            ->orderBy('priority')
+            ->with(['skills' => function ($query) {
+                $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
+            }])
+            ->get();
 
 
-        $data->social_Links = SocialLink::orderBy("priority")->get();
+        /* This code is selecting the `url` and `type` columns from the `social_links` table in the database
+            and ordering the results by the `priority` column. The results are then stored in the
+            `->social_links` variable. */
+        $data->social_links = SocialLink::select('url', 'type')->orderBy("priority")->get();
 
         return response()->json([
             'success' => true,
