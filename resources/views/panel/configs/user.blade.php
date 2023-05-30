@@ -79,14 +79,14 @@
                             <label for="home_image">Home Image:</label>
                             <input type="file" name="home_image" accept="image/*" class="form-control-file"
                                 id="home_image">
-                            <img src="{{ isset($config->home_image) ? asset($config->home_image) : '' }}"
+                            <img src="{{ isset($config->home_image) ? asset($config->home_image) : asset('images/default.jpg') }}"
                                 class="img-thumbnail img-md d-block image-preview" alt="">
                         </div>
                         <div class="col-4 form-group">
                             <label for="home_image">Theme Home Image:</label>
                             <input type="file" name="theme_home_image" accept="image/*" class="form-control-file"
                                 id="theme_home_image">
-                            <img src="{{ isset($config->theme_home_image) ? asset($config->theme_home_image) : '' }}"
+                            <img src="{{ isset($config->theme_home_image) ? asset($config->theme_home_image) : asset('images/default.jpg') }}"
                                 class="img-thumbnail img-md d-block image-preview" alt="">
                         </div>
                         <div class="col-4 form-group">

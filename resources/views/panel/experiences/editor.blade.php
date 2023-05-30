@@ -60,7 +60,7 @@
                         <label>Company Logo</label><br />
                         <input type="file" name="company_logo" accept="image/*" id="uploadImg">
                     </div>
-                    <img src="{{ isset($experience) ? asset($experience->company_logo) : '' }}"
+                    <img src="{{ isset($experience) ? asset($experience->company_logo) : asset('images/default.jpg') }}"
                         class="img-thumbnail img-md d-block" id="previewImg" alt="">
                 </div>
                 <div class="form-group">

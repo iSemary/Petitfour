@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\BlogView;
 use Illuminate\Http\JsonResponse;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller {
 
@@ -22,7 +24,7 @@ class BlogController extends Controller {
             'description',
             'published_at',
             'image',
-        ])->where('status', 1)->orderBy("published_at", 'DESC')->paginate(10);
+        ])->where('status', 1)->orderBy("published_at", 'DESC')->paginate(6);
 
         $blogs->transform(function ($blog) {
             $blog->published_at = Carbon::parse($blog->published_at)->format('d M Y');
@@ -37,7 +39,7 @@ class BlogController extends Controller {
         ]);
     }
 
-    public function show($slug = null): JsonResponse {
+    public function show(Request $request, $slug = null): JsonResponse {
         if (!$slug) {
             return response()->json([
                 'success' => false,
@@ -64,6 +66,13 @@ class BlogController extends Controller {
         }
         $blog->published_at = Carbon::parse($blog->published_at)->format('d M Y');
         $blog->skills = $blog->skills()->select(['skills.id', 'skills.icon', 'skills.theme_icon', 'skills.name'])->orderBy('skills.priority')->get();
+
+        BlogView::create([
+            'blog_id' => $blog->id,
+            'ip' => $request->ip(),
+            'agent' => $request->userAgent(),
+        ]);
+
         /* Returning a json response with the data. */
         return response()->json([
             'success' => true,

@@ -49,7 +49,7 @@
                         <label>Icon</label><br/>
                         <input type="file" name="icon" accept="image/*" id="uploadImg">
                     </div>
-                    <img src="{{ isset($skill) ? asset($skill->icon) : '' }}" class="img-thumbnail img-md d-block"
+                    <img src="{{ isset($skill) ? asset($skill->icon) : asset('images/default.jpg') }}" class="img-thumbnail img-md d-block"
                         id="previewImg" alt="">
                 </div>
                 <div class="form-group">

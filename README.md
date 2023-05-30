@@ -28,8 +28,12 @@ Project Description goes here...
 
 -   JWT
 
-The website utilizes the following technologies:
+### The website utilizes the following technologies:
 
+-   react-icons [Icons]
+-   react-awesome-reveal [Animation]
+-   axios [HTTP Requests]
+-   Redux [State Managment]
 ### Laravel Commands
 
 First, run the following command only once:
