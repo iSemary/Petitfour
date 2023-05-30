@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model {
-    protected $fillable = ['name', 'category_id', 'type', 'priority', 'icon', 'theme_icon', 'start_date'];
+    protected $fillable = ['name', 'category_id', 'type', 'priority', 'highlight', 'icon', 'theme_icon', 'start_date'];
     protected $appends = ['icon', 'theme_icon'];
 
     public function getIconAttribute() {

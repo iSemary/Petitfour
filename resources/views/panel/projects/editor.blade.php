@@ -82,10 +82,19 @@
                     <div class="row">
                         @foreach ($project->images as $image)
                             <div class="col-md-3">
-                                <img src="{{ $image->project_image['image'] }}" class="image-uploaded-preview" width="150px"
-                                    height="150px" alt="">
-                                <img src="{{ $image->project_image['mocked'] }}" class="image-uploaded-preview" width="150px"
-                                    height="150px" alt="">
+                                <button class="highlight-btn btn btn-{{ $image->highlight ? 'success' : 'danger' }}"
+                                    data-project-id="{{ $project->id }}" title="Highlight"
+                                    {{ $image->highlight ? 'disabled' : '' }} data-image-id="{{ $image->id }}">
+                                    @if ($image->highlight)
+                                        <i class="fas fa-check-circle"></i>
+                                    @else
+                                        <i class="fas fa-times-circle"></i>
+                                    @endif
+                                </button>
+                                <img src="{{ $image->project_image['image'] }}" class="image-uploaded-preview"
+                                    width="150px" height="150px" alt="">
+                                <img src="{{ $image->project_image['mocked'] }}" class="image-uploaded-preview"
+                                    width="150px" height="150px" alt="">
                             </div>
                         @endforeach
                     </div>
@@ -115,12 +124,38 @@
             codeSnippet_theme: 'monokai_sublime'
         });
 
-
-
         var input = document.querySelector("input[name='tags'");
         new Tagify(input);
 
 
         $("input[name='images[]']").imageuploadify();
+    })
+</script>
+<script>
+    $(document).on('click', ".highlight-btn", function(e) {
+        e.preventDefault();
+        let currentBtn = $(this);
+        let projectID = currentBtn.attr('data-project-id');
+        let projectImageID = currentBtn.attr('data-image-id');
+        currentBtn.prop('disabled', true);
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: `{{ route('projects.highlightImage') }}`,
+            data: {
+                project_id:projectID,
+                project_image_id:projectImageID,
+            },
+            success: function(data) {
+                $('.highlight-btn').removeClass('btn-success').addClass('btn-danger');
+                $('.highlight-btn').html(`<i class="fas fa-times-circle"></i>`);
+                $('.highlight-btn').prop('disabled', false);
+                
+                currentBtn.removeClass('btn-danger').addClass('btn-success');
+                currentBtn.html(`<i class="fas fa-check-circle"></i>`);
+                currentBtn.prop('disabled', true);
+            },
+            error: function(data) {}
+        });
     })
 </script>

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class ProjectImage extends Model {
-    protected $fillable = ['project_id', 'project_image'];
+    protected $fillable = ['project_id', 'project_image', 'highlight'];
     protected $appends = ['project_image'];
 
     public function getProjectImageAttribute() {

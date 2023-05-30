@@ -73,6 +73,7 @@ class SkillController extends Controller {
             'category_id' => $request->input('category_id'),
             'type' => $request->input('type'),
             'priority' => $request->input('priority'),
+            'highlight' => boolval($request->input('highlight')),
             'icon' => $filename,
             'start_date' => $request->input('start_date'),
         ]);
@@ -110,7 +111,6 @@ class SkillController extends Controller {
 
         // Get the icon image file from the request
         $iconImage = $request->file('icon');
-
         if ($iconImage) {
             // Generate a unique file name for the image
             $filename = uniqid() . '.webp';
@@ -133,6 +133,7 @@ class SkillController extends Controller {
         $skill->category_id = $request->input('category_id');
         $skill->type = $request->input('type');
         $skill->priority = $request->input('priority');
+        $skill->highlight = boolval($request->input('highlight'));
         $skill->start_date = $request->input('start_date');
         $skill->save();
 

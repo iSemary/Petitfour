@@ -79,7 +79,7 @@ class ProjectController extends Controller {
 
     public function edit($id) {
         $project = Project::findOrFail($id);
-        $project->images = ProjectImage::select("project_image")->where("project_id", $project->id)->get();
+        $project->images = ProjectImage::select("project_image", 'id', 'highlight')->where("project_id", $project->id)->get();
         $skills = Skill::all();
         return view('panel.projects.editor', compact('project', 'skills'));
     }
@@ -144,7 +144,10 @@ class ProjectController extends Controller {
         // Delete existing project images
 
         // Process each uploaded image
-        foreach ($images as $image) {
+        foreach ($images as $key => $image) {
+            $highlight = 0;
+            if ($key == 0) $highlight = 1;
+
             // Generate a unique filename for each image
             $filename = uniqid() . '.webp';
 
@@ -177,6 +180,7 @@ class ProjectController extends Controller {
             ProjectImage::create([
                 'project_id' => $project->id,
                 'project_image' => $filename,
+                'highlight' => $highlight,
             ]);
         }
     }
@@ -211,5 +215,12 @@ class ProjectController extends Controller {
             }
         }
         return response()->json(['message' => "Projects sorted successfully"], 200);
+    }
+
+    public function highlightImage(Request $request) {
+        ProjectImage::where("project_id", $request->project_id)->update(['highlight' => 0]);
+        ProjectImage::where('id', $request->project_image_id)->update(['highlight' => 1]);
+
+        return response()->json(['message' => "Project image highlighted successfully"], 200);
     }
 }
