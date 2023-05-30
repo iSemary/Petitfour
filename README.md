@@ -26,7 +26,6 @@ Project Description goes here...
 
 ### The following technologies used in the APIs:
 
--   JWT
 
 ### The website utilizes the following technologies:
 
@@ -48,11 +47,7 @@ Create a link for storage folder into public to access it
 php artisan storage:link
 ```
 
-Generate new JWT secret token
 
-```
-php artisan jwt:secret
-```
 
 Migrate the database tables
 
