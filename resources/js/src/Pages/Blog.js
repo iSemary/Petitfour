@@ -6,12 +6,16 @@ import { Container, Row, Col } from "react-bootstrap";
 function Blog() {
     const { slug } = useParams();
     const [blog, setBlog] = useState(null);
+    const [blogSkills, setBlogSkills] = useState(null);
 
     useEffect(() => {
         axios
-            .get(`https://jsonplaceholder.typicode.com/posts/${slug}`)
+            .get(`${process.env.REACT_APP_API_URL}/blogs/${slug}`)
             .then((response) => {
-                setBlog(response.data);
+                if (response.data.success) {
+                    setBlog(response.data.data);
+                    setBlogSkills(response.data.data.skills);
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -24,13 +28,42 @@ function Blog() {
 
     return (
         <Container>
-            <Row>
-                <Col>
-                    <h1>{blog.title}</h1>
-                    <p>{blog.content}</p>
-                    <p>Author: {blog.author}</p>
-                </Col>
-            </Row>
+            <div className="blog-page">
+                <Row>
+                    <Col>
+                        <img
+                            className="blog-image"
+                            src={blog.image}
+                            alt={blog.title + " Blog Image"}
+                        />
+                        <h1 className="blog-title">{blog.title}</h1>
+                        <hr />
+                        <p className="blog-description">{blog.description}</p>
+                        <hr />
+                        <div className="blog-content">
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: blog.content,
+                                }}
+                            ></div>
+                        </div>
+                        <p className="blog-date">Author: {blog.published_at}</p>
+                        <hr />
+                        {
+                            <div className="blog-skills">
+                                {blogSkills.map((blogSkill, key) => (
+                                    <span
+                                        key={key}
+                                        className="badge badge-skill"
+                                    >
+                                        {blogSkill.name}
+                                    </span>
+                                ))}
+                            </div>
+                        }
+                    </Col>
+                </Row>
+            </div>
         </Container>
     );
 }

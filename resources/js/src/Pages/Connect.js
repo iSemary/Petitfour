@@ -31,8 +31,7 @@ function Connect() {
     ];
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
-
+        e.preventDefault();
         // Make the HTTP request using Axios
         axios
             .post(`${process.env.REACT_APP_API_URL}/contact`, formValues)
