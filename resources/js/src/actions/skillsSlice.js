@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import AxiosConfig from "../config/AxiosConfig";
 
 export const getSkills = createAsyncThunk("skills", async () => {
-    const response = await axios.get(process.env.REACT_APP_API_URL + "skills");
+    const response = await AxiosConfig.get("/skills");
     return response;
 });
 

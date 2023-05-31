@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import AxiosConfig from "../config/AxiosConfig";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { ImSpinner10 } from "react-icons/im";
@@ -13,8 +13,8 @@ function Projects() {
     const [loadMore, setLoadMore] = useState(false);
 
     const getData = () => {
-        axios
-            .get(`${process.env.REACT_APP_API_URL}/projects?page=${page}`)
+        AxiosConfig
+            .get(`/projects?page=${page}`)
             .then((response) => {
                 if (response.data.success) {
                     setProjects((prevProjects) => [

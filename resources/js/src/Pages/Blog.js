@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import AxiosConfig from "../config/AxiosConfig";
 import { Container, Row, Col } from "react-bootstrap";
 
 function Blog() {
@@ -9,8 +9,8 @@ function Blog() {
     const [blogSkills, setBlogSkills] = useState(null);
 
     useEffect(() => {
-        axios
-            .get(`${process.env.REACT_APP_API_URL}/blogs/${slug}`)
+        AxiosConfig
+            .get(`/blogs/${slug}`)
             .then((response) => {
                 if (response.data.success) {
                     setBlog(response.data.data);

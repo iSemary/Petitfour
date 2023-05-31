@@ -5,7 +5,7 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
 import { FiSend } from "react-icons/fi";
-import axios from "axios";
+import AxiosConfig from "../config/AxiosConfig";
 
 function Connect() {
     const [submit, setSubmit] = useState(false);
@@ -33,8 +33,8 @@ function Connect() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Make the HTTP request using Axios
-        axios
-            .post(`${process.env.REACT_APP_API_URL}/contact`, formValues)
+        AxiosConfig
+            .post(`/contact`, formValues)
             .then((response) => {
                 console.log(response);
             })

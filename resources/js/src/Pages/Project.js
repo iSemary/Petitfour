@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import AxiosConfig from "../config/AxiosConfig";
 import { Container, Row, Col } from "react-bootstrap";
 
 function Project() {
@@ -10,8 +10,8 @@ function Project() {
     const [projectImages, setProjectImages] = useState(null);
 
     useEffect(() => {
-        axios
-            .get(`${process.env.REACT_APP_API_URL}/projects/${name}`)
+        AxiosConfig
+            .get(`/projects/${name}`)
             .then((response) => {
                 if (response.data.success) {
                     setProject(response.data.data);
