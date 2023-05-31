@@ -7,6 +7,8 @@ use App\Models\Project;
 use App\Models\ProjectImage;
 use App\Models\Skill;
 use App\Models\SocialLink;
+use App\Models\SystemConfig;
+use App\Models\UserConfig;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -56,6 +58,17 @@ class HomeController extends Controller {
             and ordering the results by the `priority` column. The results are then stored in the
             `->social_links` variable. */
         $data->social_links = SocialLink::select('url', 'type')->orderBy("priority")->get();
+
+        /**
+         * Collect all config object
+         */
+        $config = [];
+        $config['user'] = UserConfig::select(['first_name', 'last_name', 'email', 'country', 'city', 'phone_number', 'country_code', 'address', 'position', 'bio', 'slogan', 'home_image', 'theme_home_image', 'resume'])->where('id', 1)->first();
+
+        $config['system'] = SystemConfig::select(['primary_color', 'secondary_color', 'contact_email', 'openai_api_token', 'google_analytics_id', 'logo'])->where('id', 1)->first();
+
+
+        $data->config = $config;
 
         return response()->json([
             'success' => true,
