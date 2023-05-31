@@ -12,38 +12,39 @@ import { FiPhoneCall } from "react-icons/fi";
 
 function Footer() {
     return (
-        <footer
-            className="text-center bg-main text-lg-start text-muted"
-        >
+        <footer className="text-center bg-main text-lg-start text-muted">
             <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-                <div className="me-5 d-none d-lg-block">
-                </div>
+                <div className="me-5 d-none d-lg-block"></div>
                 <div className="social-icons">
                     <a
                         href="https://www.linkedin.com/in/isemary"
                         className="me-4 text-reset"
-                        target="_blank" rel="noreferrer" 
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         <BsLinkedin />
                     </a>
                     <a
                         href="https://github.com/isemary"
                         className="me-4 text-reset"
-                        target="_blank" rel="noreferrer" 
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         <SiGithub />
                     </a>
                     <a
                         href="https://stackoverflow.com/users/9735658/abdelrahman-samir?tab=profile"
                         className="me-4 text-reset"
-                        target="_blank" rel="noreferrer" 
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         <BsStackOverflow />
                     </a>
                     <a
                         href="https://www.behance.net/isemary"
                         className="me-4 text-reset"
-                        target="_blank" rel="noreferrer" 
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         <ImBehance2 />
                     </a>
@@ -84,21 +85,38 @@ function Footer() {
                                 </a>
                             </p>
                         </Col>
-                        <Col md="4" lg="4" xl="4" className="mx-auto mb-md-0 mb-4"
+                        <Col
+                            md="4"
+                            lg="4"
+                            xl="4"
+                            className="mx-auto mb-md-0 mb-4"
                         >
                             <h6 className="text-uppercase fw-bold mb-4">
                                 Contact
                             </h6>
                             <p>
-                                <FaGlobeAfrica />&nbsp;&nbsp;Cairo, Egypt
+                                <FaGlobeAfrica />
+                                &nbsp;&nbsp;Cairo, Egypt
                             </p>
                             <p>
-                                <a href="mailto:abdelrahmansamirmostafa@gmail.com"  rel="noreferrer" className="text-reset">
-                                    <BsMailbox2 />&nbsp;&nbsp;abdelrahmansamirmostafa@gmail.com
+                                <a
+                                    href="mailto:abdelrahmansamirmostafa@gmail.com"
+                                    rel="noreferrer"
+                                    className="text-reset"
+                                >
+                                    <BsMailbox2 />
+                                    &nbsp;&nbsp;abdelrahmansamirmostafa@gmail.com
                                 </a>
                             </p>
                             <p>
-                                <FiPhoneCall />&nbsp;&nbsp;(+20) 102 701 2337
+                                <a
+                                    href="tel:201027012337"
+                                    rel="noreferrer"
+                                    className="text-reset"
+                                >
+                                    <FiPhoneCall />
+                                    &nbsp;&nbsp;(+20) 102 701 2337
+                                </a>
                             </p>
                         </Col>
                     </Row>
@@ -109,7 +127,8 @@ function Footer() {
                 className="text-center p-4"
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
             >
-                © {new Date().getFullYear()} Copyright, All rights reserved&nbsp;&nbsp;
+                © {new Date().getFullYear()} Copyright, All rights
+                reserved&nbsp;&nbsp;
                 <a className="text-reset fw-bold" href="https://ootstrap.com/">
                     abdelrahman.online
                 </a>
