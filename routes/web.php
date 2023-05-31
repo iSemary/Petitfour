@@ -40,8 +40,17 @@ Route::prefix('dashboard')->group(function () {
         Route::get('index', [DashboardController::class, 'home'])->name('dashboard.index');
 
         Route::get("logout", [UserController::class, 'logout'])->name('logout');
+
+        Route::get('skills/sort', [SkillController::class, 'sort'])->name('skills.sort');
+        Route::put('skills/update-sort', [SkillController::class, 'updateSort'])->name('skills.updateSort');
         Route::resources(['skills' => SkillController::class]);
+
+
+        Route::get('projects/sort', [ProjectController::class, 'sort'])->name('projects.sort');
+        Route::put('projects/update-sort', [ProjectController::class, 'updateSort'])->name('projects.updateSort');
+        Route::post('projects/highlight-image', [ProjectController::class, 'highlightImage'])->name('projects.highlightImage');
         Route::resources(['projects' => ProjectController::class]);
+
         Route::resources(['experiences' => ExperienceController::class]);
         Route::resources(['blogs' => BlogController::class]);
 

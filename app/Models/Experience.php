@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model {
-    protected $fillable = ['company_name', 'company_logo', 'company_location', 'position_title', 'summary', 'start_date', 'end_date'];
+    protected $fillable = ['company_name', 'company_logo', 'company_location', 'position_title', 'summary', 'content', 'start_date', 'end_date'];
     protected $appends = ['company_logo'];
 
     public function getCompanyLogoAttribute() {

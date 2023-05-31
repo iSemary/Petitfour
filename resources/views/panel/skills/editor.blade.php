@@ -43,14 +43,19 @@
                     <input type="number" minlength="1" maxlength="60" class="form-control" name="priority"
                         value="{{ isset($skill) ? $skill->priority : '0' }}" placeholder="Priority" required />
                 </div>
-
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" {{ isset($skill) && $skill->highlight == 1 ? checked :"" }} name="highlight" id="toggleSwitch">
+                        <label class="custom-control-label" for="toggleSwitch">Highlight</label>
+                    </div>
+                </div>
                 <div class="form-group d-flex justify-content-between">
                     <div>
-                        <label>Icon</label><br/>
+                        <label>Icon</label><br />
                         <input type="file" name="icon" accept="image/*" id="uploadImg">
                     </div>
-                    <img src="{{ isset($skill) ? asset($skill->icon) : '' }}" class="img-thumbnail img-md d-block"
-                        id="previewImg" alt="">
+                    <img src="{{ isset($skill) ? asset($skill->icon) : asset('images/default.jpg') }}"
+                        class="img-thumbnail img-md d-block" id="previewImg" alt="">
                 </div>
                 <div class="form-group">
                     <label class="{{ isset($skill) ? 'edit' : 'create' }}-status"></label>

@@ -31,6 +31,10 @@
                     <textarea class="form-control" name="summary" placeholder="Summary" required>{{ isset($experience) ? $experience->summary : '' }}</textarea>
                 </div>
                 <div class="form-group">
+                    <label>Content</label>
+                    <textarea class="form-control" id="experienceContent" name="content" placeholder="Content" required>{{ isset($experience) ? $experience->content : '' }}</textarea>
+                </div>
+                <div class="form-group">
                     <label>Start Date</label>
                     <input type="date" name="start_date"
                         value="{{ isset($experience) ? $experience->start_date : '' }}" class="form-control" required>
@@ -56,7 +60,7 @@
                         <label>Company Logo</label><br />
                         <input type="file" name="company_logo" accept="image/*" id="uploadImg">
                     </div>
-                    <img src="{{ isset($experience) ? asset($experience->company_logo) : '' }}"
+                    <img src="{{ isset($experience) ? asset($experience->company_logo) : asset('images/default.jpg') }}"
                         class="img-thumbnail img-md d-block" id="previewImg" alt="">
                 </div>
                 <div class="form-group">
@@ -72,3 +76,12 @@
         </div>
     </div>
 </section>
+<script src="{{ asset('assets/panel/vendors/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('assets/panel/vendors/ckeditor/config.js') }}"></script>
+
+<script>
+    CKEDITOR.replace('experienceContent', {
+        extraPlugins: 'codesnippet',
+        codeSnippet_theme: 'monokai_sublime'
+    });
+</script>

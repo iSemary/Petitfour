@@ -73,6 +73,7 @@ class SkillController extends Controller {
             'category_id' => $request->input('category_id'),
             'type' => $request->input('type'),
             'priority' => $request->input('priority'),
+            'highlight' => boolval($request->input('highlight')),
             'icon' => $filename,
             'start_date' => $request->input('start_date'),
         ]);
@@ -110,7 +111,6 @@ class SkillController extends Controller {
 
         // Get the icon image file from the request
         $iconImage = $request->file('icon');
-
         if ($iconImage) {
             // Generate a unique file name for the image
             $filename = uniqid() . '.webp';
@@ -133,6 +133,7 @@ class SkillController extends Controller {
         $skill->category_id = $request->input('category_id');
         $skill->type = $request->input('type');
         $skill->priority = $request->input('priority');
+        $skill->highlight = boolval($request->input('highlight'));
         $skill->start_date = $request->input('start_date');
         $skill->save();
 
@@ -151,5 +152,22 @@ class SkillController extends Controller {
         }
         $skill->delete();
         return response()->json(['message' => "Skill deleted successfully"], 200);
+    }
+
+    public function sort() {
+        $skills = Skill::select(['id', 'name', 'priority'])->orderBy('priority')->get();
+        return view('panel.skills.sortable', compact('skills'));
+    }
+
+    public function updateSort(Request $request) {
+
+        if (isset($request->id) && is_array($request->id) && count($request->id)) {
+            foreach ($request->id as $key => $id) {
+                Skill::where('id', $id)->update([
+                    'priority' => $key + 1
+                ]);
+            }
+        }
+        return response()->json(['message' => "Skills sorted successfully"], 200);
     }
 }

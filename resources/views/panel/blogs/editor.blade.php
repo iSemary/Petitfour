@@ -59,7 +59,7 @@
                         <label>Image</label><br />
                         <input type="file" name="image" accept="image/*" id="uploadImg">
                     </div>
-                    <img src="{{ isset($blog) ? asset($blog->image) : '' }}" class="img-thumbnail img-md d-block"
+                    <img src="{{ isset($blog) ? asset($blog->image) : asset('images/default.jpg') }}" class="img-thumbnail img-md d-block"
                         id="previewImg" alt="">
                 </div>
                 <div class="form-group">

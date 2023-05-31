@@ -253,3 +253,24 @@ $black: #282936;
     max-width: 25px;
     max-height: 25px;
 }
+
+.blog-item {
+    a,
+    p {
+        color: #0d161e;
+        text-decoration: none;
+    }
+}
+.spinner {
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    
+    100% {
+      transform: rotate(360deg);
+    }
+  }

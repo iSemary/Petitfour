@@ -68,6 +68,7 @@ class ExperienceController extends Controller {
             'company_location' => $request->input('company_location'),
             'position_title' => $request->input('position_title'),
             'summary' => $request->input('summary'),
+            'content' => $request->input('content'),
             'start_date' => $request->input('start_date'),
             'end_date' => $request->input('end_date'),
         ]);
@@ -134,6 +135,7 @@ class ExperienceController extends Controller {
         $experience->company_location = $request->input('company_location');
         $experience->position_title = $request->input('position_title');
         $experience->summary = $request->input('summary');
+        $experience->content = $request->input('content');
         $experience->start_date = $request->input('start_date');
         $experience->end_date = $request->input('end_date');
 

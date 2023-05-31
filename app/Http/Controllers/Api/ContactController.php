@@ -14,10 +14,10 @@ class ContactController extends Controller {
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
             'subject' => 'required|max:255',
-            'message' => 'required',
+            'message' => 'required|max:5000',
         ]);
 
-        if (strlen($validatedData['message']) > 1820) {
+        if (strlen($validatedData['message']) > 5000) {
             response()->json([
                 'success' => false,
                 'status' => 400,

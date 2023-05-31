@@ -1,49 +1,104 @@
-import React, { useState } from "react";
-import { Card, Badge, Carousel } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import AxiosConfig from "../config/AxiosConfig";
+import { Container, Row, Col } from "react-bootstrap";
 
 function Project() {
-    // const [activeIndex, setActiveIndex] = useState(0);
+    const { name } = useParams();
+    const [project, setProject] = useState(null);
+    const [projectSkills, setProjectSkills] = useState(null);
+    const [projectImages, setProjectImages] = useState(null);
 
-    // const handleSelect = (selectedIndex, e) => {
-    //     setActiveIndex(selectedIndex);
-    // };
+    useEffect(() => {
+        AxiosConfig
+            .get(`/projects/${name}`)
+            .then((response) => {
+                if (response.data.success) {
+                    setProject(response.data.data);
+                    setProjectSkills(response.data.data.skills);
+                    setProjectImages(response.data.data.images);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [name]);
 
-    // return (
-    //     <Card className="h-100">
-    //         <Carousel
-    //             activeIndex={activeIndex}
-    //             onSelect={handleSelect}
-    //             interval={5000}
-    //             controls={false}
-    //             indicators={false}
-    //         >
-    //             {project.images.map((image, index) => (
-    //                 <Carousel.Item key={index}>
-    //                     <img
-    //                         className="d-block w-100"
-    //                         src={image.src}
-    //                         alt={image.alt}
-    //                     />
-    //                 </Carousel.Item>
-    //             ))}
-    //         </Carousel>
-    //         <Card.Body>
-    //             <Card.Title>{project.title}</Card.Title>
-    //             <Card.Text>{project.description}</Card.Text>
-    //             <div className="d-flex flex-wrap">
-    //                 {project.tags.map((tag, index) => (
-    //                     <Badge
-    //                         key={index}
-    //                         variant="secondary"
-    //                         className="mr-2 mb-2"
-    //                     >
-    //                         {tag}
-    //                     </Badge>
-    //                 ))}
-    //             </div>
-    //         </Card.Body>
-    //     </Card>
-    // );
+    if (!project) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <Container>
+            <div className="project-page">
+                <Row>
+                    <Col>
+                        <h1 className="project-title">{project.name}</h1>
+                        <hr />
+                        <p className="project-description">
+                            {project.description}
+                        </p>
+                        <hr />
+                        <div className="project-content">
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: project.content,
+                                }}
+                            ></div>
+                        </div>
+                        <p className="project-date">
+                            Start Date: {project.start_date}
+                        </p>
+                        <p className="project-date">
+                            End Date: {project.end_date}
+                        </p>
+                        <p>Type: {project.type}</p>
+                        <p>repository_link: {project.repository_link}</p>
+                        <p>tags: {project.tags}</p>
+                        <hr />
+                        {
+                            <div className="project-skills">
+                                {projectSkills.map((projectSkill, key) => (
+                                    <span
+                                        key={key}
+                                        className="badge badge-skill"
+                                    >
+                                        {projectSkill.name}
+                                    </span>
+                                ))}
+                            </div>
+                        }
+                        {
+                            <div className="project-images">
+                                {projectImages.map((projectImage, key) => (
+                                    <>
+                                        <img
+                                            key={key + 1}
+                                            src={
+                                                projectImage.project_image.image
+                                            }
+                                            alt={"Project Image" + key + 1}
+                                            className="project-item-image"
+                                        />
+                                        <img
+                                            key={key + 2}
+                                            src={
+                                                projectImage.project_image.mocked
+                                            }
+                                            alt={
+                                                "Project Mocked Image" + key + 2
+                                            }
+                                            className="project-item-image"
+                                        />
+                                    </>
+                                ))}
+                            </div>
+                        }
+                    </Col>
+                </Row>
+            </div>
+        </Container>
+    );
 }
 
 export default Project;

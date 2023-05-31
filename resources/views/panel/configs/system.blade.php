@@ -39,7 +39,7 @@
                         <label for="logo">Logo:</label>
                         <input type="file" name="logo" accept="image/*" class="form-control-file"
                             id="logo">
-                        <img src="{{ isset($config->logo) ? asset($config->logo) : '' }}"
+                        <img src="{{ isset($config->logo) ? asset($config->logo) : asset('images/default.jpg') }}"
                             class="img-thumbnail img-md d-block image-preview" alt="">
                     </div>
                     <div class="form-group">
