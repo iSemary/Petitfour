@@ -2,13 +2,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Navbar } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-// import IMG_CODE from "../assets/images/icons/code.png";
-// import IMG_PHARAOH from "../assets/images/icons/pharaoh.png";
-// import IMG_DEFAULT from "../assets/images/icons/default.png";
-import { RiRadioButtonLine } from "react-icons/ri";
 const changeMode = (e) => {};
 
-function Header() {
+function Header(props) {
     const location = useLocation();
 
     return (
@@ -22,11 +18,7 @@ function Header() {
                 <Col md={3}>
                     <Col md={12} className="ps-5 pt-1 main-logo">
                         <Link to="/" className="no-link">
-                            <span>abdelrahman</span>
-                            <span>
-                                <RiRadioButtonLine />
-                            </span>
-                            <span>online</span>
+                            <img src={props.logo} alt="Main logo" />
                         </Link>
                     </Col>
                 </Col>

@@ -8,7 +8,7 @@ import Project from "../Pages/Project";
 import Blog from "../Pages/Blog";
 import Blogs from "../Pages/Blogs";
 
-function Router() {
+function Router(props) {
     return (
         <div className="content">
             <Routes>
@@ -16,7 +16,7 @@ function Router() {
                 <Route path="/skills" element={<Skills />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/projects/:name" element={<Project />} />
-                <Route path="/connect" element={<Connect />} />
+                <Route path="/connect" element={<Connect config={props.config?.config?.system} />} />
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/blogs/:slug" element={<Blog />} />
             </Routes>

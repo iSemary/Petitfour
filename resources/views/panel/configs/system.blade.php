@@ -35,13 +35,34 @@
                         <input type="text" name="google_analytics_id" value="{{ $config->google_analytics_id }}"
                             class="form-control" id="googleAnalyticsId" placeholder="Google Analytics ID">
                     </div>
-                    <div class="col-4 form-group">
-                        <label for="logo">Logo:</label>
-                        <input type="file" name="logo" accept="image/*" class="form-control-file"
-                            id="logo">
-                        <img src="{{ isset($config->logo) ? asset($config->logo) : asset('images/default.jpg') }}"
-                            class="img-thumbnail img-md d-block image-preview" alt="">
+                    <div class="row">
+
+                        <div class="form-group">
+                            <label for="logo">Logo:</label>
+                            <input type="file" name="logo" accept="image/*" class="form-control-file" id="logo">
+                            <img src="{{ isset($config->logo) ? asset($config->logo) : asset('images/default.jpg') }}"
+                                class="img-thumbnail img-md d-block image-preview" alt="">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="logo">Contact-us Image:</label>
+                            <input type="file" name="contact_image" accept="image/*" class="form-control-file" id="contact_image">
+                            <img src="{{ isset($config->contact_image) ? asset($config->contact_image) : asset('images/default.jpg') }}"
+                                class="img-thumbnail img-md d-block image-preview" alt="">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="logo">Contact-us Theme Image:</label>
+                            <input type="file" name="contact_theme_image" accept="image/*" class="form-control-file" id="contact_theme_image">
+                            <img src="{{ isset($config->contact_theme_image) ? asset($config->contact_theme_image) : asset('images/default.jpg') }}"
+                                class="img-thumbnail img-md d-block image-preview" alt="">
+                        </div>
+
+
                     </div>
+
                     <div class="form-group">
                         <label class="edit-status"></label>
                     </div>

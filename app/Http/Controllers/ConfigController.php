@@ -2,64 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Uploader;
 use App\Models\SocialLink;
 use App\Models\SystemConfig;
 use App\Models\UserConfig;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use \Image;
-use Illuminate\Support\Facades\Storage;
 
 class ConfigController extends Controller {
+    /**
+     * This function retrieves user configuration data and social links and returns a view with the data.
+     * 
+     * @return a view called "panel.configs.user" with two variables: , which is the UserConfig
+     * model instance with an ID of 1, and , which is a collection of all SocialLink model
+     * instances.
+     */
     public function userConfig() {
         $config = UserConfig::findOrFail(1);
         $socialLinks = SocialLink::all();
         return view("panel.configs.user", compact('config', 'socialLinks'));
     }
+
+    /**
+     * The function updates the user configuration with new data and social links.
+     * 
+     * @param Request request  is an instance of the Request class, which contains the data sent in
+     * the HTTP request. It is used to retrieve input data, such as form data or query parameters, and
+     * files uploaded with the request. In this function, it is used to retrieve data for updating the user
+     * configuration.
+     * 
+     * @return A JSON response with a message indicating that the user config has been saved successfully.
+     */
     public function updateUserConfig(Request $request) {
         $config = UserConfig::findOrFail(1);
 
-        $homeImage = basename($config->home_image);
-        if ($request->file('home_image')) {
-            // Generate a unique file name for the image
-            $homeImage = uniqid() . '.webp';
-            // Convert and save the image as WebP
-            $image = Image::make($request->home_image)->encode('webp');
-            // Save the image to the storage directory
-            Storage::disk('public')->put('config/' . $homeImage, $image);
-
-            // Delete the previous icon image if it exists
-            if ($config->home_image && Storage::disk('public')->exists('config/' . $config->home_image)) {
-                Storage::disk('public')->delete('config/' . $config->home_image);
-            }
-        }
-
-        $themeHomeImage = basename($config->theme_home_image);
-        if ($request->file('theme_home_image')) {
-            // Generate a unique file name for the image
-            $themeHomeImage = uniqid() . '.webp';
-            // Convert and save the image as WebP
-            $image = Image::make($request->theme_home_image)->encode('webp');
-            // Save the image to the storage directory
-            Storage::disk('public')->put('config/' . $themeHomeImage, $image);
-            // Delete the previous icon image if it exists
-            if ($config->theme_home_image && Storage::disk('public')->exists('config/' . $config->theme_home_image)) {
-                Storage::disk('public')->delete('config/' . $config->theme_home_image);
-            }
-        }
-
-        $resume = basename($config->resume);
-        if ($request->file('resume')) {
-            // Generate a unique file name for the image
-            $resume = uniqid() . '.' . $request->file('resume')->getClientOriginalExtension();
-
-            $request->file('resume')->storeAs('public/config/resume', $resume);
-
-            // Delete the previous icon image if it exists
-            if ($config->resume && Storage::disk('public')->exists('config/resume/' . basename($config->resume))) {
-                Storage::disk('public')->delete('config/resume/' . basename($config->resume));
-            }
-        }
+        $homeImage = Uploader::image($request->file('home_image'), $config->home_image, 'config');
+        $themeHomeImage = Uploader::image($request->file('theme_home_image'), $config->theme_home_image, 'config');
+        $resume = Uploader::file($request->file('resume'), $config, 'resume', 'config');
 
         $config->update([
             'first_name' => $request->first_name,
@@ -78,7 +56,6 @@ class ConfigController extends Controller {
             'resume' => $resume,
         ]);
 
-
         // Update social links
         foreach ($request->social_link_id as $socialLink) {
             if ($request->url[$socialLink] != "") {
@@ -93,31 +70,37 @@ class ConfigController extends Controller {
 
         return response()->json(['message' => "User config saved successfully"], 200);
     }
+
+    /**
+     * The function retrieves and returns the system configuration data for display in a view.
+     * 
+     * @return a view called "panel.configs.system" with a variable called "config" that contains the
+     * result of finding a SystemConfig model with an ID of 1.
+     */
     public function systemConfig() {
         $config = SystemConfig::findOrFail(1);
         return view("panel.configs.system", compact('config'));
     }
+
+    /**
+     * The function updates the system configuration with new values and files uploaded by the user.
+     * 
+     * @param Request request  is an instance of the Request class, which contains the data sent in
+     * the HTTP request. It is used to retrieve input data, such as form data or query parameters, and
+     * files uploaded with the request. In this function, it is used to retrieve the logo, contact_image,
+     * and contact_theme
+     * 
+     * @return A JSON response with a message indicating that the system config was saved successfully, and
+     * a status code of 200.
+     */
     public function updateSystemConfig(Request $request) {
 
         // Find the record by ID and update the columns
         $config = SystemConfig::findOrFail(1);
 
-
-        $logo = basename($config->logo);
-        if ($request->file('logo')) {
-            // Generate a unique file name for the image
-            $logo = uniqid() . '.webp';
-            // Convert and save the image as WebP
-            $image = Image::make($request->logo)->encode('webp');
-            // Save the image to the storage directory
-            Storage::disk('public')->put('config/' . $logo, $image);
-
-            // Delete the previous icon image if it exists
-            if ($config->logo && Storage::disk('public')->exists('config/' . $config->logo)) {
-                Storage::disk('public')->delete('config/' . $config->logo);
-            }
-        }
-
+        $logo = Uploader::file($request->file('logo'), $config, 'logo', 'config');
+        $contactImage = Uploader::image($request->file('contact_image'), $config->contact_image, 'config');
+        $contactThemeImage = Uploader::image($request->file('contact_theme_image'), $config->contact_theme_image, 'config');
 
         $config->update([
             'primary_color' => $request->primary_color,
@@ -125,7 +108,9 @@ class ConfigController extends Controller {
             'contact_email' => $request->contact_email,
             'openai_api_token' => $request->openai_api_token,
             'google_analytics_id' => $request->google_analytics_id,
-            'logo' => $logo
+            'logo' => $logo,
+            'contact_image' => $contactImage,
+            'contact_theme_image' => $contactThemeImage,
         ]);
 
         return response()->json(['message' => "System config saved successfully"], 200);

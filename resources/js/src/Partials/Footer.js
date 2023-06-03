@@ -10,7 +10,7 @@ import { FaGlobeAfrica } from "react-icons/fa";
 import { BsMailbox2 } from "react-icons/bs";
 import { FiPhoneCall } from "react-icons/fi";
 
-function Footer() {
+function Footer(props) {
     return (
         <footer className="text-center bg-main text-lg-start text-muted">
             <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -56,9 +56,12 @@ function Footer() {
                     <Row className="mt-3">
                         <Col md="4" lg="4" xl="4" className="mx-auto mb-4">
                             <h6 className="text-uppercase fw-bold mb-4">
-                                <CgProfile /> Abdelrahman Samir Mostafa
+                                <CgProfile />{" "}
+                                {props.userInfo?.first_name +
+                                    " " +
+                                    props.userInfo?.last_name}
                             </h6>
-                            <p>Bref on me</p>
+                            <p>{props.userInfo?.bio}</p>
                         </Col>
                         <Col md="3" lg="4" xl="4" className="mx-auto mb-4">
                             <h6 className="text-uppercase fw-bold mb-4">
@@ -96,26 +99,34 @@ function Footer() {
                             </h6>
                             <p>
                                 <FaGlobeAfrica />
-                                &nbsp;&nbsp;Cairo, Egypt
+                                &nbsp;&nbsp;
+                                {props.userInfo?.city +
+                                    ", " +
+                                    props.userInfo?.country}
                             </p>
                             <p>
                                 <a
-                                    href="mailto:abdelrahmansamirmostafa@gmail.com"
+                                    href={"mailto:" + props.userInfo?.email}
                                     rel="noreferrer"
                                     className="text-reset"
                                 >
                                     <BsMailbox2 />
-                                    &nbsp;&nbsp;abdelrahmansamirmostafa@gmail.com
+                                    &nbsp;&nbsp;{props.userInfo?.email}
                                 </a>
                             </p>
                             <p>
                                 <a
-                                    href="tel:201027012337"
+                                    href={
+                                        "tel:" +
+                                        props.userInfo?.country_code +
+                                        props.userInfo?.phone_number
+                                    }
                                     rel="noreferrer"
                                     className="text-reset"
                                 >
                                     <FiPhoneCall />
-                                    &nbsp;&nbsp;(+20) 102 701 2337
+                                    &nbsp;&nbsp;(+{props.userInfo?.country_code}
+                                    ) {props.userInfo?.phone_number}
                                 </a>
                             </p>
                         </Col>
@@ -129,7 +140,10 @@ function Footer() {
             >
                 © {new Date().getFullYear()} Copyright, All rights
                 reserved&nbsp;&nbsp;
-                <a className="text-reset fw-bold" href="https://ootstrap.com/">
+                <a
+                    className="text-reset fw-bold"
+                    href="https://www.abdelrahman.online"
+                >
                     abdelrahman.online
                 </a>
             </div>
