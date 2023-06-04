@@ -1,76 +1,72 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import { Link } from "react-router-dom";
 
 import css from "../../assets/images/icons/css.png";
-import html from "../../assets/images/icons/html.png";
-import laravel from "../../assets/images/icons/laravel.png";
-import php from "../../assets/images/icons/php.png";
-import js from "../../assets/images/icons/js.png";
-import react from "../../assets/images/icons/react.png";
-import mysql from "../../assets/images/icons/mysql.png";
-import sass from "../../assets/images/icons/sass.png";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { BiNavigation } from "react-icons/bi";
 
-import AOS from 'aos';
+import AOS from "aos";
+
 AOS.init();
-function MiniSkills() {
-    return (
-        <>
-            <div className="text-center">
-                <Row className="justify-content-center">
+
+function MiniSkills(props) {
+
+    let highlightedSkills = "";
+    
+    if (
+        props.highlightedSkills &&
+        Object.keys(props.highlightedSkills).length > 0
+    ) {
+        highlightedSkills = props.highlightedSkills.map((skill, index) => {
+            return (
+                <>
                     <Col md={1} data-aos="fade-right">
                         <OverlayTrigger
                             placement="bottom"
                             overlay={
-                                <Tooltip id="button-tooltip-2">HTML</Tooltip>
+                                <Tooltip id="button-tooltip-2">
+                                    {skill.name}
+                                </Tooltip>
                             }
                         >
                             {({ ref, ...triggerHandler }) => (
-                                <img
-                                    {...triggerHandler}
-                                    ref={ref}
-                                    alt=""
-                                    src={css}
-                                    width="50px"
-                                    height="50px"
-                                />
+                                <Link className="no-link" to={`skills/${skill.name}`}>
+                                    <img
+                                        {...triggerHandler}
+                                        ref={ref}
+                                        alt=""
+                                        src={skill.icon}
+                                        width="50px"
+                                        height="50px"
+                                    />
+                                </Link>
                             )}
                         </OverlayTrigger>
                     </Col>
-                    <Col md={1} data-aos="fade-up-right">
-                        <img alt="" src={html} width="50px" height="50px" />
-                    </Col>
-                    <Col md={1}  data-aos="zoom-in-down">
-                        <img alt="" src={laravel} width="50px" height="50px" />
-                    </Col>
-                    <Col md={1} data-aos="zoom-out-up">
-                        <img alt="" src={php} width="50px" height="50px" />
-                    </Col>
-                    <Col md={1} data-aos="zoom-out-down">
-                        <img alt="" src={js} width="50px" height="50px" />
-                    </Col>
-                    <Col md={1}  data-aos="zoom-in-up">
-                        <img alt="" src={react} width="50px" height="50px" />
-                    </Col>
-                    <Col md={1} data-aos="fade-up-left">
-                        <img alt="" src={mysql} width="50px" height="50px" />
-                    </Col>
-                    <Col md={1} data-aos="fade-left">
-                        <img alt="" src={sass} width="50px" height="50px" />
-                    </Col>
+                </>
+            );
+        });
+    }
+
+    return (
+        <>
+            <div className="text-center">
+                <Row className="justify-content-center">
+                    {highlightedSkills}
                 </Row>
                 <div className="mt-4">
                     <Link to="skills" className="discover-more-btn">
                         <span className="discover-circle" aria-hidden="true">
                             <span>
-                            <BiNavigation className="discover-icon" />
+                                <BiNavigation className="discover-icon" />
                             </span>
                         </span>
-                        <span className="discover-button-text">Discover More</span>
+                        <span className="discover-button-text">
+                            Discover More
+                        </span>
                     </Link>
                 </div>
             </div>

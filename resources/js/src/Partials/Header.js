@@ -18,7 +18,7 @@ function Header(props) {
                 <Col md={3}>
                     <Col md={12} className="ps-5 pt-1 main-logo">
                         <Link to="/" className="no-link">
-                            <img src={props.logo} alt="Main logo" />
+                            <img src={props.logo} alt="Main logo" class="header-logo" />
                         </Link>
                     </Col>
                 </Col>

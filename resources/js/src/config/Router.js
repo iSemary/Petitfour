@@ -12,7 +12,7 @@ function Router(props) {
     return (
         <div className="content">
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home config={props.config} />} />
                 <Route path="/skills" element={<Skills />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/projects/:name" element={<Project />} />

@@ -9,7 +9,7 @@ import GithubRepos from "./Components/GithubRepos";
 import SideSkills from "./Components/SideSkills";
 
 
-function Home() {
+function Home(props) {
     return (
         <>
             <div className="main-background-cover">
@@ -36,7 +36,7 @@ function Home() {
             </div>
             <Container>
                 <Aim />
-                <MiniSkills />
+                <MiniSkills highlightedSkills={props?.config?.highlighted_skills} />
                 <MiniProjects />
                 <GithubRepos />
                 <SideSkills />
