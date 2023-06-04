@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ env('APP_PRODUCTION_NAME') }}</title>
-    <link rel="stylesheet" href="{{ asset('dist/static/css/style.css') }}?v=1.0">
+    <link rel="stylesheet" href="{{ asset('static/css/style.css') }}?v=1.0">
     {{-- Google Analytics Script --}}
     @if (isset($config['system']['google_analytics_id']))
         <script async src="https://www.googletagmanager.com/gtag/js?id={{ $config['system']['google_analytics_id'] }}"></script>
@@ -25,7 +25,7 @@
 
 <body>
     <div id="root"></div>
-    <script src="{{ asset('dist/static/js/app.js') }}?v=1.0"></script>
+    <script src="{{ asset('static/js/app.js') }}?v=1.0"></script>
 
 </body>
 

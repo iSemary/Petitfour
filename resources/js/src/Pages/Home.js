@@ -8,7 +8,6 @@ import MiniProjects from "./Components/MiniProjects";
 import GithubRepos from "./Components/GithubRepos";
 import SideSkills from "./Components/SideSkills";
 
-
 function Home(props) {
     return (
         <>
@@ -16,19 +15,12 @@ function Home(props) {
                 <Container className="top-content">
                     <Row>
                         <Col md={6}>
-                            <h1>Full Stack Engineer</h1>
-                            <p>
-                                I specialize in creating fast and responsive web
-                                applications that deliver seamless user
-                                experiences. With my expertise in both front-end
-                                and back-end development, I'm able to build
-                                robust solutions that meet the unique needs of
-                                each project. From the initial concept to the
-                                final product, I'm dedicated to delivering
-                                high-quality work that exceeds expectations.
-                                Let's work together to bring your vision to
-                                life.
-                            </p>
+                            <h1>
+                                {props?.config?.config?.user?.first_name}
+                                <br />
+                                {props?.config?.config?.user?.last_name}
+                            </h1>
+                            <p>{props?.config?.config?.user?.slogan}</p>
                         </Col>
                         <Col md={6}>{/* Gif Graph  */}</Col>
                     </Row>
@@ -36,7 +28,9 @@ function Home(props) {
             </div>
             <Container>
                 <Aim />
-                <MiniSkills highlightedSkills={props?.config?.highlighted_skills} />
+                <MiniSkills
+                    highlightedSkills={props?.config?.highlighted_skills}
+                />
                 <MiniProjects />
                 <GithubRepos />
                 <SideSkills />
