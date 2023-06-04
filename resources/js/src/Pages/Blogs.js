@@ -59,7 +59,7 @@ function Blogs() {
                                     </Card.Body>
                                 </Link>
                                 <Link to={`/blogs/${blog.slug}`}>
-                                    <Button variant="primary">Read More</Button>
+                                    <Button variant="none" className="more-btn">Read More</Button>
                                 </Link>
                             </Card>
                         </Fade>

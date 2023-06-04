@@ -7,7 +7,10 @@ import Container from "react-bootstrap/esm/Container";
 import { FiSend } from "react-icons/fi";
 import AxiosConfig from "../config/AxiosConfig";
 
-function Connect() {
+function Connect(props) {
+
+    console.log(props);
+
     const [submit, setSubmit] = useState(false);
     const [formValues, setFormValues] = useState([]);
     const MAX_MESSAGE_LENGTH = 5000;
@@ -33,8 +36,7 @@ function Connect() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Make the HTTP request using Axios
-        AxiosConfig
-            .post(`/contact`, formValues)
+        AxiosConfig.post(`/contact`, formValues)
             .then((response) => {
                 console.log(response);
             })
@@ -149,7 +151,13 @@ function Connect() {
                             </Form>
                         </div>
                     </Col>
-                    <Col md={6}>Image</Col>
+                    <Col md={6}>
+                        <img
+                        className="contact-image"
+                            src={props.config?.contact_image}
+                            alt="Contact"
+                        />
+                    </Col>
                 </Row>
             </div>
         </Container>

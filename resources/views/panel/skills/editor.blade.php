@@ -45,7 +45,7 @@
                 </div>
                 <div class="form-group">
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" {{ isset($skill) && $skill->highlight == 1 ? checked :"" }} name="highlight" id="toggleSwitch">
+                        <input type="checkbox" class="custom-control-input" {{ isset($skill) && $skill->highlight == 1 ? "checked" :"" }} name="highlight" id="toggleSwitch">
                         <label class="custom-control-label" for="toggleSwitch">Highlight</label>
                     </div>
                 </div>

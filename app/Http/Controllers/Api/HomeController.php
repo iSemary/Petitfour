@@ -63,10 +63,10 @@ class HomeController extends Controller {
          * Collect all config object
          */
         $config = [];
+
         $config['user'] = UserConfig::select(['first_name', 'last_name', 'email', 'country', 'city', 'phone_number', 'country_code', 'address', 'position', 'bio', 'slogan', 'home_image', 'theme_home_image', 'resume'])->where('id', 1)->first();
 
-        $config['system'] = SystemConfig::select(['primary_color', 'secondary_color', 'contact_email', 'openai_api_token', 'google_analytics_id', 'logo'])->where('id', 1)->first();
-
+        $config['system'] = SystemConfig::select(['primary_color', 'secondary_color', 'contact_email', 'logo', 'contact_image', 'contact_theme_image'])->where('id', 1)->first();
 
         $data->config = $config;
 

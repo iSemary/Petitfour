@@ -10,40 +10,41 @@ import { FaGlobeAfrica } from "react-icons/fa";
 import { BsMailbox2 } from "react-icons/bs";
 import { FiPhoneCall } from "react-icons/fi";
 
-function Footer() {
+function Footer(props) {
     return (
-        <footer
-            className="text-center bg-main text-lg-start text-muted"
-        >
+        <footer className="text-center bg-main text-lg-start text-muted">
             <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-                <div className="me-5 d-none d-lg-block">
-                </div>
+                <div className="me-5 d-none d-lg-block"></div>
                 <div className="social-icons">
                     <a
                         href="https://www.linkedin.com/in/isemary"
                         className="me-4 text-reset"
-                        target="_blank" rel="noreferrer" 
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         <BsLinkedin />
                     </a>
                     <a
                         href="https://github.com/isemary"
                         className="me-4 text-reset"
-                        target="_blank" rel="noreferrer" 
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         <SiGithub />
                     </a>
                     <a
                         href="https://stackoverflow.com/users/9735658/abdelrahman-samir?tab=profile"
                         className="me-4 text-reset"
-                        target="_blank" rel="noreferrer" 
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         <BsStackOverflow />
                     </a>
                     <a
                         href="https://www.behance.net/isemary"
                         className="me-4 text-reset"
-                        target="_blank" rel="noreferrer" 
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         <ImBehance2 />
                     </a>
@@ -55,9 +56,12 @@ function Footer() {
                     <Row className="mt-3">
                         <Col md="4" lg="4" xl="4" className="mx-auto mb-4">
                             <h6 className="text-uppercase fw-bold mb-4">
-                                <CgProfile /> Abdelrahman Samir Mostafa
+                                <CgProfile />{" "}
+                                {props.userInfo?.first_name +
+                                    " " +
+                                    props.userInfo?.last_name}
                             </h6>
-                            <p>Bref on me</p>
+                            <p>{props.userInfo?.bio}</p>
                         </Col>
                         <Col md="3" lg="4" xl="4" className="mx-auto mb-4">
                             <h6 className="text-uppercase fw-bold mb-4">
@@ -84,21 +88,46 @@ function Footer() {
                                 </a>
                             </p>
                         </Col>
-                        <Col md="4" lg="4" xl="4" className="mx-auto mb-md-0 mb-4"
+                        <Col
+                            md="4"
+                            lg="4"
+                            xl="4"
+                            className="mx-auto mb-md-0 mb-4"
                         >
                             <h6 className="text-uppercase fw-bold mb-4">
                                 Contact
                             </h6>
                             <p>
-                                <FaGlobeAfrica />&nbsp;&nbsp;Cairo, Egypt
+                                <FaGlobeAfrica />
+                                &nbsp;&nbsp;
+                                {props.userInfo?.city +
+                                    ", " +
+                                    props.userInfo?.country}
                             </p>
                             <p>
-                                <a href="mailto:abdelrahmansamirmostafa@gmail.com"  rel="noreferrer" className="text-reset">
-                                    <BsMailbox2 />&nbsp;&nbsp;abdelrahmansamirmostafa@gmail.com
+                                <a
+                                    href={"mailto:" + props.userInfo?.email}
+                                    rel="noreferrer"
+                                    className="text-reset"
+                                >
+                                    <BsMailbox2 />
+                                    &nbsp;&nbsp;{props.userInfo?.email}
                                 </a>
                             </p>
                             <p>
-                                <FiPhoneCall />&nbsp;&nbsp;(+20) 102 701 2337
+                                <a
+                                    href={
+                                        "tel:" +
+                                        props.userInfo?.country_code +
+                                        props.userInfo?.phone_number
+                                    }
+                                    rel="noreferrer"
+                                    className="text-reset"
+                                >
+                                    <FiPhoneCall />
+                                    &nbsp;&nbsp;(+{props.userInfo?.country_code}
+                                    ) {props.userInfo?.phone_number}
+                                </a>
                             </p>
                         </Col>
                     </Row>
@@ -109,8 +138,12 @@ function Footer() {
                 className="text-center p-4"
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
             >
-                © {new Date().getFullYear()} Copyright, All rights reserved&nbsp;&nbsp;
-                <a className="text-reset fw-bold" href="https://ootstrap.com/">
+                © {new Date().getFullYear()} Copyright, All rights
+                reserved&nbsp;&nbsp;
+                <a
+                    className="text-reset fw-bold"
+                    href="https://www.abdelrahman.online"
+                >
                     abdelrahman.online
                 </a>
             </div>

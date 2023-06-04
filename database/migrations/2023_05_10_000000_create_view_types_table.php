@@ -11,7 +11,7 @@ class CreateViewTypesTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('views_type', function (Blueprint $table) {
+        Schema::create('view_types', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('type')->default(0);
             $table->string('ip');
@@ -26,6 +26,6 @@ class CreateViewTypesTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('views_type');
+        Schema::dropIfExists('view_types');
     }
 }
