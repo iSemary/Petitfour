@@ -3,8 +3,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import Aim from "./Components/Aim";
-import MiniSkills from "./Components/MiniSkills";
-import MiniProjects from "./Components/MiniProjects";
+import HighlightedSkills from "./Components/HighlightedSkills";
+import TopProjects from "./Components/TopProjects";
 import GithubRepos from "./Components/GithubRepos";
 import SideSkills from "./Components/SideSkills";
 
@@ -28,10 +28,10 @@ function Home(props) {
             </div>
             <Container>
                 <Aim />
-                <MiniSkills
+                <HighlightedSkills
                     highlightedSkills={props?.config?.highlighted_skills}
                 />
-                <MiniProjects />
+                <TopProjects topProjects={props?.config?.top_projects} />
                 <GithubRepos />
                 <SideSkills />
                 {/* <LinkedInTestimonal/> */}

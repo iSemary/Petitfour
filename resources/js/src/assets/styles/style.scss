@@ -278,3 +278,22 @@ $black: #282936;
 .header-logo {
     width: 30px;
 }
+.contact-image {
+    width: 100%;
+    height: 100%;
+}
+.project-image {
+    height: 195px;
+    transition: 250ms;
+
+    &:hover {
+        transform: scale(1.055) translateZ(20px) rotateZ(2deg) rotateX(2deg) rotateY(-2deg);   
+    }
+}
+.project-title, .project-description {
+    color:#0d161e
+}
+/*
+    Shiny Hover Effect
+*/
+

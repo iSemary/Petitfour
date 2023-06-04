@@ -12,10 +12,9 @@ import AOS from "aos";
 
 AOS.init();
 
-function MiniSkills(props) {
-
+function HighlightedSkills(props) {
     let highlightedSkills = "";
-    
+
     if (
         props.highlightedSkills &&
         Object.keys(props.highlightedSkills).length > 0
@@ -33,11 +32,14 @@ function MiniSkills(props) {
                             }
                         >
                             {({ ref, ...triggerHandler }) => (
-                                <Link className="no-link" to={`skills/${skill.name}`}>
+                                <Link
+                                    className="no-link"
+                                    to={`skills/${skill.name}`}
+                                >
                                     <img
                                         {...triggerHandler}
                                         ref={ref}
-                                        alt=""
+                                        alt={`Skill ${skill.name}`}
                                         src={skill.icon}
                                         width="50px"
                                         height="50px"
@@ -73,4 +75,4 @@ function MiniSkills(props) {
         </>
     );
 }
-export default MiniSkills;
+export default HighlightedSkills;
