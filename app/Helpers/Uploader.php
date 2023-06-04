@@ -21,8 +21,8 @@ class Uploader {
      * variable (if no new file is uploaded), or a newly generated unique filename with the extension of
      * the uploaded file.
      */
-    public static function file($file, $config, $attribute, $path) {
-        $image = basename($config->$attribute);
+    public static function file($file, $config = null, $attribute = null, $path = '/') {
+        $image = isset($config) ? basename($config->$attribute) : null;
         if ($file) {
             // Generate a unique file name for the image
             $imageName = uniqid() . '.' . $file->getClientOriginalExtension();
@@ -30,7 +30,7 @@ class Uploader {
             $file->storeAs('public/' . $path, $imageName);
 
             // Delete the previous image if it exists
-            if ($config->$attribute && Storage::disk('public')->exists($path . '/' . basename($config->$attribute))) {
+            if (isset($config) && $config->$attribute && Storage::disk('public')->exists($path . '/' . basename($config->$attribute))) {
                 Storage::disk('public')->delete($path . '/' . basename($config->$attribute));
             }
 
