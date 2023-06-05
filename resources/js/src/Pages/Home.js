@@ -2,11 +2,12 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import Aim from "./Components/Aim";
+import Features from "./Components/Features";
 import HighlightedSkills from "./Components/HighlightedSkills";
 import TopProjects from "./Components/TopProjects";
-import GithubRepos from "./Components/GithubRepos";
+import LatestExperience from "./Components/LatestExperience";
 import SideSkills from "./Components/SideSkills";
+import LatestBlogs from "./Components/LatestBlogs";
 
 function Home(props) {
     return (
@@ -27,14 +28,16 @@ function Home(props) {
                 </Container>
             </div>
             <Container>
-                <Aim />
+                <Features features={props?.config?.features} />
                 <HighlightedSkills
                     highlightedSkills={props?.config?.highlighted_skills}
                 />
                 <TopProjects topProjects={props?.config?.top_projects} />
-                <GithubRepos />
+                <LatestExperience
+                    latestExperience={props?.config?.latest_experience}
+                />
                 <SideSkills />
-                {/* <LinkedInTestimonal/> */}
+                <LatestBlogs latestBlogs={props?.config?.latest_blogs} />
             </Container>
         </>
     );

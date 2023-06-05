@@ -95,7 +95,7 @@ function Skills() {
                                                     <img
                                                         {...triggerHandler}
                                                         ref={ref}
-                                                        class="side-skill"
+                                                        className="side-skill"
                                                         alt={
                                                             sideSkill.name +
                                                             " side skill"

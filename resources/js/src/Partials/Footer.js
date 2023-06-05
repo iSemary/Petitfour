@@ -14,43 +14,44 @@ function Footer(props) {
     return (
         <footer className="text-center bg-main text-lg-start text-muted">
             <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-                <div className="me-5 d-none d-lg-block"></div>
-                <div className="social-icons">
-                    <a
-                        href="https://www.linkedin.com/in/isemary"
-                        className="me-4 text-reset"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <BsLinkedin />
-                    </a>
-                    <a
-                        href="https://github.com/isemary"
-                        className="me-4 text-reset"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <SiGithub />
-                    </a>
-                    <a
-                        href="https://stackoverflow.com/users/9735658/abdelrahman-samir?tab=profile"
-                        className="me-4 text-reset"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <BsStackOverflow />
-                    </a>
-                    <a
-                        href="https://www.behance.net/isemary"
-                        className="me-4 text-reset"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <ImBehance2 />
-                    </a>
-                </div>
+                <Container className="text-center text-md-start mt-5">
+                    <div className="me-5 d-none d-lg-block"></div>
+                    <div className="social-icons">
+                        <a
+                            href="https://www.linkedin.com/in/isemary"
+                            className="me-4 text-reset"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <BsLinkedin />
+                        </a>
+                        <a
+                            href="https://github.com/isemary"
+                            className="me-4 text-reset"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <SiGithub />
+                        </a>
+                        <a
+                            href="https://stackoverflow.com/users/9735658/abdelrahman-samir?tab=profile"
+                            className="me-4 text-reset"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <BsStackOverflow />
+                        </a>
+                        <a
+                            href="https://www.behance.net/isemary"
+                            className="me-4 text-reset"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <ImBehance2 />
+                        </a>
+                    </div>
+                </Container>
             </section>
-
             <section className="">
                 <Container className="text-center text-md-start mt-5">
                     <Row className="mt-3">
@@ -135,17 +136,18 @@ function Footer(props) {
             </section>
 
             <div
-                className="text-center p-4"
+                className="p-4"
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
             >
-                © {new Date().getFullYear()} Copyright, All rights
-                reserved&nbsp;&nbsp;
+                Designed with love by
                 <a
                     className="text-reset fw-bold"
                     href="https://www.abdelrahman.online"
                 >
-                    abdelrahman.online
+                    &nbsp;
+                    {`${props.userInfo?.first_name} ${props.userInfo?.last_name}`}
                 </a>
+                &nbsp;&copy; {new Date().getFullYear()}
             </div>
         </footer>
     );

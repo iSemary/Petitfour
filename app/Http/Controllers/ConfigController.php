@@ -70,6 +70,7 @@ class ConfigController extends Controller {
             }
         }
 
+        // Update features
         foreach ($request->feature_id as $feature) {
             if ($request->feature_title[$feature] != "") {
                 $featureRecord = Feature::where('id', $feature)->first();
@@ -84,7 +85,6 @@ class ConfigController extends Controller {
         }
 
 
-        // Update features
 
 
         return response()->json(['message' => "User config saved successfully"], 200);

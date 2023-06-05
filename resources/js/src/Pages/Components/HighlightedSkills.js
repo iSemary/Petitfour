@@ -22,7 +22,7 @@ function HighlightedSkills(props) {
         highlightedSkills = props.highlightedSkills.map((skill, index) => {
             return (
                 <>
-                    <Col md={1} data-aos="fade-right">
+                    <Col md={1} data-aos="fade-right" key={index}>
                         <OverlayTrigger
                             placement="bottom"
                             overlay={
@@ -56,6 +56,7 @@ function HighlightedSkills(props) {
     return (
         <>
             <div className="text-center">
+                <h3 className="text-center">Highlighted Skills</h3>
                 <Row className="justify-content-center">
                     {highlightedSkills}
                 </Row>
