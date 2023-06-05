@@ -15,6 +15,8 @@ AOS.init();
 function TopProjects(props) {
     let topProjects = "";
 
+    const MAX_PROJECT_SKILLS = 4;
+
     if (props.topProjects && Object.keys(props.topProjects).length > 0) {
         topProjects = props.topProjects.map((project, index) => {
             return (
@@ -36,9 +38,31 @@ function TopProjects(props) {
                         </Link>
                         {project.skills ? (
                             <Row>
-                                {project.skills.map((projectSkill, index) => {
-                                    return <Col md={2} key={index}>S</Col>;
-                                })}
+                                {project.skills
+                                    .slice(0, MAX_PROJECT_SKILLS)
+                                    .map((projectSkill, index) => {
+                                        return (
+                                            <Col md={2} key={index}>
+                                                <Link
+                                                    className="no-link"
+                                                    to={`skills/${projectSkill.name}`}
+                                                >
+                                                    <img
+                                                        src={projectSkill.icon}
+                                                        className="project-skill-icon"
+                                                        alt={index}
+                                                    />
+                                                </Link>
+                                            </Col>
+                                        );
+                                    })}
+                                {project.skills.length > MAX_PROJECT_SKILLS && (
+                                    <Col md={2} key={MAX_PROJECT_SKILLS}>
+                                        {"+" +
+                                            (project.skills.length - MAX_PROJECT_SKILLS) +
+                                            " Skills"}
+                                    </Col>
+                                )}
                             </Row>
                         ) : (
                             ""
