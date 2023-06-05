@@ -89,12 +89,19 @@
                             <img src="{{ isset($config->theme_home_image) ? asset($config->theme_home_image) : asset('images/default.jpg') }}"
                                 class="img-thumbnail img-md d-block image-preview" alt="">
                         </div>
-                        <div class="col-4 form-group">
-                            <label for="resume">Resume:</label>
-                            <input type="file" name="resume" class="form-control-file" id="resume">
-                            @if (isset($config->resume) && basename($config->resume) != "config")
-                                <a href="{{ $config->resume }}" class="btn btn-sm btn-primary mt-2" target="_blank">{{  basename($config->resume) }}</a>
-                            @endif
+                    </div>
+                    <div class="row">
+                        <div class="col-12 row form-group">
+                            <div class="col-6">
+                                <label for="resume">Resume:</label>
+                                <input type="file" name="resume" class="form-control-file" id="resume">
+                            </div>
+                            <div class="col-6">
+                                @if (isset($config->resume) && basename($config->resume) != 'config')
+                                    <a href="{{ $config->resume }}" class="btn btn-sm btn-primary mt-2"
+                                        target="_blank">{{ basename($config->resume) }}</a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                     <hr>
@@ -155,6 +162,61 @@
                             </div>
                         @endforeach
                     </div>
+                    <hr>
+                    <div class="main-container">
+                        <h5>
+                            Features
+                            <button class="btn btn-primary duplicate-btn float-right" type="button">Add more</button>
+                        </h5>
+                        <br />
+                        <div class="row form-group main-content">
+                            <div class="col-md-3 form-group">
+                                <label>Title</label>
+                                <input type="hidden" name="feature_id[]" value="0">
+                                <input name="feature_title[0]" type="text" placeholder="Title"
+                                    class="form-control" />
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label>Description</label>
+                                <input name="feature_description[0]" type="text" placeholder="Description"
+                                    class="form-control" />
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label>Image</label>
+                                <input name="feature_image[0]" type="file" class="form-control form-control-file" />
+                            </div>
+                            <div class="col-md-3">
+                                <img src="{{ asset('images/default.jpg') }}" class="image-preview"
+                                    alt="Feature Image 1" />
+                            </div>
+                        </div>
+                        @foreach ($features as $feature)
+                            <div class="row form-group main-content">
+                                <div class="col-md-3 form-group">
+                                    <label>Title</label>
+                                    <input type="hidden" name="feature_id[]" value="{{ $feature->id }}">
+                                    <input name="feature_title[{{ $feature->id }}]" value="{{ $feature->title }}"
+                                        type="text" placeholder="Title" class="form-control" />
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label>Description</label>
+                                    <input name="feature_description[{{ $feature->id }}]"
+                                        value="{{ $feature->description }}" type="text" placeholder="Description"
+                                        class="form-control" />
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label>Image</label>
+                                    <input name="feature_image[{{ $feature->id }}]" type="file"
+                                        class="form-control form-control-file" />
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="{{ isset($feature->image) ? asset($feature->image) : asset('images/default.jpg') }}"
+                                        class="image-preview" alt="Feature Image 1" />
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
                     <div class="form-group">
                         <label class="edit-status"></label>
                     </div>

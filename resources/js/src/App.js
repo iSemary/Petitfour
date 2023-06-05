@@ -28,6 +28,7 @@ function App() {
         getData();
     }, []);
 
+    
     return (
         <>
             <Header

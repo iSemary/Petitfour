@@ -1,6 +1,6 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Navbar } from "react-bootstrap";
+import { Container, Navbar } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 const changeMode = (e) => {};
 
@@ -10,46 +10,51 @@ function Header(props) {
     return (
         <Navbar
             className={
-                "main-nav bg-main w-100 " +
+                "main-nav w-100 " +
                 (location.pathname === "/" ? "position-absolute" : "nav-pages")
             }
         >
-            <Row className="w-100">
-                <Col md={3}>
-                    <Col md={12} className="ps-5 pt-1 main-logo">
-                        <Link to="/" className="no-link">
-                            <img src={props.logo} alt="Main logo" class="header-logo" />
-                        </Link>
-                    </Col>
-                </Col>
-                <Col md={9} className="nav-links">
-                    <div className="links">
-                        <div>
+            <Container>
+                <Row className="w-100">
+                    <Col md={3}>
+                        <Col md={12} className="ps-5 pt-1 main-logo">
                             <Link to="/" className="no-link">
-                                Home
+                                <img
+                                    src={props.logo}
+                                    alt="Main logo"
+                                    className="header-logo"
+                                />
                             </Link>
-                        </div>
-                        <div>
-                            <Link to="/skills" className="no-link">
-                                Skills
-                            </Link>
-                        </div>
-                        <div>
-                            <Link to="/projects" className="no-link">
-                                Projects
-                            </Link>
-                        </div>
-                        <div>
-                            <Link to="/blogs" className="no-link">
-                                Blogs
-                            </Link>
-                        </div>
-                        <div>
-                            <Link to="/connect" className="no-link">
-                                Connect
-                            </Link>
-                        </div>
-                        {/* <Col md={9}>
+                        </Col>
+                    </Col>
+                    <Col md={9} className="nav-links">
+                        <div className="links">
+                            <div>
+                                <Link to="/" className="no-link">
+                                    Home
+                                </Link>
+                            </div>
+                            <div>
+                                <Link to="/skills" className="no-link">
+                                    Skills
+                                </Link>
+                            </div>
+                            <div>
+                                <Link to="/projects" className="no-link">
+                                    Projects
+                                </Link>
+                            </div>
+                            <div>
+                                <Link to="/blogs" className="no-link">
+                                    Blogs
+                                </Link>
+                            </div>
+                            <div>
+                                <Link to="/connect" className="no-link">
+                                    Connect
+                                </Link>
+                            </div>
+                            {/* <Col md={9}>
                             <Row>
                                 <Col md={6}>
                                     <Row>
@@ -104,9 +109,10 @@ function Header(props) {
                                 </Col>
                             </Row>
                         </Col> */}
-                    </div>
-                </Col>
-            </Row>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
         </Navbar>
     );
 }

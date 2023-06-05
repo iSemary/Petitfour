@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Uploader;
+use App\Models\Feature;
 use App\Models\SocialLink;
 use App\Models\SystemConfig;
 use App\Models\UserConfig;
@@ -19,7 +20,8 @@ class ConfigController extends Controller {
     public function userConfig() {
         $config = UserConfig::findOrFail(1);
         $socialLinks = SocialLink::all();
-        return view("panel.configs.user", compact('config', 'socialLinks'));
+        $features = Feature::all();
+        return view("panel.configs.user", compact('config', 'socialLinks', 'features'));
     }
 
     /**
@@ -67,6 +69,23 @@ class ConfigController extends Controller {
                 SocialLink::updateOrCreate(['id' => $socialLink], $data);
             }
         }
+
+        // Update features
+        foreach ($request->feature_id as $feature) {
+            if ($request->feature_title[$feature] != "") {
+                $featureRecord = Feature::where('id', $feature)->first();
+                $featureImage = Uploader::file(isset($request->file('feature_image')[$feature]) ? $request->file('feature_image')[$feature] : null, $featureRecord, 'image', 'config');
+                $data = [
+                    'title' => $request->feature_title[$feature],
+                    'description' => $request->feature_description[$feature],
+                    'image' => $featureImage,
+                ];
+                Feature::updateOrCreate(['id' => $feature], $data);
+            }
+        }
+
+
+
 
         return response()->json(['message' => "User config saved successfully"], 200);
     }

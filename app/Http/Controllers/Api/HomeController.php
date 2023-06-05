@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
+use App\Models\Experience;
+use App\Models\Feature;
 use App\Models\Project;
 use App\Models\ProjectImage;
 use App\Models\Skill;
 use App\Models\SocialLink;
 use App\Models\SystemConfig;
 use App\Models\UserConfig;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +22,11 @@ class HomeController extends Controller {
 
     public function index(Request $request): JsonResponse {
         $data = new stdClass();
-        $mockedImagePath = asset('storage/projects/mocked/');
+
+        /* This code is selecting the `title`, `description`, and `image` columns from the `features` table in
+            the database and ordering the results by the `id` column in descending order. The results are then
+            stored in the `->features` variable. */
+        $data->features = Feature::select(['title', 'description', 'image'])->orderBy('id')->get();
 
         /* This code is selecting highlighted skills from the `skills` table in the database. It selects the
         `id`, `name`, `icon`, and `theme_icon` columns from the table where the `highlight` column has a
@@ -38,6 +46,7 @@ class HomeController extends Controller {
          *  The results are filtered to include only projects with a highlight value of 1 and are ordered by the `priority` column. 
          * It also loads the associated skills for each project, selecting specific columns from the `skills` table using a closure function.
          */
+        $mockedImagePath = asset('storage/projects/mocked/');
         $data->top_projects = Project::leftJoin('project_images', 'project_images.project_id', 'projects.id')->select([
             'projects.id',
             'projects.name',
@@ -58,6 +67,42 @@ class HomeController extends Controller {
             and ordering the results by the `priority` column. The results are then stored in the
             `->social_links` variable. */
         $data->social_links = SocialLink::select('url', 'type')->orderBy("priority")->get();
+
+
+        /* This code is selecting the latest 4 experiences from the `experiences` table in the database and
+        storing the results in the `->latest_experience` variable. It selects the `company_name`,
+        `company_logo`, `company_location`, `position_title`, `start_date`, and `end_date` columns from the
+        table and orders the results by the `end_date` column in descending order. */
+        $data->latest_experience = Experience::select([
+            'company_name',
+            'company_logo',
+            'company_location',
+            'position_title',
+            'start_date',
+            'end_date',
+        ])->with(['skills' => function ($query) {
+            $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
+        }])->orderBy('end_date', 'DESC')->limit(4)->get();
+
+        /* This code is selecting the latest 3 published blog posts from the `blogs` table in the database
+            where the `status` column has a value of 1 (indicating that the blog post is published). It selects
+            the `id`, `slug`, `title`, `description`, `published_at`, and `image` columns from the table and
+            orders the results by the `published_at` column in descending order. */
+        $data->latest_blogs = Blog::select([
+            'id',
+            'slug',
+            'title',
+            'description',
+            'published_at',
+            'image',
+        ])->where('status', 1)->orderBy("published_at", 'DESC')->limit(3)->get();
+
+        $data->latest_blogs->transform(function ($blog) {
+            $blog->published_at = Carbon::parse($blog->published_at)->format('d M Y');
+            return $blog;
+        });
+
+
 
         /**
          * Collect all config object

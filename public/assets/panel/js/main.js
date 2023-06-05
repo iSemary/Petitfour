@@ -53,7 +53,7 @@ $(document).on("change", ".form-control-file", function (e) {
     if (this.files && this.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            inputFile.parent('.form-group').find(".image-preview").attr("src", e.target.result);
+            inputFile.parents('.form-group').find(".image-preview").attr("src", e.target.result);
         };
         reader.readAsDataURL(this.files[0]); // convert to base64 string
     }
@@ -316,6 +316,6 @@ $(document).on("submit", "#filterTable", function (e) {
     );
 });
 
-$(document).on("click", "#duplicateBtn", function (e) {
-    $("#mainContent:first-of-type").clone().appendTo("#mainContainer");
+$(document).on("click", ".duplicate-btn", function (e) {
+    $(".main-content:first-of-type").clone().appendTo(".main-container");
 });
