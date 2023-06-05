@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Experience;
 use App\Models\Project;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use stdClass;
 
 class SkillController extends Controller {
@@ -60,17 +61,39 @@ class SkillController extends Controller {
         $data->skill = $skill;
 
         // Retrieve projects associated with the skill.
-        $data->projects = Project::leftJoin('project_skills', 'project_skills.project_id', 'projects.id')
-            ->select([
+        $mockedImagePath = asset('storage/projects/mocked/');
+
+        // $data->projects = Project::leftJoin('project_skills', 'project_skills.project_id', 'projects.id')
+        // ->leftJoin('project_images', 'project_images.project_id', 'projects.id')
+        //     ->select([
+        //         'projects.name',
+        //         'projects.description',
+        //         'projects.type',
+        //         'projects.start_date',
+        //         'projects.end_date',
+        //         DB::raw("CONCAT('$mockedImagePath/', project_images.project_image) AS project_mocked_image"),
+        //     ])
+        //     ->where('project_skills.skill_id', $skill->id)
+        //     ->where('project_images.highlight', 1)
+        //     ->orderBy('projects.priority', 'DESC')
+        //     ->get();
+
+            $data->projects = Project::leftJoin('project_images', 'project_images.project_id', 'projects.id')->leftJoin('project_skills', 'project_skills.project_id', 'projects.id')->select([
+                'projects.id',
                 'projects.name',
                 'projects.description',
-                'projects.type',
-                'projects.start_date',
-                'projects.end_date',
+                DB::raw("CONCAT('$mockedImagePath/', project_images.project_image) AS project_mocked_image"),
             ])
+                ->where('project_images.highlight', 1)
             ->where('project_skills.skill_id', $skill->id)
-            ->orderBy('projects.priority', 'DESC')
-            ->get();
+                ->orderBy("projects.priority")
+                ->limit(3)
+                ->orderBy('priority')
+                ->with(['skills' => function ($query) {
+                    $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
+                }])
+                ->get();
+
 
         // Retrieve experiences associated with the skill.
         $data->experiences = Experience::leftJoin('experience_skills', 'experience_skills.experience_id', 'experiences.id')

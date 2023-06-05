@@ -1,64 +1,80 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import AxiosConfig from "../config/AxiosConfig";
+import ProjectTemplate from "./Components/Templates/ProjectTemplate";
+import BlogTemplate from "./Components/Templates/BlogTemplate";
+import { Container, Row } from "react-bootstrap";
 
 const Skill = () => {
-    const [data, setData] = useState(null);
+    const [skill, setSkill] = useState(null);
+    const [skillProjects, setSkillProjects] = useState(null);
+    const [skillExperiences, setSkillExperiences] = useState(null);
+    const [skillBlogs, setSkillBlogs] = useState(null);
+    const { name } = useParams();
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch("your-api-endpoint");
-                const json = await response.json();
-                setData(json.data);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
+        AxiosConfig.get(`/skills/${name}`)
+            .then((response) => {
+                if (response.data.success) {
+                    setSkill(response.data.data.skill);
+                    setSkillProjects(response.data.data.projects);
+                    setSkillExperiences(response.data.data.experiences);
+                    setSkillBlogs(response.data.data.blogs);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [name]);
 
-        fetchData();
-    }, []);
-
-    if (!data) {
+    if (!skill) {
         return <div>Loading...</div>;
     }
 
-    const { skill, projects, blogs } = data;
-
     return (
-        <div>
+        <Container>
             <h1>{skill.name}</h1>
             <img src={skill.icon} alt="Skill Icon" />
             <p>Start Date: {skill.start_date}</p>
 
-            <h2>Projects</h2>
-            {projects.map((project, index) => (
+            <h2 className="text-center">Projects</h2>
+            <Row className="justify-content-center">
+                {skillProjects.map((project, index) => {
+                    return (
+                        <ProjectTemplate
+                            project={project}
+                            col={4}
+                            animate={"fade-right"}
+                            key={index}
+                        />
+                    );
+                })}
+            </Row>
+
+            <h2 className="text-center">Experiences</h2>
+            {skillExperiences.map((experience, index) => (
                 <div key={index}>
-                    <h3>{project.name}</h3>
-                    <p>{project.description}</p>
-                    <p>Start Date: {project.start_date}</p>
-                    <p>End Date: {project.end_date}</p>
+                    <h3>{experience.name}</h3>
+                    <p>{experience.description}</p>
+                    <p>Start Date: {experience.start_date}</p>
+                    <p>End Date: {experience.end_date}</p>
                 </div>
             ))}
 
-            <h2>Experiences</h2>
-            {projects.map((project, index) => (
-                <div key={index}>
-                    <h3>{project.name}</h3>
-                    <p>{project.description}</p>
-                    <p>Start Date: {project.start_date}</p>
-                    <p>End Date: {project.end_date}</p>
-                </div>
-            ))}
-
-            <h2>Blogs</h2>
-            {blogs.map((blog, index) => (
-                <div key={index}>
-                    <h3>{blog.title}</h3>
-                    <p>{blog.description}</p>
-                    <img src={blog.image} alt="Blog Image" />
-                    <p>Published At: {blog.published_at}</p>
-                </div>
-            ))}
-        </div>
+            <h2 className="text-center">Blogs</h2>
+            <Row className="justify-content-center">
+                {skillBlogs.map((blog, index) => {
+                    return (
+                        <BlogTemplate
+                            project={blog}
+                            col={4}
+                            animate={"fade-right"}
+                            key={index}
+                        />
+                    );
+                })}
+            </Row>
+        </Container>
     );
 };
 

@@ -13,8 +13,7 @@ function Projects() {
     const [loadMore, setLoadMore] = useState(false);
 
     const getData = () => {
-        AxiosConfig
-            .get(`/projects?page=${page}`)
+        AxiosConfig.get(`/projects?page=${page}`)
             .then((response) => {
                 if (response.data.success) {
                     setProjects((prevProjects) => [
@@ -48,23 +47,23 @@ function Projects() {
                 {projects.map((project, key) => (
                     <Col md={4} key={key} className="project-item">
                         <Fade delay={1}>
-                            <Card className="mb-4">
-                                <Link to={`/projects/${project.name.toLowerCase()}`}>
-                                    <Card.Img
-                                        variant="top"
-                                        src={project.project_mocked_image}
-                                    />
-                                    <Card.Body>
-                                        <Card.Title>{project.name}</Card.Title>
-                                        <Card.Text>
-                                            {project.description}
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Link>
-                                <Link to={`/projects/${project.name.toLowerCase()}`}>
-                                    <Button variant="primary">Read More</Button>
-                                </Link>
-                            </Card>
+                            <Link
+                                to={`/projects/${project.name.toLowerCase()}`}
+                            >
+                                <Card.Img
+                                    variant="top"
+                                    src={project.project_mocked_image}
+                                />
+                                <Card.Body>
+                                    <Card.Title>{project.name}</Card.Title>
+                                    <Card.Text>{project.description}</Card.Text>
+                                </Card.Body>
+                            </Link>
+                            <Link
+                                to={`/projects/${project.name.toLowerCase()}`}
+                            >
+                                <Button variant="primary">Read More</Button>
+                            </Link>
                         </Fade>
                     </Col>
                 ))}
