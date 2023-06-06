@@ -92,6 +92,10 @@ Convert SASS/SCSS files to css after long work
 gulp css
 ```
 
+```
+sass resources/js/src/assets/styles/style.scss resources/js/src/assets/styles/style.css --watch 
+```
+
 ---
 
 ## Contact

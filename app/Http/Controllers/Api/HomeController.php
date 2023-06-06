@@ -85,6 +85,12 @@ class HomeController extends Controller {
             $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
         }])->orderBy('end_date', 'DESC')->limit(4)->get();
 
+        $data->latest_experience->transform(function ($experience) {
+            $experience->start_date = Carbon::parse($experience->start_date)->format('M Y');
+            $experience->end_date = Carbon::parse($experience->end_date)->format('M Y');
+            return $experience;
+        });
+
         /* This code is selecting the latest 3 published blog posts from the `blogs` table in the database
             where the `status` column has a value of 1 (indicating that the blog post is published). It selects
             the `id`, `slug`, `title`, `description`, `published_at`, and `image` columns from the table and

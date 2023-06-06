@@ -107,7 +107,7 @@
                     <hr>
                     <h5>Social Links</h5>
                     @php
-                        $urlOptions = ['Select type', 'LinkedIn', 'Github', 'Behance', 'Facebook', 'Mail', 'Instagram', 'Twitter', 'Stack over flow'];
+                        $urlOptions = ['Select type', 'LinkedIn', 'Github', 'Stack overflow', 'Behance', 'Mail', 'Facebook', 'Instagram', 'Twitter'];
                     @endphp
                     <div>
                         <div class="row">

@@ -27,7 +27,7 @@ class BlogController extends Controller {
         ])->where('status', 1)->orderBy("published_at", 'DESC')->paginate(6);
 
         $blogs->transform(function ($blog) {
-            $blog->published_at = Carbon::parse($blog->published_at)->format('d M Y');
+            $blog->published_at = Carbon::parse($blog->published_at)->format('M d Y');
             return $blog;
         });
 
@@ -64,8 +64,8 @@ class BlogController extends Controller {
                 'data' => []
             ]);
         }
-        $blog->published_at = Carbon::parse($blog->published_at)->format('d M Y');
-        $blog->skills = $blog->skills()->select(['skills.id', 'skills.icon', 'skills.theme_icon', 'skills.name'])->orderBy('skills.priority')->get();
+        $blog->published_at = Carbon::parse($blog->published_at)->format('M d Y');
+        $blog->skills = $blog->skills()->select(['skills.icon', 'skills.theme_icon', 'skills.name'])->orderBy('skills.priority')->get();
 
         BlogView::create([
             'blog_id' => $blog->id,

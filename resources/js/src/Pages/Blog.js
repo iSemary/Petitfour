@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import AxiosConfig from "../config/AxiosConfig";
 import { Container, Row, Col } from "react-bootstrap";
+import { HiCalendarDays } from "react-icons/hi2";
+import { FaQuoteLeft } from "react-icons/fa";
 
 function Blog() {
     const { slug } = useParams();
@@ -9,8 +11,7 @@ function Blog() {
     const [blogSkills, setBlogSkills] = useState(null);
 
     useEffect(() => {
-        AxiosConfig
-            .get(`/blogs/${slug}`)
+        AxiosConfig.get(`/blogs/${slug}`)
             .then((response) => {
                 if (response.data.success) {
                     setBlog(response.data.data);
@@ -27,42 +28,54 @@ function Blog() {
     }
 
     return (
-        <Container>
-            <div className="blog-page">
-                <Row>
-                    <Col>
-                        <img
-                            className="blog-image"
-                            src={blog.image}
-                            alt={blog.title + " Blog Image"}
-                        />
-                        <h1 className="blog-title">{blog.title}</h1>
-                        <hr />
-                        <p className="blog-description">{blog.description}</p>
-                        <hr />
-                        <div className="blog-content">
-                            <div
-                                dangerouslySetInnerHTML={{
-                                    __html: blog.content,
-                                }}
-                            ></div>
-                        </div>
-                        <p className="blog-date">Author: {blog.published_at}</p>
-                        <hr />
+        <Container className="blog-page">
+            <Row className="blog-details">
+                <Col md={7}>
+                    <img
+                        className="blog-image"
+                        src={blog.image}
+                        alt={blog.title + " Blog Image"}
+                    />
+                </Col>
+                <Col md={5} className="d-grid">
+                    <h1 className="blog-title">
+                        <FaQuoteLeft />
+                        &nbsp;
+                        {blog.title}
+                    </h1>
+
+                    <div className="blog-info">
+                        <p className="blog-description"> {blog.description}</p>
+                        <p className="blog-date">
+                            <HiCalendarDays size={20} />{" "}
+                            <span className="font-weight-bold">
+                                {" "}
+                                {blog.published_at}{" "}
+                            </span>
+                        </p>
                         {
                             <div className="blog-skills">
                                 {blogSkills.map((blogSkill, key) => (
-                                    <span
-                                        key={key}
-                                        className="badge badge-skill"
-                                    >
-                                        {blogSkill.name}
-                                    </span>
+                                    <Link to={"skills/" + blogSkill.name}>
+                                        <span
+                                            key={key}
+                                            className="badge badge-secondary me-1"
+                                        >
+                                            {blogSkill.name}
+                                        </span>
+                                    </Link>
                                 ))}
                             </div>
                         }
-                    </Col>
-                </Row>
+                    </div>
+                </Col>
+            </Row>
+            <div className="blog-content my-5">
+                <div
+                    dangerouslySetInnerHTML={{
+                        __html: blog.content,
+                    }}
+                ></div>
             </div>
         </Container>
     );

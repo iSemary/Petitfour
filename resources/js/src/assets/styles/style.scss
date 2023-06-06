@@ -197,28 +197,47 @@ $black: #282936;
 }
 
 .social-icons {
-    a {
+    .social-link {
         font-size: 20px;
     }
-    a:first-of-type {
+    .social-link-1 {
         svg {
             fill: #0961b8;
         }
     }
-    a:nth-of-type(2) {
+    .social-link-2 {
         svg {
             fill: #1a1d21;
         }
     }
-    a:nth-of-type(3) {
+    .social-link-3 {
         svg {
             fill: #e87921;
         }
     }
-
-    a:nth-of-type(4) {
+    .social-link-4 {
         svg {
             fill: #0053f2;
+        }
+    }
+    .social-link-5 {
+        svg {
+            fill: #808080;
+        }
+    }
+    .social-link-6 {
+        svg {
+            fill: #1877f2;
+        }
+    }
+    .social-link-7 {
+        svg {
+            fill: #1da1f2;
+        }
+    }
+    .social-link-8 {
+        svg {
+            fill: #833ab4;
         }
     }
 }
@@ -401,5 +420,84 @@ $black: #282936;
 .blog-min-card {
     img {
         height: 250px;
+    }
+}
+
+.blog-page {
+    .blog-details {
+        .blog-title {
+            color: $primaryColor;
+            border-bottom: 2px solid $primaryColor;
+            height: fit-content;
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 350px;
+            max-height: 350px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 11px #404040;
+        }
+    }
+
+    .blog-content {
+        border-left: 4px solid $primaryColor;
+        border-radius: 10px;
+        padding-left: 10px;
+    }
+
+    .blog-info {
+        display: grid;
+    }
+}
+.d-grid {
+    display: grid;
+}
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.badge-secondary {
+    background-color: $secondaryColor;
+}
+
+.contact-form-container {
+    position: relative;
+
+    .contact-form.disabled {
+        animation: blurIn 1s;
+    }
+
+    .contact-form.enabled {
+        animation: blurOut 1s;
+    }
+
+    .contact-form-loader,
+    .contact-form-success {
+        display: none;
+        position: absolute;
+        top: 0;
+        z-index: 10;
+    }
+}
+
+@keyframes blurIn {
+    0% {
+        filter: blur(0);
+        opacity: 1;
+    }
+    100% {
+        filter: blur(2px);
+        opacity: 0.5;
+    }
+}
+@keyframes blurOut {
+    0% {
+        filter: blur(2px);
+        opacity: 0.5;
+    }
+    100% {
+        filter: blur(0);
+        opacity: 1;
     }
 }

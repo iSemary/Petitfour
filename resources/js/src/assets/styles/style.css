@@ -171,20 +171,32 @@
   color: #fff;
 }
 
-.social-icons a {
+.social-icons .social-link {
   font-size: 20px;
 }
-.social-icons a:first-of-type svg {
+.social-icons .social-link-1 svg {
   fill: #0961b8;
 }
-.social-icons a:nth-of-type(2) svg {
+.social-icons .social-link-2 svg {
   fill: #1a1d21;
 }
-.social-icons a:nth-of-type(3) svg {
+.social-icons .social-link-3 svg {
   fill: #e87921;
 }
-.social-icons a:nth-of-type(4) svg {
+.social-icons .social-link-4 svg {
   fill: #0053f2;
+}
+.social-icons .social-link-5 svg {
+  fill: #808080;
+}
+.social-icons .social-link-6 svg {
+  fill: #1877f2;
+}
+.social-icons .social-link-7 svg {
+  fill: #1da1f2;
+}
+.social-icons .social-link-8 svg {
+  fill: #833ab4;
 }
 
 .glass-effect {
@@ -336,6 +348,7 @@
 }
 .home-experiences .experience .experience-image .experience-company-logo img {
   position: relative;
+  background-color: #fff;
   z-index: 1;
   width: 90px;
   height: 90px;
@@ -347,6 +360,81 @@
 }
 .home-experiences .experience-even .experience-details .experience-info {
   direction: ltr;
+}
+
+.blog-min-card img {
+  height: 250px;
+}
+
+.blog-page .blog-details .blog-title {
+  color: #1e2629;
+  border-bottom: 2px solid #1e2629;
+  height: fit-content;
+}
+.blog-page .blog-details .blog-image {
+  width: 100%;
+  height: 350px;
+  max-height: 350px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 11px #404040;
+}
+.blog-page .blog-content {
+  border-left: 4px solid #1e2629;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+.blog-page .blog-info {
+  display: grid;
+}
+
+.d-grid {
+  display: grid;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.badge-secondary {
+  background-color: #0d161e;
+}
+
+.contact-form-container {
+  position: relative;
+}
+.contact-form-container .contact-form.disabled {
+  animation: blurIn 1s;
+}
+.contact-form-container .contact-form.enabled {
+  animation: blurOut 1s;
+}
+.contact-form-container .contact-form-loader,
+.contact-form-container .contact-form-success {
+  display: none;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
+
+@keyframes blurIn {
+  0% {
+    filter: blur(0);
+    opacity: 1;
+  }
+  100% {
+    filter: blur(2px);
+    opacity: 0.5;
+  }
+}
+@keyframes blurOut {
+  0% {
+    filter: blur(2px);
+    opacity: 0.5;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
