@@ -377,6 +377,7 @@ $black: #282936;
             .experience-company-logo {
                 img {
                     position: relative;
+                    background-color: #fff;
                     z-index: 1;
                     width: 90px;
                     height: 90px;
@@ -394,5 +395,11 @@ $black: #282936;
                 direction: ltr;
             }
         }
+    }
+}
+
+.blog-min-card {
+    img {
+        height: 250px;
     }
 }

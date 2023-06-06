@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSkills } from "../actions/skillsSlice";
 import Col from "react-bootstrap/esm/Col";
-import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
-import react from "../assets/images/icons/react.png";
-import vue from "../assets/images/icons/vue.png";
-import jquery from "../assets/images/icons/jquery.png";
 import SkillLoader from "./Loaders/SkillLoader";
 import OverlayTrigger from "react-bootstrap/esm/OverlayTrigger";
 import Tooltip from "react-bootstrap/esm/Tooltip";
@@ -23,7 +19,8 @@ function Skills() {
 
     let SkillsSection = null;
     if (skills.success) {
-        SkillsSection = skills.data.map((skill, i) => {
+        console.log(skills.data.categories);
+        SkillsSection = skills.data.categories.map((skill, i) => {
             return (
                 <Col
                     md={12}
@@ -34,7 +31,7 @@ function Skills() {
                         <Col md={6}>
                             <div className="major-skills">
                                 <div className="text-center row">
-                                    {skill.skills.map((majorSkill, i) => {
+                                    {skill.skills?.map((majorSkill, i) => {
                                         return (
 
                                             <div className="col-6" key={i}>
@@ -73,7 +70,7 @@ function Skills() {
                             <p>{skill.description}</p>
 
                             <Row className="width-fit-content">Z
-                                {skill.sides.map((sideSkill, i) => {
+                                {skill.additional.map((sideSkill, i) => {
                                     return (
                                         <Col
                                             key={i}

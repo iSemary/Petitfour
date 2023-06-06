@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('dashboard')->group(function () {
 
-
     Route::middleware(['guest'])->group(function () {
         Route::get('login', [UserController::class, 'login'])->name("login");
         Route::post('login', [UserController::class, 'submitLogin'])->name("login.submit");
@@ -31,7 +30,6 @@ Route::prefix('dashboard')->group(function () {
         Route::get('skills/sort', [SkillController::class, 'sort'])->name('skills.sort');
         Route::put('skills/update-sort', [SkillController::class, 'updateSort'])->name('skills.updateSort');
         Route::resources(['skills' => SkillController::class]);
-
 
         Route::get('projects/sort', [ProjectController::class, 'sort'])->name('projects.sort');
         Route::put('projects/update-sort', [ProjectController::class, 'updateSort'])->name('projects.updateSort');

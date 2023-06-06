@@ -6,7 +6,7 @@ import { Fade, Slide } from "react-awesome-reveal";
 function BlogTemplate({ blog, col }) {
     return (
         <>
-            <Col md={col} className="blog-item">
+            <Col md={col} className="blog-item blog-min-card">
                 <Fade delay={1}>
                     <Card className="mb-4">
                         <Link to={`/blogs/${blog.slug}`}>

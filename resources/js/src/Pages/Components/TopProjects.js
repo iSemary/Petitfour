@@ -1,11 +1,6 @@
-import React, { useEffect } from "react";
-import Col from "react-bootstrap/esm/Col";
+import React from "react";
 import Row from "react-bootstrap/esm/Row";
 import { Link } from "react-router-dom";
-
-import css from "../../assets/images/icons/css.png";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 import { BiNavigation } from "react-icons/bi";
 
 import AOS from "aos";
