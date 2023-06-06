@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { HiCode } from "react-icons/hi";
 
 function ProjectTemplate({ project, col, animate }) {
     const MAX_PROJECT_SKILLS = 4;
@@ -38,7 +39,8 @@ function ProjectTemplate({ project, col, animate }) {
                         })}
                     {project.skills.length > MAX_PROJECT_SKILLS && (
                         <Col md={2} key={MAX_PROJECT_SKILLS}>
-                            {"+" +
+                            <HiCode size={20} />{
+                                "+" +
                                 (project.skills.length - MAX_PROJECT_SKILLS) +
                                 " Skills"}
                         </Col>

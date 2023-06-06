@@ -9,6 +9,7 @@ import { CgProfile } from "react-icons/cg";
 import { FaGlobeAfrica } from "react-icons/fa";
 import { BsMailbox2 } from "react-icons/bs";
 import { FiPhoneCall } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 function Footer(props) {
     return (
@@ -66,27 +67,27 @@ function Footer(props) {
                         </Col>
                         <Col md="3" lg="4" xl="4" className="mx-auto mb-4">
                             <h6 className="text-uppercase fw-bold mb-4">
-                                Useful links
+                                Quick links
                             </h6>
                             <p>
-                                <a href="#!" className="text-reset">
-                                    Pricing
-                                </a>
+                                <Link className="text-reset" to="projects">
+                                    Projects
+                                </Link>
                             </p>
                             <p>
-                                <a href="#!" className="text-reset">
-                                    Settings
-                                </a>
+                                <Link className="text-reset" to="skills">
+                                    Skills
+                                </Link>
                             </p>
                             <p>
-                                <a href="#!" className="text-reset">
-                                    Orders
-                                </a>
+                                <Link className="text-reset" to="blogs">
+                                    Blogs
+                                </Link>
                             </p>
                             <p>
-                                <a href="#!" className="text-reset">
-                                    Help
-                                </a>
+                                <Link className="text-reset" to="connect">
+                                    Connect
+                                </Link>
                             </p>
                         </Col>
                         <Col

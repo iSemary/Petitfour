@@ -22,13 +22,20 @@ class ProjectController extends Controller {
      * @return an array of objects.
      */
     public function index(): JsonResponse {
+
+        $mockedImagePath = asset('storage/projects/mocked/');
         $projects = Project::leftJoin('project_images', 'project_images.project_id', 'projects.id')->select([
             'projects.id',
             'projects.name',
             'projects.description',
-            DB::raw("CONCAT('$this->mockedImagePath/', project_images.project_image) AS project_mocked_image"),
-        ])->orderBy("projects.priority")->paginate(6);
-
+            DB::raw("CONCAT('$mockedImagePath/', project_images.project_image) AS project_mocked_image"),
+        ])
+            ->where('project_images.highlight', 1)
+            ->orderBy("projects.priority")
+            ->orderBy('priority')
+            ->with(['skills' => function ($query) {
+                $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
+            }])->paginate(6);
 
         /* Returning a json response with the data. */
         return response()->json([

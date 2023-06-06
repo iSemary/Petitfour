@@ -48,7 +48,6 @@ class SkillController extends Controller {
         // Validate the input
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:skills',
-            'category_id' => 'required',
             'type' => 'required',
             'priority' => 'required',
             'start_date' => 'required',
@@ -95,7 +94,6 @@ class SkillController extends Controller {
         // Validate the input
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:skills,name,' . $id,
-            'category_id' => 'required',
             'type' => 'required',
             'priority' => 'required',
             'start_date' => 'required',

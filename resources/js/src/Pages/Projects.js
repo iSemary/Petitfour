@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { ImSpinner10 } from "react-icons/im";
 import { HiOutlineDownload } from "react-icons/hi";
 import { Fade, Slide } from "react-awesome-reveal";
+import ProjectTemplate from "./Components/Templates/ProjectTemplate";
 
 function Projects() {
     const [page, setPage] = useState(1);
@@ -45,27 +46,12 @@ function Projects() {
             <h1 className="my-4">Projects</h1>
             <Row className="projects">
                 {projects.map((project, key) => (
-                    <Col md={4} key={key} className="project-item">
-                        <Fade delay={1}>
-                            <Link
-                                to={`/projects/${project.name.toLowerCase()}`}
-                            >
-                                <Card.Img
-                                    variant="top"
-                                    src={project.project_mocked_image}
-                                />
-                                <Card.Body>
-                                    <Card.Title>{project.name}</Card.Title>
-                                    <Card.Text>{project.description}</Card.Text>
-                                </Card.Body>
-                            </Link>
-                            <Link
-                                to={`/projects/${project.name.toLowerCase()}`}
-                            >
-                                <Button variant="primary">Read More</Button>
-                            </Link>
-                        </Fade>
-                    </Col>
+                    <ProjectTemplate
+                        project={project}
+                        col={4}
+                        animate={"fade-right"}
+                        key={key}
+                    />
                 ))}
             </Row>
             {totalRecords > projects.length && (

@@ -66,7 +66,7 @@ const Skill = () => {
                 {skillBlogs.map((blog, index) => {
                     return (
                         <BlogTemplate
-                            project={blog}
+                            blog={blog}
                             col={4}
                             animate={"fade-right"}
                             key={index}

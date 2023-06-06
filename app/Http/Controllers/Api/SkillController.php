@@ -25,11 +25,12 @@ class SkillController extends Controller {
         $data = [];
         /* Looping through the types and adding the skills to the data array. */
         foreach ($categories as $key => $category) {
-            $data[$key] = $category;
-            $data[$key]['skills'] = Skill::select(['id', 'name', 'icon', 'theme_icon', 'type'])->where('category_id', $category['id'])->where('type', 1)->orderBy('priority', 'DESC')->get();
-            $data[$key]['sides'] = Skill::select(['id', 'name', 'icon', 'theme_icon'])->where('category_id', $category['id'])->where('type', 0)->orderBy('priority', 'DESC')->get();
+            $data['categories'][$key] = $category;
+            $data['categories'][$key]['skills'] = Skill::select(['id', 'name', 'icon', 'theme_icon', 'type'])->where('category_id', $category['id'])->where('type', 1)->orderBy('priority', 'DESC')->get();
+            $data['categories'][$key]['additional'] = Skill::select(['id', 'name', 'icon', 'theme_icon'])->where('category_id', $category['id'])->where('type', 0)->orderBy('priority', 'DESC')->get();
         }
 
+        $data['side'] =  Skill::select(['id', 'name', 'icon', 'theme_icon'])->where('type', 2)->orderBy('priority', 'DESC')->get();
         /* Returning a json response with the data. */
         return response()->json([
             'success' => true,
@@ -63,36 +64,21 @@ class SkillController extends Controller {
         // Retrieve projects associated with the skill.
         $mockedImagePath = asset('storage/projects/mocked/');
 
-        // $data->projects = Project::leftJoin('project_skills', 'project_skills.project_id', 'projects.id')
-        // ->leftJoin('project_images', 'project_images.project_id', 'projects.id')
-        //     ->select([
-        //         'projects.name',
-        //         'projects.description',
-        //         'projects.type',
-        //         'projects.start_date',
-        //         'projects.end_date',
-        //         DB::raw("CONCAT('$mockedImagePath/', project_images.project_image) AS project_mocked_image"),
-        //     ])
-        //     ->where('project_skills.skill_id', $skill->id)
-        //     ->where('project_images.highlight', 1)
-        //     ->orderBy('projects.priority', 'DESC')
-        //     ->get();
-
-            $data->projects = Project::leftJoin('project_images', 'project_images.project_id', 'projects.id')->leftJoin('project_skills', 'project_skills.project_id', 'projects.id')->select([
-                'projects.id',
-                'projects.name',
-                'projects.description',
-                DB::raw("CONCAT('$mockedImagePath/', project_images.project_image) AS project_mocked_image"),
-            ])
-                ->where('project_images.highlight', 1)
+        $data->projects = Project::leftJoin('project_images', 'project_images.project_id', 'projects.id')->leftJoin('project_skills', 'project_skills.project_id', 'projects.id')->select([
+            'projects.id',
+            'projects.name',
+            'projects.description',
+            DB::raw("CONCAT('$mockedImagePath/', project_images.project_image) AS project_mocked_image"),
+        ])
+            ->where('project_images.highlight', 1)
             ->where('project_skills.skill_id', $skill->id)
-                ->orderBy("projects.priority")
-                ->limit(3)
-                ->orderBy('priority')
-                ->with(['skills' => function ($query) {
-                    $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
-                }])
-                ->get();
+            ->orderBy("projects.priority")
+            ->limit(3)
+            ->orderBy('priority')
+            ->with(['skills' => function ($query) {
+                $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
+            }])
+            ->get();
 
 
         // Retrieve experiences associated with the skill.
