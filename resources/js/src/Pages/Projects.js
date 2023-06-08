@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AxiosConfig from "../config/AxiosConfig";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Container, Row, Button } from "react-bootstrap";
 import { ImSpinner10 } from "react-icons/im";
 import { HiOutlineDownload } from "react-icons/hi";
-import { Fade, Slide } from "react-awesome-reveal";
 import ProjectTemplate from "./Components/Templates/ProjectTemplate";
 
 function Projects() {
@@ -34,7 +32,7 @@ function Projects() {
 
     useEffect(() => {
         getData();
-    }, []);
+    });
 
     const loadMoreData = () => {
         setLoadMore(true);

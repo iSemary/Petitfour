@@ -1,8 +1,6 @@
 import React from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { Fade, Slide } from "react-awesome-reveal";
-import { Link } from "react-router-dom";
 import BlogTemplate from "./Templates/BlogTemplate";
+import { Row } from "react-bootstrap";
 
 function LatestBlogs(props) {
     return (

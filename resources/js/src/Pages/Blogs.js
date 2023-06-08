@@ -4,7 +4,7 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { ImSpinner10 } from "react-icons/im";
 import { HiOutlineDownload } from "react-icons/hi";
-import { Fade, Slide } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 function Blogs() {
     const [page, setPage] = useState(1);

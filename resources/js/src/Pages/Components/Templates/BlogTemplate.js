@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Fade, Slide } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 function BlogTemplate({ blog, col }) {
     return (

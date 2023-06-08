@@ -2,7 +2,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Container, Navbar } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-const changeMode = (e) => {};
 
 function Header(props) {
     const location = useLocation();

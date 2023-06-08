@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSkills } from "../actions/skillsSlice";
 import Col from "react-bootstrap/esm/Col";
