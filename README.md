@@ -1,6 +1,8 @@
 # Petitfour
 
-Project Description goes here...
+N.B. **This project took me about month or more to finish it, Just because I didn’t have enough time for it, i just gave it 1 hour/day, somedays I didn’t open it; cause i work as full time and i also have another side projects for my clients, So it wasn’t on my top priorities.**
+
+**Hope you enjoy it and find it helpful!**
 
 ## Postman Collection APIs
 
@@ -93,7 +95,7 @@ gulp css
 ```
 
 ```
-sass resources/js/src/assets/styles/style.scss resources/js/src/assets/styles/style.css --watch 
+sass --watch resources/js/src/assets/styles/style.scss:resources/js/src/assets/styles/style.css 
 ```
 
 ---

@@ -13,7 +13,7 @@ function BlogTemplate({ blog, col }) {
                             <Card.Img variant="top" src={blog.image} />
                             <Card.Body>
                                 <Card.Title>{blog.title}</Card.Title>
-                                <Card.Text>{blog.description}</Card.Text>
+                                <Card.Text className="blog-description">{blog.description}</Card.Text>
                             </Card.Body>
                         </Link>
                     </Card>

@@ -32,7 +32,7 @@ function Projects() {
 
     useEffect(() => {
         getData();
-    });
+    }, []);
 
     const loadMoreData = () => {
         setLoadMore(true);

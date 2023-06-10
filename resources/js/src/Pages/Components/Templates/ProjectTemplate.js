@@ -8,8 +8,8 @@ function ProjectTemplate({ project, col, animate }) {
 
     return (
         <Col md={col} data-aos={animate}>
-            <Link className="no-link" to={`projects/${project.name}`}>
-                <h6 className="project-title">{project.name}</h6>
+            <Link className="no-link" to={`/projects/${project.name}`}>
+                <h3 className="project-title">{project.name}</h3>
                 <img
                     alt={`Top Project ${project.name}`}
                     src={project.project_mocked_image}

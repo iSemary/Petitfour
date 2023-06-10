@@ -32,7 +32,6 @@ class ProjectController extends Controller {
         ])
             ->where('project_images.highlight', 1)
             ->orderBy("projects.priority")
-            ->orderBy('priority')
             ->with(['skills' => function ($query) {
                 $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
             }])->paginate(6);

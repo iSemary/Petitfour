@@ -48,12 +48,12 @@ function Blogs() {
                 {blogs.map((blog, key) => (
                     <Col md={4} key={key} className="blog-item">
                         <Fade delay={1}>
-                            <Card className="mb-4">
+                            <Card className="mb-4 blog-card">
                                 <Link to={`/blogs/${blog.slug}`}>
                                     <Card.Img variant="top" src={blog.image} />
                                     <Card.Body>
                                         <Card.Title>{blog.title}</Card.Title>
-                                        <Card.Text>
+                                        <Card.Text className="blog-description">
                                             {blog.description}
                                         </Card.Text>
                                     </Card.Body>

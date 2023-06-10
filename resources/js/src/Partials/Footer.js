@@ -15,8 +15,8 @@ function Footer(props) {
     const linkIcons = [null, <BsLinkedin />, <SiGithub />, <BsStackOverflow />, <ImBehance2 />, <MdEmail/>, <BsFacebook />, <BsInstagram />, <BsTwitter/>];
 
     return (
-        <footer className="text-center bg-main text-lg-start text-muted">
-            <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <footer className="text-center text-lg-start text-muted">
+            <section className="d-flex justify-content-center justify-content-lg-between p-4 social-links">
                 <Container className="text-center text-md-start mt-5">
                     <div className="me-5 d-none d-lg-block"></div>
                     <div className="social-icons">
@@ -36,8 +36,8 @@ function Footer(props) {
             </section>
             <section className="">
                 <Container className="text-center text-md-start mt-5">
-                    <Row className="mt-3">
-                        <Col md="4" lg="4" xl="4" className="mx-auto mb-4">
+                    <Row className="mt-3 justify-content-between mb-4">
+                        <Col md="4" lg="4" xl="4">
                             <h6 className="text-uppercase fw-bold mb-4">
                                 <CgProfile />{" "}
                                 {props.userInfo?.first_name +
@@ -46,7 +46,7 @@ function Footer(props) {
                             </h6>
                             <p>{props.userInfo?.bio}</p>
                         </Col>
-                        <Col md="3" lg="4" xl="4" className="mx-auto mb-4">
+                        <Col md="3" lg="4" xl="2">
                             <h6 className="text-uppercase fw-bold mb-4">
                                 Quick links
                             </h6>
@@ -75,7 +75,6 @@ function Footer(props) {
                             md={4}
                             lg={4}
                             xl={4}
-                            className="mx-auto mb-md-0 mb-4"
                         >
                             <h6 className="text-uppercase fw-bold mb-4">
                                 Contact

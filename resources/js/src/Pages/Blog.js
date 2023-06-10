@@ -56,7 +56,7 @@ function Blog() {
                         {
                             <div className="blog-skills">
                                 {blogSkills.map((blogSkill, key) => (
-                                    <Link to={"skills/" + blogSkill.name}>
+                                    <Link to={"/skills/" + blogSkill.name}>
                                         <span
                                             key={key}
                                             className="badge badge-secondary me-1"
