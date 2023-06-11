@@ -72,6 +72,7 @@ class SkillController extends Controller {
             'category_id' => $request->input('category_id'),
             'type' => $request->input('type'),
             'priority' => $request->input('priority'),
+            'color_code' => $request->input('color_code'),
             'highlight' => boolval($request->input('highlight')),
             'icon' => $filename,
             'start_date' => $request->input('start_date'),
@@ -131,6 +132,7 @@ class SkillController extends Controller {
         $skill->category_id = $request->input('category_id');
         $skill->type = $request->input('type');
         $skill->priority = $request->input('priority');
+        $skill->color_code = $request->input('color_code');
         $skill->highlight = boolval($request->input('highlight'));
         $skill->start_date = $request->input('start_date');
         $skill->save();

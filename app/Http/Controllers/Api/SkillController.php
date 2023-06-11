@@ -26,8 +26,8 @@ class SkillController extends Controller {
         /* Looping through the types and adding the skills to the data array. */
         foreach ($categories as $key => $category) {
             $data['categories'][$key] = $category;
-            $data['categories'][$key]['skills'] = Skill::select(['id', 'name', 'icon', 'theme_icon', 'type'])->where('category_id', $category['id'])->where('type', 1)->orderBy('priority', 'DESC')->get();
-            $data['categories'][$key]['additional'] = Skill::select(['id', 'name', 'icon', 'theme_icon'])->where('category_id', $category['id'])->where('type', 0)->orderBy('priority', 'DESC')->get();
+            $data['categories'][$key]['skills'] = Skill::select(['id', 'name', 'icon', 'theme_icon', 'type', 'color_code'])->where('category_id', $category['id'])->where('type', 1)->orderBy('priority', 'DESC')->get();
+            $data['categories'][$key]['additional'] = Skill::select(['id', 'name', 'icon', 'theme_icon', 'color_code'])->where('category_id', $category['id'])->where('type', 0)->orderBy('priority', 'DESC')->get();
         }
 
         $data['side'] =  Skill::select(['id', 'name', 'icon', 'theme_icon'])->where('type', 2)->orderBy('priority', 'DESC')->get();
@@ -49,7 +49,7 @@ class SkillController extends Controller {
         // Create a new stdClass object to store the data.
         $data = new stdClass();
         // Retrieve the skill information based on the given name.
-        $skill = Skill::select(['id', 'name', 'theme_icon', 'icon', 'start_date'])->where('name', $skill)->first();
+        $skill = Skill::select(['id', 'name', 'theme_icon', 'icon', 'color_code', 'start_date'])->where('name', $skill)->first();
         if (!$skill) {
             // If no skill is found, return an error JSON response.
             return response()->json([

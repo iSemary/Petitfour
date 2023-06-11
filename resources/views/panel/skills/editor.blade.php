@@ -46,6 +46,10 @@
                         value="{{ isset($skill) ? $skill->priority : '0' }}" placeholder="Priority" required />
                 </div>
                 <div class="form-group">
+                    <label>Color Code</label>
+                    <input type="color" name="color_code" value="{{ isset($skill) ? $skill->color_code : "" }}" class="form-control">
+                </div>
+                <div class="form-group">
                     <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input" {{ isset($skill) && $skill->highlight == 1 ? "checked" :"" }} name="highlight" id="toggleSwitch">
                         <label class="custom-control-label" for="toggleSwitch">Highlight</label>
