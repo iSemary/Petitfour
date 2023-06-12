@@ -1,7 +1,7 @@
 import React from "react";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
-import "@lottiefiles/lottie-player";
+// import "@lottiefiles/lottie-player";
 
 // https://assets2.lottiefiles.com/private_files/lf30_0UeVUn.json
 // https://assets7.lottiefiles.com/packages/lf20_yneU269b00.json

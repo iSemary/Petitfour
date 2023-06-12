@@ -19,6 +19,7 @@
     "@emotion/react": "^11.11.0",
     "@lottiefiles/lottie-player": "^1.7.1",
     "@reduxjs/toolkit": "^1.9.5",
+    "@splidejs/react-splide": "^0.7.12",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -42,7 +43,8 @@
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-sass": "^5.1.0",
-    "sass": "^1.62.1"
+    "sass": "^1.62.1",
+    "webpack": "^5.86.0"
   },
   "browserslist": {
     "production": [

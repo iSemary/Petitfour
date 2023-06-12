@@ -16,9 +16,9 @@ function Router(props) {
                 <Route path="/" element={<Home config={props.config} />} />
                 <Route path="/skills" element={<Skills />} />
                 <Route path="/skills/:name" element={<Skill />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/projects/:name" element={<Project />} />
-                <Route path="/blogs" element={<Blogs />} />
+                <Route path="/projects" element={<Projects categories={props.config?.categories} />} />
+                <Route path="/projects/:name" element={<Project/>} />
+                <Route path="/blogs" element={<Blogs categories={props.config?.categories} />} />
                 <Route path="/blogs/:slug" element={<Blog />} />
                 <Route path="/connect" element={<Connect config={props.config?.config?.system} />} />
             </Routes>

@@ -4,18 +4,23 @@ import AxiosConfig from "../config/AxiosConfig";
 import { Container, Row, Col } from "react-bootstrap";
 import { HiCalendarDays } from "react-icons/hi2";
 import { FaQuoteLeft } from "react-icons/fa";
+import BlogTemplate from "./Components/Templates/BlogTemplate";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import '@splidejs/react-splide/css';
 
 function Blog() {
     const { slug } = useParams();
     const [blog, setBlog] = useState(null);
+    const [similarBlogs, setSimilarBlogs] = useState([]);
     const [blogSkills, setBlogSkills] = useState(null);
 
     useEffect(() => {
         AxiosConfig.get(`/blogs/${slug}`)
             .then((response) => {
                 if (response.data.success) {
-                    setBlog(response.data.data);
-                    setBlogSkills(response.data.data.skills);
+                    setBlog(response.data.data.blog);
+                    setBlogSkills(response.data.data.blog.skills);
+                    setSimilarBlogs(response.data.data.similar);
                 }
             })
             .catch((error) => {
@@ -77,6 +82,29 @@ function Blog() {
                     }}
                 ></div>
             </div>
+
+            <hr className="custom-hr" />
+            {similarBlogs && similarBlogs.length > 0 && (
+                <>
+                    <h3 className="text-center">
+                        Similar blogs you may interested in
+                    </h3>
+                    <Row className="home-blogs">
+                        <Splide aria-label="My Favorite Images">
+                            {similarBlogs.map((similarBlog, index) => (
+                                <SplideSlide>
+                                    <BlogTemplate
+                                        blog={similarBlog}
+                                        col={4}
+                                        animate={"fade-right"}
+                                        key={index}
+                                    />
+                                </SplideSlide>
+                            ))}
+                        </Splide>
+                    </Row>
+                </>
+            )}
         </Container>
     );
 }

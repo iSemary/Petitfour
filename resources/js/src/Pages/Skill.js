@@ -60,7 +60,7 @@ const Skill = () => {
                         <p>Start Date: {skill.start_date}</p>
                     </Col>
                     <Col md={6} className="img-container text-right">
-                        <img src={skill.icon} alt="Skill Icon" />
+                        <img src={skill.icon} className="skill-img" alt="Skill Icon" />
                     </Col>
                 </Row>
             </div>

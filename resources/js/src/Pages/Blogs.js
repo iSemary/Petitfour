@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import AxiosConfig from "../config/AxiosConfig";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { ImSpinner10 } from "react-icons/im";
 import { HiOutlineDownload } from "react-icons/hi";
 import { Fade } from "react-awesome-reveal";
 
-function Blogs() {
+function Blogs({ categories }) {
     const [page, setPage] = useState(1);
     const [blogs, setBlogs] = useState([]);
+    const [category, setCategory] = useState([]);
     const [totalRecords, setTotalRecords] = useState(null);
     const [loadMore, setLoadMore] = useState(false);
 
     const getData = () => {
-        AxiosConfig
-            .get(`/blogs?page=${page}`)
+        AxiosConfig.get(
+            `/blogs?page=${page}${category ? "&category=" + category : ""}`
+        )
             .then((response) => {
                 if (response.data.success) {
                     setBlogs((prevBlogs) => [
@@ -33,8 +35,10 @@ function Blogs() {
     };
 
     useEffect(() => {
+        setBlogs([]);
+        setPage(1);
         getData();
-    }, []);
+    }, [category]);
 
     const loadMoreData = () => {
         setLoadMore(true);
@@ -43,9 +47,35 @@ function Blogs() {
 
     return (
         <Container>
-            <h1 className="my-4">Blogs</h1>
+            <Row>
+                <Col md={6}>
+                    <h1 className="my-4">Blogs</h1>
+                </Col>
+                <Col md={6} className="blog-filter justify-content-between">
+                    {categories &&
+                        categories.length > 0 &&
+                        categories.map((category, index) => (
+                            <button
+                                className="btn btn-main"
+                                key={index}
+                                onClick={(e) => {
+                                    setPage(1);
+                                    setCategory(
+                                        category.name
+                                            .split(" ")
+                                            .join("-")
+                                            .toLowerCase()
+                                    );
+                                }}
+                            >
+                                {category.name} <span>{category.counters.blogs}</span>
+                            </button>
+                        ))}
+                </Col>
+            </Row>
+
             <Row className="blogs">
-                {blogs.map((blog, key) => (
+                {blogs?.map((blog, key) => (
                     <Col md={4} key={key} className="blog-item">
                         <Fade delay={1}>
                             <Card className="mb-4 blog-card">
@@ -59,7 +89,9 @@ function Blogs() {
                                     </Card.Body>
                                 </Link>
                                 <Link to={`/blogs/${blog.slug}`}>
-                                    <Button variant="none" className="more-btn">Read More</Button>
+                                    <Button variant="none" className="more-btn">
+                                        Read More
+                                    </Button>
                                 </Link>
                             </Card>
                         </Fade>

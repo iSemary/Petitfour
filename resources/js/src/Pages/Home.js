@@ -15,11 +15,10 @@ import LatestBlogs from "./Components/LatestBlogs";
 function Home(props) {
     const [isPlayingTransition, setIsPlayingTransition] = useState(false);
     const transitionRef = useRef(null);
+    const positionTitleRef = useRef(null);
     const theme = localStorage.getItem("theme") === "true";
 
-    const startFlashing = (e) => {
-        
-    }
+    const startFlashing = (e) => {};
 
     const switchTheme = (e) => {
         localStorage.setItem("theme", String(!theme));
@@ -29,6 +28,31 @@ function Home(props) {
 
     const handleTransitionEnded = (e) => {
         setIsPlayingTransition(false);
+    };
+
+    const animateHackText = (reference) => {
+        const letters = "ABMNOPQRSTUVWXYZ&~$[+%+`@*@%+?$^";
+        let interval = null;
+        let iteration = 0;
+        clearInterval(interval);
+        interval = setInterval(() => {
+            reference.current.innerText = reference.current.innerText
+                .split("")
+                .map((letter, index) => {
+                    if (index < iteration) {
+                        return reference.current.dataset.value[index];
+                    }
+
+                    return letters[Math.floor(Math.random() * 26)];
+                })
+                .join("");
+
+            if (iteration >= reference.current.dataset.value.length) {
+                clearInterval(interval);
+            }
+
+            iteration += 1 / 3;
+        }, 20);
     };
 
     return (
@@ -45,7 +69,14 @@ function Home(props) {
                                     <br />
                                     {props?.config?.config?.user?.last_name}
                                 </h1>
-                                <h4>{props?.config?.config?.user?.position}</h4>
+                                <h4
+                                    ref={positionTitleRef}
+                                    data-value={props?.config?.config?.user?.position}
+                                    className="text-hack-animation width-fit-content"
+                                    onMouseOver={() => animateHackText(positionTitleRef)}
+                                >
+                                    {props?.config?.config?.user?.position}
+                                </h4>
                                 <p>{props?.config?.config?.user?.slogan}</p>
                             </div>
                             <div className="top-home-buttons">

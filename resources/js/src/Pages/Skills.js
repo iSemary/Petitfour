@@ -31,8 +31,7 @@ function Skills() {
     if (skills.success) {
         SkillsSection = skills.data.categories.map((skill, i) => {
             return (
-                <Col
-                    md={12}
+                <div
                     key={i}
                     className={"bg-" + bgs[i % 2] + " text-" + txt[i % 2]}
                 >
@@ -147,15 +146,15 @@ function Skills() {
                             </Col>
                         </Row>
                     </Container>
-                </Col>
+                </div>
             );
         });
     }
     return (
         <>
-            <Row className="bg-main">
+            <div className="bg-main">
                 {skills.success ? SkillsSection : <SkillLoader />}
-            </Row>
+            </div>
         </>
     );
 }

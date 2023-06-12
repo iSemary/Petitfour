@@ -361,7 +361,7 @@ body {
     height: 350px;
     max-height: 350px;
     border-radius: 10px;
-    box-shadow: 0px 0px 11px #404040; }
+    box-shadow: -2px -2px 6px #ffffff3d; }
   .blog-page .blog-content {
     border-left: 4px solid #884dff;
     border-radius: 10px;
@@ -435,14 +435,22 @@ body {
   padding: 10px; }
   .skill-card .img-container {
     position: relative; }
-    .skill-card .img-container img {
+    .skill-card .img-container .skill-img {
       position: absolute;
       top: -40px;
       right: -24px;
-      filter: drop-shadow(2px 4px 6px #000);
+      filter: drop-shadow(2px 4px 3px #000);
       width: 90px; }
 
 .custom-hr {
   border-top: 2px solid; }
+
+.text-hack-animation:hover {
+  background: linear-gradient(271deg, rgba(227, 225, 250, 0.2693452381) 0%, #e3e1fa 100%);
+  color: #100126; }
+
+.blog-filter {
+  display: flex;
+  align-items: center; }
 
 /*# sourceMappingURL=style.css.map */

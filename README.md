@@ -48,6 +48,8 @@ N.B. **This project took me about month or more to finish it, Just because I did
 -   react-awesome-reveal [Animation]
 -   axios [HTTP Requests]
 -   Redux [State Managment]
+-   Splide [Carousel]
+-   node-sass [Importing vars from sass files to react]
 
 ### Laravel Commands
 

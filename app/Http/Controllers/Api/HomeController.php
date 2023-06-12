@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\Experience;
 use App\Models\Feature;
 use App\Models\Project;
@@ -22,6 +23,14 @@ class HomeController extends Controller {
 
     public function index(Request $request): JsonResponse {
         $data = new stdClass();
+
+
+        // Returning all categories        
+        $data->categories = Category::select([
+            'id',
+            'name',
+        ])->get();
+
 
         /* This code is selecting the `title`, `description`, and `image` columns from the `features` table in
             the database and ordering the results by the `id` column in descending order. The results are then
@@ -108,7 +117,6 @@ class HomeController extends Controller {
             $blog->published_at = Carbon::parse($blog->published_at)->format('d M Y');
             return $blog;
         });
-
 
 
         /**

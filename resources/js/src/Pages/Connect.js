@@ -223,8 +223,7 @@ function Connect(props) {
                                 I'm thrilled that you'd like to get in touch
                                 with me. If you have any questions,
                                 opportunities, or simply want to connect, please
-                                feel free to reach out using any of the methods
-                                below:
+                                feel free to reach out using this form below:
                             </p>
 
                             <div className="contact-form-container">
@@ -232,10 +231,9 @@ function Connect(props) {
                                     method="POST"
                                     ref={formRef}
                                     className={
-                                        "contact-form " +
-                                        (formStatus === 1
+                                        formStatus === 1
                                             ? "disabled"
-                                            : "enabled")
+                                            : "enabled"
                                     }
                                     onSubmit={handleSubmit}
                                 >
@@ -266,10 +264,7 @@ function Connect(props) {
                                             placeholder="Enter your email"
                                         />
                                     </Form.Group>
-                                    <Form.Group
-                                        className="mb-3"
-                                        controlId="formBasicEmail"
-                                    >
+                                    <Form.Group className="mb-3">
                                         <Form.Label>
                                             What's on your mind? Give me a{" "}
                                             <b>subject</b> hint!
@@ -293,10 +288,7 @@ function Connect(props) {
                                             ))}
                                         </Form.Select>
                                     </Form.Group>
-                                    <Form.Group
-                                        className="mb-3"
-                                        controlId="formBasicSubject"
-                                    >
+                                    <Form.Group className="mb-3">
                                         <Form.Label>
                                             Tell me all about it! I'm eager to
                                             hear your <b>message</b> from you.
@@ -316,9 +308,12 @@ function Connect(props) {
                                             /{MAX_MESSAGE_LENGTH}
                                         </div>
                                     </Form.Group>
-                                    <Button variant="primary" type="submit">
-                                        <FiSend /> Send your awesome message!
-                                    </Button>
+                                    <Form.Group className="text-right">
+                                        <Button variant="primary" type="submit">
+                                            <FiSend /> Send your awesome
+                                            message!
+                                        </Button>
+                                    </Form.Group>
                                 </Form>
 
                                 <div
