@@ -3,11 +3,11 @@ import { Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 
-function BlogTemplate({ blog, col }) {
+function BlogTemplate({ blog, col, fade}) {
     return (
         <>
             <Col md={col} className="blog-item blog-min-card">
-                <Fade delay={1}>
+                <Fade delay={1} className={!fade && "reveal-fade"}>
                     <Card className="mb-4">
                         <Link to={`/blogs/${blog.slug}`}>
                             <Card.Img variant="top" src={blog.image} />

@@ -6,13 +6,26 @@ import { HiCalendarDays } from "react-icons/hi2";
 import { FaQuoteLeft } from "react-icons/fa";
 import BlogTemplate from "./Components/Templates/BlogTemplate";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import '@splidejs/react-splide/css';
+import "@splidejs/react-splide/css";
 
 function Blog() {
     const { slug } = useParams();
     const [blog, setBlog] = useState(null);
     const [similarBlogs, setSimilarBlogs] = useState([]);
     const [blogSkills, setBlogSkills] = useState(null);
+
+    const splideOptions = {
+        rewind: true,
+        autoplay: true,
+        interval: 2000,
+        perPage: 3,
+        type: "loop",
+        drag: "free",
+        fixedWidth: "20rem",
+        fixedHeight: "100%",
+        gap: "1rem",
+        arrows: false,
+    };
 
     useEffect(() => {
         AxiosConfig.get(`/blogs/${slug}`)
@@ -21,6 +34,10 @@ function Blog() {
                     setBlog(response.data.data.blog);
                     setBlogSkills(response.data.data.blog.skills);
                     setSimilarBlogs(response.data.data.similar);
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                    });
                 }
             })
             .catch((error) => {
@@ -90,14 +107,16 @@ function Blog() {
                         Similar blogs you may interested in
                     </h3>
                     <Row className="home-blogs">
-                        <Splide aria-label="My Favorite Images">
+                        <Splide
+                            aria-label="Similar Blogs"
+                            options={splideOptions}
+                        >
                             {similarBlogs.map((similarBlog, index) => (
-                                <SplideSlide>
+                                <SplideSlide key={index}>
                                     <BlogTemplate
                                         blog={similarBlog}
-                                        col={4}
-                                        animate={"fade-right"}
-                                        key={index}
+                                        col={12}
+                                        fade={false}
                                     />
                                 </SplideSlide>
                             ))}

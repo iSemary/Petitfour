@@ -56,8 +56,9 @@ function Blogs({ categories }) {
                         categories.length > 0 &&
                         categories.map((category, index) => (
                             <button
-                                className="btn btn-main"
+                                className="btn btn-main-light position-relative"
                                 key={index}
+                                type="button"
                                 onClick={(e) => {
                                     setPage(1);
                                     setCategory(
@@ -68,7 +69,8 @@ function Blogs({ categories }) {
                                     );
                                 }}
                             >
-                                {category.name} <span>{category.counters.blogs}</span>
+                                {category.name} 
+                                <span className="btn-counter">{category.counters.blogs}</span>
                             </button>
                         ))}
                 </Col>

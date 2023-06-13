@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Uploader;
 use App\Models\Category;
 use App\Models\Skill;
 use Illuminate\Http\Request;
@@ -57,15 +58,7 @@ class SkillController extends Controller {
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        // Get the icon image file from the request
-        $iconImage = $request->file('icon');
-        // Generate a unique file name for the image
-        $filename = uniqid() . '.webp';
-        // Convert and save the image as WebP
-        $image = Image::make($iconImage)->encode('webp');
-        // Save the image to the storage directory
-        Storage::disk('public')->put('skills/' . $filename, $image);
-
+        $iconImage = Uploader::image($request->file('icon'), null, 'skills');
 
         $skill = Skill::create([
             'name' => $request->input('name'),
@@ -74,7 +67,7 @@ class SkillController extends Controller {
             'priority' => $request->input('priority'),
             'color_code' => $request->input('color_code'),
             'highlight' => boolval($request->input('highlight')),
-            'icon' => $filename,
+            'icon' => $iconImage,
             'start_date' => $request->input('start_date'),
         ]);
 
@@ -108,24 +101,9 @@ class SkillController extends Controller {
         // Get the skill by ID
         $skill = Skill::findOrFail($id);
 
-        // Get the icon image file from the request
-        $iconImage = $request->file('icon');
-        if ($iconImage) {
-            // Generate a unique file name for the image
-            $filename = uniqid() . '.webp';
-            // Convert and save the image as WebP
-            $image = Image::make($iconImage)->encode('webp');
-            // Save the image to the storage directory
-            Storage::disk('public')->put('skills/' . $filename, $image);
 
-            // Delete the previous icon image if it exists
-            if ($skill->icon && Storage::disk('public')->exists('skills/' . $skill->icon)) {
-                Storage::disk('public')->delete('skills/' . $skill->icon);
-            }
-
-            // Update the skill with the new icon filename
-            $skill->icon = $filename;
-        }
+        // replace image icon if there's a new file uploaded
+        $iconImage = Uploader::image($request->file('icon'), $skill->icon, 'skills');
 
         // Update other skill properties
         $skill->name = $request->input('name');
@@ -135,6 +113,7 @@ class SkillController extends Controller {
         $skill->color_code = $request->input('color_code');
         $skill->highlight = boolval($request->input('highlight'));
         $skill->start_date = $request->input('start_date');
+        $skill->icon = $iconImage;
         $skill->save();
 
         if ($skill) {

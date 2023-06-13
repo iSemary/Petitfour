@@ -15,12 +15,12 @@ function Footer(props) {
     const linkIcons = [null, <BsLinkedin />, <SiGithub />, <BsStackOverflow />, <ImBehance2 />, <MdEmail/>, <BsFacebook />, <BsInstagram />, <BsTwitter/>];
 
     return (
-        <footer className="text-center text-lg-start text-muted">
+        <footer className="text-center text-lg-start">
             <section className="d-flex justify-content-center justify-content-lg-between p-4 social-links">
                 <Container className="text-center text-md-start mt-5">
                     <div className="me-5 d-none d-lg-block"></div>
                     <div className="social-icons">
-                        {props.socialLinks?.map((socialLink, index) => (
+                        {props?.socialLinks?.map((socialLink, index) => (
                             <a
                                 href={socialLink.url}
                                 className={"me-4 text-reset social-link social-link-"+socialLink.type}

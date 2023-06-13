@@ -8,6 +8,7 @@ import Projects from "../Pages/Projects";
 import Project from "../Pages/Project";
 import Blog from "../Pages/Blog";
 import Blogs from "../Pages/Blogs";
+import NotFound from "../Pages/NotFound";
 
 function Router(props) {
     return (
@@ -21,6 +22,8 @@ function Router(props) {
                 <Route path="/blogs" element={<Blogs categories={props.config?.categories} />} />
                 <Route path="/blogs/:slug" element={<Blog />} />
                 <Route path="/connect" element={<Connect config={props.config?.config?.system} />} />
+
+                <Route path="*" element={<NotFound image={props.config?.config?.system?.not_found_image}/>} />
             </Routes>
         </div>
     );

@@ -11,8 +11,7 @@
     src: url("../fonts/Pharaoh/AlphacodePharaohRegular.ttf");
 }
 
-@import './variables/variables.module.scss';
-
+@import "./variables/variables.module.scss";
 
 body {
     background-color: $primaryDark;
@@ -618,11 +617,81 @@ $black: #282936;
 }
 
 .text-hack-animation:hover {
-    background: linear-gradient(271deg, rgba(227, 225, 250, 0.2693452381) 0%, #e3e1fa 100%);
+    background: linear-gradient(
+        271deg,
+        rgba(227, 225, 250, 0.2693452381) 0%,
+        #e3e1fa 100%
+    );
     color: $primaryDark;
 }
 
 .blog-filter {
     display: flex;
     align-items: center;
+}
+
+.reveal-fade {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.not-found-content {
+    border-radius: 10px;
+    padding-top: 10vh;
+    text-align: center;
+    img.not-found {
+        border-radius: 10px;
+        max-height: 300px;
+        max-width: 575px;
+        width: 100%;
+        height: 100%;
+    }
+    h1,
+    p {
+        font-family: monospace;
+        margin-top: 2%;
+    }
+}
+
+.btn-main-light {
+    border: 1px solid $primaryWhite;
+    background-color: $primaryWhite;
+    color: $primaryDark;
+}
+
+.badge-main-dark {
+    display: contents;
+    background-color: $primaryDark;
+    color: $primaryWhite;
+}
+
+.btn-counter {
+    position: absolute;
+}
+
+.mt-15 {
+    margin-top: 15%;
+}
+
+.skills {
+    .skills-major-container {
+        .skills-major {
+            margin-top: 3%;
+        }
+        padding: 5px 0;
+    }
+
+    .skills-details-container {
+        padding: 5px 0;
+
+        .category-skills {
+            .skills-list {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.skills-loader-canvas {
+    text-align: center;
 }

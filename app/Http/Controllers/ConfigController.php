@@ -120,6 +120,7 @@ class ConfigController extends Controller {
         $logo = Uploader::file($request->file('logo'), $config, 'logo', 'config');
         $contactImage = Uploader::image($request->file('contact_image'), $config->contact_image, 'config');
         $contactThemeImage = Uploader::image($request->file('contact_theme_image'), $config->contact_theme_image, 'config');
+        $notFoundImage = Uploader::file($request->file('not_found_image'), $config, 'not_found_image', 'config');
 
         $config->update([
             'primary_color' => $request->primary_color,
@@ -130,6 +131,7 @@ class ConfigController extends Controller {
             'logo' => $logo,
             'contact_image' => $contactImage,
             'contact_theme_image' => $contactThemeImage,
+            'not_found_image' => $notFoundImage,
         ]);
 
         return response()->json(['message' => "System config saved successfully"], 200);

@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class SystemConfig extends Model {
-    protected $fillable = ['primary_color', 'secondary_color', 'contact_email', 'openai_api_token', 'google_analytics_id', 'logo', 'contact_image', 'contact_theme_image'];
+    protected $fillable = ['primary_color', 'secondary_color', 'contact_email', 'openai_api_token', 'google_analytics_id', 'logo', 'contact_image', 'contact_theme_image', 'not_found_image'];
 
     protected $appends = [
         'logo',
         'contact_image',
         'contact_theme_image',
+        'not_found_image'
     ];
 
     public function getLogoAttribute() {
@@ -21,5 +22,8 @@ class SystemConfig extends Model {
     }
     public function getContactThemeImageAttribute() {
         return asset("storage/config/" . $this->attributes['contact_theme_image']);
+    }
+    public function getNotFoundImageAttribute() {
+        return asset("storage/config/" . $this->attributes['not_found_image']);
     }
 }

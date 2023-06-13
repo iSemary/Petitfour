@@ -453,4 +453,51 @@ body {
   display: flex;
   align-items: center; }
 
+.reveal-fade {
+  opacity: 1 !important;
+  transform: none !important; }
+
+.not-found-content {
+  border-radius: 10px;
+  padding-top: 10vh;
+  text-align: center; }
+  .not-found-content img.not-found {
+    border-radius: 10px;
+    max-height: 300px;
+    max-width: 575px;
+    width: 100%;
+    height: 100%; }
+  .not-found-content h1,
+  .not-found-content p {
+    font-family: monospace;
+    margin-top: 2%; }
+
+.btn-main-light {
+  border: 1px solid #e3e1fa;
+  background-color: #e3e1fa;
+  color: #100126; }
+
+.badge-main-dark {
+  display: contents;
+  background-color: #100126;
+  color: #e3e1fa; }
+
+.btn-counter {
+  position: absolute; }
+
+.mt-15 {
+  margin-top: 15%; }
+
+.skills .skills-major-container {
+  padding: 5px 0; }
+  .skills .skills-major-container .skills-major {
+    margin-top: 3%; }
+.skills .skills-details-container {
+  padding: 5px 0; }
+  .skills .skills-details-container .category-skills .skills-list {
+    margin: 0; }
+
+.skills-loader-canvas {
+  text-align: center; }
+
 /*# sourceMappingURL=style.css.map */

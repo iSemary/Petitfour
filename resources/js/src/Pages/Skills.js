@@ -33,16 +33,27 @@ function Skills() {
             return (
                 <div
                     key={i}
-                    className={"bg-" + bgs[i % 2] + " text-" + txt[i % 2]}
+                    className={
+                        "skills " + ("bg-" + bgs[i % 2] + " text-" + txt[i % 2])
+                    }
                 >
                     <Container>
                         <Row>
-                            <Col md={6}>
-                                <div className="major-skills">
-                                    <div className="text-center row">
-                                        {skill.skills?.map((majorSkill, i) => {
+                            <Col md={6} className="skills-major-container">
+                                <div className="skills-major text-center row">
+                                    {skill.skills
+                                        ?.slice(0, 3)
+                                        .map((majorSkill, i) => {
                                             return (
-                                                <div className="col-6" key={i}>
+                                                <div
+                                                    className={
+                                                        "col-" +
+                                                        (i <= 1
+                                                            ? "6"
+                                                            : "12 mt-15")
+                                                    }
+                                                    key={i}
+                                                >
                                                     <OverlayTrigger
                                                         placement="bottom"
                                                         overlay={
@@ -63,7 +74,7 @@ function Skills() {
                                                                 <img
                                                                     {...triggerHandler}
                                                                     ref={ref}
-                                                                    alt=""
+                                                                    alt={majorSkill.name + " skill icon"}
                                                                     src={
                                                                         majorSkill.icon
                                                                     }
@@ -76,10 +87,9 @@ function Skills() {
                                                 </div>
                                             );
                                         })}
-                                    </div>
                                 </div>
                             </Col>
-                            <Col md={6}>
+                            <Col md={6} className="skills-details-container">
                                 <div className="category-details">
                                     <div className="category-name">
                                         <h4>
@@ -93,7 +103,7 @@ function Skills() {
                                     </p>
                                 </div>
                                 <div className="category-skills">
-                                    <Row className="width-fit-content">
+                                    <Row className="skills-list width-fit-content">
                                         {skill.additional.map(
                                             (additionalSkill, i) => {
                                                 return (
@@ -152,7 +162,7 @@ function Skills() {
     }
     return (
         <>
-            <div className="bg-main">
+            <div className="">
                 {skills.success ? SkillsSection : <SkillLoader />}
             </div>
         </>
