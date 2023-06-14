@@ -52,6 +52,16 @@ function Blogs({ categories }) {
                     <h1 className="my-4">Blogs</h1>
                 </Col>
                 <Col md={6} className="blog-filter justify-content-between">
+                    <button
+                        className="btn btn-main"
+                        type="button"
+                        onClick={(e) => {
+                            setPage(1);
+                            setCategory(null);
+                        }}
+                    >
+                        All <span>{totalRecords}</span>
+                    </button>
                     {categories &&
                         categories.length > 0 &&
                         categories.map((category, index) => (
@@ -69,8 +79,10 @@ function Blogs({ categories }) {
                                     );
                                 }}
                             >
-                                {category.name} 
-                                <span className="btn-counter">{category.counters.blogs}</span>
+                                {category.name}
+                                <span className="btn-counter">
+                                    {category.counters.blogs}
+                                </span>
                             </button>
                         ))}
                 </Col>
@@ -90,11 +102,23 @@ function Blogs({ categories }) {
                                         </Card.Text>
                                     </Card.Body>
                                 </Link>
-                                <Link to={`/blogs/${blog.slug}`}>
-                                    <Button variant="none" className="more-btn">
-                                        Read More
-                                    </Button>
-                                </Link>
+                                <Row>
+                                    <Col>
+                                        <Link to={`/blogs/${blog.slug}`}>
+                                            <Button
+                                                variant="none"
+                                                className="more-btn"
+                                            >
+                                                Read More
+                                            </Button>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <Card.Text>
+                                            {blog.published_at}
+                                        </Card.Text>
+                                    </Col>
+                                </Row>
                             </Card>
                         </Fade>
                     </Col>

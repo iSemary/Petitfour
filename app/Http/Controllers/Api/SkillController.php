@@ -20,7 +20,7 @@ class SkillController extends Controller {
      * @return an array of objects.
      */
     public function index(): JsonResponse {
-        $categories = Category::select(['id', 'name', 'title', 'description'])->orderBy('priority')->get();
+        $categories = Category::select(['id', 'name', 'title', 'description'])->where('type', 1)->orderBy('priority')->get();
 
         $data = [];
         /* Looping through the types and adding the skills to the data array. */

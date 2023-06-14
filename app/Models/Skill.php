@@ -15,9 +15,9 @@ class Skill extends Model {
     public function getThemeIconAttribute() {
         return asset("storage/skills/" . $this->attributes['theme_icon']);
     }
-    
+
     public function category() {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function blogs() {

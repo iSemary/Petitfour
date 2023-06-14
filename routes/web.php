@@ -5,6 +5,7 @@ use App\Http\Controllers\{
     AppController,
     SkillController,
     UserController,
+    CategoryController,
     ContactController,
     ProjectController,
     DashboardController,
@@ -30,6 +31,8 @@ Route::prefix('dashboard')->group(function () {
         Route::get('skills/sort', [SkillController::class, 'sort'])->name('skills.sort');
         Route::put('skills/update-sort', [SkillController::class, 'updateSort'])->name('skills.updateSort');
         Route::resources(['skills' => SkillController::class]);
+        
+        Route::resources(['categories' => CategoryController::class]);
 
         Route::get('projects/sort', [ProjectController::class, 'sort'])->name('projects.sort');
         Route::put('projects/update-sort', [ProjectController::class, 'updateSort'])->name('projects.updateSort');

@@ -1,7 +1,13 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { BsLinkedin, BsMailbox2, BsFacebook, BsInstagram, BsTwitter} from "react-icons/bs";
+import {
+    BsLinkedin,
+    BsMailbox2,
+    BsFacebook,
+    BsInstagram,
+    BsTwitter,
+} from "react-icons/bs";
 import { SiGithub } from "react-icons/si";
 import { BsStackOverflow } from "react-icons/bs";
 import { ImBehance2 } from "react-icons/im";
@@ -12,26 +18,47 @@ import { FiPhoneCall } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 function Footer(props) {
-    const linkIcons = [null, <BsLinkedin />, <SiGithub />, <BsStackOverflow />, <ImBehance2 />, <MdEmail/>, <BsFacebook />, <BsInstagram />, <BsTwitter/>];
+    const linkIcons = [
+        null,
+        <BsLinkedin />,
+        <SiGithub />,
+        <BsStackOverflow />,
+        <ImBehance2 />,
+        <MdEmail />,
+        <BsFacebook />,
+        <BsInstagram />,
+        <BsTwitter />,
+    ];
 
     return (
         <footer className="text-center text-lg-start">
             <section className="d-flex justify-content-center justify-content-lg-between p-4 social-links">
                 <Container className="text-center text-md-start mt-5">
-                    <div className="me-5 d-none d-lg-block"></div>
-                    <div className="social-icons">
-                        {props?.socialLinks?.map((socialLink, index) => (
-                            <a
-                                href={socialLink.url}
-                                className={"me-4 text-reset social-link social-link-"+socialLink.type}
-                                target="_blank"
-                                key={index}
-                                rel="noreferrer"
-                            >
-                                {linkIcons[socialLink.type]}
-                            </a>
-                        ))}
-                    </div>
+                    <Row>
+                        <Col md={6}>
+                            <div>{props.userInfo?.first_name}</div>
+                        </Col>
+                        <Col md={6}>
+                            <div className="social-icons text-right">
+                                {props?.socialLinks?.map(
+                                    (socialLink, index) => (
+                                        <a
+                                            href={socialLink.url}
+                                            className={
+                                                "ms-4 text-reset social-link social-link-" +
+                                                socialLink.type
+                                            }
+                                            target="_blank"
+                                            key={index}
+                                            rel="noreferrer"
+                                        >
+                                            {linkIcons[socialLink.type]}
+                                        </a>
+                                    )
+                                )}
+                            </div>
+                        </Col>
+                    </Row>
                 </Container>
             </section>
             <section className="">
@@ -71,11 +98,7 @@ function Footer(props) {
                                 </Link>
                             </p>
                         </Col>
-                        <Col
-                            md={4}
-                            lg={4}
-                            xl={4}
-                        >
+                        <Col md={4} lg={4} xl={4}>
                             <h6 className="text-uppercase fw-bold mb-4">
                                 Contact
                             </h6>

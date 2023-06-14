@@ -51,6 +51,16 @@ function Projects({ categories }) {
                     <h1 className="my-4">Projects</h1>
                 </Col>
                 <Col md={6} className="blog-filter justify-content-between">
+                    <button
+                        className="btn btn-main"
+                        type="button"
+                        onClick={(e) => {
+                            setPage(1);
+                            setCategory(null);
+                        }}
+                    >
+                        All <span>{totalRecords}</span>
+                    </button>
                     {categories &&
                         categories.length > 0 &&
                         categories.map((category, index) => (

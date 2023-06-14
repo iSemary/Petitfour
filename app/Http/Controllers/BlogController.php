@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 class BlogController extends Controller {
     public function index() {
         if (request()->ajax()) {
-            $blogs = Blog::orderBy("id", "DESC")->get();
+            $blogs = Blog::orderBy("id", "DESC");
             return DataTables::of($blogs)
                 ->addColumn('action', function ($row) {
                     $btn = '';

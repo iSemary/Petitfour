@@ -14,6 +14,9 @@ function BlogTemplate({ blog, col, fade}) {
                             <Card.Body>
                                 <Card.Title>{blog.title}</Card.Title>
                                 <Card.Text className="blog-description">{blog.description}</Card.Text>
+                                <Card.Text>
+                                    {blog.published_at}
+                                </Card.Text>
                             </Card.Body>
                         </Link>
                     </Card>

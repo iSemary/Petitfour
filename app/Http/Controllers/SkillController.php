@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Storage;
 class SkillController extends Controller {
     protected $type;
     public function __construct() {
-        $this->type = ["Main Skill", "Side Skill"];
+        $this->type = ["Additional Skill", "Main Skill",  "Side Skill"];
     }
     public function index() {
         if (request()->ajax()) {
-            $skills = Skill::leftJoin("categories", "categories.id", "skills.category_id")->select(["skills.*", "categories.name as category_name"])->orderBy("id", "DESC")->get();
+            $skills = Skill::leftJoin("categories", "categories.id", "skills.category_id")->select(["skills.*", "categories.name as category_name"])->orderBy("id", "DESC");
             return DataTables::of($skills)
                 ->editColumn('type', function ($row) {
                     return $this->type[$row->type];

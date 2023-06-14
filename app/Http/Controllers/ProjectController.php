@@ -15,7 +15,7 @@ class ProjectController extends Controller {
 
     public function index() {
         if (request()->ajax()) {
-            $projects = Project::orderBy("id", "DESC")->get();
+            $projects = Project::orderBy("id", "DESC");
             return DataTables::of($projects)
                 ->addColumn('action', function ($row) {
                     $btn = '';

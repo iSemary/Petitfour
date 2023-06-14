@@ -100,6 +100,17 @@ class HomeController extends Controller {
             return $experience;
         });
 
+
+        /* This code is selecting all categories from the `categories` table in the database where the `type`
+        column has a value of 0. It selects the `id`, `name`, `title`, `description`, and `type` columns
+        from the table and orders the results by the `priority` column. */
+        $data->side_skills = Category::select(['id', 'name', 'title', 'description', 'type'])->where('type', 0)->orderBy('priority')->get();
+        $data->side_skills->transform(function ($category) {
+            $category->skills;
+            return $category;
+        });
+
+
         /* This code is selecting the latest 3 published blog posts from the `blogs` table in the database
             where the `status` column has a value of 1 (indicating that the blog post is published). It selects
             the `id`, `slug`, `title`, `description`, `published_at`, and `image` columns from the table and
