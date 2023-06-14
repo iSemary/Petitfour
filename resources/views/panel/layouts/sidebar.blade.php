@@ -20,6 +20,23 @@
                             </li>
                             <li class="nav-title mt-0">Basics</li>
                             <li class="nav-group">
+                                <a class="nav-link nav-group-toggle {{ strpos(Request::url(), 'categories') ? 'active' : '' }}"
+                                    href="#">
+                                    <i class="fas fa-sitemap nav-icon"></i> Categories
+                                </a>
+                                <ul class="nav-group-items">
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('categories.index') }}">
+                                            <i class="fas fa-sitemap nav-icon"></i> Categories
+                                        </a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link create-btn" href="#categories"
+                                            data-url="{{ route('categories.create') }}">
+                                            <i class="fas nav-icon fa-plus"></i> Add Category
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-group">
                                 <a class="nav-link nav-group-toggle {{ strpos(Request::url(), 'skills') ? 'active' : '' }}"
                                     href="#">
                                     <i class="nav-icon fas fa-fill-drip"></i> Skills

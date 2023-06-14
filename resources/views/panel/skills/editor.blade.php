@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group">
                     <label>Category</label>
-                    <select name="category_id" style="width:100%" class="form-control select2" required>
+                    <select name="category_id" style="width:100%" class="form-control select2">
                         <option value="">Choose Category</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
@@ -34,7 +34,9 @@
                     <select name="type" style="width:100%" class="form-control select2" required>
                         <option value="1" {{ isset($skill) && $skill->type == '1' ? 'selected' : '' }}>Main Skill
                         </option>
-                        <option value="0" {{ isset($skill) && $skill->type == '0' ? 'selected' : '' }}>Side Skill
+                        <option value="0" {{ isset($skill) && $skill->type == '0' ? 'selected' : '' }}>Additional Skill
+                        </option>
+                        <option value="2" {{ isset($skill) && $skill->type == '2' ? 'selected' : '' }}>Side Skill
                         </option>
                     </select>
                 </div>
@@ -42,6 +44,10 @@
                     <label>Priority</label>
                     <input type="number" minlength="1" maxlength="60" class="form-control" name="priority"
                         value="{{ isset($skill) ? $skill->priority : '0' }}" placeholder="Priority" required />
+                </div>
+                <div class="form-group">
+                    <label>Color Code</label>
+                    <input type="color" name="color_code" value="{{ isset($skill) ? $skill->color_code : "" }}" class="form-control">
                 </div>
                 <div class="form-group">
                     <div class="custom-control custom-switch">

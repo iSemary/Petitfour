@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\Experience;
 use App\Models\Feature;
 use App\Models\Project;
@@ -22,6 +23,14 @@ class HomeController extends Controller {
 
     public function index(Request $request): JsonResponse {
         $data = new stdClass();
+
+
+        // Returning all categories        
+        $data->categories = Category::select([
+            'id',
+            'name',
+        ])->get();
+
 
         /* This code is selecting the `title`, `description`, and `image` columns from the `features` table in
             the database and ordering the results by the `id` column in descending order. The results are then
@@ -77,12 +86,30 @@ class HomeController extends Controller {
             'company_name',
             'company_logo',
             'company_location',
+            'summary',
             'position_title',
             'start_date',
             'end_date',
         ])->with(['skills' => function ($query) {
             $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
         }])->orderBy('end_date', 'DESC')->limit(4)->get();
+
+        $data->latest_experience->transform(function ($experience) {
+            $experience->start_date = Carbon::parse($experience->start_date)->format('M Y');
+            $experience->end_date = Carbon::parse($experience->end_date)->format('M Y');
+            return $experience;
+        });
+
+
+        /* This code is selecting all categories from the `categories` table in the database where the `type`
+        column has a value of 0. It selects the `id`, `name`, `title`, `description`, and `type` columns
+        from the table and orders the results by the `priority` column. */
+        $data->side_skills = Category::select(['id', 'name', 'title', 'description', 'type'])->where('type', 0)->orderBy('priority')->get();
+        $data->side_skills->transform(function ($category) {
+            $category->skills;
+            return $category;
+        });
+
 
         /* This code is selecting the latest 3 published blog posts from the `blogs` table in the database
             where the `status` column has a value of 1 (indicating that the blog post is published). It selects
@@ -103,7 +130,6 @@ class HomeController extends Controller {
         });
 
 
-
         /**
          * Collect all config object
          */
@@ -111,7 +137,7 @@ class HomeController extends Controller {
 
         $config['user'] = UserConfig::select(['first_name', 'last_name', 'email', 'country', 'city', 'phone_number', 'country_code', 'address', 'position', 'bio', 'slogan', 'home_image', 'theme_home_image', 'resume'])->where('id', 1)->first();
 
-        $config['system'] = SystemConfig::select(['primary_color', 'secondary_color', 'contact_email', 'logo', 'contact_image', 'contact_theme_image'])->where('id', 1)->first();
+        $config['system'] = SystemConfig::select(['primary_color', 'secondary_color', 'contact_email', 'logo', 'contact_image', 'contact_theme_image', 'not_found_image'])->where('id', 1)->first();
 
         $data->config = $config;
 

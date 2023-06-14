@@ -14,7 +14,7 @@ class ExperienceController extends Controller {
 
     public function index() {
         if (request()->ajax()) {
-            $experiences = Experience::orderBy("id", "DESC")->get();
+            $experiences = Experience::orderBy("id", "DESC");
             return DataTables::of($experiences)
                 ->addColumn('action', function ($row) {
                     $btn = '';

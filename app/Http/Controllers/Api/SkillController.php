@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Experience;
 use App\Models\Project;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use stdClass;
 
 class SkillController extends Controller {
@@ -19,16 +20,17 @@ class SkillController extends Controller {
      * @return an array of objects.
      */
     public function index(): JsonResponse {
-        $categories = Category::select(['id', 'name', 'title', 'description'])->orderBy('priority', 'DESC')->get();
+        $categories = Category::select(['id', 'name', 'title', 'description'])->where('type', 1)->orderBy('priority')->get();
 
         $data = [];
         /* Looping through the types and adding the skills to the data array. */
         foreach ($categories as $key => $category) {
-            $data[$key] = $category;
-            $data[$key]['skills'] = Skill::select(['id', 'name', 'icon', 'theme_icon', 'type'])->where('category_id', $category['id'])->where('type', 1)->orderBy('priority', 'DESC')->get();
-            $data[$key]['sides'] = Skill::select(['id', 'name', 'icon', 'theme_icon'])->where('category_id', $category['id'])->where('type', 0)->orderBy('priority', 'DESC')->get();
+            $data['categories'][$key] = $category;
+            $data['categories'][$key]['skills'] = Skill::select(['id', 'name', 'icon', 'theme_icon', 'type', 'color_code'])->where('category_id', $category['id'])->where('type', 1)->orderBy('priority', 'DESC')->get();
+            $data['categories'][$key]['additional'] = Skill::select(['id', 'name', 'icon', 'theme_icon', 'color_code'])->where('category_id', $category['id'])->where('type', 0)->orderBy('priority', 'DESC')->get();
         }
 
+        $data['side'] =  Skill::select(['id', 'name', 'icon', 'theme_icon'])->where('type', 2)->orderBy('priority', 'DESC')->get();
         /* Returning a json response with the data. */
         return response()->json([
             'success' => true,
@@ -47,7 +49,7 @@ class SkillController extends Controller {
         // Create a new stdClass object to store the data.
         $data = new stdClass();
         // Retrieve the skill information based on the given name.
-        $skill = Skill::select(['id', 'name', 'theme_icon', 'icon', 'start_date'])->where('name', $skill)->first();
+        $skill = Skill::select(['id', 'name', 'theme_icon', 'icon', 'color_code', 'start_date'])->where('name', $skill)->first();
         if (!$skill) {
             // If no skill is found, return an error JSON response.
             return response()->json([
@@ -60,17 +62,24 @@ class SkillController extends Controller {
         $data->skill = $skill;
 
         // Retrieve projects associated with the skill.
-        $data->projects = Project::leftJoin('project_skills', 'project_skills.project_id', 'projects.id')
-            ->select([
-                'projects.name',
-                'projects.description',
-                'projects.type',
-                'projects.start_date',
-                'projects.end_date',
-            ])
+        $mockedImagePath = asset('storage/projects/mocked/');
+
+        $data->projects = Project::leftJoin('project_images', 'project_images.project_id', 'projects.id')->leftJoin('project_skills', 'project_skills.project_id', 'projects.id')->select([
+            'projects.id',
+            'projects.name',
+            'projects.description',
+            DB::raw("CONCAT('$mockedImagePath/', project_images.project_image) AS project_mocked_image"),
+        ])
+            ->where('project_images.highlight', 1)
             ->where('project_skills.skill_id', $skill->id)
-            ->orderBy('projects.priority', 'DESC')
+            ->orderBy("projects.priority")
+            ->limit(3)
+            ->orderBy('priority')
+            ->with(['skills' => function ($query) {
+                $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
+            }])
             ->get();
+
 
         // Retrieve experiences associated with the skill.
         $data->experiences = Experience::leftJoin('experience_skills', 'experience_skills.experience_id', 'experiences.id')

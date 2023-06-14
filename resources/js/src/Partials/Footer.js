@@ -1,61 +1,70 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { BsLinkedin } from "react-icons/bs";
+import {
+    BsLinkedin,
+    BsMailbox2,
+    BsFacebook,
+    BsInstagram,
+    BsTwitter,
+} from "react-icons/bs";
 import { SiGithub } from "react-icons/si";
 import { BsStackOverflow } from "react-icons/bs";
 import { ImBehance2 } from "react-icons/im";
 import { CgProfile } from "react-icons/cg";
 import { FaGlobeAfrica } from "react-icons/fa";
-import { BsMailbox2 } from "react-icons/bs";
+import { MdEmail } from "react-icons/md";
 import { FiPhoneCall } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 function Footer(props) {
+    const linkIcons = [
+        null,
+        <BsLinkedin />,
+        <SiGithub />,
+        <BsStackOverflow />,
+        <ImBehance2 />,
+        <MdEmail />,
+        <BsFacebook />,
+        <BsInstagram />,
+        <BsTwitter />,
+    ];
+
     return (
-        <footer className="text-center bg-main text-lg-start text-muted">
-            <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <footer className="text-center text-lg-start">
+            <section className="d-flex justify-content-center justify-content-lg-between p-4 social-links">
                 <Container className="text-center text-md-start mt-5">
-                    <div className="me-5 d-none d-lg-block"></div>
-                    <div className="social-icons">
-                        <a
-                            href="https://www.linkedin.com/in/isemary"
-                            className="me-4 text-reset"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <BsLinkedin />
-                        </a>
-                        <a
-                            href="https://github.com/isemary"
-                            className="me-4 text-reset"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <SiGithub />
-                        </a>
-                        <a
-                            href="https://stackoverflow.com/users/9735658/abdelrahman-samir?tab=profile"
-                            className="me-4 text-reset"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <BsStackOverflow />
-                        </a>
-                        <a
-                            href="https://www.behance.net/isemary"
-                            className="me-4 text-reset"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <ImBehance2 />
-                        </a>
-                    </div>
+                    <Row>
+                        <Col md={6}>
+                            <div>{props.userInfo?.first_name}</div>
+                        </Col>
+                        <Col md={6}>
+                            <div className="social-icons text-right">
+                                {props?.socialLinks?.map(
+                                    (socialLink, index) => (
+                                        <a
+                                            href={socialLink.url}
+                                            className={
+                                                "ms-4 text-reset social-link social-link-" +
+                                                socialLink.type
+                                            }
+                                            target="_blank"
+                                            key={index}
+                                            rel="noreferrer"
+                                        >
+                                            {linkIcons[socialLink.type]}
+                                        </a>
+                                    )
+                                )}
+                            </div>
+                        </Col>
+                    </Row>
                 </Container>
             </section>
             <section className="">
                 <Container className="text-center text-md-start mt-5">
-                    <Row className="mt-3">
-                        <Col md="4" lg="4" xl="4" className="mx-auto mb-4">
+                    <Row className="mt-3 justify-content-between mb-4">
+                        <Col md="4" lg="4" xl="4">
                             <h6 className="text-uppercase fw-bold mb-4">
                                 <CgProfile />{" "}
                                 {props.userInfo?.first_name +
@@ -64,37 +73,32 @@ function Footer(props) {
                             </h6>
                             <p>{props.userInfo?.bio}</p>
                         </Col>
-                        <Col md="3" lg="4" xl="4" className="mx-auto mb-4">
+                        <Col md="3" lg="4" xl="2">
                             <h6 className="text-uppercase fw-bold mb-4">
-                                Useful links
+                                Quick links
                             </h6>
                             <p>
-                                <a href="#!" className="text-reset">
-                                    Pricing
-                                </a>
+                                <Link className="text-reset" to="projects">
+                                    Projects
+                                </Link>
                             </p>
                             <p>
-                                <a href="#!" className="text-reset">
-                                    Settings
-                                </a>
+                                <Link className="text-reset" to="skills">
+                                    Skills
+                                </Link>
                             </p>
                             <p>
-                                <a href="#!" className="text-reset">
-                                    Orders
-                                </a>
+                                <Link className="text-reset" to="blogs">
+                                    Blogs
+                                </Link>
                             </p>
                             <p>
-                                <a href="#!" className="text-reset">
-                                    Help
-                                </a>
+                                <Link className="text-reset" to="connect">
+                                    Connect
+                                </Link>
                             </p>
                         </Col>
-                        <Col
-                            md="4"
-                            lg="4"
-                            xl="4"
-                            className="mx-auto mb-md-0 mb-4"
-                        >
+                        <Col md={4} lg={4} xl={4}>
                             <h6 className="text-uppercase fw-bold mb-4">
                                 Contact
                             </h6>

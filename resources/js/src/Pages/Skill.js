@@ -1,64 +1,131 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import AxiosConfig from "../config/AxiosConfig";
+import ProjectTemplate from "./Components/Templates/ProjectTemplate";
+import BlogTemplate from "./Components/Templates/BlogTemplate";
+import { Container, Row, Col } from "react-bootstrap";
+import styleVariables from "../assets/styles/variables/variables.module.scss";
 
 const Skill = () => {
-    const [data, setData] = useState(null);
+    const [skill, setSkill] = useState(null);
+    const [skillProjects, setSkillProjects] = useState(null);
+    const [skillExperiences, setSkillExperiences] = useState(null);
+    const [skillBlogs, setSkillBlogs] = useState(null);
+    const [skillCardStyle, setSkillCardStyle] = useState({});
+    const { name } = useParams();
+
+    // Convert any hex to rgba
+    const hexToRgba = (hex, alpha) => {
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch("your-api-endpoint");
-                const json = await response.json();
-                setData(json.data);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
+        AxiosConfig.get(`/skills/${name}`)
+            .then((response) => {
+                if (response.data.success) {
+                    setSkill(response.data.data.skill);
+                    setSkillProjects(response.data.data.projects);
+                    setSkillExperiences(response.data.data.experiences);
+                    setSkillBlogs(response.data.data.blogs);
 
-        fetchData();
-    }, []);
+                    setSkillCardStyle({
+                        background: `linear-gradient(10deg, ${styleVariables.primaryDark} 0%,${response.data.data.skill.color_code} 100%)`,
+                        boxShadow: `-2px 2px 4px ${hexToRgba(
+                            response.data.data.skill.color_code,
+                            "30%"
+                        )}`,
+                    });
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [name]);
 
-    if (!data) {
+    if (!skill) {
         return <div>Loading...</div>;
     }
 
-    const { skill, projects, blogs } = data;
-
     return (
-        <div>
-            <h1>{skill.name}</h1>
-            <img src={skill.icon} alt="Skill Icon" />
-            <p>Start Date: {skill.start_date}</p>
+        <Container className="mt-3">
+            {/* Skill Card Details */}
 
-            <h2>Projects</h2>
-            {projects.map((project, index) => (
-                <div key={index}>
-                    <h3>{project.name}</h3>
-                    <p>{project.description}</p>
-                    <p>Start Date: {project.start_date}</p>
-                    <p>End Date: {project.end_date}</p>
-                </div>
-            ))}
+            <div className="skill-card mb-3" style={skillCardStyle}>
+                <Row>
+                    <Col md={6}>
+                        <h1>{skill.name}</h1>
+                        <p>Start Date: {skill.start_date}</p>
+                    </Col>
+                    <Col md={6} className="img-container text-right">
+                        <img src={skill.icon} className="skill-img" alt="Skill Icon" />
+                    </Col>
+                </Row>
+            </div>
 
-            <h2>Experiences</h2>
-            {projects.map((project, index) => (
-                <div key={index}>
-                    <h3>{project.name}</h3>
-                    <p>{project.description}</p>
-                    <p>Start Date: {project.start_date}</p>
-                    <p>End Date: {project.end_date}</p>
-                </div>
-            ))}
+            {/* Check if there's projects for this skill then loop over it */}
+            {skillProjects && skillProjects.length > 0 && (
+                <>
+                    <div className="skill-projects">
+                        <h2>Projects</h2>
+                        <Row className="justify-content-center">
+                            {skillProjects.map((project, index) => {
+                                return (
+                                    <ProjectTemplate
+                                        project={project}
+                                        col={4}
+                                        animate={"fade-right"}
+                                        key={index}
+                                    />
+                                );
+                            })}
+                        </Row>
+                    </div>
+                </>
+            )}
 
-            <h2>Blogs</h2>
-            {blogs.map((blog, index) => (
-                <div key={index}>
-                    <h3>{blog.title}</h3>
-                    <p>{blog.description}</p>
-                    <img src={blog.image} alt="Blog Image" />
-                    <p>Published At: {blog.published_at}</p>
-                </div>
-            ))}
-        </div>
+            {/* Check if there's experience for this skill then loop over it */}
+            {skillExperiences && skillExperiences.length > 0 && (
+                <>
+                    <div className="skill-experiences">
+                        <hr className="custom-hr" />
+                        <h2>Experiences</h2>
+                        {skillExperiences.map((experience, index) => (
+                            <div key={index}>
+                                <h3>{experience.name}</h3>
+                                <p>{experience.description}</p>
+                                <p>Start Date: {experience.start_date}</p>
+                                <p>End Date: {experience.end_date}</p>
+                            </div>
+                        ))}
+                    </div>
+                </>
+            )}
+
+            {/* Check if there's blogs for this skill then loop over it */}
+            {skillBlogs && skillBlogs.length > 0 && (
+                <>
+                    <div className="skill-blogs">
+                        <hr className="custom-hr" />
+                        <h2>Blogs</h2>
+                        <Row className="justify-content-center">
+                            {skillBlogs.map((blog, index) => {
+                                return (
+                                    <BlogTemplate
+                                        blog={blog}
+                                        col={4}
+                                        animate={"fade-right"}
+                                        key={index}
+                                    />
+                                );
+                            })}
+                        </Row>
+                    </div>
+                </>
+            )}
+        </Container>
     );
 };
 

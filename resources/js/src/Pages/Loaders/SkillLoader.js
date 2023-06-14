@@ -1,26 +1,31 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
+import styleVariables from "../../assets/styles/variables/variables.module.scss";
+
 const SkillLoader = (props) => (
-    <ContentLoader
-        speed={2}
-        width={460}
-        height={160}
-        viewBox="0 0 460 160"
-        backgroundColor="#f3f3f3"
-        foregroundColor="#ecebeb"
-        {...props}
-    >
-        <rect x="193" y="43" rx="3" ry="3" width="195" height="8" />
-        <rect x="193" y="73" rx="3" ry="3" width="230" height="8" />
-        <circle cx="122" cy="45" r="26" />
-        <rect x="193" y="56" rx="3" ry="3" width="120" height="8" />
-        <rect x="193" y="86" rx="3" ry="3" width="230" height="8" />
-        <rect x="193" y="99" rx="3" ry="3" width="168" height="8" />
-        <circle cx="47" cy="61" r="26" />
-        <circle cx="108" cy="113" r="26" />
-        <circle cx="204" cy="125" r="11" />
-        <circle cx="231" cy="125" r="11" />
-        <circle cx="260" cy="125" r="11" />
-    </ContentLoader>
+    <div className="skills-loader-canvas" >
+        <ContentLoader
+            speed={2}
+            width={750}
+            height={225}
+            viewBox="0 0 750 225"
+            backgroundColor={styleVariables.primaryWhite}
+            foregroundColor={styleVariables.primaryDark}
+            {...props}
+        >
+            <rect x="300" y="74" rx="3" ry="3" width="103" height="7" />
+            <rect x="300" y="95" rx="3" ry="3" width="61" height="7" />
+            <rect x="301" y="110" rx="3" ry="3" width="480" height="7" />
+            <rect x="301" y="129" rx="3" ry="3" width="445" height="7" />
+            <rect x="301" y="148" rx="3" ry="3" width="208" height="7" />
+            <circle cx="48" cy="65" r="30" />
+            <circle cx="191" cy="65" r="30" />
+            <circle cx="126" cy="166" r="30" />
+
+            <circle cx="310" cy="178" r="13" />
+            <circle cx="350" cy="178" r="13" />
+            <circle cx="390" cy="178" r="13" />
+        </ContentLoader>
+    </div>
 );
 export default SkillLoader;

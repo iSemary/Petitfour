@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Uploader;
 use App\Models\Blog;
 use App\Models\Skill;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 class BlogController extends Controller {
     public function index() {
         if (request()->ajax()) {
-            $blogs = Blog::orderBy("id", "DESC")->get();
+            $blogs = Blog::orderBy("id", "DESC");
             return DataTables::of($blogs)
                 ->addColumn('action', function ($row) {
                     $btn = '';
@@ -51,14 +52,7 @@ class BlogController extends Controller {
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        // Get the icon image file from the request
-        $Image = $request->file('image');
-        // Generate a unique file name for the image
-        $filename = uniqid() . '.webp';
-        // Convert and save the image as WebP
-        $image = Image::make($Image)->encode('webp');
-        // Save the image to the storage directory
-        Storage::disk('public')->put('blogs/' . $filename, $image);
+        $image = Uploader::image($request->file('image'), null, 'blogs');
 
 
         $blog = Blog::create([
@@ -66,7 +60,7 @@ class BlogController extends Controller {
             'slug' => $request->input('slug'),
             'content' => $request->input('content'),
             'description' => $request->input('description'),
-            'image' => $filename,
+            'image' => $image,
             'published_at' => $request->input('published_at'),
             'status' => $request->input('status'),
         ]);
@@ -109,25 +103,9 @@ class BlogController extends Controller {
             return response()->json(['message' => 'Blog not found'], 404);
         }
 
-        // Get the image file from the request
-        $image = $request->file('image');
 
-        if ($image) {
-            // Generate a unique file name for the image
-            $filename = uniqid() . '.webp';
-            // Convert and save the image as WebP
-            $image = Image::make($image)->encode('webp');
-            // Save the image to the storage directory
-            Storage::disk('public')->put('blogs/' . $filename, $image);
+        $image = Uploader::image($request->file('image'),$blog->image, 'blogs');
 
-            // Delete the previous image if it exists
-            if ($blog->image) {
-                Storage::disk('public')->delete('blogs/' . $blog->image);
-            }
-
-            // Update the image filename
-            $blog->image = $filename;
-        }
 
         $blog->title = $request->input('title');
         $blog->slug = $request->input('slug');
@@ -135,6 +113,7 @@ class BlogController extends Controller {
         $blog->description = $request->input('description');
         $blog->published_at = $request->input('published_at');
         $blog->status = $request->input('status');
+        $blog->image = $image;
 
         // Save the updated blog
         if ($blog->save()) {

@@ -8,7 +8,7 @@ use Yajra\DataTables\Facades\DataTables;
 class ContactController extends Controller {
     public function index() {
         if (request()->ajax()) {
-            $messages = ContactMessage::orderBy("id", "DESC")->get();
+            $messages = ContactMessage::orderBy("id", "DESC");
             return DataTables::of($messages)
                 ->addColumn('action', function ($row) {
                     $btn = '';

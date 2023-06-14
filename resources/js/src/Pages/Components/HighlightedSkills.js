@@ -33,7 +33,7 @@ function HighlightedSkills(props) {
                             {({ ref, ...triggerHandler }) => (
                                 <Link
                                     className="no-link"
-                                    to={`skills/${skill.name}`}
+                                    to={`skills/${skill.name.split(' ').join('-').toLowerCase()}`}
                                 >
                                     <img
                                         {...triggerHandler}

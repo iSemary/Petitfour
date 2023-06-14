@@ -1,19 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSkills } from "../actions/skillsSlice";
 import Col from "react-bootstrap/esm/Col";
-import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
-import react from "../assets/images/icons/react.png";
-import vue from "../assets/images/icons/vue.png";
-import jquery from "../assets/images/icons/jquery.png";
+import Container from "react-bootstrap/esm/Container";
 import SkillLoader from "./Loaders/SkillLoader";
 import OverlayTrigger from "react-bootstrap/esm/OverlayTrigger";
 import Tooltip from "react-bootstrap/esm/Tooltip";
+import { Link } from "react-router-dom";
+import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
+import { BsPalette2, BsDatabaseFillGear } from "react-icons/bs";
+import { HiServerStack } from "react-icons/hi2";
 
 function Skills() {
-    const bgs = ["second", "main"];
-    const txt = ["main", "second"];
+    const bgs = ["main-white", "main-dark"];
+    const txt = ["main-dark", "second"];
+    const categoriesIcons = [
+        <BsPalette2 size={25} />,
+        <BsDatabaseFillGear size={25} />,
+        <HiServerStack size={25} />,
+    ];
     const skills = useSelector((state) => state.skills);
     const dispatch = useDispatch();
 
@@ -23,106 +29,142 @@ function Skills() {
 
     let SkillsSection = null;
     if (skills.success) {
-        SkillsSection = skills.data.map((skill, i) => {
+        SkillsSection = skills.data.categories.map((skill, i) => {
             return (
-                <Col
-                    md={12}
+                <div
                     key={i}
-                    className={"bg-" + bgs[i % 2] + " text-" + txt[i % 2]}
+                    className={
+                        "skills " + ("bg-" + bgs[i % 2] + " text-" + txt[i % 2])
+                    }
                 >
-                    <Row>
-                        <Col md={6}>
-                            <div className="major-skills">
-                                <div className="text-center row">
-                                    {skill.skills.map((majorSkill, i) => {
-                                        return (
-
-                                            <div className="col-6" key={i}>
-                                                <OverlayTrigger
-                                                    placement="bottom"
-                                                    overlay={
-                                                        <Tooltip id="button-tooltip-2">
-                                                            {majorSkill.name}
-                                                        </Tooltip>
+                    <Container>
+                        <Row>
+                            <Col md={6} className="skills-major-container">
+                                <div className="skills-major text-center row">
+                                    {skill.skills
+                                        ?.slice(0, 3)
+                                        .map((majorSkill, i) => {
+                                            return (
+                                                <div
+                                                    className={
+                                                        "col-" +
+                                                        (i <= 1
+                                                            ? "6"
+                                                            : "12 mt-15")
                                                     }
+                                                    key={i}
                                                 >
-                                                    {({
-                                                        ref,
-                                                        ...triggerHandler
-                                                    }) => (
-                                                        <img
-                                                            {...triggerHandler}
-                                                            ref={ref}
-                                                            alt=""
-                                                            src={majorSkill.icon}
-                                                            width="50px"
-                                                            height="50px"
-                                                        />
-                                                    )}
-                                                </OverlayTrigger>
-                                            </div>
-
-                                        );
-                                    })}
-                                </div>
-                            </div>
-                        </Col>
-                        <Col md={6}>
-                            <h4>{skill.name}</h4>
-                            <h5>{skill.title}</h5>
-                            <p>{skill.description}</p>
-
-                            <Row className="width-fit-content">Z
-                                {skill.sides.map((sideSkill, i) => {
-                                    return (
-                                        <Col
-                                            key={i}
-                                            // md={3}
-                                            className="me-2 p-0"
-                                        >
-                                            <OverlayTrigger
-                                                placement="bottom"
-                                                overlay={
-                                                    <Tooltip id="button-tooltip-2">
-                                                        {sideSkill.name}
-                                                    </Tooltip>
-                                                }
-                                            >
-                                                {({
-                                                    ref,
-                                                    ...triggerHandler
-                                                }) => (
-                                                    <img
-                                                        {...triggerHandler}
-                                                        ref={ref}
-                                                        className="side-skill"
-                                                        alt={
-                                                            sideSkill.name +
-                                                            " side skill"
+                                                    <OverlayTrigger
+                                                        placement="bottom"
+                                                        overlay={
+                                                            <Tooltip id="button-tooltip-2">
+                                                                {
+                                                                    majorSkill.name
+                                                                }
+                                                            </Tooltip>
                                                         }
-                                                        src={sideSkill.icon}
-                                                        width="25px"
-                                                        height="25px"
-                                                    />
-                                                )}
-                                            </OverlayTrigger>
-                                        </Col>
-                                    );
-                                })}
-                            </Row>
-                        </Col>
-                    </Row>
-                </Col>
+                                                    >
+                                                        {({
+                                                            ref,
+                                                            ...triggerHandler
+                                                        }) => (
+                                                            <Link
+                                                                to={`/skills/${majorSkill.name}`}
+                                                            >
+                                                                <img
+                                                                    {...triggerHandler}
+                                                                    ref={ref}
+                                                                    alt={majorSkill.name + " skill icon"}
+                                                                    src={
+                                                                        majorSkill.icon
+                                                                    }
+                                                                    width="50px"
+                                                                    height="50px"
+                                                                />
+                                                            </Link>
+                                                        )}
+                                                    </OverlayTrigger>
+                                                </div>
+                                            );
+                                        })}
+                                </div>
+                            </Col>
+                            <Col md={6} className="skills-details-container">
+                                <div className="category-details">
+                                    <div className="category-name">
+                                        <h4>
+                                            {categoriesIcons[i]} {skill.name}
+                                        </h4>
+                                    </div>
+                                    <h5>{skill.title}</h5>
+                                    <p>
+                                        <RiDoubleQuotesL /> {skill.description}{" "}
+                                        <RiDoubleQuotesR />
+                                    </p>
+                                </div>
+                                <div className="category-skills">
+                                    <Row className="skills-list width-fit-content">
+                                        {skill.additional.map(
+                                            (additionalSkill, i) => {
+                                                return (
+                                                    <Col
+                                                        key={i}
+                                                        className="me-2 p-0"
+                                                    >
+                                                        <OverlayTrigger
+                                                            placement="bottom"
+                                                            overlay={
+                                                                <Tooltip id="button-tooltip-2">
+                                                                    {
+                                                                        additionalSkill.name
+                                                                    }
+                                                                </Tooltip>
+                                                            }
+                                                        >
+                                                            {({
+                                                                ref,
+                                                                ...triggerHandler
+                                                            }) => (
+                                                                <Link
+                                                                    to={`/skills/${additionalSkill.name}`}
+                                                                >
+                                                                    <img
+                                                                        {...triggerHandler}
+                                                                        ref={
+                                                                            ref
+                                                                        }
+                                                                        className="side-skill"
+                                                                        alt={
+                                                                            additionalSkill.name +
+                                                                            " side skill"
+                                                                        }
+                                                                        src={
+                                                                            additionalSkill.icon
+                                                                        }
+                                                                        width="25px"
+                                                                        height="25px"
+                                                                    />
+                                                                </Link>
+                                                            )}
+                                                        </OverlayTrigger>
+                                                    </Col>
+                                                );
+                                            }
+                                        )}
+                                    </Row>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
             );
         });
     }
     return (
         <>
-            <>
-                <Row className="bg-main">
-                    {skills.success ? SkillsSection : <SkillLoader />}
-                </Row>
-            </>
+            <div className="">
+                {skills.success ? SkillsSection : <SkillLoader />}
+            </div>
         </>
     );
 }

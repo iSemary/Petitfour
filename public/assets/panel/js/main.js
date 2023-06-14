@@ -53,7 +53,10 @@ $(document).on("change", ".form-control-file", function (e) {
     if (this.files && this.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            inputFile.parents('.form-group').find(".image-preview").attr("src", e.target.result);
+            inputFile
+                .parents(".form-group")
+                .find(".image-preview")
+                .attr("src", e.target.result);
         };
         reader.readAsDataURL(this.files[0]); // convert to base64 string
     }
@@ -123,9 +126,9 @@ $(document).on("submit", "#CreateForm", function (e) {
             $(".create-status").html("");
             formBtn.prop("disabled", false);
             // $.each(xhr.responseJSON.errors, function(key, value) {
-            $(".create-status").append(
-                `<h6 class="text-danger"><i class="fas fa-exclamation-triangle"></i> ` +
-                    (data.responseJSON ?? "Something went wrong!") +
+            $(".create-status").html(
+                `<h6 class="text-danger" style="max-width:70vw;"><i class="fas fa-exclamation-triangle"></i> ` +
+                    JSON.stringify(data) +
                     `</h6>`
             );
             // });
@@ -191,13 +194,11 @@ $(document).on("submit", "#EditForm", function (e) {
         error: function (xhr) {
             $(".edit-status").html("");
             formBtn.prop("disabled", false);
-            $.each(xhr.responseJSON.errors, function (key, value) {
-                $(".edit-status").append(
-                    `<h6 class="text-danger"><i class="fas fa-exclamation-triangle"></i> ` +
-                        value[0] +
-                        `</h6>`
-                );
-            });
+            $(".edit-status").append(
+                `<h6 class="text-danger" style="max-width:70vw;"><i class="fas fa-exclamation-triangle"></i> ` +
+                    JSON.stringify(xhr) +
+                    `</h6>`
+            );
         },
     });
 });

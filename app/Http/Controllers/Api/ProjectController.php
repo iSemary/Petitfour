@@ -3,31 +3,54 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Project;
 use App\Models\ProjectImage;
+use App\Models\Skill;
 use Illuminate\Http\JsonResponse;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class ProjectController extends Controller {
 
-    protected $mockedImagePath;
-
-    public function __construct() {
-        $this->mockedImagePath = asset('storage/projects/mocked/');
-    }
     /**
      * It returns all the projects in the database to json array with status and success type
      * 
      * @return an array of objects.
      */
-    public function index(): JsonResponse {
-        $projects = Project::leftJoin('project_images', 'project_images.project_id', 'projects.id')->select([
+    public function index(Request $request): JsonResponse {
+
+        $projects = Project::select([
             'projects.id',
             'projects.name',
             'projects.description',
-            DB::raw("CONCAT('$this->mockedImagePath/', project_images.project_image) AS project_mocked_image"),
-        ])->orderBy("projects.priority")->paginate(6);
+        ])
+            ->leftJoin('project_skills', 'project_skills.project_id', 'projects.id')
+            ->where(function ($q) use ($request) {
+                if ($request->category) {
+                    $categoryName = str_replace('-', ' ', $request->category);
+
+                    $category = Category::select('id')->where('name', $categoryName)->first();
+                    $categorySkills = Skill::where('category_id', $category->id)->pluck('id')->toArray();
+
+                    $q->whereIn('project_skills.skill_id', $categorySkills);
+                }
+            })
+            ->with(['skills' => function ($query) {
+                $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
+            }])
+            ->groupBy('id')
+            ->orderBy("projects.priority")
+            ->paginate(6);
+
+        $projects->transform(function ($project) {
+            $image = ProjectImage::where('project_id', $project->id)
+                ->where('highlight', 1)->first();
+            $project->project_mocked_image = $image ? $image['project_image']['mocked'] : "";
+
+            return $project;
+        });
 
 
         /* Returning a json response with the data. */

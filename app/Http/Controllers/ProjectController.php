@@ -15,7 +15,7 @@ class ProjectController extends Controller {
 
     public function index() {
         if (request()->ajax()) {
-            $projects = Project::orderBy("id", "DESC")->get();
+            $projects = Project::orderBy("id", "DESC");
             return DataTables::of($projects)
                 ->addColumn('action', function ($row) {
                     $btn = '';
@@ -134,7 +134,7 @@ class ProjectController extends Controller {
             if (Storage::disk('public')->exists('projects/' . $projectImage->project_image['image'])) {
                 Storage::disk('public')->delete('projects/' . $projectImage->project_image['image']);
             }
-            if (Storage::disk('public')->exists('projects/' . $projectImage->project_image['mocked'])) {
+            if (Storage::disk('public')->exists('projects/mocked/' . $projectImage->project_image['mocked'])) {
                 Storage::disk('public')->delete('projects/mocked/' . $projectImage->project_image['mocked']);
             }
         }
@@ -192,6 +192,7 @@ class ProjectController extends Controller {
         foreach ($projectImages->get() as $projectImage) {
             if (Storage::disk('public')->exists('projects/' . $projectImage->project_image)) {
                 Storage::disk('public')->delete('projects/' . $projectImage->project_image);
+                Storage::disk('public')->delete('projects/mocked/' . $projectImage->project_image);
             }
         }
 
