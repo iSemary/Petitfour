@@ -8,7 +8,7 @@ function BlogTemplate({ blog, col, fade}) {
         <>
             <Col md={col} className="blog-item blog-min-card">
                 <Fade delay={1} className={!fade && "reveal-fade"}>
-                    <Card className="mb-4">
+                    <Card className="mb-4 border-0">
                         <Link to={`/blogs/${blog.slug}`}>
                             <Card.Img variant="top" src={blog.image} />
                             <Card.Body>

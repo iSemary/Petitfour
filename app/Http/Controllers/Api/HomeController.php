@@ -29,7 +29,7 @@ class HomeController extends Controller {
         $data->categories = Category::select([
             'id',
             'name',
-        ])->get();
+        ])->where('type', 1)->get();
 
 
         /* This code is selecting the `title`, `description`, and `image` columns from the `features` table in
@@ -104,7 +104,7 @@ class HomeController extends Controller {
         /* This code is selecting all categories from the `categories` table in the database where the `type`
         column has a value of 0. It selects the `id`, `name`, `title`, `description`, and `type` columns
         from the table and orders the results by the `priority` column. */
-        $data->side_skills = Category::select(['id', 'name', 'title', 'description', 'type'])->where('type', 0)->orderBy('priority')->get();
+        $data->side_skills = Category::select(['id', 'name', 'title', 'description', 'type', 'icon'])->where('type', 0)->orderBy('priority')->get();
         $data->side_skills->transform(function ($category) {
             $category->skills;
             return $category;

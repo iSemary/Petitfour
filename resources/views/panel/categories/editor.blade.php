@@ -19,7 +19,8 @@
                         value="{{ isset($category) ? $category->title : '' }}" placeholder="Title" required />
                 </div>
                 <div class="form-group">
-                    <textarea name="description" class="form-control">{{ isset($category) ? $category->description : '' }}</textarea>
+                    <label>Description</label>
+                    <textarea name="description" placeholder="Description" class="form-control">{{ isset($category) ? $category->description : '' }}</textarea>
                 </div>
                 <div class="form-group">
                     <label>Category Type</label>
@@ -34,6 +35,14 @@
                     <label>Priority</label>
                     <input type="number" class="form-control" name="priority"
                         value="{{ isset($category) ? $category->priority : '' }}" placeholder="Priority" required />
+                </div>
+                <div class="form-group d-flex justify-content-between">
+                    <div>
+                        <label>Icon</label><br />
+                        <input type="file" name="icon" accept="image/*" id="uploadImg">
+                    </div>
+                    <img src="{{ isset($category) ? asset($category->icon) : asset('images/default.jpg') }}"
+                        class="img-thumbnail img-md d-block" id="previewImg" alt="">
                 </div>
                 <div class="form-group">
                     <label class="{{ isset($category) ? 'edit' : 'create' }}-status"></label>

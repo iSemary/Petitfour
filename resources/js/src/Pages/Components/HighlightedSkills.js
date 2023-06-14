@@ -33,7 +33,10 @@ function HighlightedSkills(props) {
                             {({ ref, ...triggerHandler }) => (
                                 <Link
                                     className="no-link"
-                                    to={`skills/${skill.name.split(' ').join('-').toLowerCase()}`}
+                                    to={`skills/${skill.name
+                                        .split(" ")
+                                        .join("-")
+                                        .toLowerCase()}`}
                                 >
                                     <img
                                         {...triggerHandler}
@@ -53,26 +56,20 @@ function HighlightedSkills(props) {
     }
 
     return (
-        <>
-            <div className="text-center">
-                <h3 className="text-center">Highlighted Skills</h3>
-                <Row className="justify-content-center">
-                    {highlightedSkills}
-                </Row>
-                <div className="mt-4">
-                    <Link to="skills" className="discover-more-btn">
-                        <span className="discover-circle" aria-hidden="true">
-                            <span>
-                                <BiNavigation className="discover-icon" />
-                            </span>
+        <div className="my-4 text-center">
+            <h3 className="text-center">Highlighted Skills</h3>
+            <Row className="justify-content-center">{highlightedSkills}</Row>
+            <div className="mt-4">
+                <Link to="skills" className="discover-more-btn">
+                    <span className="discover-circle" aria-hidden="true">
+                        <span>
+                            <BiNavigation className="discover-icon" />
                         </span>
-                        <span className="discover-button-text">
-                            Discover More
-                        </span>
-                    </Link>
-                </div>
+                    </span>
+                    <span className="discover-button-text">Discover More</span>
+                </Link>
             </div>
-        </>
+        </div>
     );
 }
 export default HighlightedSkills;

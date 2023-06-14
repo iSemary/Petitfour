@@ -71,9 +71,13 @@ function Home(props) {
                                 </h1>
                                 <h4
                                     ref={positionTitleRef}
-                                    data-value={props?.config?.config?.user?.position}
+                                    data-value={
+                                        props?.config?.config?.user?.position
+                                    }
                                     className="text-hack-animation width-fit-content"
-                                    onMouseOver={() => animateHackText(positionTitleRef)}
+                                    onMouseOver={() =>
+                                        animateHackText(positionTitleRef)
+                                    }
                                 >
                                     {props?.config?.config?.user?.position}
                                 </h4>

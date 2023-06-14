@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void {
         Schema::table('categories', function (Blueprint $table) {
-            $table->tinyInteger('type')->default(1)->after('description');
+            $table->string('icon', 255)->nullable()->after('priority');
         });
     }
 

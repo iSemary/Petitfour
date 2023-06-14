@@ -26,7 +26,7 @@ function TopProjects(props) {
 
     return (
         <>
-            <div className="text-center">
+            <div className="my-4 text-center">
                 <h3 className="text-center">Top Projects</h3>
                 <Row className="justify-content-center">{topProjects}</Row>
                 <div className="mt-4">

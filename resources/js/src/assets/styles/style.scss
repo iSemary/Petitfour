@@ -97,10 +97,10 @@ body {
     }
 }
 .main-background-cover {
-    background-image: url("../images/background_1.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    // background-image: url("../images/background_1.jpg");
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-size: cover;
     width: 100%;
     height: 100vh;
 }
@@ -460,6 +460,9 @@ $black: #282936;
                     z-index: 1;
                     width: 90px;
                     height: 90px;
+                    max-width: 90px;
+                    min-height: 90px;
+                    max-height: 90px;
                     border-radius: 50%;
                     box-shadow: -2px 3px 5px #00000066;
                 }
@@ -694,4 +697,29 @@ $black: #282936;
 
 .skills-loader-canvas {
     text-align: center;
+}
+
+.features {
+    .feature-item {
+        .feature-image {
+            width: 60px;
+            height: 60px;
+        }
+    }
+}
+
+
+.side-skills {
+    .side-skills-item {
+        .skills {
+            .side-skill-icon {
+                width: 25px;
+                height:  25px;
+            }
+        }
+        .side-skills-image {
+            width: 50px;
+            height: 50px;
+        }
+    }
 }
