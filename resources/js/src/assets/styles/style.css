@@ -38,7 +38,8 @@ body {
     animation: borderSlide 2s; }
 
 .width-fit-content {
-  width: fit-content; }
+  width: fit-content;
+  max-width: fit-content; }
 
 .bg-main {
   background-color: #884dff; }
@@ -225,18 +226,29 @@ body {
 .blog-item .blog-card {
   box-shadow: 0 0 7px #ffffff8c;
   border: 0; }
-  .blog-item .blog-card .card-img-top {
-    height: 250px; }
 .blog-item a,
 .blog-item p {
   color: #0d161e;
   text-decoration: none; }
+.blog-item .blog-title {
+  font-size: 17px;
+  font-weight: bold; }
 .blog-item .blog-description {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden; }
+.blog-item:hover .card-img-top {
+  transform: scale(1.1) rotateZ(0.5deg); }
+.blog-item .blog-card-image-container {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  height: 250px;
+  overflow: hidden; }
+  .blog-item .blog-card-image-container img {
+    height: 250px;
+    transition: 650ms; }
 
 .spinner {
   animation: spin 1s infinite linear; }
@@ -257,7 +269,7 @@ body {
   height: 195px;
   transition: 250ms; }
   .project-image:hover {
-    transform: scale(1.055) translateZ(20px) rotateZ(2deg) rotateX(2deg) rotateY(-2deg); }
+    transform: scale(1.055) translateZ(20px) rotateZ(1deg) rotateX(1deg) rotateY(-1deg); }
 
 .project-title,
 .project-description {
@@ -346,9 +358,6 @@ body {
     .home-experiences .experience-even .experience-details .experience-info {
       direction: ltr; }
 
-.blog-min-card img {
-  height: 200px; }
-
 .blog-page {
   margin-top: 5vh; }
   .blog-page .blog-details .blog-title {
@@ -416,11 +425,16 @@ body {
 
 .category-details {
   padding-top: 10px; }
-  .category-details .category-name h4 {
-    display: flex;
-    align-items: center; }
-    .category-details .category-name h4 svg {
-      margin-right: 5px; }
+  .category-details .category-name {
+    display: flex; }
+    .category-details .category-name .category-image {
+      width: 50px;
+      height: 50px; }
+    .category-details .category-name h4 {
+      display: flex;
+      align-items: center; }
+      .category-details .category-name h4 svg {
+        margin-right: 5px; }
 
 .text-right {
   text-align: right; }
@@ -509,5 +523,29 @@ body {
 .side-skills .side-skills-item .side-skills-image {
   width: 50px;
   height: 50px; }
+
+.project-page .project-images-container {
+  position: relative;
+  text-align: center;
+  overflow: hidden; }
+  .project-page .project-images-container .laptop-mockup {
+    width: 50%;
+    z-index: 1000;
+    position: relative; }
+  .project-page .project-images-container .project-item-image {
+    width: 420px;
+    height: 258px;
+    border-radius: 10px; }
+    .project-page .project-images-container .project-item-image .inactive {
+      filter: blur(1px); }
+    .project-page .project-images-container .project-item-image .active {
+      filter: blur(0); }
+  .project-page .project-images-container .project-images {
+    position: absolute;
+    transform: translateX(-109px);
+    top: 18px;
+    display: flex;
+    overflow: hidden;
+    gap: 40px; }
 
 /*# sourceMappingURL=style.css.map */

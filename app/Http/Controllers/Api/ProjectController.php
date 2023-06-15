@@ -69,6 +69,8 @@ class ProjectController extends Controller {
                 'data' => []
             ]);
         }
+        $name = str_replace("-", " ", $name);
+
         $project = Project::select([
             'id',
             'name',
@@ -89,8 +91,8 @@ class ProjectController extends Controller {
                 'data' => []
             ]);
         }
-        $project->start_date = Carbon::parse($project->start_date)->format('d M Y');
-        $project->end_date = Carbon::parse($project->end_date)->format('d M Y');
+        $project->start_date = Carbon::parse($project->start_date)->format('M d Y');
+        $project->end_date = Carbon::parse($project->end_date)->format('M d Y');
         $project->images = ProjectImage::select('project_image')->where('project_id', $project->id)->get();
 
         $project->skills = $project->skills()->select(['skills.id', 'skills.icon', 'skills.theme_icon', 'skills.name'])->orderBy('skills.priority')->get();
@@ -98,7 +100,8 @@ class ProjectController extends Controller {
         return response()->json([
             'success' => true,
             'status' => 200,
-            'data' => $project
+            'data' => $project,
+            'mock_path' => asset('images/mockup/laptop-mockup.png')
         ]);
     }
 }

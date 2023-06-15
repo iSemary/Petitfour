@@ -49,6 +49,7 @@ body {
 
 .width-fit-content {
     width: fit-content;
+    max-width: fit-content;
 }
 
 .bg-main {
@@ -323,18 +324,33 @@ $black: #282936;
     .blog-card {
         box-shadow: 0 0 7px #ffffff8c;
         border: 0;
-
-        .card-img-top {
-            height: 250px;
-        }
     }
     a,
     p {
         color: #0d161e;
         text-decoration: none;
     }
+    .blog-title {
+        font-size: 17px;
+        font-weight: bold;
+    }
     .blog-description {
         @include limitedLetters;
+    }
+
+    &:hover .card-img-top {
+        transform: scale(1.1) rotateZ(0.5deg);
+    }
+
+    .blog-card-image-container {
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        height: 250px;
+        overflow: hidden;
+        img {
+            height: 250px;
+            transition: 650ms;
+        }
     }
 }
 
@@ -364,8 +380,8 @@ $black: #282936;
     transition: 250ms;
 
     &:hover {
-        transform: scale(1.055) translateZ(20px) rotateZ(2deg) rotateX(2deg)
-            rotateY(-2deg);
+        transform: scale(1.055) translateZ(20px) rotateZ(1deg) rotateX(1deg)
+            rotateY(-1deg);
     }
 }
 .project-title,
@@ -480,11 +496,6 @@ $black: #282936;
     }
 }
 
-.blog-min-card {
-    img {
-        height: 200px;
-    }
-}
 // Single Blog Post Page
 .blog-page {
     margin-top: 5vh;
@@ -581,12 +592,19 @@ $black: #282936;
 .category-details {
     padding-top: 10px;
 
-    .category-name h4 {
+    .category-name {
         display: flex;
-        align-items: center;
+        .category-image {
+            width: 50px;
+            height: 50px;
+        }
+        h4 {
+            display: flex;
+            align-items: center;
 
-        svg {
-            margin-right: 5px;
+            svg {
+                margin-right: 5px;
+            }
         }
     }
 }
@@ -708,18 +726,54 @@ $black: #282936;
     }
 }
 
-
 .side-skills {
     .side-skills-item {
         .skills {
             .side-skill-icon {
                 width: 25px;
-                height:  25px;
+                height: 25px;
             }
         }
         .side-skills-image {
             width: 50px;
             height: 50px;
+        }
+    }
+}
+
+// Single Project Page
+$mockupWidth: 50%;
+.project-page {
+    .project-images-container {
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        .laptop-mockup {
+            width: $mockupWidth;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .project-item-image {
+            width: 420px;
+            height: 258px;
+            border-radius: 10px;
+
+            .inactive {
+                filter: blur(1px);
+            }
+            .active {
+                filter: blur(0);
+            }
+        }
+
+        .project-images {
+            position: absolute;
+            transform: translateX(-109px);
+            top: 18px;
+            display: flex;
+            overflow: hidden;
+            gap: 40px;
         }
     }
 }
