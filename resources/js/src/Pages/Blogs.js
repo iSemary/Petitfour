@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import AxiosConfig from "../config/AxiosConfig";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { ImSpinner10 } from "react-icons/im";
 import { HiOutlineDownload } from "react-icons/hi";
-import { Fade } from "react-awesome-reveal";
+import BlogTemplate from "./Components/Templates/BlogTemplate";
+import BlogLoader from "./Loaders/BlogLoader";
 
 function Blogs({ categories }) {
     const [page, setPage] = useState(1);
@@ -89,40 +89,23 @@ function Blogs({ categories }) {
             </Row>
 
             <Row className="blogs">
-                {blogs?.map((blog, key) => (
-                    <Col md={4} key={key} className="blog-item">
-                        <Fade delay={1}>
-                            <Card className="mb-4 blog-card">
-                                <Link to={`/blogs/${blog.slug}`}>
-                                    <Card.Img variant="top" src={blog.image} />
-                                    <Card.Body>
-                                        <Card.Title>{blog.title}</Card.Title>
-                                        <Card.Text className="blog-description">
-                                            {blog.description}
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Link>
-                                <Row>
-                                    <Col>
-                                        <Link to={`/blogs/${blog.slug}`}>
-                                            <Button
-                                                variant="none"
-                                                className="more-btn"
-                                            >
-                                                Read More
-                                            </Button>
-                                        </Link>
-                                    </Col>
-                                    <Col>
-                                        <Card.Text>
-                                            {blog.published_at}
-                                        </Card.Text>
-                                    </Col>
-                                </Row>
-                            </Card>
-                        </Fade>
-                    </Col>
-                ))}
+                {blogs && blogs.length > 0 ? (
+                    blogs.map((blog, key) => (
+                        <BlogTemplate blog={blog} col={4} fade={true} />
+                    ))
+                ) : (
+                    <>
+                        <Col md={4}>
+                            <BlogLoader />
+                        </Col>
+                        <Col md={4}>
+                            <BlogLoader />
+                        </Col>
+                        <Col md={4}>
+                            <BlogLoader />
+                        </Col>
+                    </>
+                )}
             </Row>
             {totalRecords > blogs.length && (
                 <div className="text-center my-3">

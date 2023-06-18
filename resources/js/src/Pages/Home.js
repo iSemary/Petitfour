@@ -71,9 +71,13 @@ function Home(props) {
                                 </h1>
                                 <h4
                                     ref={positionTitleRef}
-                                    data-value={props?.config?.config?.user?.position}
+                                    data-value={
+                                        props?.config?.config?.user?.position
+                                    }
                                     className="text-hack-animation width-fit-content"
-                                    onMouseOver={() => animateHackText(positionTitleRef)}
+                                    onMouseOver={() =>
+                                        animateHackText(positionTitleRef)
+                                    }
                                 >
                                     {props?.config?.config?.user?.position}
                                 </h4>
@@ -101,15 +105,15 @@ function Home(props) {
                 </Container>
             </div>
             <Container>
-                <Features features={props?.config?.features} />
+                <Features features={props?.config.features} />
                 <HighlightedSkills
-                    highlightedSkills={props?.config?.highlighted_skills}
+                    highlightedSkills={props?.config.highlighted_skills}
                 />
-                <TopProjects topProjects={props?.config?.top_projects} />
+                <TopProjects topProjects={props?.config.top_projects} />
                 <LatestExperience
                     latestExperience={props?.config?.latest_experience}
                 />
-                <SideSkills sideSkills={props?.config?.side_skills} />
+                <SideSkills sideSkills={props?.config.side_skills} />
                 <LatestBlogs latestBlogs={props?.config?.latest_blogs} />
             </Container>
 

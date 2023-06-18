@@ -38,6 +38,9 @@ class BlogController extends Controller {
                     $q->whereIn('blog_skills.skill_id', $categorySkills);
                 }
             })
+            ->with(['skills' => function ($query) {
+                $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
+            }])
             ->where('status', 1)
             ->groupBy('id')
             ->orderBy("published_at", 'DESC')

@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 import { BsPalette2, BsDatabaseFillGear } from "react-icons/bs";
 import { HiServerStack } from "react-icons/hi2";
+import SkillsListTemplate from "./Components/Templates/SkillsListTemplate";
+import SkillsMajorTemplate from "./Components/Templates/SkillsMajorTemplate";
 
 function Skills() {
     const bgs = ["main-white", "main-dark"];
@@ -43,57 +45,25 @@ function Skills() {
                                 <div className="skills-major text-center row">
                                     {skill.skills
                                         ?.slice(0, 3)
-                                        .map((majorSkill, i) => {
-                                            return (
-                                                <div
-                                                    className={
-                                                        "col-" +
-                                                        (i <= 1
-                                                            ? "6"
-                                                            : "12 mt-15")
-                                                    }
-                                                    key={i}
-                                                >
-                                                    <OverlayTrigger
-                                                        placement="bottom"
-                                                        overlay={
-                                                            <Tooltip id="button-tooltip-2">
-                                                                {
-                                                                    majorSkill.name
-                                                                }
-                                                            </Tooltip>
-                                                        }
-                                                    >
-                                                        {({
-                                                            ref,
-                                                            ...triggerHandler
-                                                        }) => (
-                                                            <Link
-                                                                to={`/skills/${majorSkill.name}`}
-                                                            >
-                                                                <img
-                                                                    {...triggerHandler}
-                                                                    ref={ref}
-                                                                    alt={majorSkill.name + " skill icon"}
-                                                                    src={
-                                                                        majorSkill.icon
-                                                                    }
-                                                                    width="50px"
-                                                                    height="50px"
-                                                                />
-                                                            </Link>
-                                                        )}
-                                                    </OverlayTrigger>
-                                                </div>
-                                            );
-                                        })}
+                                        .map((majorSkill, index) => (
+                                            <SkillsMajorTemplate
+                                                skill={majorSkill}
+                                                index={index}
+                                                key={index}
+                                            />
+                                        ))}
                                 </div>
                             </Col>
                             <Col md={6} className="skills-details-container">
                                 <div className="category-details">
                                     <div className="category-name">
+                                        <img
+                                            src={skill.name}
+                                            alt={"category icon " + i}
+                                            className="category-icon"
+                                        />
                                         <h4>
-                                            {categoriesIcons[i]} {skill.name}
+                                           {skill.name}
                                         </h4>
                                     </div>
                                     <h5>{skill.title}</h5>
@@ -105,51 +75,14 @@ function Skills() {
                                 <div className="category-skills">
                                     <Row className="skills-list width-fit-content">
                                         {skill.additional.map(
-                                            (additionalSkill, i) => {
-                                                return (
-                                                    <Col
-                                                        key={i}
-                                                        className="me-2 p-0"
-                                                    >
-                                                        <OverlayTrigger
-                                                            placement="bottom"
-                                                            overlay={
-                                                                <Tooltip id="button-tooltip-2">
-                                                                    {
-                                                                        additionalSkill.name
-                                                                    }
-                                                                </Tooltip>
-                                                            }
-                                                        >
-                                                            {({
-                                                                ref,
-                                                                ...triggerHandler
-                                                            }) => (
-                                                                <Link
-                                                                    to={`/skills/${additionalSkill.name}`}
-                                                                >
-                                                                    <img
-                                                                        {...triggerHandler}
-                                                                        ref={
-                                                                            ref
-                                                                        }
-                                                                        className="side-skill"
-                                                                        alt={
-                                                                            additionalSkill.name +
-                                                                            " side skill"
-                                                                        }
-                                                                        src={
-                                                                            additionalSkill.icon
-                                                                        }
-                                                                        width="25px"
-                                                                        height="25px"
-                                                                    />
-                                                                </Link>
-                                                            )}
-                                                        </OverlayTrigger>
-                                                    </Col>
-                                                );
-                                            }
+                                            (additionalSkill, index) => (
+                                                <SkillsListTemplate
+                                                    skill={additionalSkill}
+                                                    imgClass="side-skill"
+                                                    colClass="me-2 p-0"
+                                                    key={index}
+                                                />
+                                            )
                                         )}
                                     </Row>
                                 </div>

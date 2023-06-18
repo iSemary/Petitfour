@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Uploader;
 use App\Models\Category;
 use App\Models\Skill;
 use Illuminate\Http\Request;
@@ -54,6 +55,7 @@ class CategoryController extends Controller {
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
+        $iconImage = Uploader::image($request->file('icon'), null, 'categories');
 
         $category = Category::create([
             'name' => $request->input('name'),
@@ -61,6 +63,7 @@ class CategoryController extends Controller {
             'description' => $request->input('description'),
             'type' => $request->input('type'),
             'priority' => $request->input('priority'),
+            'icon' => $iconImage,
         ]);
 
         if ($category) {
@@ -90,6 +93,8 @@ class CategoryController extends Controller {
         // Get the category by ID
         $category = Category::findOrFail($id);
 
+        $iconImage = Uploader::image($request->file('icon'), $category->icon, 'categories');
+
 
         // Update other category properties
         $category->name = $request->input('name');
@@ -97,6 +102,7 @@ class CategoryController extends Controller {
         $category->description = $request->input('description');
         $category->type = $request->input('type');
         $category->priority = $request->input('priority');
+        $category->icon = $iconImage;
         $category->save();
 
         if ($category) {

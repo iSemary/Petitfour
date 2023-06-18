@@ -7,8 +7,12 @@ import Container from "react-bootstrap/esm/Container";
 import { FiSend } from "react-icons/fi";
 import AxiosConfig from "../config/AxiosConfig";
 import LottieLoader from "./Loaders/LottieLoader";
+import SquareLoader from "./Loaders/SquareLoader";
 
 function Connect(props) {
+
+    const [imageLoading, setImageLoading] = useState(true);
+
     // 0 -> Available
     // 1 -> Sending
     // 2 -> Success
@@ -214,16 +218,15 @@ function Connect(props) {
 
     return (
         <Container>
-            <div className="main-content">
+            <div className="contact-container">
                 <Row>
-                    <Col md={6}>
+                    <Col md={6} className="contact-image-container">
                         <div className="contact-form">
                             <h1>Let's connect now 🪄</h1>
                             <p>
                                 I'm thrilled that you'd like to get in touch
                                 with me. If you have any questions,
-                                opportunities, or simply want to connect, please
-                                feel free to reach out using this form below:
+                                opportunities, or simply want to connect
                             </p>
 
                             <div className="contact-form-container">
@@ -237,7 +240,7 @@ function Connect(props) {
                                     }
                                     onSubmit={handleSubmit}
                                 >
-                                    <Form.Group className="mb-3">
+                                    <Form.Group className="mb-2">
                                         <Form.Label>
                                             What's your awesome <b>name</b>?
                                         </Form.Label>
@@ -250,7 +253,7 @@ function Connect(props) {
                                             placeholder="Enter your name"
                                         />
                                     </Form.Group>
-                                    <Form.Group className="mb-3">
+                                    <Form.Group className="mb-2">
                                         <Form.Label>
                                             Where can I reach you? (Your{" "}
                                             <b>email</b>, please!)
@@ -264,7 +267,7 @@ function Connect(props) {
                                             placeholder="Enter your email"
                                         />
                                     </Form.Group>
-                                    <Form.Group className="mb-3">
+                                    <Form.Group className="mb-2">
                                         <Form.Label>
                                             What's on your mind? Give me a{" "}
                                             <b>subject</b> hint!
@@ -288,7 +291,7 @@ function Connect(props) {
                                             ))}
                                         </Form.Select>
                                     </Form.Group>
-                                    <Form.Group className="mb-3">
+                                    <Form.Group className="mb-2">
                                         <Form.Label>
                                             Tell me all about it! I'm eager to
                                             hear your <b>message</b> from you.
@@ -340,12 +343,40 @@ function Connect(props) {
                             </div>
                         </div>
                     </Col>
-                    <Col md={6}>
-                        <img
-                            className="contact-image"
-                            src={props.config?.contact_image}
-                            alt="Contact"
-                        />
+                    <Col
+                        md={6}
+                        className="overflow-hidden contact-image-container"
+                    >
+                        {/* {props.config?.contact_image ? (
+                            <img
+                                className="contact-image"
+                                src={props.config.contact_image}
+                                alt="Contact"
+                            />
+                        ) : (
+                            <SquareLoader
+                                width={1000}
+                                height={1000}
+                                radius={10}
+                            />
+                        )} */}
+
+                        {/* Show image loader until the image is totally loaded */}
+                        {imageLoading && (
+                            <SquareLoader width={1000} height={1000} radius={10} />
+                        )}
+                        {/* Hide / Show image based on the status of the image (Loaded or not) */}
+                        {
+                            props?.config?.contact_image &&
+                            <img
+                                variant="top"
+                                style={imageLoading ? { display: "none" } : {}}
+                                className="card-img-top"
+                                onLoad={() => setImageLoading(false)}
+                                src={props.config.contact_image}
+                                alt="blog"
+                            />
+                        }
                     </Col>
                 </Row>
             </div>

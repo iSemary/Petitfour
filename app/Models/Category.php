@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 class Category extends Model {
-    protected $fillable = ['name', 'title', 'description', 'type', 'priority'];
+    protected $fillable = ['name', 'title', 'description', 'type', 'priority', 'icon'];
     protected $appends = ['counters'];
+
+
+    public function getIconAttribute() {
+        return asset("storage/categories/" . $this->attributes['icon']);
+    }
 
     public function skills() {
         return $this->hasMany(Skill::class, 'category_id');

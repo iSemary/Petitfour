@@ -19,7 +19,7 @@ return new class extends Migration {
      */
     public function down(): void {
         Schema::table('categories', function (Blueprint $table) {
-            $table->tinyInteger('type');
+            $table->dropColumn('type');
         });
     }
 };

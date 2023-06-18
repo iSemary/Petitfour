@@ -49,6 +49,7 @@ body {
 
 .width-fit-content {
     width: fit-content;
+    max-width: fit-content;
 }
 
 .bg-main {
@@ -97,10 +98,10 @@ body {
     }
 }
 .main-background-cover {
-    background-image: url("../images/background_1.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    // background-image: url("../images/background_1.jpg");
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-size: cover;
     width: 100%;
     height: 100vh;
 }
@@ -281,21 +282,28 @@ $black: #282936;
     -webkit-backdrop-filter: blur(7.3px);
     border: 1px solid rgba(255, 255, 255, 0.31);
 }
-.contact-form {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px #ff6b6b1a;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px #0000001a;
-    backdrop-filter: blur(5px);
 
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 20px;
+.contact-container {
+    margin-top: 15px;
+    .contact-image-container,
+    .contact-form-container {
+        // max-height: 75vh;
+    }
+
+    .contact-form {
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 30px #0000001a;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        padding: 10px 20px;
+    }
+
+    .contact-image-container,
+    .contact-image-container img {
+        border-radius: 10px;
+    }
 }
 
 .side-skill {
@@ -323,18 +331,33 @@ $black: #282936;
     .blog-card {
         box-shadow: 0 0 7px #ffffff8c;
         border: 0;
-
-        .card-img-top {
-            height: 250px;
-        }
     }
     a,
     p {
         color: #0d161e;
         text-decoration: none;
     }
+    .blog-title {
+        font-size: 17px;
+        font-weight: bold;
+    }
     .blog-description {
         @include limitedLetters;
+    }
+
+    &:hover .card-img-top {
+        transform: scale(1.1) rotateZ(0.5deg);
+    }
+
+    .blog-card-image-container {
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        height: 250px;
+        overflow: hidden;
+        img {
+            height: 250px;
+            transition: 650ms;
+        }
     }
 }
 
@@ -359,13 +382,18 @@ $black: #282936;
     width: 100%;
     height: 100%;
 }
+
+.project-image-container {
+    text-align: center;
+}
+
 .project-image {
     height: 195px;
     transition: 250ms;
 
     &:hover {
-        transform: scale(1.055) translateZ(20px) rotateZ(2deg) rotateX(2deg)
-            rotateY(-2deg);
+        transform: scale(1.055) translateZ(20px) rotateZ(1deg) rotateX(1deg)
+            rotateY(-1deg);
     }
 }
 .project-title,
@@ -460,6 +488,9 @@ $black: #282936;
                     z-index: 1;
                     width: 90px;
                     height: 90px;
+                    max-width: 90px;
+                    min-height: 90px;
+                    max-height: 90px;
                     border-radius: 50%;
                     box-shadow: -2px 3px 5px #00000066;
                 }
@@ -477,11 +508,6 @@ $black: #282936;
     }
 }
 
-.blog-min-card {
-    img {
-        height: 200px;
-    }
-}
 // Single Blog Post Page
 .blog-page {
     margin-top: 5vh;
@@ -578,12 +604,19 @@ $black: #282936;
 .category-details {
     padding-top: 10px;
 
-    .category-name h4 {
+    .category-name {
         display: flex;
-        align-items: center;
+        .category-image {
+            width: 50px;
+            height: 50px;
+        }
+        h4 {
+            display: flex;
+            align-items: center;
 
-        svg {
-            margin-right: 5px;
+            svg {
+                margin-right: 5px;
+            }
         }
     }
 }
@@ -694,4 +727,111 @@ $black: #282936;
 
 .skills-loader-canvas {
     text-align: center;
+}
+
+.features {
+    .feature-item {
+        margin-top: 10px;
+        .feature-image {
+            width: 60px;
+            height: 60px;
+        }
+    }
+}
+
+.side-skills {
+    .side-skills-item {
+        .skills {
+            .side-skill-icon {
+                width: 25px;
+                height: 25px;
+            }
+        }
+        .side-skills-image {
+            width: 50px;
+            height: 50px;
+        }
+    }
+}
+
+// Single Project Page
+$mockupWidth: 50%;
+.project-page {
+    .project-images-container {
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        .laptop-mockup {
+            width: $mockupWidth;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .project-item-image {
+            width: 420px;
+            height: 258px;
+            border-radius: 10px;
+
+            .inactive {
+                filter: blur(1px);
+            }
+            .active {
+                filter: blur(0);
+            }
+        }
+
+        .project-images {
+            position: absolute;
+            transform: translateX(-109px);
+            top: 18px;
+            display: flex;
+            overflow: hidden;
+            gap: 40px;
+        }
+    }
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.footer-container {
+    position: relative;
+}
+.footer-name-container {
+    .name-svg {
+        position: absolute;
+        width: 130px;
+        bottom: -100%;
+        path {
+            transform: matrix(
+                2.360707,
+                0,
+                0,
+                2.848485,
+                -143.012711,
+                -389.684021
+            );
+
+
+            fill: none;
+            stroke: $primaryWhite;
+            stroke-width: 1;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: handwriting 5s linear forwards;
+            // white-space: pre;
+            // opacity: 0.9;
+        }
+    }
+}
+
+@keyframes handwriting {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        // fill:$primaryWhite;
+    }
 }

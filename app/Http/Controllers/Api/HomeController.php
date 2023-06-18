@@ -29,7 +29,7 @@ class HomeController extends Controller {
         $data->categories = Category::select([
             'id',
             'name',
-        ])->get();
+        ])->where('type', 1)->get();
 
 
         /* This code is selecting the `title`, `description`, and `image` columns from the `features` table in
@@ -104,7 +104,7 @@ class HomeController extends Controller {
         /* This code is selecting all categories from the `categories` table in the database where the `type`
         column has a value of 0. It selects the `id`, `name`, `title`, `description`, and `type` columns
         from the table and orders the results by the `priority` column. */
-        $data->side_skills = Category::select(['id', 'name', 'title', 'description', 'type'])->where('type', 0)->orderBy('priority')->get();
+        $data->side_skills = Category::select(['id', 'name', 'title', 'description', 'type', 'icon'])->where('type', 0)->orderBy('priority')->get();
         $data->side_skills->transform(function ($category) {
             $category->skills;
             return $category;
@@ -122,7 +122,10 @@ class HomeController extends Controller {
             'description',
             'published_at',
             'image',
-        ])->where('status', 1)->orderBy("published_at", 'DESC')->limit(3)->get();
+        ])
+            ->with(['skills' => function ($query) {
+                $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
+            }])->where('status', 1)->orderBy("published_at", 'DESC')->limit(3)->get();
 
         $data->latest_blogs->transform(function ($blog) {
             $blog->published_at = Carbon::parse($blog->published_at)->format('d M Y');

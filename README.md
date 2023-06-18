@@ -88,7 +88,7 @@ Install required dependencies
 npm install
 ```
 
-Start react project on local
+Start react project on localhost
 
 ```
 npm start
@@ -96,20 +96,24 @@ npm start
 
 <h1>Gulp Commands</h1>
 
-Keep watching SASS/SCSS files on changes to be converted to css
+## Keep watching SASS/SCSS files on changes to be converted to css
 
 ```
 gulp watch-sass
 ```
+_OR_
+```
+sass --watch resources/js/src/assets/styles/style.scss:resources/js/src/assets/styles/style.css
+```
 
-Convert SASS/SCSS files to css after long work
+## Convert SASS/SCSS files to css after long work
 
 ```
 gulp css
 ```
-
+_OR_
 ```
-sass --watch resources/js/src/assets/styles/style.scss:resources/js/src/assets/styles/style.css
+sass resources/js/src/assets/styles/style.scss:resources/js/src/assets/styles/style.css
 ```
 
 ---
