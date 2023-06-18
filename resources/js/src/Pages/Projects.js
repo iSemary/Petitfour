@@ -4,6 +4,7 @@ import { Container, Row, Button, Col } from "react-bootstrap";
 import { ImSpinner10 } from "react-icons/im";
 import { HiOutlineDownload } from "react-icons/hi";
 import ProjectTemplate from "./Components/Templates/ProjectTemplate";
+import ProjectLoader from "./Loaders/ProjectLoader";
 
 function Projects({ categories }) {
     const [page, setPage] = useState(1);
@@ -84,16 +85,33 @@ function Projects({ categories }) {
                 </Col>
             </Row>
             <Row className="projects">
-                {projects?.map((project, key) => (
-                    <ProjectTemplate
-                        project={project}
-                        col={4}
-                        animate={"fade-right"}
-                        key={key}
-                    />
-                ))}
+                {projects && projects.length > 0 ? (
+                    projects.map((project, key) => (
+                        <ProjectTemplate
+                            project={project}
+                            col={4}
+                            animate={"fade-right"}
+                            key={key}
+                        />
+                    ))
+                ) : (
+                    <>
+                        <Col md={4}>
+                            <ProjectLoader />
+                        </Col>
+                        <Col md={4}>
+                            <ProjectLoader />
+                        </Col>
+                        <Col md={4}>
+                            <ProjectLoader />
+                        </Col>
+                        <Col md={4}>
+                            <ProjectLoader />
+                        </Col>
+                    </>
+                )}
             </Row>
-            {totalRecords > projects.length && (
+            {totalRecords && totalRecords > projects.length && (
                 <div className="text-center my-3">
                     <Button
                         variant="primary"

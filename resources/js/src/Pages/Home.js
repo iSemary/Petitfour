@@ -105,15 +105,15 @@ function Home(props) {
                 </Container>
             </div>
             <Container>
-                <Features features={props?.config?.features} />
+                <Features features={props?.config.features} />
                 <HighlightedSkills
-                    highlightedSkills={props?.config?.highlighted_skills}
+                    highlightedSkills={props?.config.highlighted_skills}
                 />
-                <TopProjects topProjects={props?.config?.top_projects} />
+                <TopProjects topProjects={props?.config.top_projects} />
                 <LatestExperience
                     latestExperience={props?.config?.latest_experience}
                 />
-                <SideSkills sideSkills={props?.config?.side_skills} />
+                <SideSkills sideSkills={props?.config.side_skills} />
                 <LatestBlogs latestBlogs={props?.config?.latest_blogs} />
             </Container>
 

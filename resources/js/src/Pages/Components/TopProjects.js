@@ -5,30 +5,40 @@ import { BiNavigation } from "react-icons/bi";
 
 import AOS from "aos";
 import ProjectTemplate from "./Templates/ProjectTemplate";
+import { Col } from "react-bootstrap";
+import ProjectLoader from "../Loaders/ProjectLoader";
 
 AOS.init();
 
-function TopProjects(props) {
-    let topProjects = "";
-
-    if (props.topProjects && Object.keys(props.topProjects).length > 0) {
-        topProjects = props.topProjects.map((project, index) => {
-            return (
-                <ProjectTemplate
-                    project={project}
-                    col={4}
-                    animate={"fade-right"}
-                    key={index}
-                />
-            );
-        });
-    }
-
+function TopProjects({topProjects}) {
     return (
         <>
             <div className="my-4 text-center">
                 <h3 className="text-center">Top Projects</h3>
-                <Row className="justify-content-center">{topProjects}</Row>
+                <Row className="justify-content-center">
+                    {topProjects ? (
+                        topProjects.map((project, index) => (
+                            <ProjectTemplate
+                                project={project}
+                                col={4}
+                                animate={"fade-right"}
+                                key={index}
+                            />
+                        ))
+                    ) : (
+                        <>
+                            <Col md={4}>
+                                <ProjectLoader />
+                            </Col>
+                            <Col md={4}>
+                                <ProjectLoader />
+                            </Col>
+                            <Col md={4}>
+                                <ProjectLoader />
+                            </Col>
+                        </>
+                    )}
+                </Row>
                 <div className="mt-4">
                     <Link to="projects" className="discover-more-btn">
                         <span className="discover-circle" aria-hidden="true">

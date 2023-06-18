@@ -122,7 +122,10 @@ class HomeController extends Controller {
             'description',
             'published_at',
             'image',
-        ])->where('status', 1)->orderBy("published_at", 'DESC')->limit(3)->get();
+        ])
+            ->with(['skills' => function ($query) {
+                $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
+            }])->where('status', 1)->orderBy("published_at", 'DESC')->limit(3)->get();
 
         $data->latest_blogs->transform(function ($blog) {
             $blog->published_at = Carbon::parse($blog->published_at)->format('d M Y');

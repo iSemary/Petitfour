@@ -1,5 +1,4 @@
 import React from "react";
-import { Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import OverlayTrigger from "react-bootstrap/esm/OverlayTrigger";
 import Tooltip from "react-bootstrap/esm/Tooltip";

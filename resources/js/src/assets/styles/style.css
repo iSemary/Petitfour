@@ -196,20 +196,19 @@ body {
   -webkit-backdrop-filter: blur(7.3px);
   border: 1px solid rgba(255, 255, 255, 0.31); }
 
-.contact-form {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px #ff6b6b1a;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px #0000001a;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 20px; }
+.contact-container {
+  margin-top: 15px; }
+  .contact-container .contact-form {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px #0000001a;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 10px 20px; }
+  .contact-container .contact-image-container,
+  .contact-container .contact-image-container img {
+    border-radius: 10px; }
 
 .side-skill {
   width: fit-content;
@@ -264,6 +263,9 @@ body {
 .contact-image {
   width: 100%;
   height: 100%; }
+
+.project-image-container {
+  text-align: center; }
 
 .project-image {
   height: 195px;
@@ -513,9 +515,11 @@ body {
 .skills-loader-canvas {
   text-align: center; }
 
-.features .feature-item .feature-image {
-  width: 60px;
-  height: 60px; }
+.features .feature-item {
+  margin-top: 10px; }
+  .features .feature-item .feature-image {
+    width: 60px;
+    height: 60px; }
 
 .side-skills .side-skills-item .skills .side-skill-icon {
   width: 25px;
@@ -547,5 +551,30 @@ body {
     display: flex;
     overflow: hidden;
     gap: 40px; }
+
+.overflow-hidden {
+  overflow: hidden; }
+
+.footer-container {
+  position: relative; }
+
+.footer-name-container .name-svg {
+  position: absolute;
+  width: 130px;
+  bottom: -100%; }
+  .footer-name-container .name-svg path {
+    transform: matrix(2.360707, 0, 0, 2.848485, -143.012711, -389.684021);
+    fill: none;
+    stroke: #e3e1fa;
+    stroke-width: 1;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: handwriting 5s linear forwards; }
+
+@keyframes handwriting {
+  0% {
+    stroke-dashoffset: 1000; }
+  100% {
+    stroke-dashoffset: 0; } }
 
 /*# sourceMappingURL=style.css.map */
