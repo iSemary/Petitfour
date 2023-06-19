@@ -1,5 +1,4 @@
 import React from "react";
-import { Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import OverlayTrigger from "react-bootstrap/esm/OverlayTrigger";
 import Tooltip from "react-bootstrap/esm/Tooltip";
@@ -7,7 +6,7 @@ import Tooltip from "react-bootstrap/esm/Tooltip";
 function SkillsListTemplate({ skill, imgClass, colClass }) {
     return (
         <>
-            <Col className={colClass}>
+            <div className={colClass}>
                 <OverlayTrigger
                     placement="bottom"
                     overlay={
@@ -33,7 +32,7 @@ function SkillsListTemplate({ skill, imgClass, colClass }) {
                         </Link>
                     )}
                 </OverlayTrigger>
-            </Col>
+            </div>
         </>
     );
 }

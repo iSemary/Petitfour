@@ -41,19 +41,19 @@ function ProjectTemplate({ project, col, animate }) {
                 <p className="project-description">{project.description}</p>
             </Link>
             {project.skills ? (
-                <Row>
+                <Row className="justify-content-around">
                     {project.skills
                         .slice(0, MAX_PROJECT_SKILLS)
                         .map((projectSkill, index) => (
                             <SkillsListTemplate
                                 skill={projectSkill}
                                 imgClass="project-skill-icon"
-                                colClass="me-2 p-0"
+                                colClass="me-2 p-0 col-1"
                                 key={index}
                             />
                         ))}
                     {project.skills.length > MAX_PROJECT_SKILLS && (
-                        <Col md={2} key={MAX_PROJECT_SKILLS}>
+                        <Col md={3} key={MAX_PROJECT_SKILLS}>
                             <HiCode size={20} />
                             {"+" +
                                 (project.skills.length - MAX_PROJECT_SKILLS) +

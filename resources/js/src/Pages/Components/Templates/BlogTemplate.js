@@ -48,29 +48,30 @@ function BlogTemplate({ blog, col, fade }) {
                                     {blog.description}
                                 </Card.Text>
                                 <Card.Text>{blog.published_at}</Card.Text>
+
+                                <Row className="justify-content-around">
+                                    {blog.skills &&
+                                        blog.skills
+                                            .slice(0, MAX_BLOG_SKILLS)
+                                            .map((blogSkill, index) => (
+                                                <SkillsListTemplate
+                                                    skill={blogSkill}
+                                                    imgClass="project-skill-icon"
+                                                    colClass="me-2 p-0 col-1"
+                                                    key={index}
+                                                />
+                                            ))}
+                                    {blog.skills.length > MAX_BLOG_SKILLS && (
+                                        <Col md={3} key={MAX_BLOG_SKILLS}>
+                                            <HiCode size={20} />
+                                            {"+" +
+                                                (blog.skills.length -
+                                                    MAX_BLOG_SKILLS) +
+                                                " Skills"}
+                                        </Col>
+                                    )}
+                                </Row>
                             </Card.Body>
-                            <Row>
-                                {blog.skills &&
-                                    blog.skills
-                                        .slice(0, MAX_BLOG_SKILLS)
-                                        .map((blogSkill, index) => (
-                                            <SkillsListTemplate
-                                                skill={blogSkill}
-                                                imgClass="project-skill-icon"
-                                                colClass="me-2 p-0"
-                                                key={index}
-                                            />
-                                        ))}
-                                {blog.skills.length > MAX_BLOG_SKILLS && (
-                                    <Col md={2} key={MAX_BLOG_SKILLS}>
-                                        <HiCode size={20} />
-                                        {"+" +
-                                            (blog.skills.length -
-                                                MAX_BLOG_SKILLS) +
-                                            " Skills"}
-                                    </Col>
-                                )}
-                            </Row>
                         </Link>
                     </Card>
                 </Fade>

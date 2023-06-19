@@ -27,7 +27,7 @@ function ExperienceTemplate({ experience, index }) {
                     <div className="experience-company-logo">
                         <img
                             src={experience.company_logo}
-                            alt={experience.company_logo}
+                            alt={experience.company_name + " logo"}
                         />
                         <div className="experience-v-line">
                             <div className="v-line"></div>
