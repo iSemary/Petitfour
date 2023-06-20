@@ -47,17 +47,20 @@ body {
     }
 }
 
-.bg-home-even, .bg-home-odd {
-    margin: 4% 0;
+.bg-home-even,
+.bg-home-odd {
+    margin: 2% 0;
+    padding: 2% 0;
     text-align: center;
+    position: relative;
 }
 
 .bg-home-even {
-
+    background-color: $primaryDark;
 }
 
 .bg-home-odd {
-    
+    background-color: $primaryBlack;
 }
 
 .width-fit-content {
@@ -111,7 +114,11 @@ body {
     }
 }
 .main-background-cover {
-    background-image: radial-gradient( circle farthest-corner at 32.7% 82.7%, $primaryDark 8.3%, $primaryBlack 79.4% );
+    background-image: radial-gradient(
+        circle farthest-corner at 32.7% 82.7%,
+        $primaryDark 8.3%,
+        $primaryBlack 79.4%
+    );
 
     width: 100%;
     height: 100vh;
@@ -370,6 +377,12 @@ $black: #282936;
             transition: 650ms;
         }
     }
+
+    .blog-date {
+        font-weight: bold;
+        color: $secondaryTextColor;
+        text-align: right;
+    }
 }
 
 .spinner {
@@ -407,6 +420,11 @@ $black: #282936;
             rotateY(-1deg);
     }
 }
+
+.project-title {
+    text-align: center;
+}
+
 .project-title,
 .project-description {
     color: $primaryWhite;
@@ -514,6 +532,14 @@ $black: #282936;
         .experience-details {
             .experience-info {
                 direction: ltr;
+                text-align: left;
+            }
+        }
+    }
+    .experience-odd {
+        .experience-details {
+            .experience-info {
+                text-align: right;
             }
         }
     }
@@ -557,6 +583,8 @@ $black: #282936;
 
 .badge-secondary {
     background-color: $secondaryColor;
+    color:$primaryDark;
+    box-shadow: 3px 4px 3px #0009;
 }
 
 .contact-form-container {
@@ -672,6 +700,26 @@ $black: #282936;
 .blog-filter {
     display: flex;
     align-items: center;
+    button {
+        margin: 0 5px;
+
+        span {
+            background-color: $primaryWhite;
+            color: $primaryDark;
+            padding: 0px 5px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            position: absolute;
+            top: -10px;
+        }
+
+        &:hover span {
+            background-color: $primaryDark;
+            color: $primaryWhite;
+            box-shadow: 2px -4px 6px #ffffff5e;
+        }
+    }
 }
 
 .reveal-fade {
@@ -701,6 +749,12 @@ $black: #282936;
     border: 1px solid $primaryWhite;
     background-color: $primaryWhite;
     color: $primaryDark;
+
+    &:hover {
+        background-color: $primaryDark;
+        color: $primaryWhite;
+        box-shadow: -3px -2px 7px #ffffff8f;
+    }
 }
 
 .badge-main-dark {
@@ -816,15 +870,6 @@ $mockupWidth: 50%;
         left: 0;
         bottom: -100%;
         path {
-            transform: matrix(
-                2.360707,
-                0,
-                0,
-                2.848485,
-                -143.012711,
-                -389.684021
-            );
-
             fill: none;
             stroke: $primaryWhite;
             stroke-width: 1;
@@ -851,5 +896,15 @@ $mockupWidth: 50%;
     font-weight: bold;
     span {
         color: $primaryColor;
+    }
+}
+
+.circles-pattern {
+    .cls-2 {
+        fill: none;
+        // stroke: #1f1f1f;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.6px;
     }
 }

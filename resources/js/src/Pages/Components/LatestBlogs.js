@@ -8,9 +8,9 @@ function LatestBlogs({ latestBlogs }) {
         <div className="bg-home-odd">
             <Container>
                 <h3 className="text-center home-title">
-                    latest blog <span>posts</span>
+                    Latest blog <span>posts</span>
                 </h3>
-                <Row className="home-blogs">
+                <Row className="home-blogs my-3">
                     {latestBlogs ? (
                         latestBlogs.map((blog, index) => (
                             <BlogTemplate

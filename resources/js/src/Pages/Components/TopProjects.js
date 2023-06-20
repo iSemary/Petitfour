@@ -3,12 +3,11 @@ import Row from "react-bootstrap/esm/Row";
 import { Link } from "react-router-dom";
 import { BiNavigation } from "react-icons/bi";
 
-import AOS from "aos";
 import ProjectTemplate from "./Templates/ProjectTemplate";
 import { Col, Container } from "react-bootstrap";
 import ProjectLoader from "../Loaders/ProjectLoader";
+import RotatedSquaresPattern from "../Patterns/RotatedSquaresPattern";
 
-AOS.init();
 
 function TopProjects({ topProjects }) {
     return (
@@ -18,7 +17,7 @@ function TopProjects({ topProjects }) {
                     <h3 className="text-center home-title">
                         Top <span>Projects</span>
                     </h3>
-                    <Row className="justify-content-center">
+                    <Row className="justify-content-center my-5">
                         {topProjects ? (
                             topProjects.map((project, index) => (
                                 <ProjectTemplate
@@ -58,6 +57,8 @@ function TopProjects({ topProjects }) {
                         </Link>
                     </div>
                 </Container>
+
+                <RotatedSquaresPattern fill="#fff" secondFill="red" bottom="5%" right="2%" height="60px" width="60px"  />
             </div>
         </>
     );

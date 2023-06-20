@@ -27,7 +27,7 @@ function Features(props) {
                                                 alt={"Feature " + index}
                                             />
                                         </Col>
-                                        <Col md={10}>
+                                        <Col md={10} className="text-left">
                                             <h4>{feature.title}</h4>
                                             <p>{feature.description}</p>
                                         </Col>

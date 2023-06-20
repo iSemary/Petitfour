@@ -222,7 +222,7 @@ function Connect(props) {
                 <Row>
                     <Col md={6} className="contact-image-container">
                         <div className="contact-form">
-                            <h1>Let's connect now 🪄</h1>
+                            <h1>Let's connect now </h1>
                             <p>
                                 I'm thrilled that you'd like to get in touch
                                 with me. If you have any questions,
@@ -347,20 +347,6 @@ function Connect(props) {
                         md={6}
                         className="overflow-hidden contact-image-container"
                     >
-                        {/* {props.config?.contact_image ? (
-                            <img
-                                className="contact-image"
-                                src={props.config.contact_image}
-                                alt="Contact"
-                            />
-                        ) : (
-                            <SquareLoader
-                                width={1000}
-                                height={1000}
-                                radius={10}
-                            />
-                        )} */}
-
                         {/* Show image loader until the image is totally loaded */}
                         {imageLoading && (
                             <SquareLoader width={1000} height={1000} radius={10} />

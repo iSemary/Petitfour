@@ -12,6 +12,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
+    <meta name="view-type" content="{{ isset($_GET['type']) ? $_GET['type'] : 0 }}">
     {{-- Google Analytics Script --}}
     @if (isset($config['system']['google_analytics_id']))
         <script async src="https://www.googletagmanager.com/gtag/js?id={{ $config['system']['google_analytics_id'] }}"></script>

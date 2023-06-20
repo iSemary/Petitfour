@@ -11,6 +11,7 @@ use App\Models\Project;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use stdClass;
+use Carbon\Carbon;
 
 class SkillController extends Controller {
 
@@ -98,14 +99,24 @@ class SkillController extends Controller {
         // Retrieve blogs associated with the skill.
         $data->blogs = Blog::leftJoin('blog_skills', 'blog_skills.blog_id', 'blogs.id')
             ->select([
+                'blogs.id',
                 'blogs.title',
                 'blogs.slug',
                 'blogs.description',
                 'blogs.image',
                 'blogs.published_at',
             ])
+            ->where('status', 1)
             ->where('blog_skills.skill_id', $skill->id)
+            ->orderBy("published_at", 'DESC')
             ->get();
+
+
+        $data->blogs->transform(function ($blog) {
+            $blog->published_at = Carbon::parse($blog->published_at)->format('M d Y');
+            $blog->skills = $blog->skills()->select(['skills.id', 'skills.icon', 'skills.theme_icon', 'skills.name'])->orderBy('skills.priority')->get();
+            return $blog;
+        });
 
 
         /* Returning a json response with the data. */

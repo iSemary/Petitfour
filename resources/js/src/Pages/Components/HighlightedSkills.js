@@ -7,11 +7,10 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { BiNavigation } from "react-icons/bi";
 
-import AOS from "aos";
 import CircleLoader from "../Loaders/CircleLoader";
 import { Container } from "react-bootstrap";
+import CirclesPattern from "../Patterns/CirclesPattern";
 
-AOS.init();
 
 function HighlightedSkills({ highlightedSkills }) {
     return (
@@ -20,7 +19,7 @@ function HighlightedSkills({ highlightedSkills }) {
                 <h3 className="text-center home-title">
                     Highlighted <span>Skills</span>
                 </h3>
-                <Row className="justify-content-center">
+                <Row className="justify-content-center my-5">
                     {highlightedSkills ? (
                         highlightedSkills.map((skill, index) => (
                             <Col md={1} data-aos="fade-right" key={index}>
@@ -80,6 +79,8 @@ function HighlightedSkills({ highlightedSkills }) {
                     </Link>
                 </div>
             </Container>
+
+            <CirclesPattern fill="#fff" stroke="#fff" top="5%" left="2%" height="60px" width="60px" />
         </div>
     );
 }

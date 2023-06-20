@@ -12,6 +12,7 @@ use App\Models\ProjectImage;
 use App\Models\Skill;
 use App\Models\SocialLink;
 use App\Models\SystemConfig;
+use App\Models\ThemeCounter;
 use App\Models\UserConfig;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
@@ -148,6 +149,21 @@ class HomeController extends Controller {
             'success' => true,
             'status' => 200,
             'data' => $data
+        ], 200);
+    }
+
+    /** Count how many users requested the theme effect, with their device details */
+    public function countTheme(Request $request) {
+        ThemeCounter::create([
+            'theme_type' => ($request->theme_type) == 'false' ? 0 : 1,
+            'device_type' => $request->device_type,
+            'device_details' => $request->device_details,
+            'view_type' => $request->view_type,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'status' => 200,
         ], 200);
     }
 }

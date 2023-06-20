@@ -11,7 +11,7 @@ import "@splidejs/react-splide/css";
 function Blog() {
     const { slug } = useParams();
     const [blog, setBlog] = useState(null);
-    const [similarBlogs, setSimilarBlogs] = useState([]);
+    const [similarBlogs, setSimilarBlogs] = useState(null);
     const [blogSkills, setBlogSkills] = useState(null);
 
     const splideOptions = {
@@ -78,9 +78,9 @@ function Blog() {
                         {
                             <div className="blog-skills">
                                 {blogSkills.map((blogSkill, key) => (
-                                    <Link to={"/skills/" + blogSkill.name}>
+                                    <Link to={"/skills/" + blogSkill.name} key={key}>
                                         <span
-                                            key={key}
+                                            
                                             className="badge badge-secondary me-1"
                                         >
                                             {blogSkill.name}
