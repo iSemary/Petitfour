@@ -35,7 +35,9 @@ function Home(props) {
             theme_type: localStorage.getItem("theme"),
             device_type: navigator.platform,
             device_details: navigator.userAgent,
-            view_type: document.querySelector('meta[name="view-type"]').getAttribute('content'),
+            view_type: document
+                .querySelector('meta[name="view-type"]')
+                .getAttribute("content"),
         };
 
         AxiosConfig.post(`/count-theme`, requestDetails).catch((error) => {
@@ -82,9 +84,16 @@ function Home(props) {
                         <Col md={6}>
                             <div className="top-home-details">
                                 <h1>
-                                    {props?.config?.config?.user?.first_name}
+                                    <span>
+                                        {
+                                            props?.config?.config?.user
+                                                ?.first_name
+                                        }
+                                    </span>
                                     <br />
-                                    {props?.config?.config?.user?.last_name}
+                                    <span className="gradient-text">
+                                        {props?.config?.config?.user?.last_name}
+                                    </span>
                                 </h1>
                                 <h4
                                     ref={positionTitleRef}

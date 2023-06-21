@@ -41,7 +41,7 @@ function ProjectTemplate({ project, col, animate }) {
                 <p className="project-description">{project.description}</p>
             </Link>
             {project.skills ? (
-                <Row className="justify-content-around">
+                <Row className="justify-content-center">
                     {project.skills
                         .slice(0, MAX_PROJECT_SKILLS)
                         .map((projectSkill, index) => (
@@ -53,11 +53,12 @@ function ProjectTemplate({ project, col, animate }) {
                             />
                         ))}
                     {project.skills.length > MAX_PROJECT_SKILLS && (
-                        <Col md={3} key={MAX_PROJECT_SKILLS}>
-                            <HiCode size={20} />
-                            {"+" +
-                                (project.skills.length - MAX_PROJECT_SKILLS) +
-                                " Skills"}
+                        <Col
+                            md={3}
+                            key={MAX_PROJECT_SKILLS}
+                            className="more-skills-icon"
+                        >
+                            +{project.skills.length - MAX_PROJECT_SKILLS}{" "}
                         </Col>
                     )}
                 </Row>

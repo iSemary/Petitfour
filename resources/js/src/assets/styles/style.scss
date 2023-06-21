@@ -27,21 +27,17 @@ body {
         display: flex;
         justify-content: flex-end;
         .links {
-            display: flex;
-            justify-content: space-between;
-            width: 335px;
-        }
-    }
-}
-.nav-links {
-    .links {
-        a {
-            font-weight: bold !important;
-
-            &:hover {
-                border-bottom: 2px solid #fff;
-                color: #fff;
-                animation: borderSlide 2s;
+            // display: flex;
+            // justify-content: space-between;
+            // width: 50%;
+            a {
+                font-weight: bold !important;
+                font-size: 18px;
+                &:hover {
+                    border-bottom: 2px solid #fff;
+                    color: #fff;
+                    animation: borderSlide 2s;
+                }
             }
         }
     }
@@ -72,7 +68,7 @@ body {
     background-color: $primaryColor;
 }
 .bg-second {
-    background-color: $secondaryColor;
+    background-color: $primaryWhite;
 }
 
 .bg-main-dark {
@@ -133,7 +129,33 @@ body {
     display: grid;
     height: 100%;
     align-items: center;
+    h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        .gradient-text {
+            color: transparent;
+            animation: gradientAnimation 5s linear infinite;
+            background-image: linear-gradient(
+                90deg,
+                $primaryBlue 0px,
+                $secondaryColor 100%
+            );
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+        }
+    }
 }
+
+@keyframes gradientAnimation {
+    0% {
+        background-image: linear-gradient(-267deg, #0ccde8 0px, #e4058e 100%);
+    }
+    100% {
+        background-image: linear-gradient(90deg, #0ccde8 0px, #e4058e 100%);
+    }
+}
+
 .transparent-button {
     background-color: transparent;
     border: 0;
@@ -350,6 +372,9 @@ $black: #282936;
         box-shadow: 0 0 7px #ffffff8c;
         border: 0;
     }
+    .card {
+        background-color: $primaryWhite;
+    }
     a,
     p {
         color: #0d161e;
@@ -358,8 +383,10 @@ $black: #282936;
     .blog-title {
         font-size: 17px;
         font-weight: bold;
+        text-align: left;
     }
     .blog-description {
+        text-align: left;
         @include limitedLetters;
     }
 
@@ -472,12 +499,11 @@ $black: #282936;
         margin: 30px 0;
         .experience-details {
             display: flex;
-            border-radius: 6px;
+            border-radius: 10px;
             width: 60%;
+            z-index: 1;
             box-shadow: -2px 5px 15px #00000054;
             overflow: hidden;
-            background-color: #fff;
-            max-height: 115px;
         }
         .experience-date {
             background-color: #a4508b;
@@ -491,8 +517,8 @@ $black: #282936;
             padding: 15px;
         }
         .experience-info {
-            background-color: #ffff;
-            color: #41464b;
+            color: $primaryWhite;
+            background-color: $primaryDark;
             font-weight: bold;
             padding: 15px;
             width: 80%;
@@ -530,6 +556,9 @@ $black: #282936;
     .experience-even {
         direction: rtl;
         .experience-details {
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+
             .experience-info {
                 direction: ltr;
                 text-align: left;
@@ -538,8 +567,11 @@ $black: #282936;
     }
     .experience-odd {
         .experience-details {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+
             .experience-info {
-                text-align: right;
+                text-align: left;
             }
         }
     }
@@ -582,8 +614,8 @@ $black: #282936;
 }
 
 .badge-secondary {
-    background-color: $secondaryColor;
-    color:$primaryDark;
+    background-color: $primaryWhite;
+    color: $primaryDark;
     box-shadow: 3px 4px 3px #0009;
 }
 
@@ -641,13 +673,11 @@ $black: #282936;
 }
 
 .category-details {
-    padding-top: 10px;
-
     .category-name {
         display: flex;
-        .category-image {
-            width: 50px;
-            height: 50px;
+        .category-icon {
+            width: 35px;
+            height: 35px;
         }
         h4 {
             display: flex;
@@ -806,6 +836,10 @@ $black: #282936;
 
 .side-skills {
     .side-skills-item {
+        .card {
+            background-color: #2e194e;
+            color: $primaryWhite;
+        }
         .skills {
             .side-skill-icon {
                 width: 25px;
@@ -868,16 +902,13 @@ $mockupWidth: 50%;
         position: absolute;
         width: 130px;
         left: 0;
-        bottom: -100%;
+        top: 60%;
         path {
-            fill: none;
             stroke: $primaryWhite;
-            stroke-width: 1;
+            fill: none;
+            opacity: 1;
             stroke-dasharray: 1000;
             stroke-dashoffset: 1000;
-            animation: handwriting 5s linear forwards;
-            // white-space: pre;
-            // opacity: 0.9;
         }
     }
 }
@@ -887,8 +918,28 @@ $mockupWidth: 50%;
         stroke-dashoffset: 1000;
     }
     100% {
+        opacity: 1;
         stroke-dashoffset: 0;
-        // fill:$primaryWhite;
+    }
+}
+
+.handwritten-svg {
+    width: 500px;
+    height: 500px;
+}
+
+.handwritten-svg path {
+    fill: none;
+    stroke: black;
+    stroke-width: 2px;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 3s linear forwards;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
     }
 }
 
@@ -907,4 +958,37 @@ $mockupWidth: 50%;
         stroke-linejoin: round;
         stroke-width: 1.6px;
     }
+}
+
+.more-skills-icon {
+    font-weight: bold;
+    color: #e3e1fa;
+    background-image: linear-gradient(
+        62deg,
+        #fbab7e 0%,
+        $secondaryTextColor 100%
+    );
+    border-radius: 41px;
+    box-shadow: 0px 0px 8px #f298298a, inset 0px 0px 8px #100126b3;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 7px 5px;
+    cursor: pointer;
+    width: 10.5%;
+    text-shadow: 0 0 4px $primaryDark;
+    span {
+        font-size: 13px;
+        line-height: 1.2;
+    }
+}
+
+.center-content {
+    align-items: center;
+    display: grid;
+    justify-content: center;
+}
+
+// Side Alert
+.side-alert {
+    position: fixed;
 }

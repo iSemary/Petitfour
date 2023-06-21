@@ -10,6 +10,7 @@ import { BiNavigation } from "react-icons/bi";
 import CircleLoader from "../Loaders/CircleLoader";
 import { Container } from "react-bootstrap";
 import CirclesPattern from "../Patterns/CirclesPattern";
+import styleVariables from "../../assets/styles/variables/variables.module.scss";
 
 
 function HighlightedSkills({ highlightedSkills }) {
@@ -80,7 +81,7 @@ function HighlightedSkills({ highlightedSkills }) {
                 </div>
             </Container>
 
-            <CirclesPattern fill="#fff" stroke="#fff" top="5%" left="2%" height="60px" width="60px" />
+            <CirclesPattern fill={styleVariables.primaryColor} stroke={styleVariables.primaryWhite} top="5%" left="2%" height="60px" width="60px" />
         </div>
     );
 }

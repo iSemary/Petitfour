@@ -47,7 +47,7 @@ class HomeController extends Controller {
             'name',
             'icon',
             'theme_icon',
-        ])->where('highlight', 1)->orderBy('priority')->get();
+        ])->where('highlight', 1)->where('type', 1)->orderBy('priority')->get();
 
         /**
          * The code selects the top 3 highlighted projects along with their skills and mocked images. It uses a left join to combine the `project_images` and 
@@ -84,6 +84,7 @@ class HomeController extends Controller {
         `company_logo`, `company_location`, `position_title`, `start_date`, and `end_date` columns from the
         table and orders the results by the `end_date` column in descending order. */
         $data->latest_experience = Experience::select([
+            'id',
             'company_name',
             'company_logo',
             'company_location',

@@ -20,7 +20,7 @@ function Features(props) {
                                     className="feature-item"
                                 >
                                     <Row>
-                                        <Col md={2}>
+                                        <Col md={2} className="center-content">
                                             <img
                                                 src={feature.image}
                                                 className="feature-image"

@@ -24,7 +24,7 @@ function SideSkills({ sideSkills }) {
                                     <Card className="mb-4">
                                         <Card.Body>
                                             <Row>
-                                                <Col md={3}>
+                                                <Col md={3} className="center-content">
                                                     <img
                                                         className="side-skills-image"
                                                         src={sideSkill.icon}

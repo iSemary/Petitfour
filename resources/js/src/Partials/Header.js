@@ -25,8 +25,8 @@ function Header(props) {
                         </Col>
                     </Col>
                     <Col md={9} className="nav-links">
-                        <div className="links">
-                            <div>
+                        <div className="row links w-100 justify-content-end">
+                            <div className="col-2">
                                 <Link
                                     to="/"
                                     className={
@@ -37,7 +37,7 @@ function Header(props) {
                                     Home
                                 </Link>
                             </div>
-                            <div>
+                            <div className="col-2">
                                 <Link
                                     to="/skills"
                                     className={
@@ -48,7 +48,7 @@ function Header(props) {
                                     Skills
                                 </Link>
                             </div>
-                            <div>
+                            <div className="col-2">
                                 <Link
                                     to="/projects"
                                     className={
@@ -59,7 +59,7 @@ function Header(props) {
                                     Projects
                                 </Link>
                             </div>
-                            <div>
+                            <div className="col-2">
                                 <Link
                                     to="/blogs"
                                     className={
@@ -70,7 +70,7 @@ function Header(props) {
                                     Blogs
                                 </Link>
                             </div>
-                            <div>
+                            <div className="col-2">
                                 <Link
                                     to="/connect"
                                     className={

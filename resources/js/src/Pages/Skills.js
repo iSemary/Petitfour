@@ -44,11 +44,11 @@ function Skills() {
                                         ))}
                                 </div>
                             </Col>
-                            <Col md={6} className="skills-details-container">
+                            <Col md={6} className="skills-details-container p-3">
                                 <div className="category-details">
                                     <div className="category-name">
                                         <img
-                                            src={skill.name}
+                                            src={skill.icon}
                                             alt={"category icon " + i}
                                             className="category-icon"
                                         />

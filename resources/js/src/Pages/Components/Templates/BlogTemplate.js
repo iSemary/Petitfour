@@ -47,7 +47,9 @@ function BlogTemplate({ blog, col, fade }) {
                                 <Card.Text className="blog-description">
                                     {blog.description}
                                 </Card.Text>
-                                <Card.Text className="blog-date">{blog.published_at}</Card.Text>
+                                <Card.Text className="blog-date">
+                                    {blog.published_at}
+                                </Card.Text>
 
                                 <Row className="justify-content-around">
                                     {blog.skills &&
@@ -61,15 +63,19 @@ function BlogTemplate({ blog, col, fade }) {
                                                     key={index}
                                                 />
                                             ))}
-                                    {blog.skills && blog.skills.length > MAX_BLOG_SKILLS && (
-                                        <Col md={3} key={MAX_BLOG_SKILLS}>
-                                            <HiCode size={20} />
-                                            {"+" +
-                                                (blog.skills.length -
-                                                    MAX_BLOG_SKILLS) +
-                                                " Skills"}
-                                        </Col>
-                                    )}
+                                    {blog.skills &&
+                                        blog.skills.length >
+                                            MAX_BLOG_SKILLS && (
+                                            <Col
+                                                md={3}
+                                                key={MAX_BLOG_SKILLS}
+                                                className="more-skills-icon"
+                                            >
+                                                +
+                                                {blog.skills.length -
+                                                    MAX_BLOG_SKILLS}{" "}
+                                            </Col>
+                                        )}
                                 </Row>
                             </Card.Body>
                         </Link>

@@ -10,10 +10,11 @@
   src: url("../fonts/Pharaoh/AlphacodePharaohRegular.ttf"); }
 :export {
   primaryColor: #884dff;
+  primaryBlue: #0CCDE8;
   primaryBlack: #171a1c;
   primaryWhite: #e3e1fa;
   primaryDark: #100126;
-  secondaryColor: #e3e0f5;
+  secondaryColor: #E4058E;
   secondaryTextColor: #F29829; }
 
 body {
@@ -26,17 +27,13 @@ body {
 .main-nav .nav-links {
   display: flex;
   justify-content: flex-end; }
-  .main-nav .nav-links .links {
-    display: flex;
-    justify-content: space-between;
-    width: 335px; }
-
-.nav-links .links a {
-  font-weight: bold !important; }
-  .nav-links .links a:hover {
-    border-bottom: 2px solid #fff;
-    color: #fff;
-    animation: borderSlide 2s; }
+  .main-nav .nav-links .links a {
+    font-weight: bold !important;
+    font-size: 18px; }
+    .main-nav .nav-links .links a:hover {
+      border-bottom: 2px solid #fff;
+      color: #fff;
+      animation: borderSlide 2s; }
 
 .bg-home-even,
 .bg-home-odd {
@@ -59,7 +56,7 @@ body {
   background-color: #884dff; }
 
 .bg-second {
-  background-color: #e3e0f5; }
+  background-color: #e3e1fa; }
 
 .bg-main-dark {
   background-color: #100126; }
@@ -106,7 +103,22 @@ body {
   display: grid;
   height: 100%;
   align-items: center; }
+  .top-home-details h1 {
+    font-size: 3.5rem;
+    font-weight: bold; }
+    .top-home-details h1 .gradient-text {
+      color: transparent;
+      animation: gradientAnimation 5s linear infinite;
+      background-image: linear-gradient(90deg, #0CCDE8 0px, #E4058E 100%);
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      background-clip: text; }
 
+@keyframes gradientAnimation {
+  0% {
+    background-image: linear-gradient(-267deg, #0ccde8 0px, #e4058e 100%); }
+  100% {
+    background-image: linear-gradient(90deg, #0ccde8 0px, #e4058e 100%); } }
 .transparent-button {
   background-color: transparent;
   border: 0;
@@ -240,14 +252,18 @@ body {
 .blog-item .blog-card {
   box-shadow: 0 0 7px #ffffff8c;
   border: 0; }
+.blog-item .card {
+  background-color: #e3e1fa; }
 .blog-item a,
 .blog-item p {
   color: #0d161e;
   text-decoration: none; }
 .blog-item .blog-title {
   font-size: 17px;
-  font-weight: bold; }
+  font-weight: bold;
+  text-align: left; }
 .blog-item .blog-description {
+  text-align: left;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
@@ -333,12 +349,11 @@ body {
     margin: 30px 0; }
     .home-experiences .experience .experience-details {
       display: flex;
-      border-radius: 6px;
+      border-radius: 10px;
       width: 60%;
+      z-index: 1;
       box-shadow: -2px 5px 15px #00000054;
-      overflow: hidden;
-      background-color: #fff;
-      max-height: 115px; }
+      overflow: hidden; }
     .home-experiences .experience .experience-date {
       background-color: #a4508b;
       background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
@@ -350,8 +365,8 @@ body {
       width: 20%;
       padding: 15px; }
     .home-experiences .experience .experience-info {
-      background-color: #ffff;
-      color: #41464b;
+      color: #e3e1fa;
+      background-color: #100126;
       font-weight: bold;
       padding: 15px;
       width: 80%; }
@@ -379,11 +394,17 @@ body {
         box-shadow: -2px 3px 5px #00000066; }
   .home-experiences .experience-even {
     direction: rtl; }
-    .home-experiences .experience-even .experience-details .experience-info {
-      direction: ltr;
+    .home-experiences .experience-even .experience-details {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0; }
+      .home-experiences .experience-even .experience-details .experience-info {
+        direction: ltr;
+        text-align: left; }
+  .home-experiences .experience-odd .experience-details {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
+    .home-experiences .experience-odd .experience-details .experience-info {
       text-align: left; }
-  .home-experiences .experience-odd .experience-details .experience-info {
-    text-align: right; }
 
 .blog-page {
   margin-top: 5vh; }
@@ -411,7 +432,7 @@ body {
   font-weight: bold; }
 
 .badge-secondary {
-  background-color: #e3e0f5;
+  background-color: #e3e1fa;
   color: #100126;
   box-shadow: 3px 4px 3px #0009; }
 
@@ -452,18 +473,16 @@ body {
 .social-links {
   border-bottom: 1px solid #ffffff21; }
 
-.category-details {
-  padding-top: 10px; }
-  .category-details .category-name {
-    display: flex; }
-    .category-details .category-name .category-image {
-      width: 50px;
-      height: 50px; }
-    .category-details .category-name h4 {
-      display: flex;
-      align-items: center; }
-      .category-details .category-name h4 svg {
-        margin-right: 5px; }
+.category-details .category-name {
+  display: flex; }
+  .category-details .category-name .category-icon {
+    width: 35px;
+    height: 35px; }
+  .category-details .category-name h4 {
+    display: flex;
+    align-items: center; }
+    .category-details .category-name h4 svg {
+      margin-right: 5px; }
 
 .text-right {
   text-align: right; }
@@ -567,6 +586,9 @@ body {
     width: 60px;
     height: 60px; }
 
+.side-skills .side-skills-item .card {
+  background-color: #2e194e;
+  color: #e3e1fa; }
 .side-skills .side-skills-item .skills .side-skill-icon {
   width: 25px;
   height: 25px; }
@@ -608,19 +630,34 @@ body {
   position: absolute;
   width: 130px;
   left: 0;
-  bottom: -100%; }
+  top: 60%; }
   .footer-name-container .name-svg path {
-    fill: none;
     stroke: #e3e1fa;
-    stroke-width: 1;
+    fill: none;
+    opacity: 1;
     stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: handwriting 5s linear forwards; }
+    stroke-dashoffset: 1000; }
 
 @keyframes handwriting {
   0% {
     stroke-dashoffset: 1000; }
   100% {
+    opacity: 1;
+    stroke-dashoffset: 0; } }
+.handwritten-svg {
+  width: 500px;
+  height: 500px; }
+
+.handwritten-svg path {
+  fill: none;
+  stroke: black;
+  stroke-width: 2px;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 3s linear forwards; }
+
+@keyframes draw {
+  to {
     stroke-dashoffset: 0; } }
 .home-title {
   font-weight: bold; }
@@ -632,5 +669,29 @@ body {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.6px; }
+
+.more-skills-icon {
+  font-weight: bold;
+  color: #e3e1fa;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #F29829 100%);
+  border-radius: 41px;
+  box-shadow: 0px 0px 8px #f298298a, inset 0px 0px 8px #100126b3;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 7px 5px;
+  cursor: pointer;
+  width: 10.5%;
+  text-shadow: 0 0 4px #100126; }
+  .more-skills-icon span {
+    font-size: 13px;
+    line-height: 1.2; }
+
+.center-content {
+  align-items: center;
+  display: grid;
+  justify-content: center; }
+
+.side-alert {
+  position: fixed; }
 
 /*# sourceMappingURL=style.css.map */

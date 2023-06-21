@@ -7,6 +7,7 @@ import ProjectTemplate from "./Templates/ProjectTemplate";
 import { Col, Container } from "react-bootstrap";
 import ProjectLoader from "../Loaders/ProjectLoader";
 import RotatedSquaresPattern from "../Patterns/RotatedSquaresPattern";
+import styleVariables from "../../assets/styles/variables/variables.module.scss";
 
 
 function TopProjects({ topProjects }) {
@@ -58,7 +59,7 @@ function TopProjects({ topProjects }) {
                     </div>
                 </Container>
 
-                <RotatedSquaresPattern fill="#fff" secondFill="red" bottom="5%" right="2%" height="60px" width="60px"  />
+                <RotatedSquaresPattern fill={styleVariables.primaryWhite} secondFill={styleVariables.primaryColor} bottom="5%" right="2%" height="60px" width="60px"  />
             </div>
         </>
     );
