@@ -12,6 +12,7 @@ import LatestExperience from "./Components/LatestExperience";
 import SideSkills from "./Components/SideSkills";
 import LatestBlogs from "./Components/LatestBlogs";
 import AxiosConfig from "../config/AxiosConfig";
+import SwitchButton from "./Components/Partials/SwitchButton";
 
 function Home(props) {
     const [isPlayingTransition, setIsPlayingTransition] = useState(false);
@@ -112,7 +113,10 @@ function Home(props) {
                             <div className="top-home-buttons">
                                 <Row>
                                     <Col md={6}>
-                                        <button
+
+                                        <SwitchButton onClick={(e) => switchTheme()} />
+                                        
+                                        {/* <button
                                             className="btn btn-primary btn-switch-theme"
                                             onClick={(e) => switchTheme()}
                                             type="button"
@@ -120,7 +124,7 @@ function Home(props) {
                                             {theme
                                                 ? " Switch original theme"
                                                 : " Switch moon night"}
-                                        </button>
+                                        </button> */}
                                     </Col>
                                     <Col md={6}></Col>
                                 </Row>

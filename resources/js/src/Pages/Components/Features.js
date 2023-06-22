@@ -8,12 +8,13 @@ function Features(props) {
     return (
         <div className="bg-home-even">
             <Container>
-            <h3 className="text-center home-title">What can i do <span>best ?</span></h3>
-            <Row className="features m-auto">
-                {props.features ? (
-                    props.features.map((feature, index) => {
-                        return (
-                            <>
+                <h3 className="text-center home-title">
+                    What can i do <span>best ?</span>
+                </h3>
+                <Row className="features m-auto">
+                    {props.features ? (
+                        props.features.map((feature, index) => {
+                            return (
                                 <Col
                                     md={6}
                                     key={index}
@@ -33,26 +34,25 @@ function Features(props) {
                                         </Col>
                                     </Row>
                                 </Col>
-                            </>
-                        );
-                    })
-                ) : (
-                    <>
-                        <Col md={6} className="feature-item">
-                            <FeatureLoader />
-                        </Col>
-                        <Col md={6} className="feature-item">
-                            <FeatureLoader />
-                        </Col>
-                        <Col md={6} className="feature-item">
-                            <FeatureLoader />
-                        </Col>
-                        <Col md={6} className="feature-item">
-                            <FeatureLoader />
-                        </Col>
-                    </>
-                )}
-            </Row>
+                            );
+                        })
+                    ) : (
+                        <>
+                            <Col md={6} className="feature-item">
+                                <FeatureLoader />
+                            </Col>
+                            <Col md={6} className="feature-item">
+                                <FeatureLoader />
+                            </Col>
+                            <Col md={6} className="feature-item">
+                                <FeatureLoader />
+                            </Col>
+                            <Col md={6} className="feature-item">
+                                <FeatureLoader />
+                            </Col>
+                        </>
+                    )}
+                </Row>
             </Container>
         </div>
     );

@@ -7,7 +7,7 @@ import "aos/dist/aos.css";
 import "./assets/styles/style.css";
 import AxiosConfig from "./config/AxiosConfig";
 import AOS from "aos";
-import SideAlert from "./Pages/Components/Partails/SideAlert";
+import SideAlert from "./Pages/Components/Partials/SideAlert";
 
 function App() {
     AOS.init();
@@ -44,7 +44,7 @@ function App() {
             />
             <Router config={config} />
 
-            <SideAlert />
+            {/* <SideAlert /> */}
 
             <Footer
                 socialLinks={config?.social_links}

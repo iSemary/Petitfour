@@ -15,7 +15,6 @@ function SideSkills({ sideSkills }) {
                 <Row className="side-skills">
                     {sideSkills ? (
                         sideSkills.map((sideSkill, index) => (
-                            <>
                                 <Col
                                     md={6}
                                     className="side-skills-item"
@@ -47,7 +46,6 @@ function SideSkills({ sideSkills }) {
                                         </Card.Body>
                                     </Card>
                                 </Col>
-                            </>
                         ))
                     ) : (
                         <>

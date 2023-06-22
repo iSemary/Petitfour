@@ -15,8 +15,8 @@ class CreateProjectsTable extends Migration {
             $table->string('tags')->nullable();
             $table->boolean('type')->default(false);
             $table->tinyInteger('priority')->default(1);
-            $table->date('start_date');
-            $table->date('end_date')->nullable();
+            $table->dateTime('start_date');
+            $table->dateTime('end_date')->nullable();
             $table->timestamps();
         });
     }

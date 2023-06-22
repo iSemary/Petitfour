@@ -6,6 +6,7 @@ import BlogTemplate from "./Components/Templates/BlogTemplate";
 import { Container, Row, Col } from "react-bootstrap";
 import styleVariables from "../assets/styles/variables/variables.module.scss";
 import SquareLoader from "./Loaders/SquareLoader";
+import { FaBusinessTime } from "react-icons/fa";
 
 const Skill = () => {
     const [skill, setSkill] = useState(null);
@@ -51,19 +52,25 @@ const Skill = () => {
     }
 
     return (
-        <Container className="mt-3">
+        <Container className="mt-3 mt-sm-3">
             {/* Skill Card Details */}
-
             <div className="skill-card mb-3" style={skillCardStyle}>
                 <Row>
                     <Col md={6}>
                         <h1>{skill.name}</h1>
-                        <p>Start Date: {skill.start_date}</p>
+                        <p className="d-flex align-items-center justify-content-start">
+                            <FaBusinessTime className="me-1" /> Stared {skill.start_date}
+                        </p>
                     </Col>
                     <Col md={6} className="img-container text-right">
                         {/* Show image loader until the image is totally loaded */}
                         {imageLoading && (
-                            <SquareLoader width={90} height={90} radius={50} speed={0.5} />
+                            <SquareLoader
+                                width={90}
+                                height={90}
+                                radius={50}
+                                speed={0.5}
+                            />
                         )}
                         {/* Hide / Show image based on the status of the image (Loaded or not) */}
                         {

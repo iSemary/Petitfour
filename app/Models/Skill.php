@@ -14,7 +14,8 @@ class Skill extends Model {
      */
     protected $fillable = ['name', 'category_id', 'type', 'priority', 'color_code', 'highlight', 'icon', 'theme_icon', 'start_date'];
     protected $appends = ['icon', 'theme_icon'];
-
+    protected $dates = ['start_date'];
+    
     public function getIconAttribute() {
         return asset("storage/skills/" . $this->attributes['icon']);
     }

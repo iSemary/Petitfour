@@ -59,7 +59,7 @@ class SkillController extends Controller {
                 'message' => 'No skill found with this name'
             ]);
         }
-
+        $skill->start_date = Carbon::parse($skill->start_date)->diffForHumans();
         $data->skill = $skill;
 
         // Retrieve projects associated with the skill.

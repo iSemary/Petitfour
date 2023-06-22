@@ -69,10 +69,10 @@ function Blogs({ categories }) {
                 </Col>
             </Row>
 
-            <Row className="blogs">
+            <Row className="blogs mt-sm-1">
                 {blogs && blogs.length > 0 ? (
                     blogs.map((blog, key) => (
-                        <BlogTemplate blog={blog} col={4} fade={true} />
+                        <BlogTemplate blog={blog} col={4} fade={true} key={key} />
                     ))
                 ) : (
                     <>

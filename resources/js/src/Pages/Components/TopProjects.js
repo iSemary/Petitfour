@@ -59,7 +59,7 @@ function TopProjects({ topProjects }) {
                     </div>
                 </Container>
 
-                <RotatedSquaresPattern fill={styleVariables.primaryWhite} secondFill={styleVariables.primaryColor} bottom="5%" right="2%" height="60px" width="60px"  />
+                <RotatedSquaresPattern fill={styleVariables.primaryWhite} secondFill={styleVariables.primaryColor} top="4%" left="6%" rotate="-27"  height="60px" width="60px"  />
             </div>
         </>
     );

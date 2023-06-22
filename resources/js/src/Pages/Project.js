@@ -61,7 +61,7 @@ function Project() {
                             <Row>
                                 {projectTags.length > 0 &&
                                     projectTags.map((projectTag, key) => (
-                                        <Col className="badge badge-secondary width-fit-content">
+                                        <Col className="badge badge-secondary width-fit-content" key={key}>
                                             <HiHashtag />
                                             {projectTag}
                                         </Col>
@@ -73,9 +73,10 @@ function Project() {
                                     <Row>
                                         {projectSkills.length > 0 &&
                                             projectSkills.map(
-                                                (projectSkill, key) => (
+                                                (projectSkill, index) => (
                                                     <SkillsListTemplate
                                                         skill={projectSkill}
+                                                        key={index}
                                                         imgClass="project-skill"
                                                         colClass="me-2 p-0"
                                                     />

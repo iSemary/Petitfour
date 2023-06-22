@@ -52,12 +52,12 @@ function Skills() {
                                             alt={"category icon " + i}
                                             className="category-icon"
                                         />
-                                        <h4>
+                                        <h3 className="font-weight-bold">
                                            {skill.name}
-                                        </h4>
+                                        </h3>
                                     </div>
                                     <h5>{skill.title}</h5>
-                                    <p>
+                                    <p className="font-18">
                                         <RiDoubleQuotesL /> {skill.description}{" "}
                                         <RiDoubleQuotesR />
                                     </p>

@@ -68,7 +68,7 @@ function Projects({ categories }) {
                     )}
                 </Col>
             </Row>
-            <Row className="projects">
+            <Row className="projects mt-sm-1 m-auto">
                 {projects && projects.length > 0 ? (
                     projects.map((project, key) => (
                         <ProjectTemplate

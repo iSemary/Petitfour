@@ -2,8 +2,62 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Container, Navbar } from "react-bootstrap";
 import { Link, useMatch } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 
 function Header(props) {
+    const navRef = useRef(null);
+    const linksRef = useRef(null);
+    const checkBoxRef = useRef(null);
+
+    const [headerMenu, setHeaderMenu] = useState(null);
+    const handleOpenHeader = () => {
+        setHeaderMenu(!headerMenu);
+    };
+    const handleCloseMenu = () => {
+        if (headerMenu != null) {
+            setHeaderMenu(false);
+            checkBoxRef.current.checked = false;
+        }
+    };
+    useEffect(() => {
+        if (headerMenu != null) {
+            if (headerMenu) {
+                navRef.current.style.setProperty(
+                    "display",
+                    "block",
+                    "important"
+                );
+                navRef.current.style.setProperty(
+                    "animation",
+                    "slideFromLeft 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6)"
+                );
+
+                setTimeout(() => {
+                    const links = linksRef.current.getElementsByTagName("div");
+                    Array.from(links).forEach((link, index) => {
+                        link.style.setProperty("display", "block", "important");
+                        link.style.setProperty(
+                            "animation",
+                            `slideFromLeft ${(index + 1) * 0.2}s ease-in`
+                        );
+                    });
+                }, 500);
+            } else {
+                navRef.current.style.setProperty(
+                    "animation",
+                    "slideToLeft 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6)"
+                );
+                setTimeout(() => {
+                    navRef.current.style.setProperty(
+                        "display",
+                        "none",
+                        "important"
+                    );
+                }, 500);
+            }
+        }
+    }, [headerMenu]);
+
     return (
         <Navbar
             className={
@@ -13,8 +67,8 @@ function Header(props) {
         >
             <Container>
                 <Row className="w-100">
-                    <Col md={3}>
-                        <Col md={12} className="pt-1 main-logo">
+                    <Col md={3} sm={3} xs={3}>
+                        <Col md={12} className="main-logo">
                             <Link to="/" className="no-link">
                                 <img
                                     src={props.logo}
@@ -24,10 +78,14 @@ function Header(props) {
                             </Link>
                         </Col>
                     </Col>
-                    <Col md={9} className="nav-links">
-                        <div className="row links w-100 justify-content-end">
-                            <div className="col-2">
+                    <Col md={9} className="nav-links" ref={navRef}>
+                        <div
+                            className="links w-100 justify-content-end"
+                            ref={linksRef}
+                        >
+                            <div className="">
                                 <Link
+                                    onClick={() => handleCloseMenu()}
                                     to="/"
                                     className={
                                         "no-link " +
@@ -37,8 +95,9 @@ function Header(props) {
                                     Home
                                 </Link>
                             </div>
-                            <div className="col-2">
+                            <div className="">
                                 <Link
+                                    onClick={() => handleCloseMenu()}
                                     to="/skills"
                                     className={
                                         "no-link " +
@@ -48,8 +107,9 @@ function Header(props) {
                                     Skills
                                 </Link>
                             </div>
-                            <div className="col-2">
+                            <div className="">
                                 <Link
+                                    onClick={() => handleCloseMenu()}
                                     to="/projects"
                                     className={
                                         "no-link " +
@@ -59,8 +119,9 @@ function Header(props) {
                                     Projects
                                 </Link>
                             </div>
-                            <div className="col-2">
+                            <div className="">
                                 <Link
+                                    onClick={() => handleCloseMenu()}
                                     to="/blogs"
                                     className={
                                         "no-link " +
@@ -70,8 +131,9 @@ function Header(props) {
                                     Blogs
                                 </Link>
                             </div>
-                            <div className="col-2">
+                            <div className="">
                                 <Link
+                                    onClick={() => handleCloseMenu()}
                                     to="/connect"
                                     className={
                                         "no-link " +
@@ -81,6 +143,22 @@ function Header(props) {
                                     Connect
                                 </Link>
                             </div>
+                        </div>
+                    </Col>
+
+                    <Col sm={9} xs={9} className="nav-icon">
+                        <div className="menu-burger-icon">
+                            <label className="check-icon" htmlFor="check">
+                                <input
+                                    id="check"
+                                    type="checkbox"
+                                    onChange={() => handleOpenHeader()}
+                                    ref={checkBoxRef}
+                                />
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </label>
                         </div>
                     </Col>
                 </Row>

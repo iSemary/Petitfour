@@ -40,7 +40,7 @@ function ProjectTemplate({ project, col, animate }) {
 
                 <p className="project-description">{project.description}</p>
             </Link>
-            {project.skills ? (
+            {project.skills && project.skills.length > 0 ? (
                 <Row className="justify-content-center">
                     {project.skills
                         .slice(0, MAX_PROJECT_SKILLS)
@@ -52,15 +52,16 @@ function ProjectTemplate({ project, col, animate }) {
                                 key={index}
                             />
                         ))}
-                    {project.skills.length > MAX_PROJECT_SKILLS && (
-                        <Col
-                            md={3}
-                            key={MAX_PROJECT_SKILLS}
-                            className="more-skills-icon"
-                        >
-                            +{project.skills.length - MAX_PROJECT_SKILLS}{" "}
-                        </Col>
-                    )}
+                    {project.skills &&
+                        project.skills.length > MAX_PROJECT_SKILLS && (
+                            <Col
+                                md={3}
+                                key={MAX_PROJECT_SKILLS}
+                                className="more-skills-icon"
+                            >
+                                +{project.skills.length - MAX_PROJECT_SKILLS}{" "}
+                            </Col>
+                        )}
                 </Row>
             ) : (
                 ""
