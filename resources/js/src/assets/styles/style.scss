@@ -560,12 +560,10 @@ $black: #282936;
         border-radius: 10px;
         height: 75vh !important;
     }
-
 }
 
 .form-custom-control {
     &::placeholder {
-        
     }
 }
 
@@ -826,6 +824,7 @@ $black: #282936;
         border-left: 4px solid $primaryColor;
         border-radius: 10px;
         padding-left: 10px;
+        overflow: hidden;
     }
 
     .blog-info {
@@ -1087,7 +1086,6 @@ $black: #282936;
 }
 
 @media screen and (max-width: 767px) {
-    
     .skill-card {
         .img-container {
             .skill-img {
@@ -1099,8 +1097,20 @@ $black: #282936;
 }
 
 // Single Project Page
-$mockupWidth: 50%;
+$mockupWidth: 90%;
 .project-page {
+    .project-skills {
+        img.project-skill {
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+    .project-title,
+    .project-description {
+        text-align: left;
+    }
+
     .project-images-container {
         position: relative;
         text-align: center;
@@ -1126,8 +1136,8 @@ $mockupWidth: 50%;
 
         .project-images {
             position: absolute;
-            transform: translateX(-109px);
-            top: 18px;
+            // transform: translateX(-109px);
+            top: 10px;
             display: flex;
             overflow: hidden;
             gap: 40px;
@@ -1276,4 +1286,21 @@ $mockupWidth: 50%;
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.half-circle-pattern {
+    z-index: 1;
+    path {
+    }
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+.project-duration {
+    font-size: 13px;
+    font-weight: bold;
+    span {
+        font-family: 'Moonfark';
+    }
 }

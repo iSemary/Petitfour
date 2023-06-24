@@ -1,5 +1,6 @@
 import React from "react";
 import SkillsListTemplate from "./SkillsListTemplate";
+import { IoMdArrowDropright } from "react-icons/io";
 
 function ExperienceTemplate({ experience, index }) {
     const MAX_EXPERIENCE_SKILLS = 6;
@@ -50,7 +51,13 @@ function ExperienceTemplate({ experience, index }) {
                         </div>
                     </div>
                     <div className="experience-date">
-                        {experience.start_date} - {experience.end_date}
+                        <div>
+                            <span>{experience.start_date}</span>
+                            <span>
+                                <IoMdArrowDropright />
+                            </span>
+                            <span>{experience.end_date}</span>
+                        </div>
                     </div>
                 </div>
                 <div className="experience-h-line">

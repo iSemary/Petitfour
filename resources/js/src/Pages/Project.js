@@ -4,8 +4,10 @@ import AxiosConfig from "../config/AxiosConfig";
 import { Container, Row, Col } from "react-bootstrap";
 import { HiHashtag } from "react-icons/hi";
 import { BsGithub } from "react-icons/bs";
-import { FiArrowRight } from "react-icons/fi";
+import { IoMdArrowDropright } from "react-icons/io";
 import SkillsListTemplate from "./Components/Templates/SkillsListTemplate";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+
 function Project() {
     const { name } = useParams();
     const [project, setProject] = useState(null);
@@ -13,6 +15,19 @@ function Project() {
     const [projectTags, setProjectTags] = useState([]);
     const [projectImages, setProjectImages] = useState([]);
     const [mockPath, setMockPath] = useState(null);
+
+    const splideOptions = {
+        rewind: true,
+        interval: 2000,
+        perPage: 1,
+        type: "loop",
+        drag: "free",
+        fixedWidth: "20rem",
+        fixedHeight: "100%",
+        gap: "8rem",
+        arrows: true,
+    };
+
     useEffect(() => {
         AxiosConfig.get(`/projects/${name}`)
             .then((response) => {
@@ -41,54 +56,63 @@ function Project() {
         <Container className="mt-5">
             <div className="project-page">
                 <Row>
-                    <Col>
-                        <div className="project-details">
-                            <h1 className="project-title">{project.name}</h1>
-                            <hr />
-                            <p className="project-description">
-                                {project.description}
-                            </p>
-
-                            <div className="project-duration">
+                    <Col md={6}>
+                        <div className="project-details d-grid">
+                            {/* Project Main Info  */}
+                            <div className="project-info my-2">
+                                <h1 className="project-title">
+                                    {project.name}
+                                </h1>
+                                <p className="project-description">
+                                    {project.description}
+                                </p>
+                            </div>
+                            {/* End Project Main Info  */}
+                            <div className="project-duration my-2">
                                 <span>{project.start_date}</span>
                                 <span>
-                                    <FiArrowRight />
+                                    <IoMdArrowDropright size={30} />
                                 </span>
                                 <span>{project.end_date}</span>
                             </div>
-                            <p>Type: {project.type}</p>
+                            {/* Project Tags  */}
+                            <div className="project-tags my-2">
+                                <Row className="ml-auto">
+                                    {projectTags.length > 0 &&
+                                        projectTags.map((projectTag, key) => (
+                                            <Col
+                                                className="badge badge-secondary width-fit-content me-2"
+                                                key={key}
+                                            >
+                                                <HiHashtag />
+                                                {projectTag}
+                                            </Col>
+                                        ))}
+                                </Row>
+                            </div>
+                            {/* End Project Tags */}
+                            {/* Project Skills Section */}
+                            <div className="project-skills my-2 width-fit-content">
+                                <Row className="ml-auto">
+                                    {projectSkills.length > 0 &&
+                                        projectSkills.map(
+                                            (projectSkill, index) => (
+                                                <SkillsListTemplate
+                                                    skill={projectSkill}
+                                                    key={index}
+                                                    imgClass="project-skill"
+                                                    colClass="me-4 p-0 col-1 mb-2"
+                                                />
+                                            )
+                                        )}
+                                </Row>
+                            </div>
+                            {/* End Project Skills Section */}
 
-                            <Row>
-                                {projectTags.length > 0 &&
-                                    projectTags.map((projectTag, key) => (
-                                        <Col className="badge badge-secondary width-fit-content" key={key}>
-                                            <HiHashtag />
-                                            {projectTag}
-                                        </Col>
-                                    ))}
-                            </Row>
-
-                            {
-                                <div className="project-skills">
-                                    <Row>
-                                        {projectSkills.length > 0 &&
-                                            projectSkills.map(
-                                                (projectSkill, index) => (
-                                                    <SkillsListTemplate
-                                                        skill={projectSkill}
-                                                        key={index}
-                                                        imgClass="project-skill"
-                                                        colClass="me-2 p-0"
-                                                    />
-                                                )
-                                            )}
-                                    </Row>
-                                </div>
-                            }
                             {project.repository_link && (
-                                <div>
+                                <div className="my-2">
                                     <Link
-                                        className="project-link"
+                                        className="project-link btn btn-main-light font-weight-bold"
                                         to={project.repository_link}
                                     >
                                         <BsGithub /> Explore the Code
@@ -96,38 +120,56 @@ function Project() {
                                 </div>
                             )}
                         </div>
-                        <div className="project-content">
-                            <hr />
-                            <div
-                                dangerouslySetInnerHTML={{
-                                    __html: project.content,
-                                }}
-                            ></div>
-                        </div>
+                    </Col>
 
+                    <Col md={6}>
+                        {/* End Project Content Section */}
                         <div className="project-images-container">
-                            <img src={mockPath} alt="Laptop - Mock up" className="laptop-mockup" />
-                            {
-                                <div className="project-images">
+                            <img
+                                src={mockPath}
+                                alt="Laptop - Mock up"
+                                className="laptop-mockup"
+                            />
+                            <div className="project-images">
+                                <Splide
+                                    aria-label="Similar Blogs"
+                                    options={splideOptions}
+                                >
                                     {projectImages.length > 0 &&
                                         projectImages.map(
-                                            (projectImage, key) => (
-                                                <img
-                                                    key={key}
-                                                    src={
-                                                        projectImage
-                                                            .project_image.image
-                                                    }
-                                                    alt={"Project Image-" + key}
-                                                    className="project-item-image"
-                                                />
+                                            (projectImage, index) => (
+                                                <SplideSlide key={index}>
+                                                    <img
+                                                        key={index}
+                                                        src={
+                                                            projectImage
+                                                                .project_image
+                                                                .image
+                                                        }
+                                                        alt={
+                                                            "Project Image-" +
+                                                            index
+                                                        }
+                                                        className="project-item-image"
+                                                    />
+                                                </SplideSlide>
                                             )
                                         )}
-                                </div>
-                            }
+                                </Splide>
+                            </div>
                         </div>
                     </Col>
                 </Row>
+
+                {/* Project Content Section */}
+                <div className="project-content">
+                    <hr />
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: project.content,
+                        }}
+                    ></div>
+                </div>
             </div>
         </Container>
     );

@@ -626,7 +626,8 @@ body {
   .blog-page .blog-content {
     border-left: 4px solid #884dff;
     border-radius: 10px;
-    padding-left: 10px; }
+    padding-left: 10px;
+    overflow: hidden; }
   .blog-page .blog-info {
     display: grid; }
 
@@ -809,12 +810,18 @@ body {
   .skill-card .img-container .skill-img {
     top: -115px;
     right: 10px; } }
+.project-page .project-skills img.project-skill {
+  width: 35px;
+  height: 35px; }
+.project-page .project-title,
+.project-page .project-description {
+  text-align: left; }
 .project-page .project-images-container {
   position: relative;
   text-align: center;
   overflow: hidden; }
   .project-page .project-images-container .laptop-mockup {
-    width: 50%;
+    width: 90%;
     z-index: 1000;
     position: relative; }
   .project-page .project-images-container .project-item-image {
@@ -827,8 +834,7 @@ body {
       filter: blur(0); }
   .project-page .project-images-container .project-images {
     position: absolute;
-    transform: translateX(-109px);
-    top: 18px;
+    top: 10px;
     display: flex;
     overflow: hidden;
     gap: 40px; }
@@ -929,5 +935,17 @@ body {
 
 .cursor-pointer {
   cursor: pointer; }
+
+.half-circle-pattern {
+  z-index: 1; }
+
+.ml-auto {
+  margin-left: auto; }
+
+.project-duration {
+  font-size: 13px;
+  font-weight: bold; }
+  .project-duration span {
+    font-family: 'Moonfark'; }
 
 /*# sourceMappingURL=style.css.map */

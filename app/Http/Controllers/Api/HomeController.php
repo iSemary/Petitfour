@@ -94,11 +94,11 @@ class HomeController extends Controller {
             'end_date',
         ])->with(['skills' => function ($query) {
             $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
-        }])->orderBy('end_date', 'DESC')->limit(4)->get();
+        }])->orderBy('start_date', 'DESC')->limit(4)->get();
 
         $data->latest_experience->transform(function ($experience) {
             $experience->start_date = Carbon::parse($experience->start_date)->format('M Y');
-            $experience->end_date = Carbon::parse($experience->end_date)->format('M Y');
+            $experience->end_date = $experience->end_date ? Carbon::parse($experience->end_date)->format('M Y') : "Present";
             return $experience;
         });
 
