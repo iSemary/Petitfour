@@ -5,14 +5,17 @@ import ProjectTemplate from "./Components/Templates/ProjectTemplate";
 import BlogTemplate from "./Components/Templates/BlogTemplate";
 import { Container, Row, Col } from "react-bootstrap";
 import styleVariables from "../assets/styles/variables/variables.module.scss";
+import SquareLoader from "./Loaders/SquareLoader";
+import { FaBusinessTime } from "react-icons/fa";
 
 const Skill = () => {
     const [skill, setSkill] = useState(null);
     const [skillProjects, setSkillProjects] = useState(null);
-    const [skillExperiences, setSkillExperiences] = useState(null);
     const [skillBlogs, setSkillBlogs] = useState(null);
     const [skillCardStyle, setSkillCardStyle] = useState({});
     const { name } = useParams();
+
+    const [imageLoading, setImageLoading] = useState(true);
 
     // Convert any hex to rgba
     const hexToRgba = (hex, alpha) => {
@@ -28,9 +31,8 @@ const Skill = () => {
                 if (response.data.success) {
                     setSkill(response.data.data.skill);
                     setSkillProjects(response.data.data.projects);
-                    setSkillExperiences(response.data.data.experiences);
                     setSkillBlogs(response.data.data.blogs);
-
+                    setImageLoading(true);
                     setSkillCardStyle({
                         background: `linear-gradient(10deg, ${styleVariables.primaryDark} 0%,${response.data.data.skill.color_code} 100%)`,
                         boxShadow: `-2px 2px 4px ${hexToRgba(
@@ -50,17 +52,37 @@ const Skill = () => {
     }
 
     return (
-        <Container className="mt-3">
+        <Container className="mt-3 mt-sm-3">
             {/* Skill Card Details */}
-
             <div className="skill-card mb-3" style={skillCardStyle}>
                 <Row>
                     <Col md={6}>
                         <h1>{skill.name}</h1>
-                        <p>Start Date: {skill.start_date}</p>
+                        <p className="d-flex align-items-center justify-content-start">
+                            <FaBusinessTime className="me-1" /> Stared {skill.start_date}
+                        </p>
                     </Col>
                     <Col md={6} className="img-container text-right">
-                        <img src={skill.icon} className="skill-img" alt="Skill Icon" />
+                        {/* Show image loader until the image is totally loaded */}
+                        {imageLoading && (
+                            <SquareLoader
+                                width={90}
+                                height={90}
+                                radius={50}
+                                speed={0.5}
+                            />
+                        )}
+                        {/* Hide / Show image based on the status of the image (Loaded or not) */}
+                        {
+                            <img
+                                variant="top"
+                                style={imageLoading ? { display: "none" } : {}}
+                                onLoad={() => setImageLoading(false)}
+                                src={skill.icon}
+                                className="skill-img"
+                                alt="Skill Icon"
+                            />
+                        }
                     </Col>
                 </Row>
             </div>
@@ -70,7 +92,7 @@ const Skill = () => {
                 <>
                     <div className="skill-projects">
                         <h2>Projects</h2>
-                        <Row className="justify-content-center">
+                        <Row className="my-3">
                             {skillProjects.map((project, index) => {
                                 return (
                                     <ProjectTemplate
@@ -86,31 +108,13 @@ const Skill = () => {
                 </>
             )}
 
-            {/* Check if there's experience for this skill then loop over it */}
-            {skillExperiences && skillExperiences.length > 0 && (
-                <>
-                    <div className="skill-experiences">
-                        <hr className="custom-hr" />
-                        <h2>Experiences</h2>
-                        {skillExperiences.map((experience, index) => (
-                            <div key={index}>
-                                <h3>{experience.name}</h3>
-                                <p>{experience.description}</p>
-                                <p>Start Date: {experience.start_date}</p>
-                                <p>End Date: {experience.end_date}</p>
-                            </div>
-                        ))}
-                    </div>
-                </>
-            )}
-
             {/* Check if there's blogs for this skill then loop over it */}
             {skillBlogs && skillBlogs.length > 0 && (
                 <>
                     <div className="skill-blogs">
                         <hr className="custom-hr" />
                         <h2>Blogs</h2>
-                        <Row className="justify-content-center">
+                        <Row className="my-3">
                             {skillBlogs.map((blog, index) => {
                                 return (
                                     <BlogTemplate

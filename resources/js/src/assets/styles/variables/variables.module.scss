@@ -1,14 +1,18 @@
 $primaryColor: #884dff;
-$secondaryColor: #e3e0f5;
-$primaryBlack: #2d2727;
+$primaryBlue: #0CCDE8;
+$primaryBlack: #171a1c;
 $primaryWhite: #e3e1fa;
 $primaryDark: #100126;
+$secondaryColor: #E4058E;
+$secondaryTextColor: #F29829;
 
 
 :export {
     primaryColor: $primaryColor;
-    secondaryColor: $secondaryColor;
+    primaryBlue: $primaryBlue;
     primaryBlack: $primaryBlack;
     primaryWhite: $primaryWhite;
     primaryDark: $primaryDark;
+    secondaryColor: $secondaryColor;
+    secondaryTextColor: $secondaryTextColor;
 }

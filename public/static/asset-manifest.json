@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.6ae8bdb0.css",
-    "main.js": "/static/js/main.62937a7c.js",
+    "main.css": "/static/css/main.87a32638.css",
+    "main.js": "/static/js/main.0399d34a.js",
     "static/js/496.b63c837b.chunk.js": "/static/js/496.b63c837b.chunk.js",
     "static/media/Montserrat-VariableFont_wght.ttf": "/static/media/Montserrat-VariableFont_wght.3faa3eef13649db02044.ttf",
+    "static/media/moonfark.ttf": "/static/media/moonfark.4bc6685c8d75b3450489.ttf",
     "static/media/Lato-Regular.ttf": "/static/media/Lato-Regular.9d883d540ee2b4de8024.ttf",
     "static/media/moon-night-transition-sound-effect.mp3": "/static/media/moon-night-transition-sound-effect.a236fe43e8c066ee28ac.mp3",
     "static/media/AlphacodePharaohRegular.ttf": "/static/media/AlphacodePharaohRegular.b597528db9c191bede03.ttf",
     "index.html": "/index.html",
-    "main.6ae8bdb0.css.map": "/static/css/main.6ae8bdb0.css.map",
-    "main.62937a7c.js.map": "/static/js/main.62937a7c.js.map",
+    "main.87a32638.css.map": "/static/css/main.87a32638.css.map",
+    "main.0399d34a.js.map": "/static/js/main.0399d34a.js.map",
     "496.b63c837b.chunk.js.map": "/static/js/496.b63c837b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6ae8bdb0.css",
-    "static/js/main.62937a7c.js"
+    "static/css/main.87a32638.css",
+    "static/js/main.0399d34a.js"
   ]
 }

@@ -12,6 +12,7 @@ N.B. **This project took me about month or more to finish it, Just because I did
 ✅ <b>Dynamic Dashboard</b><br/>
 ✅ <b>Responsive Design</b><br/>
 ✅ <b>SEO Friendly</b><br/>
+✅ <b>[Skills - Projects - Blogs] Editor</b><br/>
 🌟 <b>MidJourney Images</b>
 
 <hr/>

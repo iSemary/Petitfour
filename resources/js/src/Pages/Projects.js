@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import AxiosConfig from "../config/AxiosConfig";
-import { Container, Row, Button, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { ImSpinner10 } from "react-icons/im";
 import { HiOutlineDownload } from "react-icons/hi";
 import ProjectTemplate from "./Components/Templates/ProjectTemplate";
 import ProjectLoader from "./Loaders/ProjectLoader";
+import CategoriesTemplate from "./Components/Templates/CategoriesTemplate";
 
 function Projects({ categories }) {
     const [page, setPage] = useState(1);
@@ -15,7 +16,7 @@ function Projects({ categories }) {
 
     const getData = () => {
         AxiosConfig.get(
-            `/projects?page=${page}${category ? "&category=" + category : ""}`
+            `/projects?page=${page}${category && "&category=" + category}`
         )
             .then((response) => {
                 if (response.data.success) {
@@ -47,44 +48,27 @@ function Projects({ categories }) {
 
     return (
         <Container>
-            <Row>
-                <Col md={6}>
+            <Row className="justify-content-between">
+                <Col md={3}>
                     <h1 className="my-4">Projects</h1>
                 </Col>
-                <Col md={6} className="blog-filter justify-content-between">
-                    <button
-                        className="btn btn-main"
-                        type="button"
-                        onClick={(e) => {
-                            setPage(1);
-                            setCategory(null);
-                        }}
-                    >
-                        All <span>{totalRecords}</span>
-                    </button>
-                    {categories &&
-                        categories.length > 0 &&
-                        categories.map((category, index) => (
-                            <button
-                                className="btn btn-main"
-                                key={index}
-                                onClick={(e) => {
-                                    setPage(1);
-                                    setCategory(
-                                        category.name
-                                            .split(" ")
-                                            .join("-")
-                                            .toLowerCase()
-                                    );
-                                }}
-                            >
-                                {category.name}{" "}
-                                <span>{category.counters.projects}</span>
-                            </button>
-                        ))}
+                <Col
+                    md={9}
+                    className="blog-filter justify-content-between width-fit-content"
+                >
+                    {categories && categories.length > 0 && (
+                        <CategoriesTemplate
+                            activeCategory={category}
+                            categories={categories}
+                            totalRecords={totalRecords}
+                            setPage={setPage}
+                            setCategory={setCategory}
+                            type="projects"
+                        />
+                    )}
                 </Col>
             </Row>
-            <Row className="projects">
+            <Row className="projects mt-sm-1 m-auto">
                 {projects && projects.length > 0 ? (
                     projects.map((project, key) => (
                         <ProjectTemplate
@@ -113,9 +97,10 @@ function Projects({ categories }) {
             </Row>
             {totalRecords && totalRecords > projects.length && (
                 <div className="text-center my-3">
-                    <Button
-                        variant="primary"
+                    <button
+                        type="button"
                         onClick={loadMoreData}
+                        className="btn btn-main-light"
                         disabled={loadMore ? "disabled" : ""}
                     >
                         {loadMore ? (
@@ -127,7 +112,7 @@ function Projects({ categories }) {
                                 <HiOutlineDownload /> Load More
                             </>
                         )}
-                    </Button>
+                    </button>
                 </div>
             )}
         </Container>

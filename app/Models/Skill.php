@@ -5,9 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model {
+    /**
+     * Type
+     * 0 -> Additional Skill
+     * 1 -> Main Skill
+     * 2 -> Side Skill
+     * @var array
+     */
     protected $fillable = ['name', 'category_id', 'type', 'priority', 'color_code', 'highlight', 'icon', 'theme_icon', 'start_date'];
     protected $appends = ['icon', 'theme_icon'];
-
+    protected $dates = ['start_date'];
+    
     public function getIconAttribute() {
         return asset("storage/skills/" . $this->attributes['icon']);
     }

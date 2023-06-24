@@ -10,7 +10,6 @@ import LottieLoader from "./Loaders/LottieLoader";
 import SquareLoader from "./Loaders/SquareLoader";
 
 function Connect(props) {
-
     const [imageLoading, setImageLoading] = useState(true);
 
     // 0 -> Available
@@ -218,17 +217,15 @@ function Connect(props) {
 
     return (
         <Container>
+            {/* <p>
+                I'm thrilled that you'd like to get in touch with me. If you
+                have any questions, opportunities, or simply want to connect
+            </p> */}
             <div className="contact-container">
                 <Row>
                     <Col md={6} className="contact-image-container">
                         <div className="contact-form">
-                            <h1>Let's connect now 🪄</h1>
-                            <p>
-                                I'm thrilled that you'd like to get in touch
-                                with me. If you have any questions,
-                                opportunities, or simply want to connect
-                            </p>
-
+                            <h1>Let's connect now </h1>
                             <div className="contact-form-container">
                                 <Form
                                     method="POST"
@@ -246,6 +243,7 @@ function Connect(props) {
                                         </Form.Label>
                                         <Form.Control
                                             type="text"
+                                            className="form-custom-control"
                                             onChange={handleChange}
                                             value={formValues.name}
                                             name="name"
@@ -260,6 +258,7 @@ function Connect(props) {
                                         </Form.Label>
                                         <Form.Control
                                             type="email"
+                                            className="form-custom-control"
                                             onChange={handleChange}
                                             name="email"
                                             required
@@ -298,6 +297,7 @@ function Connect(props) {
                                         </Form.Label>
                                         <Form.Control
                                             as="textarea"
+                                            className="form-custom-control"
                                             onInput={handleChange}
                                             value={formValues.message}
                                             name="message"
@@ -312,10 +312,10 @@ function Connect(props) {
                                         </div>
                                     </Form.Group>
                                     <Form.Group className="text-right">
-                                        <Button variant="primary" type="submit">
+                                        <button className="btn btn-main-light" type="submit">
                                             <FiSend /> Send your awesome
                                             message!
-                                        </Button>
+                                        </button>
                                     </Form.Group>
                                 </Form>
 
@@ -347,27 +347,16 @@ function Connect(props) {
                         md={6}
                         className="overflow-hidden contact-image-container"
                     >
-                        {/* {props.config?.contact_image ? (
-                            <img
-                                className="contact-image"
-                                src={props.config.contact_image}
-                                alt="Contact"
-                            />
-                        ) : (
+                        {/* Show image loader until the image is totally loaded */}
+                        {imageLoading && (
                             <SquareLoader
                                 width={1000}
                                 height={1000}
                                 radius={10}
                             />
-                        )} */}
-
-                        {/* Show image loader until the image is totally loaded */}
-                        {imageLoading && (
-                            <SquareLoader width={1000} height={1000} radius={10} />
                         )}
                         {/* Hide / Show image based on the status of the image (Loaded or not) */}
-                        {
-                            props?.config?.contact_image &&
+                        {props?.config?.contact_image && (
                             <img
                                 variant="top"
                                 style={imageLoading ? { display: "none" } : {}}
@@ -376,7 +365,7 @@ function Connect(props) {
                                 src={props.config.contact_image}
                                 alt="blog"
                             />
-                        }
+                        )}
                     </Col>
                 </Row>
             </div>

@@ -3,54 +3,63 @@ import Row from "react-bootstrap/esm/Row";
 import { Link } from "react-router-dom";
 import { BiNavigation } from "react-icons/bi";
 
-import AOS from "aos";
 import ProjectTemplate from "./Templates/ProjectTemplate";
-import { Col } from "react-bootstrap";
+import { Col, Container } from "react-bootstrap";
 import ProjectLoader from "../Loaders/ProjectLoader";
+import RotatedSquaresPattern from "../Patterns/RotatedSquaresPattern";
+import styleVariables from "../../assets/styles/variables/variables.module.scss";
 
-AOS.init();
 
-function TopProjects({topProjects}) {
+function TopProjects({ topProjects }) {
     return (
         <>
-            <div className="my-4 text-center">
-                <h3 className="text-center">Top Projects</h3>
-                <Row className="justify-content-center">
-                    {topProjects ? (
-                        topProjects.map((project, index) => (
-                            <ProjectTemplate
-                                project={project}
-                                col={4}
-                                animate={"fade-right"}
-                                key={index}
-                            />
-                        ))
-                    ) : (
-                        <>
-                            <Col md={4}>
-                                <ProjectLoader />
-                            </Col>
-                            <Col md={4}>
-                                <ProjectLoader />
-                            </Col>
-                            <Col md={4}>
-                                <ProjectLoader />
-                            </Col>
-                        </>
-                    )}
-                </Row>
-                <div className="mt-4">
-                    <Link to="projects" className="discover-more-btn">
-                        <span className="discover-circle" aria-hidden="true">
-                            <span>
-                                <BiNavigation className="discover-icon" />
+            <div className="bg-home-even">
+                <Container>
+                    <h3 className="text-center home-title">
+                        Top <span>Projects</span>
+                    </h3>
+                    <Row className="justify-content-center my-5">
+                        {topProjects ? (
+                            topProjects.map((project, index) => (
+                                <ProjectTemplate
+                                    project={project}
+                                    col={4}
+                                    animate={"fade-right"}
+                                    key={index}
+                                />
+                            ))
+                        ) : (
+                            <>
+                                <Col md={4}>
+                                    <ProjectLoader />
+                                </Col>
+                                <Col md={4}>
+                                    <ProjectLoader />
+                                </Col>
+                                <Col md={4}>
+                                    <ProjectLoader />
+                                </Col>
+                            </>
+                        )}
+                    </Row>
+                    <div className="mt-4">
+                        <Link to="projects" className="discover-more-btn">
+                            <span
+                                className="discover-circle"
+                                aria-hidden="true"
+                            >
+                                <span>
+                                    <BiNavigation className="discover-icon" />
+                                </span>
                             </span>
-                        </span>
-                        <span className="discover-button-text">
-                            Discover More
-                        </span>
-                    </Link>
-                </div>
+                            <span className="discover-button-text">
+                                Discover More
+                            </span>
+                        </Link>
+                    </div>
+                </Container>
+
+                <RotatedSquaresPattern fill={styleVariables.primaryWhite} secondFill={styleVariables.primaryColor} top="4%" left="6%" rotate="-27"  height="60px" width="60px"  />
             </div>
         </>
     );

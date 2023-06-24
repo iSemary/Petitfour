@@ -106,6 +106,7 @@ class BlogController extends Controller {
 
         $similarBlogs->transform(function ($blog) {
             $blog->published_at = Carbon::parse($blog->published_at)->format('M d Y');
+            $blog->skills = $blog->skills()->select(['skills.id', 'skills.icon', 'skills.theme_icon', 'skills.name'])->orderBy('skills.priority')->get();
             return $blog;
         });
 

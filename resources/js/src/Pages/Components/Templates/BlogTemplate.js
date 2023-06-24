@@ -47,31 +47,41 @@ function BlogTemplate({ blog, col, fade }) {
                                 <Card.Text className="blog-description">
                                     {blog.description}
                                 </Card.Text>
-                                <Card.Text>{blog.published_at}</Card.Text>
+                                <Card.Text className="blog-date">
+                                    {blog.published_at}
+                                </Card.Text>
                             </Card.Body>
-                            <Row>
+                        </Link>
+
+                        <Card.Body>
+                            <Row className="justify-content-around">
                                 {blog.skills &&
+                                    blog.skills.length > 0 &&
                                     blog.skills
                                         .slice(0, MAX_BLOG_SKILLS)
                                         .map((blogSkill, index) => (
                                             <SkillsListTemplate
                                                 skill={blogSkill}
                                                 imgClass="project-skill-icon"
-                                                colClass="me-2 p-0"
+                                                colClass="me-2 p-0 col-1"
                                                 key={index}
                                             />
                                         ))}
-                                {blog.skills.length > MAX_BLOG_SKILLS && (
-                                    <Col md={2} key={MAX_BLOG_SKILLS}>
-                                        <HiCode size={20} />
-                                        {"+" +
-                                            (blog.skills.length -
-                                                MAX_BLOG_SKILLS) +
-                                            " Skills"}
-                                    </Col>
-                                )}
+                                {blog.skills &&
+                                    blog.skills.length > 0 &&
+                                    blog.skills.length > MAX_BLOG_SKILLS && (
+                                        <Col
+                                            md={3}
+                                            key={MAX_BLOG_SKILLS}
+                                            className="more-skills-icon"
+                                        >
+                                            +
+                                            {blog.skills.length -
+                                                MAX_BLOG_SKILLS}{" "}
+                                        </Col>
+                                    )}
                             </Row>
-                        </Link>
+                        </Card.Body>
                     </Card>
                 </Fade>
             </Col>

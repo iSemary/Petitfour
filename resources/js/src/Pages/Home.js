@@ -11,6 +11,8 @@ import TopProjects from "./Components/TopProjects";
 import LatestExperience from "./Components/LatestExperience";
 import SideSkills from "./Components/SideSkills";
 import LatestBlogs from "./Components/LatestBlogs";
+import AxiosConfig from "../config/AxiosConfig";
+import SwitchButton from "./Components/Partials/SwitchButton";
 
 function Home(props) {
     const [isPlayingTransition, setIsPlayingTransition] = useState(false);
@@ -22,8 +24,26 @@ function Home(props) {
 
     const switchTheme = (e) => {
         localStorage.setItem("theme", String(!theme));
+        // Count user theme request for analytics uses
+        countUserThemeRequest();
+
         setIsPlayingTransition(true);
         startFlashing();
+    };
+
+    const countUserThemeRequest = (e) => {
+        const requestDetails = {
+            theme_type: localStorage.getItem("theme"),
+            device_type: navigator.platform,
+            device_details: navigator.userAgent,
+            view_type: document
+                .querySelector('meta[name="view-type"]')
+                .getAttribute("content"),
+        };
+
+        AxiosConfig.post(`/count-theme`, requestDetails).catch((error) => {
+            console.log(error);
+        });
     };
 
     const handleTransitionEnded = (e) => {
@@ -65,9 +85,16 @@ function Home(props) {
                         <Col md={6}>
                             <div className="top-home-details">
                                 <h1>
-                                    {props?.config?.config?.user?.first_name}
+                                    <span>
+                                        {
+                                            props?.config?.config?.user
+                                                ?.first_name
+                                        }
+                                    </span>
                                     <br />
-                                    {props?.config?.config?.user?.last_name}
+                                    <span className="gradient-text">
+                                        {props?.config?.config?.user?.last_name}
+                                    </span>
                                 </h1>
                                 <h4
                                     ref={positionTitleRef}
@@ -86,7 +113,10 @@ function Home(props) {
                             <div className="top-home-buttons">
                                 <Row>
                                     <Col md={6}>
-                                        <button
+
+                                        <SwitchButton onClick={(e) => switchTheme()} />
+                                        
+                                        {/* <button
                                             className="btn btn-primary btn-switch-theme"
                                             onClick={(e) => switchTheme()}
                                             type="button"
@@ -94,7 +124,7 @@ function Home(props) {
                                             {theme
                                                 ? " Switch original theme"
                                                 : " Switch moon night"}
-                                        </button>
+                                        </button> */}
                                     </Col>
                                     <Col md={6}></Col>
                                 </Row>
@@ -104,18 +134,18 @@ function Home(props) {
                     </Row>
                 </Container>
             </div>
-            <Container>
-                <Features features={props?.config.features} />
-                <HighlightedSkills
-                    highlightedSkills={props?.config.highlighted_skills}
-                />
-                <TopProjects topProjects={props?.config.top_projects} />
-                <LatestExperience
-                    latestExperience={props?.config?.latest_experience}
-                />
-                <SideSkills sideSkills={props?.config.side_skills} />
-                <LatestBlogs latestBlogs={props?.config?.latest_blogs} />
-            </Container>
+            {/* <Container> */}
+            <Features features={props?.config.features} />
+            <HighlightedSkills
+                highlightedSkills={props?.config.highlighted_skills}
+            />
+            <TopProjects topProjects={props?.config.top_projects} />
+            <LatestExperience
+                latestExperience={props?.config?.latest_experience}
+            />
+            <SideSkills sideSkills={props?.config.side_skills} />
+            <LatestBlogs latestBlogs={props?.config?.latest_blogs} />
+            {/* </Container> */}
 
             {isPlayingTransition && (
                 <audio

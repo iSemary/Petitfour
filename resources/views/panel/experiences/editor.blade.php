@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label>End Date</label>
                     <input type="date" name="end_date"
-                        value="{{ isset($experience) ? $experience->end_date : '' }}" class="form-control" required>
+                        value="{{ isset($experience) ? $experience->end_date : null }}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Skills</label>

@@ -6,12 +6,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "aos/dist/aos.css";
 import "./assets/styles/style.css";
 import AxiosConfig from "./config/AxiosConfig";
+import AOS from "aos";
+import SideAlert from "./Pages/Components/Partials/SideAlert";
 
 function App() {
+    AOS.init();
+
     const [config, setConfig] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const mode = localStorage.getItem("mode") ? localStorage.getItem("mode") : "dark";
+    const mode = localStorage.getItem("mode")
+        ? localStorage.getItem("mode")
+        : "dark";
 
     const getData = () => {
         AxiosConfig.get(`/home`)
@@ -30,7 +36,6 @@ function App() {
         getData();
     }, []);
 
-    
     return (
         <>
             <Header
@@ -38,6 +43,9 @@ function App() {
                 theme_logo={config?.config?.system?.theme_logo}
             />
             <Router config={config} />
+
+            {/* <SideAlert /> */}
+
             <Footer
                 socialLinks={config?.social_links}
                 userInfo={config?.config?.user}

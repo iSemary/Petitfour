@@ -30,5 +30,8 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('experiences/{companyName}', [ExperienceController::class, 'show']);
 
         Route::post('contact', [ContactController::class, 'store']);
+
+
+        Route::post('count-theme', [HomeController::class, 'countTheme']);
     });
 });

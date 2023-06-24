@@ -74,7 +74,7 @@ class ConfigController extends Controller {
         foreach ($request->feature_id as $feature) {
             if ($request->feature_title[$feature] != "") {
                 $featureRecord = Feature::where('id', $feature)->first();
-                $featureImage = Uploader::file(isset($request->file('feature_image')[$feature]) ? $request->file('feature_image')[$feature] : null, $featureRecord, 'image', 'config');
+                $featureImage = Uploader::image(isset($request->file('feature_image')[$feature]) ? $request->file('feature_image')[$feature] : null, $featureRecord->image, 'config');
                 $data = [
                     'title' => $request->feature_title[$feature],
                     'description' => $request->feature_description[$feature],

@@ -12,6 +12,7 @@ use App\Models\ProjectImage;
 use App\Models\Skill;
 use App\Models\SocialLink;
 use App\Models\SystemConfig;
+use App\Models\ThemeCounter;
 use App\Models\UserConfig;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
@@ -46,7 +47,7 @@ class HomeController extends Controller {
             'name',
             'icon',
             'theme_icon',
-        ])->where('highlight', 1)->orderBy('priority')->get();
+        ])->where('highlight', 1)->where('type', 1)->orderBy('priority')->get();
 
         /**
          * The code selects the top 3 highlighted projects along with their skills and mocked images. It uses a left join to combine the `project_images` and 
@@ -83,6 +84,7 @@ class HomeController extends Controller {
         `company_logo`, `company_location`, `position_title`, `start_date`, and `end_date` columns from the
         table and orders the results by the `end_date` column in descending order. */
         $data->latest_experience = Experience::select([
+            'id',
             'company_name',
             'company_logo',
             'company_location',
@@ -92,11 +94,11 @@ class HomeController extends Controller {
             'end_date',
         ])->with(['skills' => function ($query) {
             $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);
-        }])->orderBy('end_date', 'DESC')->limit(4)->get();
+        }])->orderBy('start_date', 'DESC')->limit(4)->get();
 
         $data->latest_experience->transform(function ($experience) {
             $experience->start_date = Carbon::parse($experience->start_date)->format('M Y');
-            $experience->end_date = Carbon::parse($experience->end_date)->format('M Y');
+            $experience->end_date = $experience->end_date ? Carbon::parse($experience->end_date)->format('M Y') : "Present";
             return $experience;
         });
 
@@ -148,6 +150,21 @@ class HomeController extends Controller {
             'success' => true,
             'status' => 200,
             'data' => $data
+        ], 200);
+    }
+
+    /** Count how many users requested the theme effect, with their device details */
+    public function countTheme(Request $request) {
+        ThemeCounter::create([
+            'theme_type' => ($request->theme_type) == 'false' ? 0 : 1,
+            'device_type' => $request->device_type,
+            'device_details' => $request->device_details,
+            'view_type' => $request->view_type,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'status' => 200,
         ], 200);
     }
 }

@@ -5,23 +5,13 @@ import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import Container from "react-bootstrap/esm/Container";
 import SkillLoader from "./Loaders/SkillLoader";
-import OverlayTrigger from "react-bootstrap/esm/OverlayTrigger";
-import Tooltip from "react-bootstrap/esm/Tooltip";
-import { Link } from "react-router-dom";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
-import { BsPalette2, BsDatabaseFillGear } from "react-icons/bs";
-import { HiServerStack } from "react-icons/hi2";
 import SkillsListTemplate from "./Components/Templates/SkillsListTemplate";
 import SkillsMajorTemplate from "./Components/Templates/SkillsMajorTemplate";
 
 function Skills() {
     const bgs = ["main-white", "main-dark"];
     const txt = ["main-dark", "second"];
-    const categoriesIcons = [
-        <BsPalette2 size={25} />,
-        <BsDatabaseFillGear size={25} />,
-        <HiServerStack size={25} />,
-    ];
     const skills = useSelector((state) => state.skills);
     const dispatch = useDispatch();
 
@@ -54,32 +44,32 @@ function Skills() {
                                         ))}
                                 </div>
                             </Col>
-                            <Col md={6} className="skills-details-container">
+                            <Col md={6} className="skills-details-container p-3">
                                 <div className="category-details">
                                     <div className="category-name">
                                         <img
-                                            src={skill.name}
+                                            src={skill.icon}
                                             alt={"category icon " + i}
                                             className="category-icon"
                                         />
-                                        <h4>
+                                        <h3 className="font-weight-bold">
                                            {skill.name}
-                                        </h4>
+                                        </h3>
                                     </div>
                                     <h5>{skill.title}</h5>
-                                    <p>
+                                    <p className="font-18">
                                         <RiDoubleQuotesL /> {skill.description}{" "}
                                         <RiDoubleQuotesR />
                                     </p>
                                 </div>
                                 <div className="category-skills">
-                                    <Row className="skills-list width-fit-content">
+                                    <Row className="skills-list">
                                         {skill.additional.map(
                                             (additionalSkill, index) => (
                                                 <SkillsListTemplate
                                                     skill={additionalSkill}
                                                     imgClass="side-skill"
-                                                    colClass="me-2 p-0"
+                                                    colClass="me-2 p-0 col-3 width-fit-content"
                                                     key={index}
                                                 />
                                             )
