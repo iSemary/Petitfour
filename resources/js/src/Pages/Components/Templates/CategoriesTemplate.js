@@ -1,5 +1,5 @@
 import React from "react";
-function CategoriesTemplate({ activeCategory, categories, totalRecords, setPage, setCategory, type }) {
+function CategoriesTemplate({ activeCategory, categories, allRecords, setPage, setCategory, type }) {
     return (
         <>
             <button
@@ -13,7 +13,7 @@ function CategoriesTemplate({ activeCategory, categories, totalRecords, setPage,
                     setCategory(null);
                 }}
             >
-                All <span>{totalRecords}</span>
+                All <span>{allRecords}</span>
             </button>
             {categories.map((_category, index) => (
                 <button

@@ -17,6 +17,7 @@ import { MdEmail } from "react-icons/md";
 import { FiPhoneCall } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import HandwrittenLetters from "../Pages/Utilities/HandwrittenLetters";
+import { ImProfile } from "react-icons/im";
 function Footer(props) {
     const linkIcons = [
         null,
@@ -43,6 +44,32 @@ function Footer(props) {
         "M451.36,71.48c5.49-18.5-2.07-21.61-13.6-8.66-1.65,1.85-2.4,4-4.23,6.53-4.21,5.77-2.15,14.92.63,15.61,3.78.93,7.84-11,12-10,3.84.92,2.5,11.33,6.35,12.71,7,2.5,26.75-37,28.49-36.11S466.2,89.1,468,90c1.56.77,14.86-26.15,20.64-24.24,4.42,1.45.4,18.38,5.76,20.64,4.2,1.76,11.8-6.44,18.48-15.12",
     ];
 
+    const downloadResume = (fileUrl, fileName) => {
+        fetch(fileUrl, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/pdf",
+            },
+        })
+            .then((response) => response.blob())
+            .then((blob) => {
+                // Create blob link to download
+                const url = window.URL.createObjectURL(new Blob([blob]));
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", fileName);
+
+                // Append to html link element page
+                document.body.appendChild(link);
+
+                // Start download
+                link.click();
+
+                // Clean up and remove the link
+                link.parentNode.removeChild(link);
+            });
+    };
+
     return (
         <footer className="text-center text-lg-start">
             <section className="d-flex justify-content-center justify-content-lg-between pb-2 social-links">
@@ -60,10 +87,10 @@ function Footer(props) {
                             <div className="social-icons text-right">
                                 {props?.socialLinks?.map(
                                     (socialLink, index) => (
-                                        <Link
-                                            to={{ pathname: socialLink.url }}
+                                        <a
+                                            href={socialLink.url}
                                             key={index}
-                                            rel="noreferrer"
+                                            rel="noreferrer noopener"
                                             className={
                                                 "ms-4 text-reset social-link social-link-" +
                                                 socialLink.type
@@ -71,7 +98,7 @@ function Footer(props) {
                                             target="_blank"
                                         >
                                             {linkIcons[socialLink.type]}
-                                        </Link>
+                                        </a>
                                     )
                                 )}
                             </div>
@@ -157,8 +184,21 @@ function Footer(props) {
                                 }}
                             >
                                 <FiPhoneCall />
-                                &nbsp;&nbsp;(+{props.userInfo?.country_code}){" "}
-                                {props.userInfo?.phone_number}
+                                &nbsp;&nbsp;(+{
+                                    props.userInfo?.country_code
+                                }) {props.userInfo?.phone_number}
+                            </div>
+
+                            <div className="d-block mb-2">
+                                <a
+                                    href={props.userInfo?.resume}
+                                    className="text-reset"
+                                    target="_blank" rel="noopener noreferrer"
+                                    download
+                                >
+                                    <ImProfile />
+                                    &nbsp;&nbsp;Resume
+                                </a>
                             </div>
                         </Col>
                     </Row>
@@ -170,14 +210,14 @@ function Footer(props) {
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
             >
                 Designed with love by
-                <Link
-                    to={{ pathname: "https://www.abdelrahman.online" }}
-                    rel="noreferrer"
+                <a
+                    href={"https://www.abdelrahman.online"}
                     className="text-reset fw-bold"
                     target="_blank"
+                    rel="noopener noreferrer"
                 >
                     &nbsp;Abdelrahman Samir
-                </Link>
+                </a>
                 &nbsp;&copy; {new Date().getFullYear()}
             </div>
         </footer>

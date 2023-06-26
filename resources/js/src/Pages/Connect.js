@@ -223,10 +223,10 @@ function Connect(props) {
             </p> */}
             <div className="contact-container">
                 <Row>
-                    <Col md={6} className="contact-image-container">
+                    <Col md={6} className="contact-form-container">
                         <div className="contact-form">
                             <h1>Let's connect now </h1>
-                            <div className="contact-form-container">
+                            <div className="form-container">
                                 <Form
                                     method="POST"
                                     ref={formRef}
@@ -274,6 +274,7 @@ function Connect(props) {
                                         <Form.Select
                                             onChange={handleChange}
                                             value={formValues.subject}
+                                            className="custom-form-select"
                                             name="subject"
                                             required
                                         >

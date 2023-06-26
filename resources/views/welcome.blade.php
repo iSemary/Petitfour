@@ -13,6 +13,11 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
     <meta name="view-type" content="{{ isset($_GET['type']) ? $_GET['type'] : 0 }}">
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="{{ asset('static/js/app.js') }}?v=1.0"></script>
     {{-- Google Analytics Script --}}
     @if (isset($config['system']['google_analytics_id']))
         <script async src="https://www.googletagmanager.com/gtag/js?id={{ $config['system']['google_analytics_id'] }}"></script>
@@ -27,13 +32,6 @@
             gtag('config', gAnalyticsID);
         </script>`
     @endif
-
-</head>
-
-<body>
-    <div id="root"></div>
-    <script src="{{ asset('static/js/app.js') }}?v=1.0"></script>
-
 </body>
 
 </html>

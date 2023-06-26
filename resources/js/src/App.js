@@ -41,6 +41,7 @@ function App() {
             <Header
                 logo={config?.config?.system?.logo}
                 theme_logo={config?.config?.system?.theme_logo}
+                resume={config?.config?.user?.resume}
             />
             <Router config={config} />
 
