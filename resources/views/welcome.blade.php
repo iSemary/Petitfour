@@ -17,7 +17,7 @@
 
 <body>
     <div id="root"></div>
-    <script src="{{ asset('static/js/app.min.js') }}?v=1.0"></script>
+    <script src="{{ asset('static/js/app.min.js') }}?v=1.2"></script>
     {{-- Google Analytics Script --}}
     @if (isset($config['system']['google_analytics_id']))
         <script async src="https://www.googletagmanager.com/gtag/js?id={{ $config['system']['google_analytics_id'] }}"></script>
