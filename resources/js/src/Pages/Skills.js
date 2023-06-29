@@ -26,7 +26,7 @@ function Skills() {
                 <div
                     key={i}
                     className={
-                        "skills bg-" + bgs[i % 2] + " text-" + txt[i % 2]
+                        "skills " + ("bg-" + bgs[i % 2] + " text-" + txt[i % 2])
                     }
                 >
                     <Container>
