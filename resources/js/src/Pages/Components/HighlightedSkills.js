@@ -23,7 +23,7 @@ function HighlightedSkills({ highlightedSkills }) {
                 <Row className="justify-content-center my-5">
                     {highlightedSkills ? (
                         highlightedSkills.map((skill, index) => (
-                            <Col md={1} data-aos="fade-right" key={index}>
+                            <Col md={1} className="mb-sm-1" data-aos="fade-right" key={index}>
                                 <OverlayTrigger
                                     placement="bottom"
                                     overlay={

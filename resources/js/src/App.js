@@ -15,10 +15,6 @@ function App() {
     const [config, setConfig] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const mode = localStorage.getItem("mode")
-        ? localStorage.getItem("mode")
-        : "dark";
-
     const getData = () => {
         AxiosConfig.get(`/home`)
             .then((response) => {

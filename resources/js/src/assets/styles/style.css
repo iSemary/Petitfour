@@ -107,7 +107,7 @@ body {
     .nav-links .links {
       transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
       display: grid !important;
-      padding: 15% 0;
+      margin: 30% 0;
       align-items: center !important;
       justify-content: center !important; }
       .nav-links .links div {
@@ -456,12 +456,18 @@ body {
     font-weight: bold; }
   .form-custom-control:active, .form-custom-control:focus, .form-custom-control:focus-visible {
     background-color: transparent;
-    box-shadow: 0 0 0 0.25rem #884dff4f;
+    box-shadow: 0 0 0 0.15rem #884dff4f;
     border-color: #884dff; }
 
 @media screen and (max-width: 767px) {
   .contact-container {
     position: relative; }
+    .contact-container .contact-image-container,
+    .contact-container .contact-form-container,
+    .contact-container .contact-image-container img {
+      height: 100% !important; }
+    .contact-container .contact-image-container img {
+      filter: brightness(0.4); }
 
   .contact-image-container {
     position: absolute;
@@ -898,7 +904,7 @@ body {
   overflow: hidden; }
   .project-page .project-images-container .laptop-mockup {
     width: 90%;
-    z-index: 1000;
+    z-index: 10;
     position: relative; }
   .project-page .project-images-container .project-item-image {
     width: 370px;

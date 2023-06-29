@@ -3,7 +3,6 @@ import Col from "react-bootstrap/Col";
 import { Container, Navbar } from "react-bootstrap";
 import { Link, useMatch } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { ImProfile } from "react-icons/im";
 
 function Header(props) {
     const navRef = useRef(null);

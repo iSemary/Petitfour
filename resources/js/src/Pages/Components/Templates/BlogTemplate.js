@@ -3,7 +3,6 @@ import { Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 import SkillsListTemplate from "./SkillsListTemplate";
-import { HiCode } from "react-icons/hi";
 import SquareLoader from "../../Loaders/SquareLoader";
 
 const MAX_BLOG_SKILLS = 4;
