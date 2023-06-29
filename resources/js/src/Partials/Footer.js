@@ -17,6 +17,7 @@ import { MdEmail } from "react-icons/md";
 import { FiPhoneCall } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import HandwrittenLetters from "../Pages/Utilities/HandwrittenLetters";
+import { ImProfile } from "react-icons/im";
 function Footer(props) {
     const linkIcons = [
         null,
@@ -60,10 +61,10 @@ function Footer(props) {
                             <div className="social-icons text-right">
                                 {props?.socialLinks?.map(
                                     (socialLink, index) => (
-                                        <Link
-                                            to={{ pathname: socialLink.url }}
+                                        <a
+                                            href={socialLink.url}
                                             key={index}
-                                            rel="noreferrer"
+                                            rel="noreferrer noopener"
                                             className={
                                                 "ms-4 text-reset social-link social-link-" +
                                                 socialLink.type
@@ -71,7 +72,7 @@ function Footer(props) {
                                             target="_blank"
                                         >
                                             {linkIcons[socialLink.type]}
-                                        </Link>
+                                        </a>
                                     )
                                 )}
                             </div>
@@ -157,8 +158,21 @@ function Footer(props) {
                                 }}
                             >
                                 <FiPhoneCall />
-                                &nbsp;&nbsp;(+{props.userInfo?.country_code}){" "}
-                                {props.userInfo?.phone_number}
+                                &nbsp;&nbsp;(+{
+                                    props.userInfo?.country_code
+                                }) {props.userInfo?.phone_number}
+                            </div>
+
+                            <div className="d-block mb-2">
+                                <a
+                                    href={props.userInfo?.resume}
+                                    className="text-reset"
+                                    target="_blank" rel="noopener noreferrer"
+                                    download
+                                >
+                                    <ImProfile />
+                                    &nbsp;&nbsp;Resume
+                                </a>
                             </div>
                         </Col>
                     </Row>
@@ -170,14 +184,14 @@ function Footer(props) {
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
             >
                 Designed with love by
-                <Link
-                    to={{ pathname: "https://www.abdelrahman.online" }}
-                    rel="noreferrer"
+                <a
+                    href={"https://www.abdelrahman.online"}
                     className="text-reset fw-bold"
                     target="_blank"
+                    rel="noopener noreferrer"
                 >
                     &nbsp;Abdelrahman Samir
-                </Link>
+                </a>
                 &nbsp;&copy; {new Date().getFullYear()}
             </div>
         </footer>

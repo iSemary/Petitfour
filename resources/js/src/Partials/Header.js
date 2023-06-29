@@ -22,6 +22,9 @@ function Header(props) {
     useEffect(() => {
         if (headerMenu != null) {
             if (headerMenu) {
+                document.getElementsByTagName("body")[0].style.overflow =
+                    "hidden";
+
                 navRef.current.style.setProperty(
                     "display",
                     "block",
@@ -43,6 +46,9 @@ function Header(props) {
                     });
                 }, 500);
             } else {
+                document.getElementsByTagName("body")[0].style.overflow =
+                    "auto";
+
                 navRef.current.style.setProperty(
                     "animation",
                     "slideToLeft 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6)"
@@ -67,16 +73,14 @@ function Header(props) {
         >
             <Container>
                 <Row className="w-100">
-                    <Col md={3} sm={3} xs={3}>
-                        <Col md={12} className="main-logo">
-                            <Link to="/" className="no-link">
-                                <img
-                                    src={props.logo}
-                                    alt="Main logo"
-                                    className="header-logo"
-                                />
-                            </Link>
-                        </Col>
+                    <Col md={3} sm={3} xs={3} className="main-logo">
+                        <Link to="/" className="no-link">
+                            <img
+                                src={props.logo}
+                                alt="Main logo"
+                                className="header-logo"
+                            />
+                        </Link>
                     </Col>
                     <Col md={9} className="nav-links" ref={navRef}>
                         <div
@@ -142,6 +146,17 @@ function Header(props) {
                                 >
                                     Connect
                                 </Link>
+                            </div>
+                            <div className="">
+                                <a
+                                    href={props?.resume}
+                                    className="no-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    download
+                                >
+                                    Resume
+                                </a>
                             </div>
                         </div>
                     </Col>

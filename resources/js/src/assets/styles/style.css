@@ -25,7 +25,8 @@ body {
   color: #e3e1fa; }
 
 * {
-  font-family: Lato; }
+  font-family: "Lato", Arial, sans-serif;
+  font-display: auto; }
 
 .main-nav .nav-links {
   display: flex;
@@ -37,12 +38,15 @@ body {
     .main-nav .nav-links .links div {
       margin: 0 0 0 20px; }
       .main-nav .nav-links .links div a {
+        color: #e3e1fa;
         font-weight: bold !important;
-        font-size: 18px; }
+        font-size: 18px;
+        transition: 350ms ease-in-out; }
         .main-nav .nav-links .links div a:hover {
-          border-bottom: 2px solid #fff;
-          color: #fff;
-          animation: borderSlide 2s; }
+          animation: borderSlide 2s;
+          color: #884dff; }
+      .main-nav .nav-links .links div a.active {
+        color: #884dff; }
 
 .nav-icon {
   display: none;
@@ -85,6 +89,9 @@ body {
         transform: translate(17px, -7px) rotateZ(45deg); }
 
 @media screen and (max-width: 767px) {
+  .main-logo {
+    padding-left: 5%; }
+
   .nav-links {
     position: fixed;
     display: none !important;
@@ -100,7 +107,7 @@ body {
     .nav-links .links {
       transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
       display: grid !important;
-      padding: 15% 0;
+      margin: 30% 0;
       align-items: center !important;
       justify-content: center !important; }
       .nav-links .links div {
@@ -211,7 +218,7 @@ body {
         animation: starFade 2s ease-in-out infinite forwards; }
   .switch-button-content .switch-button span {
     position: relative;
-    font-family: Moonfark;
+    font-family: "Moonfark", Arial, sans-serif;
     font-size: 25px;
     color: transparent;
     background: linear-gradient(90deg, #224160 10%, #92b8de 15%, #224160 50%);
@@ -435,10 +442,39 @@ body {
     -webkit-backdrop-filter: blur(5px);
     padding: 10px 20px; }
   .contact-container .contact-image-container,
+  .contact-container .contact-form-container,
   .contact-container .contact-image-container img {
     border-radius: 10px;
     height: 75vh !important; }
 
+.form-custom-control {
+  background-color: transparent;
+  color: #e3e1fa;
+  border-color: #e3e1fa; }
+  .form-custom-control::placeholder {
+    color: #e3e1fa;
+    font-weight: bold; }
+  .form-custom-control:active, .form-custom-control:focus, .form-custom-control:focus-visible {
+    background-color: transparent;
+    box-shadow: 0 0 0 0.15rem #884dff4f;
+    border-color: #884dff; }
+
+@media screen and (max-width: 767px) {
+  .contact-container {
+    position: relative; }
+    .contact-container .contact-image-container,
+    .contact-container .contact-form-container,
+    .contact-container .contact-image-container img {
+      height: 100% !important; }
+    .contact-container .contact-image-container img {
+      filter: brightness(0.4); }
+
+  .contact-image-container {
+    position: absolute;
+    z-index: -1; }
+
+  .contact-form-container button {
+    width: 100%; } }
 .side-skill {
   width: fit-content;
   max-width: 25px;
@@ -464,7 +500,12 @@ body {
 .blog-item .blog-title {
   font-size: 17px;
   font-weight: bold;
-  text-align: left; }
+  text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden; }
 .blog-item .blog-description {
   text-align: left;
   display: -webkit-box;
@@ -611,6 +652,35 @@ body {
     .home-experiences .experience-odd .experience-details .experience-info {
       text-align: left; }
 
+@media screen and (max-width: 767px) {
+  .home-experiences {
+    margin: 0 5%; }
+    .home-experiences .experience {
+      display: grid;
+      justify-content: normal; }
+      .home-experiences .experience .experience-details {
+        width: 100%;
+        display: grid;
+        order: 2;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px; }
+      .home-experiences .experience .experience-company-logo {
+        margin-bottom: 10%; }
+      .home-experiences .experience .experience-image {
+        order: 1;
+        width: 100%;
+        margin: 0 auto; }
+      .home-experiences .experience .experience-h-line {
+        display: none; } }
+@media screen and (max-width: 484px) {
+  .home-experiences .experience-details {
+    display: grid; }
+    .home-experiences .experience-details .experience-info {
+      width: 100%; }
+    .home-experiences .experience-details .experience-date {
+      width: 100%; } }
 .blog-page {
   margin-top: 5vh; }
   .blog-page .blog-details .blog-title {
@@ -646,14 +716,14 @@ body {
     transform: translateY(-2px);
     box-shadow: -3px -2px 7px #e3e1fa6b; }
 
-.contact-form-container {
+.form-container {
   position: relative; }
-  .contact-form-container .contact-form.disabled {
+  .form-container .contact-form.disabled {
     animation: blurIn 1s; }
-  .contact-form-container .contact-form.enabled {
+  .form-container .contact-form.enabled {
     animation: blurOut 1s; }
-  .contact-form-container .contact-form-loader,
-  .contact-form-container .contact-form-success {
+  .form-container .contact-form-loader,
+  .form-container .contact-form-success {
     display: none;
     position: absolute;
     top: 0;
@@ -738,7 +808,19 @@ body {
       background-color: #100126;
       color: #e3e1fa;
       box-shadow: 2px -4px 6px #ffffff5e; }
+  .blog-filter::-webkit-scrollbar {
+    width: 0.1em;
+    background-color: transparent; }
+  .blog-filter::-webkit-scrollbar-thumb {
+    background-color: transparent; }
 
+@media screen and (max-width: 767px) {
+  .blog-filter {
+    overflow-y: scroll;
+    width: 100%;
+    padding-top: 10px; }
+    .blog-filter button {
+      min-width: fit-content; } }
 .reveal-fade {
   opacity: 1 !important;
   transform: none !important; }
@@ -822,11 +904,11 @@ body {
   overflow: hidden; }
   .project-page .project-images-container .laptop-mockup {
     width: 90%;
-    z-index: 1000;
+    z-index: 10;
     position: relative; }
   .project-page .project-images-container .project-item-image {
-    width: 420px;
-    height: 258px;
+    width: 370px;
+    height: 235px;
     border-radius: 10px; }
     .project-page .project-images-container .project-item-image .inactive {
       filter: blur(1px); }
@@ -896,6 +978,7 @@ body {
   to {
     stroke-dashoffset: 0; } }
 .home-title {
+  color: #e3e1fa;
   font-weight: bold; }
   .home-title span {
     color: #884dff; }
@@ -946,6 +1029,6 @@ body {
   font-size: 13px;
   font-weight: bold; }
   .project-duration span {
-    font-family: 'Moonfark'; }
+    font-family: "Moonfark", Arial, sans-serif; }
 
 /*# sourceMappingURL=style.css.map */

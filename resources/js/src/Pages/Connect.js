@@ -6,7 +6,7 @@ import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
 import { FiSend } from "react-icons/fi";
 import AxiosConfig from "../config/AxiosConfig";
-import LottieLoader from "./Loaders/LottieLoader";
+// import LottieLoader from "./Loaders/LottieLoader";
 import SquareLoader from "./Loaders/SquareLoader";
 
 function Connect(props) {
@@ -223,10 +223,10 @@ function Connect(props) {
             </p> */}
             <div className="contact-container">
                 <Row>
-                    <Col md={6} className="contact-image-container">
+                    <Col md={6} className="contact-form-container">
                         <div className="contact-form">
                             <h1>Let's connect now </h1>
-                            <div className="contact-form-container">
+                            <div className="form-container">
                                 <Form
                                     method="POST"
                                     ref={formRef}
@@ -274,6 +274,7 @@ function Connect(props) {
                                         <Form.Select
                                             onChange={handleChange}
                                             value={formValues.subject}
+                                            className="custom-form-select"
                                             name="subject"
                                             required
                                         >
@@ -323,22 +324,22 @@ function Connect(props) {
                                     className="contact-form-loader"
                                     ref={loadingRef}
                                 >
-                                    <LottieLoader
+                                    {/* <LottieLoader
                                         jsonPath={
                                             "https://assets4.lottiefiles.com/packages/lf20_x62chJ.json"
                                         }
-                                    />
+                                    /> */}
                                 </div>
                                 <div
                                     className="contact-form-success"
                                     ref={successRef}
                                 >
-                                    <LottieLoader
+                                    {/* <LottieLoader
                                         jsonPath={
                                             "https://assets10.lottiefiles.com/private_files/lf30_nsqfzxxx.json"
                                         }
                                         loop={false}
-                                    />
+                                    /> */}
                                 </div>
                             </div>
                         </div>

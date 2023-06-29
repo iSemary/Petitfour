@@ -7,6 +7,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 import BlogTemplate from "./Components/Templates/BlogTemplate";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+import PostLoader from "./Loaders/PostLoader";
 
 function Blog() {
     const { slug } = useParams();
@@ -46,7 +47,7 @@ function Blog() {
     }, [slug]);
 
     if (!blog) {
-        return <div>Loading...</div>;
+        return <Container className="mt-5"><PostLoader /></Container>;
     }
 
     return (

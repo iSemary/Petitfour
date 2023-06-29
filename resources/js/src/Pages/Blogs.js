@@ -12,6 +12,7 @@ function Blogs({ categories }) {
     const [blogs, setBlogs] = useState([]);
     const [category, setCategory] = useState(null);
     const [totalRecords, setTotalRecords] = useState(null);
+    const [allRecords, setAllRecords] = useState(0);
     const [loadMore, setLoadMore] = useState(false);
 
     const getData = () => {
@@ -27,6 +28,11 @@ function Blogs({ categories }) {
                     setPage(page + 1);
                     setTotalRecords(response.data.data.total);
                     setLoadMore(false);
+
+
+                    if (!category) {
+                        setAllRecords(response.data.data.total);
+                    }
                 }
             })
             .catch((error) => {
@@ -47,7 +53,7 @@ function Blogs({ categories }) {
     };
 
     return (
-        <Container>
+        <Container className="m-auto">
             <Row className="justify-content-between">
                 <Col md={3}>
                     <h1 className="my-4">Blogs</h1>
@@ -60,7 +66,7 @@ function Blogs({ categories }) {
                         <CategoriesTemplate
                             activeCategory={category}
                             categories={categories}
-                            totalRecords={totalRecords}
+                            allRecords={allRecords}
                             setPage={setPage}
                             setCategory={setCategory}
                             type="blogs"

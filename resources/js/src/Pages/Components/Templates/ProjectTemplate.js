@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { HiCode } from "react-icons/hi";
 import SkillsListTemplate from "./SkillsListTemplate";
 import SquareLoader from "../../Loaders/SquareLoader";
 

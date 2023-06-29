@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import AxiosConfig from "../config/AxiosConfig";
 import { Container, Row, Col } from "react-bootstrap";
 import { HiHashtag } from "react-icons/hi";
@@ -7,6 +7,7 @@ import { BsGithub } from "react-icons/bs";
 import { IoMdArrowDropright } from "react-icons/io";
 import SkillsListTemplate from "./Components/Templates/SkillsListTemplate";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import PostLoader from "./Loaders/PostLoader";
 
 function Project() {
     const { name } = useParams();
@@ -22,8 +23,7 @@ function Project() {
         perPage: 1,
         type: "loop",
         drag: "free",
-        fixedWidth: "20rem",
-        fixedHeight: "100%",
+        fixedWidth: "34rem",
         gap: "8rem",
         arrows: true,
     };
@@ -49,7 +49,7 @@ function Project() {
     }, [name]);
 
     if (!project) {
-        return <div>Loading...</div>;
+        return <Container className="mt-5"><PostLoader /></Container>;
     }
 
     return (
@@ -111,12 +111,14 @@ function Project() {
 
                             {project.repository_link && (
                                 <div className="my-2">
-                                    <Link
+                                    <a
                                         className="project-link btn btn-main-light font-weight-bold"
-                                        to={project.repository_link}
+                                        href={project.repository_link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                     >
                                         <BsGithub /> Explore the Code
-                                    </Link>
+                                    </a>
                                 </div>
                             )}
                         </div>
@@ -124,7 +126,7 @@ function Project() {
 
                     <Col md={6}>
                         {/* End Project Content Section */}
-                        <div className="project-images-container">
+                        <div className="project-images-container mt-sm-2">
                             <img
                                 src={mockPath}
                                 alt="Laptop - Mock up"

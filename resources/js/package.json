@@ -10,14 +10,17 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "set BUILD_PATH=../../public/static&& react-scripts build",
+    "build": "npm run build:react && npm run build:bundle && npm run copy:css && npm run copy:media",
+    "build:react": "react-scripts build",
+    "build:bundle": "webpack --config webpack.config.js",
+    "copy:css": "cp -v build/static/css/main.*.css ../../public/static/css/style.min.css",
+    "copy:media": "cp -v -r build/static/media ../../public/static",
     "build-linux": "BUILD_PATH='../../public/static' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
-    "@lottiefiles/lottie-player": "^1.7.1",
     "@reduxjs/toolkit": "^1.9.5",
     "@splidejs/react-splide": "^0.7.12",
     "@testing-library/jest-dom": "^5.16.5",
@@ -46,7 +49,8 @@
     "gulp-autoprefixer": "^8.0.0",
     "gulp-sass": "^5.1.0",
     "sass": "^1.62.1",
-    "webpack": "^5.86.0"
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
   },
   "browserslist": {
     "production": [

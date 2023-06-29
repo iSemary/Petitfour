@@ -15,10 +15,6 @@ function App() {
     const [config, setConfig] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const mode = localStorage.getItem("mode")
-        ? localStorage.getItem("mode")
-        : "dark";
-
     const getData = () => {
         AxiosConfig.get(`/home`)
             .then((response) => {
@@ -41,6 +37,7 @@ function App() {
             <Header
                 logo={config?.config?.system?.logo}
                 theme_logo={config?.config?.system?.theme_logo}
+                resume={config?.config?.user?.resume}
             />
             <Router config={config} />
 
