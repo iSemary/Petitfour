@@ -55,8 +55,9 @@ function Blogs({ categories }) {
     return (
         <Container className="m-auto">
             <Row className="justify-content-between">
-                <Col md={3}>
-                    <h1 className="my-4">Blogs</h1>
+            <Col md={3} className="my-4 width-fit-content">
+                    <h1 className="mb-0">Blogs</h1>
+                    <hr className="title-line m-0 mt-1" />
                 </Col>
                 <Col
                     md={9}
@@ -94,7 +95,7 @@ function Blogs({ categories }) {
                     </>
                 )}
             </Row>
-            {totalRecords > blogs.length && (
+            {totalRecords > blogs.length > 0 && (
                 <div className="text-center my-3">
                     <button
                         type="button"

@@ -87,7 +87,7 @@ function Header(props) {
                             className="links w-100 justify-content-end"
                             ref={linksRef}
                         >
-                            <div className="">
+                            <div>
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/"
@@ -99,7 +99,7 @@ function Header(props) {
                                     Home
                                 </Link>
                             </div>
-                            <div className="">
+                            <div>
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/skills"
@@ -111,7 +111,7 @@ function Header(props) {
                                     Skills
                                 </Link>
                             </div>
-                            <div className="">
+                            <div>
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/projects"
@@ -123,7 +123,7 @@ function Header(props) {
                                     Projects
                                 </Link>
                             </div>
-                            <div className="">
+                            <div>
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/blogs"
@@ -135,7 +135,7 @@ function Header(props) {
                                     Blogs
                                 </Link>
                             </div>
-                            <div className="">
+                            <div>
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/connect"
@@ -147,7 +147,7 @@ function Header(props) {
                                     Connect
                                 </Link>
                             </div>
-                            <div className="">
+                            <div>
                                 <a
                                     href={props?.resume}
                                     className="no-link"

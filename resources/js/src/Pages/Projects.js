@@ -54,8 +54,9 @@ function Projects({ categories }) {
     return (
         <Container className="m-auto">
             <Row className="justify-content-between">
-                <Col md={3}>
-                    <h1 className="my-4">Projects</h1>
+                <Col md={3} className="my-4 width-fit-content">
+                    <h1 className="mb-0">Projects</h1>
+                    <hr className="title-line m-0 mt-1" />
                 </Col>
                 <Col
                     md={9}
@@ -94,13 +95,10 @@ function Projects({ categories }) {
                         <Col md={4}>
                             <ProjectLoader />
                         </Col>
-                        <Col md={4}>
-                            <ProjectLoader />
-                        </Col>
                     </>
                 )}
             </Row>
-            {totalRecords && totalRecords > projects.length && (
+            {totalRecords && totalRecords > projects.length > 0 && (
                 <div className="text-center my-3">
                     <button
                         type="button"

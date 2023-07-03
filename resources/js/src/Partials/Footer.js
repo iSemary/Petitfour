@@ -18,6 +18,9 @@ import { FiPhoneCall } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import HandwrittenLetters from "../Pages/Utilities/HandwrittenLetters";
 import { ImProfile } from "react-icons/im";
+import DotsPattern from "../Pages/Patterns/DotsPattern";
+import styleVariables from "../assets/styles/variables/variables.module.scss";
+
 function Footer(props) {
     const linkIcons = [
         null,
@@ -45,7 +48,7 @@ function Footer(props) {
     ];
 
     return (
-        <footer className="text-center text-lg-start">
+        <footer className="text-center text-lg-start position-relative">
             <section className="d-flex justify-content-center justify-content-lg-between pb-2 social-links">
                 <Container className="footer-container text-center text-md-start mt-5">
                     <Row>
@@ -80,7 +83,7 @@ function Footer(props) {
                     </Row>
                 </Container>
             </section>
-            <section className="">
+            <section>
                 <Container className="text-center text-md-start mt-5">
                     <Row className="mt-3 justify-content-between footer-details mb-4">
                         <Col
@@ -178,7 +181,6 @@ function Footer(props) {
                     </Row>
                 </Container>
             </section>
-
             <div
                 className="p-4"
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
@@ -194,6 +196,9 @@ function Footer(props) {
                 </a>
                 &nbsp;&copy; {new Date().getFullYear()}
             </div>
+
+
+            <DotsPattern color={styleVariables.primaryWhite} bottom="5%" right="2%" height="45px" width="45px" />
         </footer>
     );
 }

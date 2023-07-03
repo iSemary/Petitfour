@@ -1,12 +1,11 @@
 import { useRef, useState } from "react";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
 import { FiSend } from "react-icons/fi";
 import AxiosConfig from "../config/AxiosConfig";
-// import LottieLoader from "./Loaders/LottieLoader";
+import LottieLoader from "./Loaders/LottieLoader";
 import SquareLoader from "./Loaders/SquareLoader";
 
 function Connect(props) {
@@ -39,7 +38,6 @@ function Connect(props) {
 
     const errors = {};
 
-    const [submit, setSubmit] = useState(false);
     const [formValues, setFormValues] = useState(initialForm);
 
     const MAX_MESSAGE_LENGTH = 5000;
@@ -149,7 +147,6 @@ function Connect(props) {
 
         // Set form as SUCCESS status
         successRef.current.style.display = "none";
-        setFormStatus(2);
     };
 
     /**
@@ -179,16 +176,19 @@ function Connect(props) {
         // Store the requested data
         AxiosConfig.post(`/contact`, formValues)
             .then((response) => {
-                clearFormInputs();
-                formLoader("none");
-                formSuccess();
+                if (response.data.success) {
+                    setTimeout(() => {
+                        clearFormInputs();
+                        formLoader("none");
+                        formSuccess();
+                        setFormStatus(2);
+                    }, 2000);
+                }
             })
             .catch((error) => {
                 console.log(error);
                 setFormStatus(3);
             });
-
-        setSubmit(false);
     };
 
     /**
@@ -223,18 +223,18 @@ function Connect(props) {
             </p> */}
             <div className="contact-container">
                 <Row>
-                    <Col md={6} className="contact-form-container">
-                        <div className="contact-form">
+                    <Col md={6} className="contact-form-container pe-0">
+                        <div
+                            className={
+                                "contact-form " +
+                                (formStatus === 1 ? "disabled" : "enabled")
+                            }
+                        >
                             <h1>Let's connect now </h1>
                             <div className="form-container">
                                 <Form
                                     method="POST"
                                     ref={formRef}
-                                    className={
-                                        formStatus === 1
-                                            ? "disabled"
-                                            : "enabled"
-                                    }
                                     onSubmit={handleSubmit}
                                 >
                                     <Form.Group className="mb-2">
@@ -271,7 +271,7 @@ function Connect(props) {
                                             What's on your mind? Give me a{" "}
                                             <b>subject</b> hint!
                                         </Form.Label>
-                                        <Form.Select
+                                        <select
                                             onChange={handleChange}
                                             value={formValues.subject}
                                             className="custom-form-select"
@@ -289,7 +289,7 @@ function Connect(props) {
                                                     {Subject.name}
                                                 </option>
                                             ))}
-                                        </Form.Select>
+                                        </select>
                                     </Form.Group>
                                     <Form.Group className="mb-2">
                                         <Form.Label>
@@ -313,40 +313,40 @@ function Connect(props) {
                                         </div>
                                     </Form.Group>
                                     <Form.Group className="text-right">
-                                        <button className="btn btn-main-light" type="submit">
+                                        <button
+                                            className="btn btn-main-light"
+                                            type="submit"
+                                        >
                                             <FiSend /> Send your awesome
                                             message!
                                         </button>
                                     </Form.Group>
                                 </Form>
-
-                                <div
-                                    className="contact-form-loader"
-                                    ref={loadingRef}
-                                >
-                                    {/* <LottieLoader
-                                        jsonPath={
-                                            "https://assets4.lottiefiles.com/packages/lf20_x62chJ.json"
-                                        }
-                                    /> */}
-                                </div>
-                                <div
-                                    className="contact-form-success"
-                                    ref={successRef}
-                                >
-                                    {/* <LottieLoader
-                                        jsonPath={
-                                            "https://assets10.lottiefiles.com/private_files/lf30_nsqfzxxx.json"
-                                        }
-                                        loop={false}
-                                    /> */}
-                                </div>
                             </div>
+                        </div>
+
+                        <div className="contact-form-loader" ref={loadingRef}>
+                            <LottieLoader
+                                jsonPath={
+                                    "https://assets4.lottiefiles.com/packages/lf20_x62chJ.json"
+                                }
+                            />
+                        </div>
+                        <div className="contact-form-success" ref={successRef}>
+                            <LottieLoader
+                                jsonPath={
+                                    "https://assets4.lottiefiles.com/packages/lf20_elbqcdfD4N.json"
+                                }
+                                loop={false}
+                                autoplay={false}
+                                playAnimation={formStatus === 2 ? true : false}
+                                speed={2}
+                            />
                         </div>
                     </Col>
                     <Col
                         md={6}
-                        className="overflow-hidden contact-image-container"
+                        className="overflow-hidden contact-image-container ps-0"
                     >
                         {/* Show image loader until the image is totally loaded */}
                         {imageLoading && (
@@ -364,7 +364,7 @@ function Connect(props) {
                                 className="card-img-top"
                                 onLoad={() => setImageLoading(false)}
                                 src={props.config.contact_image}
-                                alt="blog"
+                                alt="contact"
                             />
                         )}
                     </Col>

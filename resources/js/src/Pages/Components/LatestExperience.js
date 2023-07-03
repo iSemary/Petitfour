@@ -23,7 +23,7 @@ function LatestExperience(props) {
                     })}
                 </div>
             </Container>
-            <DotsPattern color={styleVariables.primaryWhite} bottom="5%" right="2%" height="60px" width="60px" />
+            <DotsPattern color={styleVariables.primaryWhite} bottom="5%" right="90%" height="60px" width="60px" />
         </div>
     );
 }
