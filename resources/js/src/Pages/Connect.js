@@ -223,10 +223,10 @@ function Connect(props) {
             </p> */}
             <div className="contact-container">
                 <Row>
-                    <Col md={6} className="contact-form-container pe-0">
+                    <Col lg={6} md={12} className="contact-form-container pe-0">
                         <div
                             className={
-                                "contact-form " +
+                                "contact-form h-100 " +
                                 (formStatus === 1 ? "disabled" : "enabled")
                             }
                         >
@@ -293,7 +293,7 @@ function Connect(props) {
                                     </Form.Group>
                                     <Form.Group className="mb-2">
                                         <Form.Label>
-                                            Tell me all about it! I'm eager to
+                                            I'm eager to
                                             hear your <b>message</b> from you.
                                         </Form.Label>
                                         <Form.Control
@@ -345,7 +345,7 @@ function Connect(props) {
                         </div>
                     </Col>
                     <Col
-                        md={6}
+                        lg={6} md={12}
                         className="overflow-hidden contact-image-container ps-0"
                     >
                         {/* Show image loader until the image is totally loaded */}
@@ -361,7 +361,7 @@ function Connect(props) {
                             <img
                                 variant="top"
                                 style={imageLoading ? { display: "none" } : {}}
-                                className="card-img-top"
+                                className="card-img-top h-100"
                                 onLoad={() => setImageLoading(false)}
                                 src={props.config.contact_image}
                                 alt="contact"

@@ -184,10 +184,15 @@ body {
 
 .bg-home-even {
     background-color: $primaryDark;
+    background: linear-gradient(180deg, #100126 75%, #171a1c 100%);
 }
 
 .bg-home-odd {
     background-color: $primaryBlack;
+    background: linear-gradient(180deg, #171a1c 75%, #100126 100%);
+}
+.home-content > div:last-of-type {
+    background: $primaryBlack;
 }
 
 .width-fit-content {
@@ -541,8 +546,7 @@ body {
     }
 
     .contact-image-container,
-    .contact-form-container,
-    .contact-image-container img {
+    .contact-form-container {
         height: 75vh !important;
     }
 
@@ -611,7 +615,7 @@ body {
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 992px) {
     .contact-container {
         position: relative;
 
@@ -626,10 +630,18 @@ body {
         }
     }
     .contact-image-container {
+        padding-left: 1rem !important;
+    }
+    .contact-form {
+        border-radius: 10px;
+        border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    .contact-image-container {
         position: absolute;
         z-index: -1;
     }
     .contact-form-container {
+        padding-right: 1rem !important;
         button {
             width: 100%;
         }
@@ -967,7 +979,6 @@ body {
 }
 
 .form-container {
-
 }
 .contact-form {
     transition: 500ms ease-in-out;
@@ -984,6 +995,9 @@ body {
 
 .contact-form-loader,
 .contact-form-success {
+    div {
+        height: 100%;
+    }
     display: none;
     position: absolute;
     top: 0;
@@ -1298,8 +1312,8 @@ $mockupWidth: 90%;
 footer {
     background-color: $primaryDark;
 }
-footer.home-footer{
-    background: linear-gradient(360deg, $primaryDark 0%,$primaryBlack 100%);
+footer.home-footer {
+    background: linear-gradient(360deg, $primaryDark 0%, $primaryBlack 100%);
 }
 
 .footer-container {

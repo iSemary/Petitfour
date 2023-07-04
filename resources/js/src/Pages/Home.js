@@ -134,6 +134,8 @@ function Home(props) {
                     </Row>
                 </Container>
             </div>
+            <div className="home-content">
+
             {/* <Container> */}
             <Features features={props?.config.features} />
             <HighlightedSkills
@@ -145,6 +147,8 @@ function Home(props) {
             />
             <SideSkills sideSkills={props?.config.side_skills} />
             <LatestBlogs latestBlogs={props?.config?.latest_blogs} />
+            </div>
+
             {/* </Container> */}
 
             {isPlayingTransition && (

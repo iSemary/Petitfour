@@ -1,37 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Router from "./config/Router";
 import Header from "./Partials/Header";
 import Footer from "./Partials/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "aos/dist/aos.css";
 import "./assets/styles/style.css";
-import AxiosConfig from "./config/AxiosConfig";
 import AOS from "aos";
 import SideAlert from "./Pages/Components/Partials/SideAlert";
+import { useDispatch, useSelector } from "react-redux";
+import { getConfig } from "./actions/configSlice";
 
 function App() {
     AOS.init();
 
-    const [config, setConfig] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    const getData = () => {
-        AxiosConfig.get(`/home`)
-            .then((response) => {
-                if (response.data.success) {
-                    setConfig(response.data.data);
-                    setLoading(false);
-                }
-            })
-            .catch((error) => {
-                setLoading(false);
-            });
-    };
+    const config = useSelector((state) => state.config.data);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        getData();
-    }, []);
-
+        dispatch(getConfig());
+    }, [dispatch]);
     return (
         <>
             <Header
