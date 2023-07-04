@@ -15,9 +15,13 @@ import { CgProfile } from "react-icons/cg";
 import { FaGlobeAfrica } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FiPhoneCall } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import HandwrittenLetters from "../Pages/Utilities/HandwrittenLetters";
 import { ImProfile } from "react-icons/im";
+import styleVariables from "../assets/styles/variables/variables.module.scss";
+import TrianglePattern from "../Pages/Patterns/TrianglePattern";
+import CirclePattern from "../Pages/Patterns/CirclePattern";
+
 function Footer(props) {
     const linkIcons = [
         null,
@@ -45,9 +49,9 @@ function Footer(props) {
     ];
 
     return (
-        <footer className="text-center text-lg-start">
+        <footer className={"pt-4 text-center text-lg-start position-relative " +  (useMatch("/") && " home-footer")}>
             <section className="d-flex justify-content-center justify-content-lg-between pb-2 social-links">
-                <Container className="footer-container text-center text-md-start mt-5">
+                <Container className="footer-container text-center text-md-start">
                     <Row>
                         <Col md={6}>
                             <div className="footer-name-container">
@@ -80,7 +84,7 @@ function Footer(props) {
                     </Row>
                 </Container>
             </section>
-            <section className="">
+            <section>
                 <Container className="text-center text-md-start mt-5">
                     <Row className="mt-3 justify-content-between footer-details mb-4">
                         <Col
@@ -167,7 +171,8 @@ function Footer(props) {
                                 <a
                                     href={props.userInfo?.resume}
                                     className="text-reset"
-                                    target="_blank" rel="noopener noreferrer"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     download
                                 >
                                     <ImProfile />
@@ -178,7 +183,6 @@ function Footer(props) {
                     </Row>
                 </Container>
             </section>
-
             <div
                 className="p-4"
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
@@ -193,6 +197,69 @@ function Footer(props) {
                     &nbsp;Abdelrahman Samir
                 </a>
                 &nbsp;&copy; {new Date().getFullYear()}
+            </div>
+
+            {/* SVGs Designs */}
+            <div className="footer-svg-container">
+                <TrianglePattern
+                    color={styleVariables.primaryBlue}
+                    top="75%"
+                    rotate="20"
+                    right="90%"
+                    width="17"
+                />
+                <TrianglePattern
+                    color={styleVariables.primaryColor}
+                    top="45%"
+                    rotate="45"
+                    right="60%"
+                    width="15"
+                />
+
+                <TrianglePattern
+                    color={styleVariables.primaryWhite}
+                    top="40%"
+                    rotate="60"
+                    right="15%"
+                    width="15"
+                />
+                <TrianglePattern
+                    color={styleVariables.secondaryTextColor}
+                    top="80%"
+                    rotate="55"
+                    right="30%"
+                    width="17"
+                />
+
+                <CirclePattern
+                    color={styleVariables.secondaryTextColor}
+                    top="37%"
+                    rotate="20"
+                    right="85%"
+                    width="10"
+                />
+                <CirclePattern
+                    color={styleVariables.primaryWhite}
+                    top="80%"
+                    rotate="45"
+                    right="65%"
+                    width="15"
+                />
+
+                <CirclePattern
+                    color={styleVariables.primaryColor}
+                    top="50%"
+                    rotate="60"
+                    right="40%"
+                    width="15"
+                />
+                <CirclePattern
+                    color={styleVariables.primaryBlue}
+                    top="70%"
+                    rotate="45"
+                    right="10%"
+                    width="10"
+                />
             </div>
         </footer>
     );

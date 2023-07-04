@@ -83,7 +83,7 @@ function Skills() {
     }
     return (
         <>
-            <div className="">
+            <div>
                 {skills.success ? SkillsSection : <SkillLoader />}
             </div>
         </>

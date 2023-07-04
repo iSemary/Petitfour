@@ -1,32 +1,60 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+// Import necessary dependencies
+import { createSlice } from '@reduxjs/toolkit';
 import AxiosConfig from "../config/AxiosConfig";
 
-export const getBlogs = createAsyncThunk("blogs", async () => {
-    const response = await AxiosConfig.get("/blogs");
-    return response;
+// Define initial state
+const initialState = {
+  blogs: [],
+  page: 1,
+  totalRecords: 0,
+  loadMore: false,
+};
+
+// Create the blog slice
+const blogsSlice = createSlice({
+  name: 'blogs',
+  initialState,
+  reducers: {
+    setBlogs: (state, action) => {
+      state.blogs.push(...action.payload);
+    },
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
+    setTotalRecords: (state, action) => {
+      state.totalRecords = action.payload;
+    },
+    setLoadMore: (state, action) => {
+      state.loadMore = action.payload;
+    },
+  },
 });
 
-export const blogsSlice = createSlice({
-    name: "blogs",
-    initialState: {
-        data: [],
-        success: false,
-        status: 402,
-    },
-    reducers: {},
-    extraReducers: {
-        [getBlogs.fulfilled]: (state, { payload }) => {
-            state.data = payload.data.data;
-            state.status = payload.data.status;
-            state.success = payload.data.success;
-        },
-        [getBlogs.pending]: (state) => {
-            state.status = 202;
-        },
-        [getBlogs.rejected]: (state) => {
-            state.success = 500;
-        },
-    },
-});
+// Export actions
+export const { setBlogs, setPage, setTotalRecords, setLoadMore } = blogsSlice.actions;
 
+// Define async action to fetch data
+export const getData = (page, category) => {
+  return (dispatch) => {
+    AxiosConfig.get(`/blogs?page=${page}${category && "&category=" + category}`)
+      .then((response) => {
+        if (response.data.success) {
+          dispatch(setBlogs(response.data.data.data));
+          dispatch(setPage(page + 1));
+          dispatch(setTotalRecords(response.data.data.total));
+          dispatch(setLoadMore(false));
+
+          if (!category) {
+            // Handle setting all records
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch(setLoadMore(false));
+      });
+  };
+};
+
+// Export the blog reducer
 export default blogsSlice.reducer;

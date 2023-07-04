@@ -177,18 +177,22 @@ body {
 
 .bg-home-even,
 .bg-home-odd {
-    margin: 2% 0;
-    padding: 2% 0;
+    padding: 4% 0;
     text-align: center;
     position: relative;
 }
 
 .bg-home-even {
     background-color: $primaryDark;
+    background: linear-gradient(180deg, #100126 75%, #171a1c 100%);
 }
 
 .bg-home-odd {
     background-color: $primaryBlack;
+    background: linear-gradient(180deg, #171a1c 75%, #100126 100%);
+}
+.home-content > div:last-of-type {
+    background: $primaryBlack;
 }
 
 .width-fit-content {
@@ -392,12 +396,6 @@ body {
     outline: 0;
 }
 
-@import url("https://fonts.googleapis.com/css?family=Mukta:700");
-
-$bg: #f3f8fa;
-$white: #fff;
-$black: #282936;
-
 @mixin transition(
     $property: all,
     $duration: 0.45s,
@@ -418,7 +416,6 @@ $black: #282936;
     padding: 0;
     font-size: inherit;
     font-family: inherit;
-    //   &.learn-more {
     width: 12rem;
     height: auto;
     .discover-circle {
@@ -428,39 +425,17 @@ $black: #282936;
         margin: 0;
         width: 3rem;
         height: 3rem;
-        background: $black;
+        background: $primaryWhite;
         border-radius: 1.625rem;
         .discover-icon {
             @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
             position: absolute;
             top: 0;
             bottom: 0;
-            margin: auto;
-            color: $white;
-            margin: 27% -18%;
+            color: $primaryBlack;
+            top: 27%;
+            right: 25%;
             font-size: 21px;
-            &.arrow {
-                @include transition(
-                    all,
-                    0.45s,
-                    cubic-bezier(0.65, 0, 0.076, 1)
-                );
-                left: 0.625rem;
-                width: 1.125rem;
-                height: 0.125rem;
-                background: none;
-                &::before {
-                    position: absolute;
-                    content: "";
-                    top: -0.25rem;
-                    right: 0.0625rem;
-                    width: 0.625rem;
-                    height: 0.625rem;
-                    border-top: 0.125rem solid #fff;
-                    border-right: 0.125rem solid #fff;
-                    transform: rotate(45deg);
-                }
-            }
         }
     }
     .discover-button-text {
@@ -472,29 +447,35 @@ $black: #282936;
         bottom: 0;
         padding: 0.75rem 0;
         margin: 0 0 0 2.85rem;
-        color: $black;
+        color: $primaryWhite;
         font-weight: 700;
         line-height: 1.6;
         text-align: center;
         text-transform: uppercase;
     }
-    //   }
     &:hover {
         .discover-circle {
             width: 100%;
-            .discover-icon {
-                &.arrow {
-                    color: $white;
-                    transform: translate(1rem, 0);
-                }
-            }
         }
         .discover-icon {
-            margin: 7% -37%;
+            margin: 0;
+            transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+            right: 5%;
+            top: 30%;
         }
         .discover-button-text {
-            color: $white;
+            margin: 0 0 0 0;
+            color: $primaryBlack;
         }
+    }
+}
+
+@keyframes discoverAnimate {
+    0% {
+        right: 0%;
+    }
+    100% {
+        right: 43%;
     }
 }
 
@@ -556,7 +537,6 @@ $black: #282936;
 .contact-container {
     margin-top: 15px;
     .contact-form {
-        border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, 0.3);
         background: rgba(255, 255, 255, 0.2);
         box-shadow: 0 4px 30px #0000001a;
@@ -566,10 +546,22 @@ $black: #282936;
     }
 
     .contact-image-container,
-    .contact-form-container,
-    .contact-image-container img {
-        border-radius: 10px;
+    .contact-form-container {
         height: 75vh !important;
+    }
+
+    .contact-form-container {
+        position: relative;
+    }
+
+    .contact-form-container .contact-form {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-right: 0;
+    }
+    .contact-image-container img {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 }
 
@@ -586,11 +578,44 @@ $black: #282936;
     &:focus,
     &:focus-visible {
         background-color: transparent;
+        color: $primaryWhite;
         box-shadow: 0 0 0 0.15rem #884dff4f;
         border-color: $primaryColor;
     }
+
+    &:disabled {
+        background-color: #10012670;
+    }
 }
-@media screen and (max-width: 767px) {
+.custom-form-select {
+    background-color: transparent;
+    display: block;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid $primaryWhite;
+    color: $primaryWhite;
+    font-weight: bold;
+    border-radius: 5px;
+    &:active,
+    &:focus,
+    &:focus-visible {
+        box-shadow: 0 0 0 0.15rem #884dff4f;
+        border-color: $primaryColor;
+        outline: 0;
+    }
+
+    &:disabled {
+        background-color: #10012670;
+    }
+    option {
+        margin: 40px;
+        background: $primaryDark;
+        color: #fff;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    }
+}
+
+@media screen and (max-width: 992px) {
     .contact-container {
         position: relative;
 
@@ -605,18 +630,23 @@ $black: #282936;
         }
     }
     .contact-image-container {
+        padding-left: 1rem !important;
+    }
+    .contact-form {
+        border-radius: 10px;
+        border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    .contact-image-container {
         position: absolute;
         z-index: -1;
     }
     .contact-form-container {
+        padding-right: 1rem !important;
         button {
             width: 100%;
         }
     }
 }
-.custom-form-select {
-}
-
 .side-skill {
     width: fit-content;
     max-width: 25px;
@@ -808,7 +838,7 @@ $black: #282936;
         }
         .experience-image {
             position: relative;
-            width: 9%;
+            width: 8%;
             display: grid;
             align-items: center;
             .experience-company-logo {
@@ -882,8 +912,6 @@ $black: #282936;
             }
         }
     }
-}
-@media screen and (max-width: 484px) {
     .home-experiences {
         .experience-details {
             display: grid;
@@ -897,6 +925,8 @@ $black: #282936;
             }
         }
     }
+}
+@media screen and (max-width: 484px) {
 }
 // Single Blog Post Page
 .blog-page {
@@ -949,23 +979,36 @@ $black: #282936;
 }
 
 .form-container {
-    position: relative;
+}
+.contact-form {
+    transition: 500ms ease-in-out;
+}
+.contact-form.disabled {
+    filter: blur(2px);
+    opacity: 0.5;
+}
 
-    .contact-form.disabled {
-        animation: blurIn 1s;
-    }
+.contact-form.enabled {
+    filter: blur(0);
+    opacity: 1;
+}
 
-    .contact-form.enabled {
-        animation: blurOut 1s;
+.contact-form-loader,
+.contact-form-success {
+    div {
+        height: 100%;
     }
-
-    .contact-form-loader,
-    .contact-form-success {
-        display: none;
-        position: absolute;
-        top: 0;
-        z-index: 10;
-    }
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+}
+.contact-form-success div {
+    width: 75%;
+    margin: 0 auto;
 }
 
 @keyframes blurIn {
@@ -1266,9 +1309,18 @@ $mockupWidth: 90%;
 .overflow-hidden {
     overflow: hidden;
 }
+footer {
+    background-color: $primaryDark;
+}
+footer.home-footer {
+    background: linear-gradient(360deg, $primaryDark 0%, $primaryBlack 100%);
+}
 
 .footer-container {
     position: relative;
+}
+.footer-svg-container {
+    opacity: 0.4;
 }
 .footer-name-container {
     .name-svg {
@@ -1422,4 +1474,12 @@ $mockupWidth: 90%;
     span {
         font-family: "Moonfark", Arial, sans-serif;
     }
+}
+
+.title-line {
+    border-top: 3px solid;
+    border-radius: 3px;
+    width: 65%;
+    color: #e3e1fabd;
+    opacity: 1;
 }

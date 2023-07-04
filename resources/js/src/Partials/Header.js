@@ -87,67 +87,67 @@ function Header(props) {
                             className="links w-100 justify-content-end"
                             ref={linksRef}
                         >
-                            <div className="">
+                            <div>
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/"
                                     className={
                                         "no-link " +
-                                        (useMatch("/") ? "active" : "")
+                                        (useMatch("/") && " active")
                                     }
                                 >
                                     Home
                                 </Link>
                             </div>
-                            <div className="">
+                            <div>
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/skills"
                                     className={
                                         "no-link " +
-                                        (useMatch("/skills") ? "active" : "")
+                                        (useMatch("/skills") && " active")
                                     }
                                 >
                                     Skills
                                 </Link>
                             </div>
-                            <div className="">
+                            <div>
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/projects"
                                     className={
                                         "no-link " +
-                                        (useMatch("/projects") ? "active" : "")
+                                        (useMatch("/projects") && " active")
                                     }
                                 >
                                     Projects
                                 </Link>
                             </div>
-                            <div className="">
+                            <div>
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/blogs"
                                     className={
                                         "no-link " +
-                                        (useMatch("/blogs") ? "active" : "")
+                                        (useMatch("/blogs") && " active")
                                     }
                                 >
                                     Blogs
                                 </Link>
                             </div>
-                            <div className="">
+                            <div>
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/connect"
                                     className={
                                         "no-link " +
-                                        (useMatch("/connect") ? "active" : "")
+                                        (useMatch("/connect") && " active")
                                     }
                                 >
                                     Connect
                                 </Link>
                             </div>
-                            <div className="">
+                            <div>
                                 <a
                                     href={props?.resume}
                                     className="no-link"
