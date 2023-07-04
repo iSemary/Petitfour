@@ -177,8 +177,7 @@ body {
 
 .bg-home-even,
 .bg-home-odd {
-    margin: 2% 0;
-    padding: 2% 0;
+    padding: 4% 0;
     text-align: center;
     position: relative;
 }
@@ -1296,9 +1295,18 @@ $mockupWidth: 90%;
 .overflow-hidden {
     overflow: hidden;
 }
+footer {
+    background-color: $primaryDark;
+}
+footer.home-footer{
+    background: linear-gradient(360deg, $primaryDark 0%,$primaryBlack 100%);
+}
 
 .footer-container {
     position: relative;
+}
+.footer-svg-container {
+    opacity: 0.4;
 }
 .footer-name-container {
     .name-svg {

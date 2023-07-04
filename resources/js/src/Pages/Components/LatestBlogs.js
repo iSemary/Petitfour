@@ -5,7 +5,7 @@ import BlogLoader from "../Loaders/BlogLoader";
 
 function LatestBlogs({ latestBlogs }) {
     return (
-        <div className="bg-home-odd">
+        <div className="bg-home-odd mb-0">
             <Container>
                 <h3 className="text-center home-title">
                     Latest blog <span>posts</span>

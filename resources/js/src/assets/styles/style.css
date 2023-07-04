@@ -135,8 +135,7 @@ body {
     transform: translateX(-100%); } }
 .bg-home-even,
 .bg-home-odd {
-  margin: 2% 0;
-  padding: 2% 0;
+  padding: 4% 0;
   text-align: center;
   position: relative; }
 
@@ -956,8 +955,17 @@ body {
 .overflow-hidden {
   overflow: hidden; }
 
+footer {
+  background-color: #100126; }
+
+footer.home-footer {
+  background: linear-gradient(360deg, #100126 0%, #171a1c 100%); }
+
 .footer-container {
   position: relative; }
+
+.footer-svg-container {
+  opacity: 0.4; }
 
 .footer-name-container .name-svg {
   position: absolute;

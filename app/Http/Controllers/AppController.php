@@ -9,7 +9,7 @@ class AppController extends Controller {
     public function index(Request $request) {
 
         $data = [
-            'type' => $request->type ?? 0,
+            'type' => $request->t ?? 0,
             'ip' => $request->ip(),
             'agent' => $request->userAgent(),
         ];
