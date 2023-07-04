@@ -26,6 +26,13 @@ function Project() {
         fixedWidth: "34rem",
         gap: "8rem",
         arrows: true,
+        breakpoints: {
+            576: {
+                perPage: 1,
+                fixedWidth: "23rem",
+                gap: "1rem",
+            },
+        },
     };
 
     useEffect(() => {
@@ -49,7 +56,11 @@ function Project() {
     }, [name]);
 
     if (!project) {
-        return <Container className="mt-5"><PostLoader /></Container>;
+        return (
+            <Container className="mt-5">
+                <PostLoader />
+            </Container>
+        );
     }
 
     return (
@@ -81,7 +92,7 @@ function Project() {
                                     {projectTags.length > 0 &&
                                         projectTags.map((projectTag, key) => (
                                             <Col
-                                                className="badge badge-secondary width-fit-content me-2"
+                                                className="badge badge-secondary width-fit-content me-2 mb-sm-1"
                                                 key={key}
                                             >
                                                 <HiHashtag />
