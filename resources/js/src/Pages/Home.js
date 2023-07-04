@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -75,6 +75,12 @@ function Home(props) {
         }, 20);
     };
 
+    useEffect(() => {
+            setTimeout(() => {
+                animateHackText(positionTitleRef);
+            }, 1600);
+    }, [props?.config?.config?.user?.position]);
+
     return (
         <>
             {isPlayingTransition && <div className="flash-effect"></div>}
@@ -113,18 +119,9 @@ function Home(props) {
                             <div className="top-home-buttons">
                                 <Row>
                                     <Col md={6}>
-
-                                        <SwitchButton onClick={(e) => switchTheme()} />
-                                        
-                                        {/* <button
-                                            className="btn btn-primary btn-switch-theme"
+                                        <SwitchButton
                                             onClick={(e) => switchTheme()}
-                                            type="button"
-                                        >
-                                            {theme
-                                                ? " Switch original theme"
-                                                : " Switch moon night"}
-                                        </button> */}
+                                        />
                                     </Col>
                                     <Col md={6}></Col>
                                 </Row>
@@ -135,18 +132,17 @@ function Home(props) {
                 </Container>
             </div>
             <div className="home-content">
-
-            {/* <Container> */}
-            <Features features={props?.config.features} />
-            <HighlightedSkills
-                highlightedSkills={props?.config.highlighted_skills}
-            />
-            <TopProjects topProjects={props?.config.top_projects} />
-            <LatestExperience
-                latestExperience={props?.config?.latest_experience}
-            />
-            <SideSkills sideSkills={props?.config.side_skills} />
-            <LatestBlogs latestBlogs={props?.config?.latest_blogs} />
+                {/* <Container> */}
+                <Features features={props?.config.features} />
+                <HighlightedSkills
+                    highlightedSkills={props?.config.highlighted_skills}
+                />
+                <TopProjects topProjects={props?.config.top_projects} />
+                <LatestExperience
+                    latestExperience={props?.config?.latest_experience}
+                />
+                <SideSkills sideSkills={props?.config.side_skills} />
+                <LatestBlogs latestBlogs={props?.config?.latest_blogs} />
             </div>
 
             {/* </Container> */}
