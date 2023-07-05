@@ -24,6 +24,7 @@ function TopProjects({ topProjects }) {
                                 <ProjectTemplate
                                     project={project}
                                     col={4}
+                                    index={index}
                                     animate={"fade-right"}
                                     key={index}
                                 />

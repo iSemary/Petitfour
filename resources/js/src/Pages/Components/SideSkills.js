@@ -32,7 +32,8 @@ function SideSkills({ sideSkills }) {
                                 md={6}
                                 className="side-skills-item"
                                 key={index}
-                            >
+                                data-aos={"fade-"+(index % 2 ? "left" : "right")}
+                                >
                                 <Card className="mb-4">
                                     <Card.Body>
                                         <Row>
@@ -64,6 +65,7 @@ function SideSkills({ sideSkills }) {
                                                                     imgClass="side-skill-icon"
                                                                     colClass="me-2 p-0 col-1"
                                                                     key={index}
+                                                                    allowNavigate={false}
                                                                 />
                                                             );
                                                         })}
