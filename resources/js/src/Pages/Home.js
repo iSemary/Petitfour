@@ -13,6 +13,9 @@ import SideSkills from "./Components/SideSkills";
 import LatestBlogs from "./Components/LatestBlogs";
 import AxiosConfig from "../config/AxiosConfig";
 import SwitchButton from "./Components/Partials/SwitchButton";
+import styleVariables from "../assets/styles/variables/variables.module.scss";
+import TrianglePattern from "../Pages/Patterns/TrianglePattern";
+import CirclePattern from "../Pages/Patterns/CirclePattern";
 
 function Home(props) {
     const [isPlayingTransition, setIsPlayingTransition] = useState(false);
@@ -76,9 +79,9 @@ function Home(props) {
     };
 
     useEffect(() => {
-            setTimeout(() => {
-                animateHackText(positionTitleRef);
-            }, 1600);
+        setTimeout(() => {
+            animateHackText(positionTitleRef);
+        }, 1600);
     }, [props?.config?.config?.user?.position]);
 
     return (
@@ -86,19 +89,36 @@ function Home(props) {
             {isPlayingTransition && <div className="flash-effect"></div>}
 
             <div className="main-background-cover">
+                <div className="blur-background">
+                    <TrianglePattern
+                        color={styleVariables.secondaryTextColor}
+                        top="50%"
+                        right="30%"
+                        rotate="45"
+                        width="150"
+                    />
+
+                    <CirclePattern
+                        color={styleVariables.secondaryTextColor}
+                        top="50%"
+                        right="85%"
+                        rotate="45"
+                        width="150"
+                    />
+                </div>
                 <Container className="top-content">
                     <Row>
                         <Col md={6}>
                             <div className="top-home-details">
                                 <h1>
-                                    <span>
+                                    <span  className="gradient-text">
                                         {
                                             props?.config?.config?.user
                                                 ?.first_name
                                         }
                                     </span>
                                     <br />
-                                    <span className="gradient-text">
+                                    <span>
                                         {props?.config?.config?.user?.last_name}
                                     </span>
                                 </h1>

@@ -17,13 +17,13 @@ function HighlightedSkills({ highlightedSkills }) {
     return (
         <div className="bg-home-odd">
             <Container>
-                <h3 className="text-center home-title">
+                <h3 className="text-center home-title"  id="highlightedSkills">
                     Highlighted <span>Skills</span>
                 </h3>
                 <Row className="justify-content-center my-5">
                     {highlightedSkills ? (
                         highlightedSkills.map((skill, index) => (
-                            <Col md={1} className="mb-sm-1" data-aos="fade-right" key={index}>
+                            <Col md={1} className="mb-sm-1" data-aos-offset={(index*100)} data-aos-anchor="#highlightedSkills" data-aos="fade-right" key={index}>
                                 <OverlayTrigger
                                     placement="bottom"
                                     overlay={
@@ -43,6 +43,7 @@ function HighlightedSkills({ highlightedSkills }) {
                                             <img
                                                 {...triggerHandler}
                                                 ref={ref}
+                                                className="smooth-hover"
                                                 alt={`Skill ${skill.name}`}
                                                 src={skill.icon}
                                                 width="50px"

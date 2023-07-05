@@ -19,6 +19,9 @@ function Features(props) {
                                     md={6}
                                     key={index}
                                     className="feature-item"
+                                    data-aos={"fade-"+(index % 2 ? "left" : "right")}
+                                    data-aos-offset={(index * 100)}
+                                    // data-aos-easing="ease-in-sine"
                                 >
                                     <Row>
                                         <Col md={2} className="center-content">

@@ -10,6 +10,7 @@ function Header(props) {
     const checkBoxRef = useRef(null);
 
     const [headerMenu, setHeaderMenu] = useState(null);
+    const [logoLoading, setLogoLoading] = useState(true);
     const handleOpenHeader = () => {
         setHeaderMenu(!headerMenu);
     };
@@ -75,9 +76,13 @@ function Header(props) {
                 <Row className="w-100">
                     <Col md={3} sm={3} xs={3} className="main-logo">
                         <Link to="/" className="no-link">
+                            {logoLoading && <div className="logo-loader-container"><div className="logo-loader"></div><div className="logo-loader"></div></div>}
+
                             <img
                                 src={props.logo}
                                 alt="Main logo"
+                                style={logoLoading ? { display: "none" } : {}}
+                                onLoad={() => setLogoLoading(false)}
                                 className="header-logo"
                             />
                         </Link>

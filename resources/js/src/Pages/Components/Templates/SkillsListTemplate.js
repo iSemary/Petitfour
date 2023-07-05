@@ -4,7 +4,7 @@ import OverlayTrigger from "react-bootstrap/esm/OverlayTrigger";
 import Tooltip from "react-bootstrap/esm/Tooltip";
 import SquareLoader from "../../Loaders/SquareLoader";
 
-function SkillsListTemplate({ skill, imgClass, colClass }) {
+function SkillsListTemplate({ skill, imgClass, colClass, allowNavigate = true }) {
     const [imageLoading, setImageLoading] = useState(true);
 
     return (
@@ -16,16 +16,17 @@ function SkillsListTemplate({ skill, imgClass, colClass }) {
                 >
                     {({ ref, ...triggerHandler }) => (
                         <Link
-                            to={`/skills/${skill.name
+                            to={allowNavigate ? (`/skills/${skill.name
                                 .split(" ")
                                 .join("-")
-                                .toLowerCase()}`}
+                                .toLowerCase()}`) : "#"}
+                                className={allowNavigate ? "" : "help-cursor"}
                         >
                             {/* Show image loader until the image is totally loaded */}
                             {imageLoading && (
                                 <SquareLoader
-                                    width={25}
-                                    height={25}
+                                    width={30}
+                                    height={30}
                                     radius={15}
                                     speed={1}
                                 />
@@ -34,7 +35,7 @@ function SkillsListTemplate({ skill, imgClass, colClass }) {
                             <img
                                 {...triggerHandler}
                                 ref={ref}
-                                className={imgClass}
+                                className={ "smooth-hover " + imgClass}
                                 style={imageLoading ? { display: "none" } : {}}
                                 alt={skill.name + " skill"}
                                 src={skill.icon}

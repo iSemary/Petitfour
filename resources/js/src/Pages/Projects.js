@@ -80,6 +80,7 @@ function Projects({ categories }) {
                         <ProjectTemplate
                             project={project}
                             col={4}
+                            containerClass="mt-4"
                             animate={"fade-right"}
                             key={key}
                         />
