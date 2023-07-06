@@ -1,9 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
-import TransitionSound from "../assets/sounds/moon-night-transition-sound-effect.mp3";
 
 import Features from "./Components/Features";
 import HighlightedSkills from "./Components/HighlightedSkills";
@@ -11,50 +9,15 @@ import TopProjects from "./Components/TopProjects";
 import LatestExperience from "./Components/LatestExperience";
 import SideSkills from "./Components/SideSkills";
 import LatestBlogs from "./Components/LatestBlogs";
-import AxiosConfig from "../config/AxiosConfig";
 import SwitchButton from "./Components/Partials/SwitchButton";
-import styleVariables from "../assets/styles/variables/variables.module.scss";
 import TrianglePattern from "../Pages/Patterns/TrianglePattern";
 import CirclePattern from "../Pages/Patterns/CirclePattern";
 
 function Home(props) {
-    const [isPlayingTransition, setIsPlayingTransition] = useState(false);
-    const transitionRef = useRef(null);
     const positionTitleRef = useRef(null);
-    const theme = localStorage.getItem("theme") === "true";
-
-    const startFlashing = (e) => {};
-
-    const switchTheme = (e) => {
-        localStorage.setItem("theme", String(!theme));
-        // Count user theme request for analytics uses
-        countUserThemeRequest();
-
-        setIsPlayingTransition(true);
-        startFlashing();
-    };
-
-    const countUserThemeRequest = (e) => {
-        const requestDetails = {
-            theme_type: localStorage.getItem("theme"),
-            device_type: navigator.platform,
-            device_details: navigator.userAgent,
-            view_type: document
-                .querySelector('meta[name="view-type"]')
-                .getAttribute("content"),
-        };
-
-        AxiosConfig.post(`/count-theme`, requestDetails).catch((error) => {
-            console.log(error);
-        });
-    };
-
-    const handleTransitionEnded = (e) => {
-        setIsPlayingTransition(false);
-    };
 
     const animateHackText = (reference) => {
-        const letters = "ABMNOPQRSTUVWXYZ&~$[+%+`@*@%+?$^";
+        const letters = "ABMNOPQRSTUVWXYZ&_~$[+_%+`@*@%+?$^";
         let interval = null;
         let iteration = 0;
         clearInterval(interval);
@@ -86,12 +49,18 @@ function Home(props) {
 
     return (
         <>
-            {isPlayingTransition && <div className="flash-effect"></div>}
-
             <div className="main-background-cover">
                 <div className="blur-background">
                     <TrianglePattern
-                        color={styleVariables.secondaryTextColor}
+                        color={"#7455FF"}
+                        top="5%"
+                        right="10%"
+                        rotate="45"
+                        width="150"
+                    />
+
+                    <TrianglePattern
+                        color={"#C229F4"}
                         top="50%"
                         right="30%"
                         rotate="45"
@@ -99,9 +68,17 @@ function Home(props) {
                     />
 
                     <CirclePattern
-                        color={styleVariables.secondaryTextColor}
-                        top="50%"
-                        right="85%"
+                        color={"#021F59"}
+                        top="5%"
+                        right="88%"
+                        rotate="45"
+                        width="150"
+                    />
+
+                    <CirclePattern
+                        color={"#198754"}
+                        top="70%"
+                        right="70%"
                         rotate="45"
                         width="150"
                     />
@@ -111,7 +88,7 @@ function Home(props) {
                         <Col md={6}>
                             <div className="top-home-details">
                                 <h1>
-                                    <span  className="gradient-text">
+                                    <span className="gradient-text">
                                         {
                                             props?.config?.config?.user
                                                 ?.first_name
@@ -139,9 +116,7 @@ function Home(props) {
                             <div className="top-home-buttons">
                                 <Row>
                                     <Col md={6}>
-                                        <SwitchButton
-                                            onClick={(e) => switchTheme()}
-                                        />
+                                        <SwitchButton />
                                     </Col>
                                     <Col md={6}></Col>
                                 </Row>
@@ -165,17 +140,10 @@ function Home(props) {
                 <LatestBlogs latestBlogs={props?.config?.latest_blogs} />
             </div>
 
-            {/* </Container> */}
-
-            {isPlayingTransition && (
-                <audio
-                    autoPlay
-                    ref={transitionRef}
-                    src={TransitionSound}
-                    type="audio/mp3"
-                    onEnded={handleTransitionEnded}
-                ></audio>
-            )}
+            <div className="theme-transition-container" id="themeTransitionContainer">
+                <div className="glitched-text" id="glitchedText">{`!function(){var e={};e.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(e){if("object"==typeof window)return window}}(),function(){var t={945:function(e){e.exports=function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="dist/",t(0)}([function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}var i=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},a=(r(n(1)),n(6)),o=r(a),s=r(n(7)),l=r(n(8)),u=r(n(9)),c=r(n(10)),f=r(n(11)),d=r(n(14)),h=[],p=!1,m={offset:120,delay:0,easing:"ease",duration:400,disable:!1,once:!1,startEvent:"DOMContentLoaded",throttleDelay:99,debounceDelay:50,disableMutationObserver:!1},v=function(){if(arguments.length>0&&void 0!==arguments[0]&&arguments[0]&&(p=!0),p)return h=(0,f.default)(h,m),(0,c.default)(h,m.once),h},g=function(){h=(0,d.default)(),v()};e.exports={init:function(e){m=i(m,e),h=(0,d.default)();var t=document.all&&!window.atob;return function(e){return!0===e||"mobile"===e&&u.default.mobile()||"phone"===e&&u.default.phone()||"tablet"===e&&u.default.tablet()||"function"==typeof e&&!0===e()}(m.disable)||t?void h.forEach((function(e,t){e.node.removeAttribute("data-aos"),e.node.removeAttribute("data-aos-easing"),e.node.removeAttribute("data-aos-duration"),e.node.removeAttribute("data-aos-delay")})):(m.disableMutationObserver||l.default.isSupported()||(console.info('      aos: MutationObserver is not supported on this browser,      code mutations observing has been disabled.      You may have to call "refreshHard()" by yourself.    '),m.disableMutationObserver=!0),document.querySelector("body").setAttribute("data-aos-easing",m.easing),document.querySelector("body").setAttribute("data-aos-duration",m.duration),document.querySelector("body").setAttribute("data-aos-delay",m.delay),"DOMContentLoaded"===m.startEvent&&["complete","interactive"].indexOf(document.readyState)>-1?v(!0):"load"===m.startEvent?window.addEventListener(m.startEvent,(function(){v(!0)})):document.addEventListener(m.startEvent,(function(){v(!0)})),window.addEventListener("resize",(0,s.default)(v,m.debounceDelay,!0)),window.addEventListener("orientationchange",(0,s.default)(v,m.debounceDelay,!0)),window.addEventListener("scroll",(0,o.default)((function(){(0,c.default)(h,m.once)}),m.throttleDelay)),m.disableMutationObserver||l.default.ready("[data-aos]",g),h)},refresh:v,refreshHard:g}},function(e,t){},,,,,function(e,t){(function(t){"use strict";function n(e,t,n){function i(t){var n=f,r=d;return f=d=void 0,g=t,p=e.apply(r,n)}function o(e){var n=e-v;return void 0===v||n>=t||n<0||k&&e-g>=h}function l(){var e=w();return o(e)?u(e):void(m=setTimeout(l,function(e){var n=t-(e-v);return k?x(n,h-(e-g)):n}(e)))}function u(e){return m=void 0,S&&f?i(e):(f=d=void 0,p)}function c(){var e=w(),n=o(e);if(f=arguments,d=this,v=e,n){if(void 0===m)return function(e){return g=e,m=setTimeout(l,t),y?i(e):p}(v);if(k)return m=setTimeout(l,t),i(v)}return void 0===m&&(m=setTimeout(l,t)),p}var f,d,h,p,m,v,g=0,y=!1,k=!1,S=!0;if("function"!=typeof e)throw new TypeError(s);return t=a(t)||0,r(n)&&(y=!!n.leading,h=(k="maxWait"in n)?b(a(n.maxWait)||0,t):h,S="trailing"in n?!!n.trailing:S),c.cancel=function(){void 0!==m&&clearTimeout(m),g=0,f=v=d=m=void 0},c.flush=function(){return void 0===m?p:u(w())},c}function r(e){var t=void 0===e?"undefined":o(e);return!!e&&("object"==t||"function"==t)}function i(e){return"symbol"==(void 0===e?"undefined":o(e))||function(e){return!!e&&"object"==(void 0===e?"undefined":o(e))}(e)&&y.call(e)==u}function a(e){if("number"==typeof e)return e;if(i(e))return l;if(r(e)){var t="function"==typeof e.valueOf?e.valueOf():e;e=r(t)?t+"":t}if("string"!=typeof e)return 0===e?e:+e;e=e.replace(c,"");var n=d.test(e);return n||h.test(e)?p(e.slice(2),n?2:8):f.test(e)?l:+e}var o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},s="Expected a function",l=NaN,u="[object Symbol]",c=/^+|+$/g,f=/^[-+]0x[0-9a-f]+$/i,d=/^0b[01]+$/i,h=/^0o[0-7]+$/i,p=parseInt,m="object"==(void 0===t?"undefined":o(t))&&t&&t.Object===Object&&t,v="object"==("undefined"==typeof self?"undefined":o(self))&&self&&self.Object===Object&&self,g=m||v||Function("return this")(),y=Object.prototype.toString,b=Math.max,x=Math.min,w=function(){return g.Date.now()};e.exports=function(e,t,i){var a=!0,o=!0;if("function"!=typeof e)throw new TypeError(s);return r(i)&&(a="leading"in i?!!i.leading:a,o="trailing"in i?!!i.trailing:o),n(e,t,{leading:a,maxWait:t,trailing:o})}}).call(t,function(){return this}())},function(e,t){(function(t){"use strict";function n(e){var t=void 0===e?"undefined":a(e);return!!e&&("object"==t||"function"==t)}function r(e){return"symbol"==(vo`}</div>
+                <div className="pharos-image"></div>
+            </div>
         </>
     );
 }
