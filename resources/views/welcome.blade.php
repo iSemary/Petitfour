@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ env('APP_PRODUCTION_NAME') }}</title>
-    <link rel="stylesheet" href="{{ asset('static/css/style.min.css') }}?v={{ filemtime('static/css/style.min.css') }}">
+    <meta name="description" content="My name is Abdelrahman Mostafa, Experienced software engineer with a strong aptitude for learning new technologies. Skilled in developing projects from inception to production, emphasizing clean and understandable code using robust frameworks. Flexible and adaptable approach to acquiring new skills.">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="theme-color" content="#ffffff">
+    <link href="https://abdelrahman.online/" rel="canonical">
+    <link rel="manifest" href="manifest.json">
+    <meta name="robots" content="index, follow">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0c001f">
+    <meta name="theme-color" content="#0c001f">
     <meta name="view-type" content="{{ isset($_GET['t']) ? $_GET['t'] : 0 }}">
+    <link rel="stylesheet" href="{{ asset('static/css/style.min.css') }}?v={{ filemtime('static/css/style.min.css') }}">
 </head>
 
 <body>
