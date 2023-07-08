@@ -190,9 +190,9 @@ class ProjectController extends Controller {
         $projectImages = ProjectImage::where("project_id", $id);
         // Delete the project Images
         foreach ($projectImages->get() as $projectImage) {
-            if (Storage::disk('public')->exists('projects/' . $projectImage->project_image)) {
-                Storage::disk('public')->delete('projects/' . $projectImage->project_image);
-                Storage::disk('public')->delete('projects/mocked/' . $projectImage->project_image);
+            if (Storage::disk('public')->exists('projects/' . $projectImage->project_image['image'])) {
+                Storage::disk('public')->delete('projects/' . $projectImage->project_image['image']);
+                Storage::disk('public')->delete('projects/mocked/' . $projectImage->project_image['image']);
             }
         }
 
