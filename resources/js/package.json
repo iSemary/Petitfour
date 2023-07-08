@@ -10,10 +10,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm run build:react && npm run build:bundle && npm run copy:css && npm run copy:media",
+    "build": "npm run build:react && npm run build:bundle && npm run copy:css && npm run copy:css-map && npm run copy:media",
     "build:react": "react-scripts build",
     "build:bundle": "webpack --config webpack.config.js",
     "copy:css": "cp -v build/static/css/main.*.css ../../public/static/css/style.min.css",
+    "copy:css-map": "cp -v build/static/css/main.*.css.map ../../public/static/css/",
     "copy:media": "cp -v -r build/static/media ../../public/static",
     "build-linux": "BUILD_PATH='../../public/static' react-scripts build",
     "test": "react-scripts test",
