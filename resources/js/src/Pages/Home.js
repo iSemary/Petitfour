@@ -54,21 +54,21 @@ function Home(props) {
                     <TrianglePattern
                         color={"#7455FF"}
                         top="5%"
-                        right="10%"
+                        right="20%"
                         rotate="45"
                         width="150"
                     />
 
                     <TrianglePattern
                         color={"#C229F4"}
-                        top="50%"
+                        top="0%"
                         right="30%"
                         rotate="45"
                         width="150"
                     />
 
                     <CirclePattern
-                        color={"#021F59"}
+                        color={"#0067ff"}
                         top="5%"
                         right="88%"
                         rotate="45"
@@ -76,8 +76,8 @@ function Home(props) {
                     />
 
                     <CirclePattern
-                        color={"#198754"}
-                        top="70%"
+                        color={"#021F59"}
+                        top="1%"
                         right="70%"
                         rotate="45"
                         width="150"

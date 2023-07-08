@@ -44,7 +44,6 @@ class ExperienceController extends Controller {
             'position_title' => 'required',
             'summary' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required',
         ]);
 
         // Check if the validation fails
@@ -96,7 +95,6 @@ class ExperienceController extends Controller {
             'position_title' => 'required',
             'summary' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required',
         ]);
 
         // Check if the validation fails
