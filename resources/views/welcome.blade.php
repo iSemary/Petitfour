@@ -33,7 +33,7 @@
             let gAnalyticsID = `{{ $config['system']['google_analytics_id'] }}`
             gtag('js', new Date());
             gtag('config', gAnalyticsID);
-        </script>`
+        </script>
     @endif
 </body>
 

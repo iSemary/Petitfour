@@ -21,11 +21,11 @@ class Uploader {
      * variable (if no new file is uploaded), or a newly generated unique filename with the extension of
      * the uploaded file.
      */
-    public static function file($file, $config = null, $attribute = null, $path = '/') {
+    public static function file($file, $config = null, $attribute = null, $path = '/', $fileName = false) {
         $image = isset($config) ? basename($config->$attribute) : null;
         if ($file) {
             // Generate a unique file name for the image
-            $imageName = uniqid() . '.' . $file->getClientOriginalExtension();
+            $imageName = ($fileName ?: uniqid()) . '.' . $file->getClientOriginalExtension();
 
             $file->storeAs('public/' . $path, $imageName);
 

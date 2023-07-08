@@ -39,7 +39,8 @@ class ConfigController extends Controller {
 
         $homeImage = Uploader::image($request->file('home_image'), $config->home_image, 'config');
         $themeHomeImage = Uploader::image($request->file('theme_home_image'), $config->theme_home_image, 'config');
-        $resume = Uploader::file($request->file('resume'), $config, 'resume', 'config/resume');
+        $resumeFileName = $config->first_name . '_' . $config->last_name . '_' . str_replace(' ', '_', $config->position);
+        $resume = Uploader::file($request->file('resume'), $config, 'resume', 'config/resume', $resumeFileName);
 
         $config->update([
             'first_name' => $request->first_name,

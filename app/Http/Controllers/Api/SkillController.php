@@ -27,11 +27,11 @@ class SkillController extends Controller {
         /* Looping through the types and adding the skills to the data array. */
         foreach ($categories as $key => $category) {
             $data['categories'][$key] = $category;
-            $data['categories'][$key]['skills'] = Skill::select(['id', 'name', 'icon', 'theme_icon', 'type', 'color_code'])->where('category_id', $category['id'])->where('type', 1)->orderBy('priority', 'DESC')->get();
-            $data['categories'][$key]['additional'] = Skill::select(['id', 'name', 'icon', 'theme_icon', 'color_code'])->where('category_id', $category['id'])->where('type', 0)->orderBy('priority', 'DESC')->get();
+            $data['categories'][$key]['skills'] = Skill::select(['id', 'name', 'icon', 'theme_icon', 'type', 'color_code'])->where('category_id', $category['id'])->where('type', 1)->orderBy('priority')->get();
+            $data['categories'][$key]['additional'] = Skill::select(['id', 'name', 'icon', 'theme_icon', 'color_code'])->where('category_id', $category['id'])->where('type', 0)->orderBy('priority')->get();
         }
 
-        $data['side'] =  Skill::select(['id', 'name', 'icon', 'theme_icon'])->where('type', 2)->orderBy('priority', 'DESC')->get();
+        $data['side'] =  Skill::select(['id', 'name', 'icon', 'theme_icon'])->where('type', 2)->orderBy('priority')->get();
         /* Returning a json response with the data. */
         return response()->json([
             'success' => true,
