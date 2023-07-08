@@ -79,6 +79,7 @@ export default function SwitchButton() {
     return (
         <>
             <div
+                 data-aos="zoom-in" 
                 className="switch-button-content"
                 onClick={(e) => switchTheme()}
             >

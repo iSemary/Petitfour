@@ -99,7 +99,7 @@ function Projects({ categories }) {
                     </>
                 )}
             </Row>
-            {totalRecords && totalRecords > projects.length > 0 && (
+            {totalRecords > projects.length > 0 && (
                 <div className="text-center my-3">
                     <button
                         type="button"

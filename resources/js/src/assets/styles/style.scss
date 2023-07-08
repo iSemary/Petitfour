@@ -54,6 +54,10 @@ body {
                 a.active {
                     color: $primaryColor;
                 }
+
+                &:last-of-type {
+                    margin-top: 5px;
+                }
             }
         }
     }
@@ -117,10 +121,18 @@ body {
     }
 }
 
+.bordered-link {
+    border: 2px solid;
+    border-radius: 15px;
+    padding: 4px 12px;
+    font-size: 16px !important;
+}
+
 @media screen and (max-width: 767px) {
     .main-logo {
         padding-left: 5%;
     }
+
 
     .nav-links {
         position: fixed;
@@ -146,6 +158,9 @@ body {
                 a {
                     font-size: 35px !important;
                 }
+                &:last-of-type {
+                    margin-top: 0 !important;
+                }
             }
         }
     }
@@ -153,6 +168,12 @@ body {
         padding: 0;
         display: block;
         z-index: 1001;
+    }
+    .bordered-link {
+        border: 0;
+        border-radius: unset;
+        padding: unset;
+        font-size: auto;
     }
 }
 
@@ -418,10 +439,9 @@ $blurSvgDuration: 20s;
         text-shadow: unset;
     }
 }
-
 /* Global Styles for small screens */
 @media screen and (max-width: 767px) {
-    @for $i from 1 through 5 {
+    @for $i from 0 through 6 {
         .mt-sm-#{$i} {
             margin-top: #{$i}rem !important;
         }
@@ -537,7 +557,7 @@ $blurSvgDuration: 20s;
     }
     .social-link-2 {
         svg {
-            fill: #1a1d21;
+            fill: #343a40;
         }
     }
     .social-link-3 {
@@ -1287,6 +1307,7 @@ $blurSvgDuration: 20s;
     .side-skills-item {
         .card {
             background-color: #2e194e;
+            box-shadow: -2px -2px 5px #e6b7f561;
             color: $primaryWhite;
         }
         .skills {

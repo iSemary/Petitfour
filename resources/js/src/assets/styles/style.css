@@ -51,6 +51,8 @@ body {
             color: #7455FF; }
         .main-nav .nav-links .links div a.active {
           color: #7455FF; }
+        .main-nav .nav-links .links div:last-of-type {
+          margin-top: 5px; }
 
 .nav-icon {
   display: none;
@@ -92,6 +94,12 @@ body {
         width: 50%;
         transform: translate(17px, -7px) rotateZ(45deg); }
 
+.bordered-link {
+  border: 2px solid;
+  border-radius: 15px;
+  padding: 4px 12px;
+  font-size: 16px !important; }
+
 @media screen and (max-width: 767px) {
   .main-logo {
     padding-left: 5%; }
@@ -119,11 +127,19 @@ body {
         margin: 15px 0; }
         .nav-links .links div a {
           font-size: 35px !important; }
+        .nav-links .links div:last-of-type {
+          margin-top: 0 !important; }
 
   .nav-icon {
     padding: 0;
     display: block;
-    z-index: 1001; } }
+    z-index: 1001; }
+
+  .bordered-link {
+    border: 0;
+    border-radius: unset;
+    padding: unset;
+    font-size: auto; } }
 @keyframes slideFromLeft {
   from {
     opacity: 0;
@@ -307,6 +323,18 @@ body {
     text-shadow: unset; } }
 /* Global Styles for small screens */
 @media screen and (max-width: 767px) {
+  .mt-sm-0 {
+    margin-top: 0rem !important; }
+
+  .mb-sm-0 {
+    margin-bottom: 0rem !important; }
+
+  .ms-sm-0 {
+    margin-left: 0rem !important; }
+
+  .me-sm-0 {
+    margin-right: 0rem !important; }
+
   .mt-sm-1 {
     margin-top: 1rem !important; }
 
@@ -365,7 +393,19 @@ body {
     margin-left: 5rem !important; }
 
   .me-sm-5 {
-    margin-right: 5rem !important; } }
+    margin-right: 5rem !important; }
+
+  .mt-sm-6 {
+    margin-top: 6rem !important; }
+
+  .mb-sm-6 {
+    margin-bottom: 6rem !important; }
+
+  .ms-sm-6 {
+    margin-left: 6rem !important; }
+
+  .me-sm-6 {
+    margin-right: 6rem !important; } }
 .transparent-button {
   background-color: transparent;
   border: 0;
@@ -438,7 +478,7 @@ body {
 .social-icons .social-link-1 svg {
   fill: #0961b8; }
 .social-icons .social-link-2 svg {
-  fill: #1a1d21; }
+  fill: #343a40; }
 .social-icons .social-link-3 svg {
   fill: #e87921; }
 .social-icons .social-link-4 svg {
@@ -969,6 +1009,7 @@ body {
 
 .side-skills .side-skills-item .card {
   background-color: #2e194e;
+  box-shadow: -2px -2px 5px #e6b7f561;
   color: #e3e1fa; }
 .side-skills .side-skills-item .skills .side-skill-icon {
   width: 25px;

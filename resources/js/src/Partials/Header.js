@@ -155,7 +155,7 @@ function Header(props) {
                             <div>
                                 <a
                                     href={props?.resume}
-                                    className="no-link"
+                                    className="no-link bordered-link"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     download

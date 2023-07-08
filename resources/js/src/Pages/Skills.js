@@ -31,8 +31,7 @@ function Skills() {
                         <Row>
                             <Col md={6} className="skills-major-container">
                                 <div className="skills-major text-center row">
-                                    {skill.skills
-                                        ?.slice(0, 3)
+                                    {skill.skills && skill.skills.slice(0, 3)
                                         .map((majorSkill, index) => (
                                             <SkillsMajorTemplate
                                                 skill={majorSkill}
@@ -62,7 +61,7 @@ function Skills() {
                                 </div>
                                 <div className="category-skills">
                                     <Row className="skills-list">
-                                        {skill.additional.map(
+                                        {skill.additional && skill.additional.map(
                                             (additionalSkill, index) => (
                                                 <SkillsListTemplate
                                                     skill={additionalSkill}
