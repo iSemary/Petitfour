@@ -1305,11 +1305,23 @@ footer.home-footer {
     text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00;
     animation: glitch 725ms infinite;
     overflow: hidden; }
-  .theme-transition-container .pharaoh-container p {
-    font-family: Pharaoh;
-    font-size: 18px;
-    color: #daa520;
-    text-shadow: 5px 4px 7px #daa520; }
+  .theme-transition-container .pharaoh-container {
+    position: relative;
+    height: 100vh; }
+    .theme-transition-container .pharaoh-container p {
+      font-family: Pharaoh;
+      font-size: 18px;
+      color: #daa520;
+      text-shadow: 5px 4px 7px #daa520; }
+    .theme-transition-container .pharaoh-container img {
+      width: 150px;
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      top: 25vh;
+      right: 0;
+      text-align: center; }
 
 @keyframes glitch {
   0% {

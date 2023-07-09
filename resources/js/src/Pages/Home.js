@@ -13,6 +13,8 @@ import SwitchButton from "./Components/Partials/SwitchButton";
 import TrianglePattern from "../Pages/Patterns/TrianglePattern";
 import CirclePattern from "../Pages/Patterns/CirclePattern";
 
+import ScarabBeetleImage from "../assets/images/Scarab_beetle_icon.png";
+
 function Home(props) {
     const positionTitleRef = useRef(null);
 
@@ -154,6 +156,7 @@ function Home(props) {
                     {DummyCode}
                 </div>
                 <div className="pharaoh-container">
+                    <img src={ScarabBeetleImage} alt="Scarab beetle" />
                     <p>{Talisman + " " + Talisman + " " + Talisman}</p>
                 </div>
             </div>
