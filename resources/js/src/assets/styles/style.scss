@@ -21,7 +21,7 @@ body {
     background-color: $primaryDark;
     color: $primaryWhite;
     filter: blur(0);
-    transition: filter 1s;  
+    transition: filter 1s;
 }
 
 * {
@@ -132,7 +132,6 @@ body {
     .main-logo {
         padding-left: 5%;
     }
-
 
     .nav-links {
         position: fixed;
@@ -1712,9 +1711,10 @@ footer.home-footer {
     height: 100%;
     z-index: 5;
     background-color: $primaryBlack;
-    display: none;
+    // display: none;
 
     .glitched-text {
+        display: none;
         background-color: #010c1d;
         height: 100%;
         font-size: 14px;
@@ -1727,13 +1727,21 @@ footer.home-footer {
         overflow: hidden;
     }
 
+    .pharaoh-container {
+        p {
+            font-family: Pharaoh;
+            font-size: 18px;
+            color: #daa520;
+            text-shadow: 5px 4px 7px #daa520;
+        }
+    }
 }
 
 @keyframes glitch {
     0% {
         text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
             0.025em 0.04em 0 #fffc00;
-            text-transform: capitalize;
+        text-transform: capitalize;
     }
     15% {
         text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
@@ -1742,7 +1750,7 @@ footer.home-footer {
     16% {
         text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
             -0.05em -0.05em 0 #fffc00;
-            text-transform: none;
+        text-transform: none;
     }
     49% {
         text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
@@ -1751,7 +1759,7 @@ footer.home-footer {
     50% {
         text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
             0 -0.04em 0 #fffc00;
-            text-transform: capitalize;
+        text-transform: capitalize;
     }
     99% {
         text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
