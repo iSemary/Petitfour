@@ -15,6 +15,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0c001f">
     <meta name="theme-color" content="#0c001f">
     <meta name="view-type" content="{{ isset($_GET['t']) ? $_GET['t'] : 0 }}">
+    <meta property="og:image" content={{ asset("og.jpg") }} />
     <link rel="stylesheet" href="{{ asset('static/css/style.min.css') }}?v={{ filemtime('static/css/style.min.css') }}">
 </head>
 

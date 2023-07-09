@@ -47,6 +47,7 @@ class SkillController extends Controller {
      */
 
     public function show($skill = null): JsonResponse {
+        if($skill) $skill = str_replace('-', ' ', $skill);
         // Create a new stdClass object to store the data.
         $data = new stdClass();
         // Retrieve the skill information based on the given name.
