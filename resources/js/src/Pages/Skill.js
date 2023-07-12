@@ -7,6 +7,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styleVariables from "../assets/styles/variables/variables.module.scss";
 import SquareLoader from "./Loaders/SquareLoader";
 import { FaBusinessTime } from "react-icons/fa";
+import SkillPageLoader from "./Loaders/SkillPageLoader";
 
 const Skill = () => {
     const [skill, setSkill] = useState(null);
@@ -48,7 +49,7 @@ const Skill = () => {
     }, [name]);
 
     if (!skill) {
-        return <div>Loading...</div>;
+        return <Container className="mt-1 mt-sm-1"><SkillPageLoader /></Container>;
     }
 
     return (

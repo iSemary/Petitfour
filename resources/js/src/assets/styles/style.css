@@ -52,7 +52,7 @@ body {
         .main-nav .nav-links .links div a.active {
           color: #7455FF; }
         .main-nav .nav-links .links div:last-of-type {
-          margin-top: 5px; }
+          margin-top: 3px; }
 
 .nav-icon {
   display: none;
@@ -253,6 +253,20 @@ body {
       .switch-button-content .switch-button .stars-svg-container .stars-svg path {
         stroke: none;
         animation: starFade 2s ease-in-out infinite forwards; }
+  .switch-button-content .switch-button.default {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0c001f;
+    box-shadow: -2px -2px 5px #283593; }
+    .switch-button-content .switch-button.default span {
+      font-family: "Lato", Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      color: #e3e1fa;
+      background: unset;
+      -webkit-background-clip: unset;
+      -moz-background-clip: unset;
+      background-clip: unset; }
   .switch-button-content .switch-button span {
     position: relative;
     font-family: "Moonfark", Arial, sans-serif;
@@ -1293,9 +1307,9 @@ footer.home-footer {
   width: 100%;
   height: 100%;
   z-index: 5;
-  background-color: #171a1c; }
+  background-color: #171a1c;
+  display: none; }
   .theme-transition-container .glitched-text {
-    display: none;
     background-color: #010c1d;
     height: 100%;
     font-size: 14px;
@@ -1304,10 +1318,12 @@ footer.home-footer {
     font-family: monospace;
     text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00;
     animation: glitch 725ms infinite;
-    overflow: hidden; }
+    overflow: hidden;
+    opacity: 0.7; }
   .theme-transition-container .pharaoh-container {
     position: relative;
-    height: 100vh; }
+    height: 100vh;
+    opacity: 0.7; }
     .theme-transition-container .pharaoh-container p {
       font-family: Pharaoh;
       font-size: 18px;

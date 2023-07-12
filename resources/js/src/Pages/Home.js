@@ -152,10 +152,10 @@ function Home(props) {
                 className="theme-transition-container"
                 id="themeTransitionContainer"
             >
-                <div className="glitched-text" id="glitchedText">
+                                <div className="glitched-text" id="glitchedText">
                     {DummyCode}
                 </div>
-                <div className="pharaoh-container">
+                <div className="pharaoh-container" id="pharaohContainer">
                     <img src={ScarabBeetleImage} alt="Scarab beetle" />
                     <p>{Talisman + " " + Talisman + " " + Talisman}</p>
                 </div>
