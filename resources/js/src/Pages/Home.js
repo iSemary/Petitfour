@@ -12,6 +12,8 @@ import LatestBlogs from "./Components/LatestBlogs";
 import SwitchButton from "./Components/Partials/SwitchButton";
 import TrianglePattern from "../Pages/Patterns/TrianglePattern";
 import CirclePattern from "../Pages/Patterns/CirclePattern";
+import ScarabBeetleImage from "../assets/images/Scarab_beetle_icon.png";
+
 
 function Home(props) {
     const positionTitleRef = useRef(null);
@@ -52,6 +54,7 @@ function Home(props) {
             animateHackText(positionTitleRef);
         }, 1600);
     }, [props?.config?.config?.user?.position]);
+
 
     return (
         <>
@@ -150,10 +153,11 @@ function Home(props) {
                 className="theme-transition-container"
                 id="themeTransitionContainer"
             >
-                <div className="glitched-text" id="glitchedText">
+                                <div className="glitched-text" id="glitchedText">
                     {DummyCode}
                 </div>
-                <div className="pharaoh-container">
+                <div className="pharaoh-container" id="pharaohContainer">
+                    <img src={ScarabBeetleImage} alt="Scarab beetle" />
                     <p>{Talisman + " " + Talisman + " " + Talisman}</p>
                 </div>
             </div>

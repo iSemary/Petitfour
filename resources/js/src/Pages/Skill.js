@@ -7,6 +7,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styleVariables from "../assets/styles/variables/variables.module.scss";
 import SquareLoader from "./Loaders/SquareLoader";
 import { FaBusinessTime } from "react-icons/fa";
+import SkillPageLoader from "./Loaders/SkillPageLoader";
 
 const Skill = () => {
     const [skill, setSkill] = useState(null);
@@ -48,7 +49,11 @@ const Skill = () => {
     }, [name]);
 
     if (!skill) {
-        return <div>Loading...</div>;
+        return (
+            <Container className="mt-1 mt-sm-1">
+                <SkillPageLoader />
+            </Container>
+        );
     }
 
     return (
@@ -59,7 +64,8 @@ const Skill = () => {
                     <Col md={6}>
                         <h1>{skill.name}</h1>
                         <p className="d-flex align-items-center justify-content-start">
-                            <FaBusinessTime className="me-1" /> Stared {skill.start_date}
+                            <FaBusinessTime className="me-1" /> Stared{" "}
+                            {skill.start_date}
                         </p>
                     </Col>
                     <Col md={6} className="img-container text-right">
@@ -129,6 +135,16 @@ const Skill = () => {
                         </Row>
                     </div>
                 </>
+            )}
+
+            {skillProjects.length === 0 && (
+                <div className="text-center empty-skill-content mt-5">
+                    <h5>
+                        There are no publicly available, open-source, or
+                        deployed projects using this skill, but it's most
+                        probably used with private or company projects.
+                    </h5>
+                </div>
             )}
         </Container>
     );

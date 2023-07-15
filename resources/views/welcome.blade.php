@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ env('APP_PRODUCTION_NAME') }}</title>
-    <meta name="description" content="My name is Abdelrahman Mostafa, Experienced software engineer with a strong aptitude for learning new technologies. Skilled in developing projects from inception to production, emphasizing clean and understandable code using robust frameworks. Flexible and adaptable approach to acquiring new skills.">
+    <meta name="description" content="Experienced software engineer with a strong aptitude for learning new technologies. Skilled in developing projects from inception to production, emphasizing clean and understandable code using robust frameworks. Flexible and adaptable approach to acquiring new skills.">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">

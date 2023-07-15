@@ -56,7 +56,7 @@ body {
                 }
 
                 &:last-of-type {
-                    margin-top: 5px;
+                    margin-top: 3px;
                 }
             }
         }
@@ -294,7 +294,7 @@ $blurSvgDuration: 20s;
 }
 
 .top-content {
-    padding-top: 23vh;
+    padding-top: 17vh;
     z-index: 1;
     position: relative;
 }
@@ -322,6 +322,23 @@ $blurSvgDuration: 20s;
                     stroke: none;
                     animation: starFade 2s ease-in-out infinite forwards;
                 }
+            }
+        }
+
+        &.default {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $primaryDark;
+            box-shadow: -2px -2px 5px #283593;
+            span {
+                font-family: "Lato", Arial, Helvetica, sans-serif;
+                text-transform: uppercase;
+                color: $primaryWhite;
+                background: unset;
+                -webkit-background-clip: unset;
+                -moz-background-clip: unset;
+                background-clip: unset;
             }
         }
 
@@ -1711,10 +1728,10 @@ footer.home-footer {
     height: 100%;
     z-index: 5;
     background-color: $primaryBlack;
-    // display: none;
+    display: none;
 
     .glitched-text {
-        display: none;
+        // display: none;
         background-color: #010c1d;
         height: 100%;
         font-size: 14px;
@@ -1725,14 +1742,28 @@ footer.home-footer {
             0.025em 0.04em 0 #fffc00;
         animation: glitch 725ms infinite;
         overflow: hidden;
+        opacity: 0.7;
     }
 
     .pharaoh-container {
+        position: relative;
+        height: 100vh;
+        opacity: 0.7;
         p {
             font-family: Pharaoh;
             font-size: 18px;
             color: #daa520;
             text-shadow: 5px 4px 7px #daa520;
+        }
+        img {
+            width: 150px;
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            top: 25vh;
+            right: 0;
+            text-align: center;
         }
     }
 }
@@ -1768,5 +1799,11 @@ footer.home-footer {
     100% {
         text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff,
             -0.04em -0.025em 0 #fffc00;
+    }
+}
+
+.empty-skill-content {
+    h5 {
+        font-family: Courier, monospace;
     }
 }

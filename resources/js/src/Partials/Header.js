@@ -68,7 +68,7 @@ function Header(props) {
     return (
         <Navbar
             className={
-                "main-nav w-100 " +
+                "main-nav w-100 mt-2" +
                 (useMatch("/") ? "position-absolute" : "nav-pages")
             }
         >

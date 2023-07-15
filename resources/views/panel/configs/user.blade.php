@@ -178,8 +178,8 @@
                             </div>
                             <div class="col-md-3 form-group">
                                 <label>Description</label>
-                                <input name="feature_description[0]" type="text" placeholder="Description"
-                                    class="form-control" />
+                                <textarea name="feature_description[0]" placeholder="Description" class="form-control" cols="1"
+                                    rows="1"></textarea>
                             </div>
                             <div class="col-md-3 form-group">
                                 <label>Image</label>
@@ -200,9 +200,8 @@
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Description</label>
-                                    <input name="feature_description[{{ $feature->id }}]"
-                                        value="{{ $feature->description }}" type="text" placeholder="Description"
-                                        class="form-control" />
+                                    <textarea name="feature_description[{{ $feature->id }}]" placeholder="Description" class="form-control"
+                                        cols="1" rows="1">{{ $feature->description }}</textarea>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Image</label>
