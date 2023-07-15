@@ -12,8 +12,8 @@ import LatestBlogs from "./Components/LatestBlogs";
 import SwitchButton from "./Components/Partials/SwitchButton";
 import TrianglePattern from "../Pages/Patterns/TrianglePattern";
 import CirclePattern from "../Pages/Patterns/CirclePattern";
-
 import ScarabBeetleImage from "../assets/images/Scarab_beetle_icon.png";
+
 
 function Home(props) {
     const positionTitleRef = useRef(null);
@@ -54,6 +54,7 @@ function Home(props) {
             animateHackText(positionTitleRef);
         }, 1600);
     }, [props?.config?.config?.user?.position]);
+
 
     return (
         <>

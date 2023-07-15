@@ -22,7 +22,7 @@ class CreateUserConfigsTable extends Migration {
             $table->tinyInteger('country_code')->nullable();
             $table->string('address')->nullable();
             $table->string('position')->nullable();
-            $table->string('bio')->nullable();
+            $table->string('bio', 1024)->nullable();
             $table->string('slogan')->nullable();
             $table->string('home_image')->nullable();
             $table->string('theme_home_image')->nullable();

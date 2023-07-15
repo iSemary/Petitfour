@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/select2/select2.min.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/imageuploadify/imageuploadify.min.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('assets/panel/vendors/intlTelInput/intlTelInput.css') }}" media="screen">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css">
+    <link rel="stylesheet" href="{{ asset('assets/panel/css/vendors/prism.css') }}">
     <link href="{{ asset('assets/panel/css/style.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/panel/css/custom.css') }}" rel="stylesheet">
 </head>

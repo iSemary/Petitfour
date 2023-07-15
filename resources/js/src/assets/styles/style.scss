@@ -294,7 +294,7 @@ $blurSvgDuration: 20s;
 }
 
 .top-content {
-    padding-top: 23vh;
+    padding-top: 17vh;
     z-index: 1;
     position: relative;
 }
@@ -1799,5 +1799,11 @@ footer.home-footer {
     100% {
         text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff,
             -0.04em -0.025em 0 #fffc00;
+    }
+}
+
+.empty-skill-content {
+    h5 {
+        font-family: Courier, monospace;
     }
 }
