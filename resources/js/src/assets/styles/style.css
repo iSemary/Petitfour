@@ -228,7 +228,11 @@ body {
   overflow: hidden; }
 
 .top-content {
+<<<<<<< HEAD
   padding-top: 13vh;
+=======
+  padding-top: 17vh;
+>>>>>>> 393e6d260f52cab3d2e1ae79cd1cd82fee76fb5f
   z-index: 1;
   position: relative; }
 
@@ -1357,5 +1361,7 @@ footer.home-footer {
     text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff, 0 -0.04em 0 #fffc00; }
   100% {
     text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff, -0.04em -0.025em 0 #fffc00; } }
+.empty-skill-content h5 {
+  font-family: Courier, monospace; }
 
 /*# sourceMappingURL=style.css.map */

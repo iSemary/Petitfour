@@ -15,7 +15,7 @@ export default function SwitchButton() {
 
     const handleTransitionEnded = (e) => {
         setIsPlayingTransition(false);
-        setIsPlayingSoundtrack(true);
+        setIsPlayingSoundtrack(theme === true);
     };
 
     const handleSoundtrackEnded = (e) => {
