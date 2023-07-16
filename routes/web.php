@@ -25,6 +25,7 @@ Route::prefix('dashboard')->group(function () {
 
     Route::middleware(['auth'])->group(function () {
         Route::get('index', [DashboardController::class, 'home'])->name('dashboard.index');
+        Route::get('views', [DashboardController::class, 'views'])->name('dashboard.views');
 
         Route::get("logout", [UserController::class, 'logout'])->name('logout');
 
