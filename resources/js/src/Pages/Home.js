@@ -153,7 +153,7 @@ function Home(props) {
                 className="theme-transition-container"
                 id="themeTransitionContainer"
             >
-                                <div className="glitched-text" id="glitchedText">
+                <div className="glitched-text" id="glitchedText">
                     {DummyCode}
                 </div>
                 <div className="pharaoh-container" id="pharaohContainer">

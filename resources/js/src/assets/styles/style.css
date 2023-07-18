@@ -228,7 +228,11 @@ body {
   overflow: hidden; }
 
 .top-content {
+<<<<<<< HEAD
+  padding-top: 13vh;
+=======
   padding-top: 17vh;
+>>>>>>> 393e6d260f52cab3d2e1ae79cd1cd82fee76fb5f
   z-index: 1;
   position: relative; }
 

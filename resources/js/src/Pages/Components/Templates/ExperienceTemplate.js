@@ -3,11 +3,11 @@ import SkillsListTemplate from "./SkillsListTemplate";
 import { IoMdArrowDropright } from "react-icons/io";
 
 function ExperienceTemplate({ experience, index }) {
-    const MAX_EXPERIENCE_SKILLS = 6;
+    const MAX_EXPERIENCE_SKILLS = 10;
     return (
         <div
             className={"experience experience-" + (index % 2 ? "even" : "odd")}
-            data-aos={"fade-"+(index % 2 ? "left" : "right")}
+            data-aos={"fade-" + (index % 2 ? "left" : "right")}
         >
             <div className="experience-details">
                 <div className="experience-info">
@@ -16,6 +16,12 @@ function ExperienceTemplate({ experience, index }) {
                     </h5>
                     <p className="experience-description">
                         {experience.summary}
+                        <br />
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: experience.content,
+                            }}
+                        ></div>
                     </p>
 
                     <div className="experience-skills">
@@ -27,7 +33,7 @@ function ExperienceTemplate({ experience, index }) {
                                         <SkillsListTemplate
                                             skill={experienceSkill}
                                             imgClass="experience-skill-icon"
-                                            colClass="me-2 p-0 col-1"
+                                            colClass="me-0 p-0 col-1"
                                             key={index}
                                         />
                                     ))}

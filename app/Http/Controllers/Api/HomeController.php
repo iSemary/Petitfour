@@ -89,6 +89,7 @@ class HomeController extends Controller {
             'company_logo',
             'company_location',
             'summary',
+            'content',
             'position_title',
             'start_date',
             'end_date',
