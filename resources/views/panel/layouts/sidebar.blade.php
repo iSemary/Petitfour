@@ -18,6 +18,12 @@
                                     <i class="nav-icon fas fa-tachometer-alt"></i> Dashboard
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ strpos(Request::url(), '/views') ? 'active' : '' }}"
+                                    href="{{ route('dashboard.views') }}">
+                                    <i class="nav-icon fas fa-external-link-square-alt"></i> Views
+                                </a>
+                            </li>
                             <li class="nav-title mt-0">Basics</li>
                             <li class="nav-group">
                                 <a class="nav-link nav-group-toggle {{ strpos(Request::url(), 'categories') ? 'active' : '' }}"
