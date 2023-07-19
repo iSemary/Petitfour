@@ -16,14 +16,13 @@ function ExperienceTemplate({ experience, index }) {
                     </h5>
                     <p className="experience-description">
                         {experience.summary}
-                        <br />
-                        <div
-                            dangerouslySetInnerHTML={{
-                                __html: experience.content,
-                            }}
-                        ></div>
                     </p>
-
+                    <div
+                        className="experience-content"
+                        dangerouslySetInnerHTML={{
+                            __html: experience.content,
+                        }}
+                    ></div>
                     <div className="experience-skills">
                         {experience.skills ? (
                             <div className="row justify-content-start m-0">

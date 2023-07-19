@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-// import lottie from "lottie-web"; // Large size, will make the bundle size bigger
 import lottie from 'lottie-web/build/player/lottie_light.min.js' // Lightweight source
 
 
