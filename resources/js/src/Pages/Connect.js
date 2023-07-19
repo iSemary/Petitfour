@@ -7,6 +7,8 @@ import { FiSend } from "react-icons/fi";
 import AxiosConfig from "../config/AxiosConfig";
 import LottieLoader from "./Loaders/LottieLoader";
 import SquareLoader from "./Loaders/SquareLoader";
+import DottedSquarePattern from "./Patterns/DottedSquarePattern";
+import styleVariables from "../assets/styles/variables/variables.module.scss";
 
 function Connect(props) {
     const [imageLoading, setImageLoading] = useState(true);
@@ -293,8 +295,8 @@ function Connect(props) {
                                     </Form.Group>
                                     <Form.Group className="mb-2">
                                         <Form.Label>
-                                            I'm eager to
-                                            hear your <b>message</b> from you.
+                                            I'm eager to hear your{" "}
+                                            <b>message</b> from you.
                                         </Form.Label>
                                         <Form.Control
                                             as="textarea"
@@ -324,7 +326,6 @@ function Connect(props) {
                                 </Form>
                             </div>
                         </div>
-
                         <div className="contact-form-loader" ref={loadingRef}>
                             <LottieLoader
                                 jsonPath={
@@ -343,9 +344,20 @@ function Connect(props) {
                                 speed={2}
                             />
                         </div>
+
+                        <DottedSquarePattern
+                            fill={styleVariables.primaryWhite}
+                            stroke={styleVariables.primaryColor}
+                            secondFill={styleVariables.primaryColor}
+                            top="9%"
+                            right="85%"
+                            width="150"
+                            zIndex="-1"
+                        />
                     </Col>
                     <Col
-                        lg={6} md={12}
+                        lg={6}
+                        md={12}
                         className="overflow-hidden contact-image-container ps-0"
                     >
                         {/* Show image loader until the image is totally loaded */}

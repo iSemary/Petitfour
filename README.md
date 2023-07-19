@@ -1,7 +1,7 @@
 # Petitfour
 
 
-N.B. **This project took me about month or more to finish it, Just because I didn’t have enough time for it, i just gave it 1 hour/day, somedays I didn’t open it; cause i work as full time and i also have another side projects for my clients, So it wasn’t on my top priorities.**
+N.B. **This project took me about month or more to finish it, Just because I didn’t have enough time for it, i just gave it 1 hour/day, some days I didn’t open it; cause i work as full time and i also have another side projects for my clients, So it wasn’t on my top priorities.**
 
 **Hope you enjoy it and find it helpful!**
 
@@ -41,24 +41,24 @@ N.B. **This project took me about month or more to finish it, Just because I did
 -   SweetAlert
 -   intlTelInput
 
-### The following technologies used in the APIs:
-
 ### The website utilizes the following technologies:
 
 -   react-icons [Icons]
 -   react-awesome-reveal [Animation]
+-   react-lottie [JSON Animation Canvas Library]
+-   react-spring [Animation Library]
+-   react-content-loader [Lazy Loading Components]
 -   axios [HTTP Requests]
 -   Redux [State Managment]
 -   Splide [Carousel]
 -   node-sass [Importing vars from sass files to react]
 
-### Laravel Commands
+
+
+## Laravel Commands
 
 First, run the following command only once:
-
-<h1>Laravel Commands</h1>
-
-## _First use only_ <br/>
+# _First use only_ <br/>
 
 Create a link for storage folder into public to access it
 

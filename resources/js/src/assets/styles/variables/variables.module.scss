@@ -1,4 +1,4 @@
-$primaryColor: #7455FF;
+$primaryColor: #7455ff;
 $primaryBlue: #0ccde8;
 $primaryBlack: #171a1c;
 $primaryWhite: #e3e1fa;
@@ -6,6 +6,15 @@ $primaryDark: #0c001f;
 $primaryGreen: #609966;
 $secondaryColor: #e4058e;
 $secondaryTextColor: #ff8729;
+
+$themePrimaryColor: #ffc823;
+$themePrimaryBlue: #0ccde8;
+$themePrimaryBlack: #171a1c;
+$themePrimaryWhite: #e3e1fa;
+$themePrimaryDark: #0c001f;
+$themePrimaryGreen: #609966;
+$themeSecondaryColor: #e4058e;
+$themeSecondaryTextColor: #ff8729;
 
 :export {
     primaryColor: $primaryColor;

@@ -623,7 +623,7 @@ $blurSvgDuration: 20s;
         border: 1px solid rgba(255, 255, 255, 0.3);
         background: rgba(255, 255, 255, 0.2);
         box-shadow: 0 4px 30px #0000001a;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(5px);
         padding: 10px 20px;
     }
@@ -928,6 +928,11 @@ $blurSvgDuration: 20s;
             .experience-description {
                 font-size: 14px;
             }
+
+            .experience-content {
+                background-color: #ffffff00!important;
+                color: $primaryWhite!important;
+            }
         }
         .experience-image {
             position: relative;
@@ -937,7 +942,7 @@ $blurSvgDuration: 20s;
             .experience-company-logo {
                 img {
                     position: relative;
-                    background-color: #fff;
+                    background-color: $primaryWhite;
                     z-index: 1;
                     width: 90px;
                     height: 90px;
@@ -1287,6 +1292,8 @@ $blurSvgDuration: 20s;
 }
 
 .skills {
+    position: relative;
+    overflow: hidden;
     .skills-major-container {
         .skills-major {
             margin-top: 3%;
@@ -1805,5 +1812,20 @@ footer.home-footer {
 .empty-skill-content {
     h5 {
         font-family: Courier, monospace;
+    }
+}
+
+.dotted-square-svg {
+    .cls-2 {
+        stroke-miterlimit: 10;
+        stroke-width: 0.89px;
+    }
+}
+/*
+    Custom Styles for pharaoh theme
+*/
+.pharaoh-body {
+    * {
+        cursor: url('../images/scepter-cursor.png'), auto;
     }
 }

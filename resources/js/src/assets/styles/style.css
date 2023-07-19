@@ -11,7 +11,7 @@
   font-family: Pharaoh;
   src: url("../fonts/Pharaoh/AlphacodePharaohRegular.ttf"); }
 :export {
-  primaryColor: #7455FF;
+  primaryColor: #7455ff;
   primaryBlue: #0ccde8;
   primaryBlack: #171a1c;
   primaryWhite: #e3e1fa;
@@ -48,9 +48,9 @@ body {
           transition: 350ms ease-in-out; }
           .main-nav .nav-links .links div a:hover {
             animation: borderSlide 2s;
-            color: #7455FF; }
+            color: #7455ff; }
         .main-nav .nav-links .links div a.active {
-          color: #7455FF; }
+          color: #7455ff; }
         .main-nav .nav-links .links div:last-of-type {
           margin-top: 3px; }
 
@@ -177,7 +177,7 @@ body {
   max-width: fit-content; }
 
 .bg-main {
-  background-color: #7455FF; }
+  background-color: #7455ff; }
 
 .bg-second {
   background-color: #e3e1fa; }
@@ -228,11 +228,7 @@ body {
   overflow: hidden; }
 
 .top-content {
-<<<<<<< HEAD
   padding-top: 13vh;
-=======
-  padding-top: 17vh;
->>>>>>> 393e6d260f52cab3d2e1ae79cd1cd82fee76fb5f
   z-index: 1;
   position: relative; }
 
@@ -524,7 +520,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 30px #0000001a;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(5px);
     padding: 10px 20px; }
   .contact-container .contact-image-container,
@@ -540,7 +536,7 @@ body {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px; }
   .contact-container .form-label b {
-    border-bottom: 3px dotted #7455FF;
+    border-bottom: 3px dotted #7455ff;
     padding-bottom: 1px; }
 
 .form-custom-control {
@@ -554,7 +550,7 @@ body {
     background-color: transparent;
     color: #e3e1fa;
     box-shadow: 0 0 0 0.15rem #884dff4f;
-    border-color: #7455FF; }
+    border-color: #7455ff; }
   .form-custom-control:disabled {
     background-color: #10012670; }
 
@@ -569,7 +565,7 @@ body {
   border-radius: 5px; }
   .custom-form-select:active, .custom-form-select:focus, .custom-form-select:focus-visible {
     box-shadow: 0 0 0 0.15rem #884dff4f;
-    border-color: #7455FF;
+    border-color: #7455ff;
     outline: 0; }
   .custom-form-select:disabled {
     background-color: #10012670; }
@@ -754,6 +750,9 @@ body {
         margin-bottom: 2px; }
       .home-experiences .experience .experience-info .experience-description {
         font-size: 14px; }
+      .home-experiences .experience .experience-info .experience-content {
+        background-color: #ffffff00 !important;
+        color: #e3e1fa !important; }
     .home-experiences .experience .experience-image {
       position: relative;
       width: 8%;
@@ -761,7 +760,7 @@ body {
       align-items: center; }
       .home-experiences .experience .experience-image .experience-company-logo img {
         position: relative;
-        background-color: #fff;
+        background-color: #e3e1fa;
         z-index: 1;
         width: 90px;
         height: 90px;
@@ -816,8 +815,8 @@ body {
 .blog-page {
   margin-top: 5vh; }
   .blog-page .blog-details .blog-title {
-    color: #7455FF;
-    border-bottom: 2px solid #7455FF;
+    color: #7455ff;
+    border-bottom: 2px solid #7455ff;
     height: fit-content; }
   .blog-page .blog-details .blog-image {
     width: 100%;
@@ -826,7 +825,7 @@ body {
     border-radius: 10px;
     box-shadow: -2px -2px 6px #ffffff3d; }
   .blog-page .blog-content {
-    border-left: 4px solid #7455FF;
+    border-left: 4px solid #7455ff;
     border-radius: 10px;
     padding-left: 10px;
     overflow: hidden; }
@@ -1007,14 +1006,17 @@ body {
 .mt-15 {
   margin-top: 15%; }
 
-.skills .skills-major-container {
-  padding: 5px 0; }
-  .skills .skills-major-container .skills-major {
-    margin-top: 3%; }
-.skills .skills-details-container {
-  padding: 5px 0; }
-  .skills .skills-details-container .category-skills .skills-list {
-    margin: 0; }
+.skills {
+  position: relative;
+  overflow: hidden; }
+  .skills .skills-major-container {
+    padding: 5px 0; }
+    .skills .skills-major-container .skills-major {
+      margin-top: 3%; }
+  .skills .skills-details-container {
+    padding: 5px 0; }
+    .skills .skills-details-container .category-skills .skills-list {
+      margin: 0; }
 
 .skills-loader-canvas {
   text-align: center; }
@@ -1177,7 +1179,7 @@ footer.home-footer {
   font-weight: bold;
   padding-bottom: 2%; }
   .home-title span {
-    color: #7455FF; }
+    color: #7455ff; }
 
 .circles-pattern .cls-2 {
   fill: none;
@@ -1231,7 +1233,7 @@ footer.home-footer {
   border-top: 3px dashed;
   border-radius: 3px;
   width: 65%;
-  color: #7455FF;
+  color: #7455ff;
   opacity: 1; }
 
 .logo-loader-container {
@@ -1363,5 +1365,15 @@ footer.home-footer {
     text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff, -0.04em -0.025em 0 #fffc00; } }
 .empty-skill-content h5 {
   font-family: Courier, monospace; }
+
+.dotted-square-svg .cls-2 {
+  stroke-miterlimit: 10;
+  stroke-width: 0.89px; }
+
+/*
+    Custom Styles for pharaoh theme
+*/
+.pharaoh-body * {
+  cursor: url("../images/scepter-cursor.png"), auto; }
 
 /*# sourceMappingURL=style.css.map */
