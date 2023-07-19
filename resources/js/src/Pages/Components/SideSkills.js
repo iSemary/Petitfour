@@ -50,7 +50,7 @@ function SideSkills({ sideSkills }) {
                                             <Col md={9} className="text-left">
                                                 <h3>{sideSkill.title}</h3>
                                                 <p>{sideSkill.description}</p>
-                                                <Row className="skills">
+                                                <Row className="skills m-auto">
                                                     {sideSkill?.skills
                                                         ?.slice(
                                                             0,
