@@ -112,7 +112,9 @@ function Project() {
                                                     skill={projectSkill}
                                                     key={index}
                                                     imgClass="project-skill"
-                                                    colClass="me-4 p-0 col-1 mb-2"
+                                                    colClass={
+                                                        "mb-2 p-0 col-1 me-2 width-fit-content"
+                                                    }
                                                 />
                                             )
                                         )}

@@ -26,6 +26,7 @@ function TopProjects({ topProjects }) {
                                     col={4}
                                     index={index}
                                     animate={"fade-right"}
+                                    containerClass={"mt-sm-4"}
                                     key={index}
                                 />
                             ))

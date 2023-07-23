@@ -132,7 +132,9 @@ body {
     .main-logo {
         padding-left: 5%;
     }
-
+    .landing-icon {
+        display: none;
+    }
     .nav-links {
         position: fixed;
         display: none !important;
@@ -440,6 +442,14 @@ $blurSvgDuration: 20s;
     }
     p {
         color: $primaryWhite;
+        font-size: 23px;
+        span {
+            background: linear-gradient(transparent 50%, $primaryColor 15px);
+            display: inline;
+            white-space: pre-wrap;
+            background-position: right bottom;
+            font-weight: bold;
+        }
     }
 }
 
@@ -1383,7 +1393,7 @@ $mockupWidth: 90%;
         overflow: hidden;
         .laptop-mockup {
             width: $mockupWidth;
-            z-index: 10;
+            z-index: 1;
             position: relative;
         }
 
@@ -1456,7 +1466,7 @@ $mockupWidth: 90%;
     }
 }
 .splide__arrows.splide__arrows--ltr {
-    z-index: 10;
+    z-index: 1;
     position: relative;
     top: 50%;
 }

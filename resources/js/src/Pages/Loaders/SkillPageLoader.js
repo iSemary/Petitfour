@@ -4,7 +4,6 @@ import styleVariables from "../../assets/styles/variables/variables.module.scss"
 
 const SkillPageLoader = (props) => (
     <ContentLoader
-        viewBox="0 0 45% 650"
         backgroundColor={styleVariables.primaryWhite}
         foregroundColor={styleVariables.primaryDark}
         height={650}

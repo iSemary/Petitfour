@@ -194,7 +194,7 @@ function Footer(props) {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    &nbsp;Abdelrahman Samir
+                    &nbsp;Abdelrahman Mostafa   
                 </a>
                 &nbsp;&copy; {new Date().getFullYear()}
             </div>
