@@ -1,10 +1,12 @@
 {
-    "name": "laravel/laravel",
+    "name": "isemary/petitfour",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Dynamic portfolio builder, using ReactJS, Laravel, and Jquery, with a high design layout, a Powerful API structure, and a detailed dashboard editor for each section in the portfolio.",
     "keywords": [
-        "framework",
-        "laravel"
+        "petitfour",
+        "dynamic-portfolio",
+        "portfolio",
+        "react-laravel-project"
     ],
     "license": "MIT",
     "require": {

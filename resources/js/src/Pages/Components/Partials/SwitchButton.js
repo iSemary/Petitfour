@@ -82,6 +82,8 @@ export default function SwitchButton() {
         // Count user theme request for analytics uses
         countUserThemeRequest();
 
+        
+
         setIsPlayingTransition(true);
 
         blurPage();

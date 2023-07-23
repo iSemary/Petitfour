@@ -13,6 +13,7 @@ import SwitchButton from "./Components/Partials/SwitchButton";
 import TrianglePattern from "../Pages/Patterns/TrianglePattern";
 import CirclePattern from "../Pages/Patterns/CirclePattern";
 import ScarabBeetleImage from "../assets/images/Scarab_beetle_icon.png";
+import LandingGif from "../assets/images/landing.gif";
 
 function Home(props) {
     const positionTitleRef = useRef(null);
@@ -56,32 +57,42 @@ function Home(props) {
     }, [props?.config?.config?.user?.position]);
 
     useEffect(() => {
-            setTopTextContent(
-                <>
-                    <div className="top-home-details">
-                        <h1>
-                            <span className="gradient-text">
-                                {props?.config?.config?.user?.first_name}
-                            </span>
-                            <br />
-                            <span>
-                                {props?.config?.config?.user?.last_name}
-                            </span>
-                        </h1>
-                        <h4
-                            ref={positionTitleRef}
-                            data-value={props?.config?.config?.user?.position}
-                            className="text-hack-animation width-fit-content"
-                            onMouseOver={() =>
-                                animateHackText(positionTitleRef)
-                            }
-                        >
-                            {props?.config?.config?.user?.position}
-                        </h4>
-                        <p>{props?.config?.config?.user?.slogan}</p>
-                    </div>
-                </>
-            );
+        setTopTextContent(
+            <>
+                <div className="top-home-details">
+                    <h1>
+                        <span className="gradient-text">
+                            {props?.config?.config?.user?.first_name}
+                        </span>
+                        <br />
+                        <span>{props?.config?.config?.user?.last_name}</span>
+                    </h1>
+                    <h4
+                        ref={positionTitleRef}
+                        data-value={props?.config?.config?.user?.position}
+                        className="text-hack-animation width-fit-content"
+                        onMouseOver={() => animateHackText(positionTitleRef)}
+                    >
+                        {props?.config?.config?.user?.position}
+                    </h4>
+                    <p>
+                        {props?.config?.config?.user?.slogan && (
+                            <>
+                                {props.config.config.user.slogan
+                                    .split(" ")
+                                    .map((word, index, wordsArray) =>
+                                        index === wordsArray.length - 1 ? (
+                                            <span key={index}>{word}</span>
+                                        ) : (
+                                            word + " "
+                                        )
+                                    )}
+                            </>
+                        )}
+                    </p>
+                </div>
+            </>
+        );
     }, [props.config]);
     return (
         <>
@@ -132,7 +143,9 @@ function Home(props) {
                                 </Row>
                             </div>
                         </Col>
-                        <Col md={6}>{/* Gif Graph  */}</Col>
+                        <Col md={6}>
+                            <img src={LandingGif} className="landing-icon" alt="landing page preview" />
+                            </Col>
                     </Row>
                 </Container>
             </div>
