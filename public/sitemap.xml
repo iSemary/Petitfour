@@ -6,22 +6,22 @@
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/projects</loc>
+        <loc>https://abdelrahman.online/projects</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/skills</loc>
+        <loc>https://abdelrahman.online/skills</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/blogs</loc>
+        <loc>https://abdelrahman.online/blogs</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/connect</loc>
+        <loc>https://abdelrahman.online/connect</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>

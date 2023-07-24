@@ -18,8 +18,6 @@ Route::prefix('dashboard')->group(function () {
     Route::middleware(['guest'])->group(function () {
         Route::get('login', [UserController::class, 'login'])->name("login");
         Route::post('login', [UserController::class, 'submitLogin'])->name("login.submit");
-        // Sitemap Generator
-        Route::get('sitemap', [DashboardController::class, 'sitemapGenerator']);
     });
 
 
