@@ -81,6 +81,7 @@ function Header(props) {
                             <img
                                 src={props.logo}
                                 alt="Main logo"
+                                loading="lazy"
                                 style={logoLoading ? { display: "none" } : {}}
                                 onLoad={() => setLogoLoading(false)}
                                 className="header-logo"
