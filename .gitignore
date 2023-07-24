@@ -21,3 +21,4 @@ yarn-error.log
 /resources/js/build
 /resources/js/dist
 .sass-cache
+/public/sitemap.xml
