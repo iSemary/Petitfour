@@ -16,7 +16,7 @@ class Project extends Model implements Sitemapable{
     ];
 
     public function toSitemapTag(): Url | string | array {
-        return Url::create(env('APP_URL') . 'projects/' . strtolower(str_replace(' ', '-', $this->name)))
+        return Url::create(env('APP_URL') . '/projects/' . strtolower(str_replace(' ', '-', $this->name)))
             ->setLastModificationDate(Carbon::create($this->updated_at))
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_ALWAYS)
             ->setPriority(0.8);
