@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link href="https://abdelrahman.online/" rel="canonical">
+    <link href="https://www.abdelrahman.online/" rel="canonical">
     <link rel="manifest" href="{{ asset("static/manifest.json") }}">
     <meta name="robots" content="index, follow">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0c001f">
