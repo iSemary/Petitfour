@@ -14,14 +14,12 @@ use App\Http\Controllers\{
 };
 use Illuminate\Support\Facades\Route;
 
-
-
 Route::prefix('dashboard')->group(function () {
-
     Route::middleware(['guest'])->group(function () {
         Route::get('login', [UserController::class, 'login'])->name("login");
         Route::post('login', [UserController::class, 'submitLogin'])->name("login.submit");
     });
+
 
     Route::middleware(['auth'])->group(function () {
         Route::get('index', [DashboardController::class, 'home'])->name('dashboard.index');
@@ -32,7 +30,7 @@ Route::prefix('dashboard')->group(function () {
         Route::get('skills/sort', [SkillController::class, 'sort'])->name('skills.sort');
         Route::put('skills/update-sort', [SkillController::class, 'updateSort'])->name('skills.updateSort');
         Route::resources(['skills' => SkillController::class]);
-        
+
         Route::resources(['categories' => CategoryController::class]);
 
         Route::get('projects/sort', [ProjectController::class, 'sort'])->name('projects.sort');
@@ -57,7 +55,5 @@ Route::prefix('dashboard')->group(function () {
     });
 });
 
-
 // Website routes
-Route::get('/{any}', [AppController::class, 'index'])
-->where('any', '^((?!app|api|static|css|js).)*$');
+Route::get('/{any}', [AppController::class, 'index'])->where('any', '^((?!app|api|static|css|js).)*$');

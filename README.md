@@ -80,6 +80,11 @@ chmod -R 775 bootstrap/cache
 chown -R www-data:www-data storage bootstrap/cache
 ```
 
+## Cronjobs Commands
+```
+php artisan generate:sitemap
+```
+
 ---
 
 <h1>React Commands</h1>

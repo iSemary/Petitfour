@@ -1056,6 +1056,14 @@ body {
   .skill-card .img-container .skill-img {
     top: -115px;
     right: 10px; } }
+.project-box .project-description {
+  background: linear-gradient(transparent 50%, #c9c9c92e 15px);
+  display: inline;
+  white-space: pre-wrap;
+  background-position: right bottom; }
+
+.project-page .project-content img {
+  max-width: -webkit-fill-available; }
 .project-page .project-skills img.project-skill {
   width: 35px;
   height: 35px; }

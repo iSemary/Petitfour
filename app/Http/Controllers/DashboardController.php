@@ -6,11 +6,13 @@ use App\Models\Blog;
 use App\Models\Experience;
 use App\Models\Project;
 use App\Models\Skill;
+use App\Models\SystemConfig;
 use App\Models\ViewType;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Yajra\DataTables\Facades\DataTables;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\SitemapGenerator;
 
 class DashboardController extends Controller {
     private $types;
@@ -41,7 +43,7 @@ class DashboardController extends Controller {
             return $viewType;
         });
 
-
         return view('panel.dashboard.views', compact('viewTypes'));
     }
+
 }

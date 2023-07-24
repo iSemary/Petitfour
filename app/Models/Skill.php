@@ -3,8 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 
-class Skill extends Model {
+class Skill extends Model implements Sitemapable {
     /**
      * Type
      * 0 -> Additional Skill
@@ -16,6 +19,13 @@ class Skill extends Model {
     protected $appends = ['icon', 'theme_icon'];
     protected $dates = ['start_date'];
     
+    public function toSitemapTag(): Url | string | array {
+        return Url::create(env('APP_URL') . 'skills/' . strtolower(str_replace(' ', '-', $this->name)))
+            ->setLastModificationDate(Carbon::create($this->updated_at))
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_ALWAYS)
+            ->setPriority(0.6);
+    }
+
     public function getIconAttribute() {
         return asset("storage/skills/" . $this->attributes['icon']);
     }

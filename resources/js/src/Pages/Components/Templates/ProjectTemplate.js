@@ -9,7 +9,7 @@ function ProjectTemplate({ project, col, animate, containerClass = '', index }) 
     const MAX_PROJECT_SKILLS = 4;
 
     return (
-        <Col md={col} data-aos-offset={(index*100)} data-aos={animate} className={containerClass}>
+        <Col md={col} data-aos-offset={(index*100)} data-aos={animate} className={containerClass + " project-box"}>
             <Link
                 className="no-link"
                 to={`/projects/${project.name
@@ -17,7 +17,7 @@ function ProjectTemplate({ project, col, animate, containerClass = '', index }) 
                     .join("-")
                     .toLowerCase()}`}
             >
-                <h3 className="project-title">{project.name}</h3>
+                <h4 className="project-title">{project.name}</h4>
 
                 <div className="project-image-container">
                     {/* Show image loader until the image is totally loaded */}
