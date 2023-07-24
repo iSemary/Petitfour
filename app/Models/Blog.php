@@ -20,7 +20,7 @@ class Blog extends Model implements Sitemapable {
     protected $appends = ['image'];
 
     public function toSitemapTag(): Url | string | array {
-        return Url::create(env('APP_URL') . 'blogs/' . $this->slug)
+        return Url::create(env('APP_URL') . '/blogs/' . strtolower($this->slug))
             ->setLastModificationDate(Carbon::create($this->updated_at))
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_ALWAYS)
             ->setPriority(0.7);
