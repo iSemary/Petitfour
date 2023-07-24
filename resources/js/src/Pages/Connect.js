@@ -372,6 +372,7 @@ function Connect(props) {
                         {props?.config?.contact_image && (
                             <img
                                 variant="top"
+                                loading="lazy"
                                 style={imageLoading ? { display: "none" } : {}}
                                 className="card-img-top h-100"
                                 onLoad={() => setImageLoading(false)}

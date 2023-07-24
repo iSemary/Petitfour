@@ -144,7 +144,7 @@ function Home(props) {
                             </div>
                         </Col>
                         <Col md={6}>
-                            <img src={LandingGif} className="landing-icon" alt="landing page preview" />
+                            <img src={LandingGif} loading="lazy" className="landing-icon" alt="landing page preview" />
                             </Col>
                     </Row>
                 </Container>
@@ -171,7 +171,7 @@ function Home(props) {
                     {DummyCode}
                 </div>
                 <div className="pharaoh-container" id="pharaohContainer">
-                    <img src={ScarabBeetleImage} alt="Scarab beetle" />
+                    <img src={ScarabBeetleImage} loading="lazy" alt="Scarab beetle" />
                     <p>{Talisman + " " + Talisman + " " + Talisman}</p>
                 </div>
             </div>
