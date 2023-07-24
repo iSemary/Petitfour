@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 
-class Blog extends Model {
+class Blog extends Model implements Sitemapable {
     protected $fillable = [
         'title',
         'slug',
@@ -15,6 +18,13 @@ class Blog extends Model {
         'status',
     ];
     protected $appends = ['image'];
+
+    public function toSitemapTag(): Url | string | array {
+        return Url::create(env('APP_URL') . 'blogs/' . $this->slug)
+            ->setLastModificationDate(Carbon::create($this->updated_at))
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_ALWAYS)
+            ->setPriority(0.7);
+    }
 
     public function getImageAttribute() {
         return asset("storage/blogs/" . $this->attributes['image']);

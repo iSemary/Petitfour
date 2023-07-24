@@ -9,7 +9,7 @@
     ]
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "BROWSER=none react-scripts start",
     "build": "npm run build:react && npm run build:bundle && npm run copy:css && npm run copy:css-map && npm run copy:media",
     "build:react": "react-scripts build",
     "build:bundle": "webpack --config webpack.config.js",

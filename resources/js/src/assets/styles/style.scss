@@ -1371,10 +1371,20 @@ $blurSvgDuration: 20s;
         }
     }
 }
-
+.project-box {
+    .project-description {
+        background: linear-gradient(transparent 50%, #c9c9c92e 15px);
+        display: inline;
+        white-space: pre-wrap;
+        background-position: right bottom;
+    }
+}
 // Single Project Page
 $mockupWidth: 90%;
 .project-page {
+    .project-content img {
+        max-width: -webkit-fill-available;
+    }
     .project-skills {
         img.project-skill {
             width: 35px;
@@ -1386,7 +1396,6 @@ $mockupWidth: 90%;
     .project-description {
         text-align: left;
     }
-
     .project-images-container {
         position: relative;
         text-align: center;

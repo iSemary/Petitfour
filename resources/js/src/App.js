@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "aos/dist/aos.css";
 import "./assets/styles/style.css";
 import AOS from "aos";
-import SideAlert from "./Pages/Components/Partials/SideAlert";
 import { useDispatch, useSelector } from "react-redux";
 import { getConfig } from "./actions/configSlice";
 
@@ -27,8 +26,6 @@ function App() {
                 resume={config?.config?.user?.resume}
             />
             <Router config={config} />
-
-            {/* <SideAlert /> */}
 
             <Footer
                 socialLinks={config?.social_links}
