@@ -272,14 +272,7 @@ body {
     }
 }
 .main-background-cover {
-    // background-image: radial-gradient(
-    //     circle farthest-corner at 32.7% 82.7%,
-    //     $primaryDark 8.3%,
-    //     $primaryBlack 79.4%
-    // );
     background-color: $primaryDark;
-    // background: linear-gradient(90deg, $primaryDark 0%, $primaryColor 92%);
-
     width: 100%;
     height: 100vh;
 }
@@ -1845,11 +1838,138 @@ footer.home-footer {
         stroke-width: 0.89px;
     }
 }
-/*
-    Custom Styles for pharaoh theme
+/*  =============================================================================================
+                        Custom Styles for pharaoh theme
+    =============================================================================================
 */
-.pharaoh-body {
+.pharaoh-mode {
+    background-color: $themePrimaryDark;
+
     * {
         cursor: url("../images/scepter-cursor.png"), auto;
+    }
+    // Start Header
+    .main-nav {
+        .nav-links {
+            .links {
+                div {
+                    a {
+                        color: $primaryWhite;
+                        &:hover {
+                            color: $themePrimaryColor;
+                        }
+                    }
+                    a.active {
+                        color: $themePrimaryColor;
+                    }
+                }
+            }
+        }
+    }
+
+    .top-home-details {
+        h1 {
+            .gradient-text {
+                color: transparent;
+                background-image: linear-gradient(
+                    90deg,
+                    $themePrimaryColor 0,
+                    $themePrimaryDark 100%
+                );
+                -webkit-background-clip: text;
+                -moz-background-clip: text;
+                background-clip: text;
+            }
+        }
+
+        p {
+            span {
+                background: linear-gradient(
+                    transparent 50%,
+                    $themePrimaryDark 15px
+                );
+            }
+        }
+    }
+
+    // End Header
+
+    .bg-home-even {
+        background-color: $themePrimaryDark;
+        background: linear-gradient(
+            180deg,
+            $themePrimaryDark 75%,
+            $primaryBlack 100%
+        );
+    }
+
+    .bg-home-odd {
+        background-color: $primaryBlack;
+        background: linear-gradient(
+            180deg,
+            $primaryBlack 85%,
+            $themePrimaryDark 100%
+        );
+    }
+
+    .bg-main-dark {
+        background-color: $themePrimaryDark;
+    }
+    .text-main-dark {
+        color: $themePrimaryDark;
+    }
+
+    // Home Experience Styles
+    .home-experiences {
+        .experience-h-line {
+            .h-line {
+                background-color: #a4508b;
+                background-image: linear-gradient(90deg, #a4508b, #5f0a87 74%);
+            }
+        }
+
+        .experience-v-line {
+            .v-line {
+                background-color: #a4508b;
+                background-image: linear-gradient(0deg, #a4508b, #5f0a87 74%);
+            }
+        }
+
+        .experience {
+            .experience-date {
+                background-color: #a4508b;
+                background-image: linear-gradient(
+                    326deg,
+                    #a4508b 0%,
+                    #5f0a87 74%
+                );
+                color: #ffffffe3;
+            }
+            .experience-info {
+                color: $primaryWhite;
+                background-color: $themePrimaryDark;
+
+                .experience-title {
+                    color: #9c27b0;
+                }
+            }
+        }
+        .experience-even {
+            .h-line {
+                background-image: linear-gradient(327deg, #a4508b, #5f0a87 74%);
+            }
+        }
+    }
+
+    // Footer
+    footer {
+        background-color: $themePrimaryDark;
+    }
+    footer.home-footer {
+        background: linear-gradient(
+            360deg,
+            $themePrimaryDark 0%,
+            $primaryBlack 100%
+        );
     }
 }

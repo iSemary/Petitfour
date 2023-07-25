@@ -4,18 +4,21 @@ import AxiosConfig from "../../../config/AxiosConfig";
 import TransitionSound from "../../../assets/sounds/moon-night-transition-sound-effect.mp3";
 import soundtrackSound from "../../../assets/sounds/hesham-nazih-moon-knight.mp3";
 import { TbArrowBackUp } from "react-icons/tb";
-
+import ScrollToDown from "../../Utilities/ScrollToDown";
 export default function SwitchButton() {
     const theme = localStorage.getItem("theme") === "true";
     const [isPlayingTransition, setIsPlayingTransition] = useState(false);
     const [isPlayingSoundtrack, setIsPlayingSoundtrack] = useState(false);
+    const [scrollingDown, setScrollingDown] = useState(false);
 
     const transitionRef = useRef(null);
     const soundtrackRef = useRef(null);
 
     const handleTransitionEnded = (e) => {
+        if (theme === false) document.body.classList.remove("pharaoh-mode");
         setIsPlayingTransition(false);
         setIsPlayingSoundtrack(theme === true);
+        setScrollingDown(theme === true);
     };
 
     const handleSoundtrackEnded = (e) => {
@@ -82,8 +85,7 @@ export default function SwitchButton() {
         // Count user theme request for analytics uses
         countUserThemeRequest();
 
-        
-
+        window.scrollTo(0, 0);
         setIsPlayingTransition(true);
 
         blurPage();
@@ -198,6 +200,8 @@ export default function SwitchButton() {
                     onEnded={handleSoundtrackEnded}
                 ></audio>
             )}
+            {/* Scrolling Down */}
+            {scrollingDown && <ScrollToDown />}
         </>
     );
 }

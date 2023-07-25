@@ -17,7 +17,7 @@ function ProjectTemplate({ project, col, animate, containerClass = '', index }) 
                     .join("-")
                     .toLowerCase()}`}
             >
-                <h4 className="project-title">{project.name}</h4>
+                <h5 className="project-title">{project.name}</h5>
 
                 <div className="project-image-container">
                     {/* Show image loader until the image is totally loaded */}

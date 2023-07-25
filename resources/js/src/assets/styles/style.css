@@ -1392,10 +1392,58 @@ footer.home-footer {
   stroke-miterlimit: 10;
   stroke-width: 0.89px; }
 
-/*
-    Custom Styles for pharaoh theme
+/*  =============================================================================================
+                        Custom Styles for pharaoh theme
+    =============================================================================================
 */
-.pharaoh-body * {
-  cursor: url("../images/scepter-cursor.png"), auto; }
+.pharaoh-mode {
+  background-color: #3e1d02; }
+  .pharaoh-mode * {
+    cursor: url("../images/scepter-cursor.png"), auto; }
+  .pharaoh-mode .main-nav .nav-links .links div a {
+    color: #e3e1fa; }
+    .pharaoh-mode .main-nav .nav-links .links div a:hover {
+      color: #ffc823; }
+  .pharaoh-mode .main-nav .nav-links .links div a.active {
+    color: #ffc823; }
+  .pharaoh-mode .top-home-details h1 .gradient-text {
+    color: transparent;
+    background-image: linear-gradient(90deg, #ffc823 0, #3e1d02 100%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text; }
+  .pharaoh-mode .top-home-details p span {
+    background: linear-gradient(transparent 50%, #3e1d02 15px); }
+  .pharaoh-mode .bg-home-even {
+    background-color: #3e1d02;
+    background: linear-gradient(180deg, #3e1d02 75%, #171a1c 100%); }
+  .pharaoh-mode .bg-home-odd {
+    background-color: #171a1c;
+    background: linear-gradient(180deg, #171a1c 85%, #3e1d02 100%); }
+  .pharaoh-mode .bg-main-dark {
+    background-color: #3e1d02; }
+  .pharaoh-mode .text-main-dark {
+    color: #3e1d02; }
+  .pharaoh-mode .home-experiences .experience-h-line .h-line {
+    background-color: #a4508b;
+    background-image: linear-gradient(90deg, #a4508b, #5f0a87 74%); }
+  .pharaoh-mode .home-experiences .experience-v-line .v-line {
+    background-color: #a4508b;
+    background-image: linear-gradient(0deg, #a4508b, #5f0a87 74%); }
+  .pharaoh-mode .home-experiences .experience .experience-date {
+    background-color: #a4508b;
+    background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+    color: #ffffffe3; }
+  .pharaoh-mode .home-experiences .experience .experience-info {
+    color: #e3e1fa;
+    background-color: #3e1d02; }
+    .pharaoh-mode .home-experiences .experience .experience-info .experience-title {
+      color: #9c27b0; }
+  .pharaoh-mode .home-experiences .experience-even .h-line {
+    background-image: linear-gradient(327deg, #a4508b, #5f0a87 74%); }
+  .pharaoh-mode footer {
+    background-color: #3e1d02; }
+  .pharaoh-mode footer.home-footer {
+    background: linear-gradient(360deg, #3e1d02 0%, #171a1c 100%); }
 
 /*# sourceMappingURL=style.css.map */

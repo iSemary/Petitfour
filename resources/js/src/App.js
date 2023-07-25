@@ -11,12 +11,13 @@ import { getConfig } from "./actions/configSlice";
 
 function App() {
     AOS.init();
-
     const config = useSelector((state) => state.config.data);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getConfig());
+        const theme = localStorage.getItem("theme") === "true";
+        if (theme) document.body.classList.add("pharaoh-mode");
     }, [dispatch]);
     return (
         <>

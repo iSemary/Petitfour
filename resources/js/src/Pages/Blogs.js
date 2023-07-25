@@ -17,7 +17,7 @@ function Blogs({ categories }) {
 
     const getData = () => {
         AxiosConfig.get(
-            `/blogs?page=${page}${category && "&category=" + category}`
+            `/blogs?page=${page + (category && "&category=" + category)}`
         )
             .then((response) => {
                 if (response.data.success) {
@@ -28,7 +28,6 @@ function Blogs({ categories }) {
                     setPage(page + 1);
                     setTotalRecords(response.data.data.total);
                     setLoadMore(false);
-
 
                     if (!category) {
                         setAllRecords(response.data.data.total);
@@ -55,7 +54,7 @@ function Blogs({ categories }) {
     return (
         <Container className="m-auto">
             <Row className="justify-content-between">
-            <Col md={3} className="my-4 width-fit-content">
+                <Col md={3} className="my-4 width-fit-content">
                     <h1 className="mb-0">Blogs</h1>
                     <hr className="title-line m-0 mt-1" />
                 </Col>
@@ -79,7 +78,12 @@ function Blogs({ categories }) {
             <Row className="blogs mt-sm-1">
                 {blogs && blogs.length > 0 ? (
                     blogs.map((blog, key) => (
-                        <BlogTemplate blog={blog} col={4} fade={true} key={key} />
+                        <BlogTemplate
+                            blog={blog}
+                            col={4}
+                            fade={true}
+                            key={key}
+                        />
                     ))
                 ) : (
                     <>
