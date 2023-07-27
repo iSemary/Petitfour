@@ -8,6 +8,7 @@ import "./assets/styles/style.css";
 import AOS from "aos";
 import { useDispatch, useSelector } from "react-redux";
 import { getConfig } from "./actions/configSlice";
+import ScrollToDown from "./Pages/Utilities/ScrollToDown";
 
 function App() {
     AOS.init();
@@ -26,6 +27,7 @@ function App() {
                 theme_logo={config?.config?.system?.theme_logo}
                 resume={config?.config?.user?.resume}
             />
+            <ScrollToDown />
             <Router config={config} />
 
             <Footer
