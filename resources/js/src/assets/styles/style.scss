@@ -272,14 +272,7 @@ body {
     }
 }
 .main-background-cover {
-    // background-image: radial-gradient(
-    //     circle farthest-corner at 32.7% 82.7%,
-    //     $primaryDark 8.3%,
-    //     $primaryBlack 79.4%
-    // );
     background-color: $primaryDark;
-    // background: linear-gradient(90deg, $primaryDark 0%, $primaryColor 92%);
-
     width: 100%;
     height: 100vh;
 }
@@ -997,7 +990,7 @@ $blurSvgDuration: 20s;
 
 @media screen and (max-width: 767px) {
     .home-experiences {
-        margin: 0 5%;
+        // margin: 0 5%;
         .experience {
             display: grid;
             justify-content: normal;
@@ -1377,6 +1370,7 @@ $blurSvgDuration: 20s;
         display: inline;
         white-space: pre-wrap;
         background-position: right bottom;
+        text-align: center;
     }
 }
 // Single Project Page
@@ -1604,9 +1598,10 @@ footer.home-footer {
     border-radius: 41px;
     box-shadow: 0 0 8px #f298298a, inset 0 0 8px #100126b3;
     width: fit-content;
-    padding: 7px 5px;
+    padding: 6px 4px;
     cursor: pointer;
-    min-width: 37px;
+    min-width: 32px;
+    font-size: 13px;
     text-shadow: 0 0 4px $primaryDark;
     span {
         font-size: 13px;
@@ -1845,11 +1840,212 @@ footer.home-footer {
         stroke-width: 0.89px;
     }
 }
-/*
-    Custom Styles for pharaoh theme
+/*  =============================================================================================
+                        Custom Styles for pharaoh theme
+    =============================================================================================
 */
-.pharaoh-body {
+.pharaoh-mode {
+    background-color: $themePrimaryDark;
+
     * {
         cursor: url("../images/scepter-cursor.png"), auto;
+    }
+    // Start Header
+    .main-nav {
+        .nav-links {
+            .links {
+                div {
+                    a {
+                        color: $primaryWhite;
+                        &:hover {
+                            color: $themePrimaryColor;
+                        }
+                    }
+                    a.active {
+                        color: $themePrimaryColor;
+                    }
+                }
+            }
+        }
+    }
+
+    .top-home-details {
+        h1 {
+            .gradient-text {
+                color: transparent;
+                background-image: linear-gradient(
+                    90deg,
+                    $themePrimaryColor 0,
+                    $themePrimaryDark 100%
+                );
+                -webkit-background-clip: text;
+                -moz-background-clip: text;
+                background-clip: text;
+            }
+        }
+
+        p {
+            span {
+                background: linear-gradient(
+                    transparent 50%,
+                    $themePrimaryDark 15px
+                );
+            }
+        }
+    }
+
+    // End Header
+    .main-background-cover {
+        background-color: $themePrimaryDark;
+    }
+    .switch-button-content .switch-button.default {
+        background-color: $themePrimaryDark;
+        box-shadow: -2px -2px 5px $themePrimaryColor;
+    }
+    .bg-home-even {
+        background-color: $themePrimaryDark;
+        background: linear-gradient(
+            180deg,
+            $themePrimaryDark 75%,
+            $primaryBlack 100%
+        );
+    }
+
+    .bg-home-odd {
+        background-color: $primaryBlack;
+        background: linear-gradient(
+            180deg,
+            $primaryBlack 85%,
+            $themePrimaryDark 100%
+        );
+    }
+
+    .bg-main-dark {
+        background-color: $themePrimaryDark;
+    }
+    .text-main-dark {
+        color: $themePrimaryDark;
+    }
+
+    // Home Experience Styles
+    .home-experiences {
+        .experience-h-line {
+            .h-line {
+                background-color: #3e1d02;
+                background-image: linear-gradient(90deg, #ff8729, #3e1d02 74%);
+            }
+        }
+
+        .experience-v-line {
+            .v-line {
+                background-color: #3e1d02;
+                background-image: linear-gradient(0deg, #ff8729, #3e1d02 74%);
+            }
+        }
+
+        .experience {
+            .experience-date {
+                background-color: $themePrimaryDark;
+                background-image: linear-gradient(
+                    326deg,
+                    $themePrimaryColor 0%,
+                    $themePrimaryDark 74%
+                );
+                color: #ffffffe3;
+            }
+            .experience-info {
+                color: $primaryWhite;
+                background-color: $themePrimaryDark;
+
+                .experience-title {
+                    color: $themePrimaryColor;
+                }
+            }
+        }
+        .experience-even {
+            .h-line {
+                background-image: linear-gradient(327deg, #ff8729, #3e1d02 74%);
+            }
+        }
+    }
+
+    .side-skills {
+        .side-skills-item {
+            .card {
+                background-color: #624116f0;
+                box-shadow: -2px -2px 5px #ffc10752;
+                border: 0;
+                color: $primaryWhite;
+            }
+        }
+    }
+
+    .home-title {
+        span {
+            color: $themePrimaryColor;
+        }
+    }
+
+    .features .feature-item .feature-image,
+    .category-details .category-name .category-icon 
+    {
+        filter: hue-rotate(132deg);
+    }
+
+    .title-line {
+        color: $themePrimaryColor;
+    }
+
+    .btn-main-light {
+        color: $themePrimaryDark;
+        &:hover {
+            background-color: $themePrimaryDark;
+            color: $themePrimaryWhite;
+        }
+    }
+    .btn-main-light.active {
+        color: $themePrimaryWhite;
+    }
+    .blog-filter {
+        button {
+            span {
+                color: $themePrimaryDark;
+            }
+            &:hover span {
+                background-color: $themePrimaryDark;
+                color: $themePrimaryWhite;
+            }
+        }
+    }
+    .blog-page {
+        .blog-details {
+            .blog-title {
+                color: $themePrimaryColor;
+                border-bottom: 2px solid $themePrimaryColor;
+            }
+        }
+        .blog-content {
+            border-left: 4px solid $themePrimaryColor;
+        }
+    }
+    .badge-secondary {
+        color: $themePrimaryDark;
+    }
+    .contact-container .form-label b {
+        border-bottom: 3px dotted $themePrimaryColor;
+    }
+    .blog-item .blog-card-image-container {
+        box-shadow: 0 -1px 20px $themePrimaryDark;
+    }
+    // Footer
+    footer {
+        background-color: $themePrimaryDark;
+    }
+    footer.home-footer {
+        background: linear-gradient(
+            360deg,
+            $themePrimaryDark 0%,
+            $primaryBlack 100%
+        );
     }
 }

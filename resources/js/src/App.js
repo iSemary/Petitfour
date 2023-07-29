@@ -8,15 +8,17 @@ import "./assets/styles/style.css";
 import AOS from "aos";
 import { useDispatch, useSelector } from "react-redux";
 import { getConfig } from "./actions/configSlice";
+import ScrollToDown from "./Pages/Utilities/ScrollToDown";
 
 function App() {
     AOS.init();
-
     const config = useSelector((state) => state.config.data);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getConfig());
+        const theme = localStorage.getItem("theme") === "true";
+        if (theme) document.body.classList.add("pharaoh-mode");
     }, [dispatch]);
     return (
         <>
@@ -25,6 +27,7 @@ function App() {
                 theme_logo={config?.config?.system?.theme_logo}
                 resume={config?.config?.user?.resume}
             />
+            <ScrollToDown />
             <Router config={config} />
 
             <Footer

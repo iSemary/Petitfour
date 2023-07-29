@@ -17,7 +17,7 @@ function Projects({ categories }) {
 
     const getData = () => {
         AxiosConfig.get(
-            `/projects?page=${page}${category && "&category=" + category}`
+            `/projects?page=${page + (category && ("&category=" + category))}`
         )
             .then((response) => {
                 if (response.data.success) {
