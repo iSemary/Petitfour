@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.20aafca1.css",
-    "main.js": "/static/js/main.ad888e08.js",
+    "main.js": "/static/js/main.cf63fbb1.js",
     "static/js/496.b63c837b.chunk.js": "/static/js/496.b63c837b.chunk.js",
     "static/media/landing.gif": "/static/media/landing.c32f9de59fb3d8a05f98.gif",
     "static/media/hesham-nazih-moon-knight.mp3": "/static/media/hesham-nazih-moon-knight.46d736371d640b3ab0e5.mp3",
@@ -13,11 +13,11 @@
     "static/media/AlphacodePharaohRegular.ttf": "/static/media/AlphacodePharaohRegular.b597528db9c191bede03.ttf",
     "index.html": "/index.html",
     "main.20aafca1.css.map": "/static/css/main.20aafca1.css.map",
-    "main.ad888e08.js.map": "/static/js/main.ad888e08.js.map",
+    "main.cf63fbb1.js.map": "/static/js/main.cf63fbb1.js.map",
     "496.b63c837b.chunk.js.map": "/static/js/496.b63c837b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.20aafca1.css",
-    "static/js/main.ad888e08.js"
+    "static/js/main.cf63fbb1.js"
   ]
 }
