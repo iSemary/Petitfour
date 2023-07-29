@@ -4,7 +4,7 @@ import AxiosConfig from "../../../config/AxiosConfig";
 import TransitionSound from "../../../assets/sounds/moon-night-transition-sound-effect.mp3";
 import soundtrackSound from "../../../assets/sounds/hesham-nazih-moon-knight.mp3";
 import { TbArrowBackUp } from "react-icons/tb";
-import ScrollToDown from "../../Utilities/ScrollToDown";
+// import ScrollToDown from "../../Utilities/ScrollToDown";
 export default function SwitchButton() {
     const theme = localStorage.getItem("theme") === "true";
     const [isPlayingTransition, setIsPlayingTransition] = useState(false);
@@ -200,8 +200,8 @@ export default function SwitchButton() {
                     onEnded={handleSoundtrackEnded}
                 ></audio>
             )}
-            {/* Scrolling Down */}
-            {scrollingDown && <ScrollToDown />}
+            {/* Scrolling Down
+            {scrollingDown && <ScrollToDown />} */}
         </>
     );
 }
