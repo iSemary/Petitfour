@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SkillsListTemplate from "./SkillsListTemplate";
 import SquareLoader from "../../Loaders/SquareLoader";
 
-function ProjectTemplate({ project, col, animate, containerClass = '', index }) {
+function ProjectTemplate({ project, col, animate, containerClass = '', index = 0 }) {
     const [imageLoading, setImageLoading] = useState(true);
     const MAX_PROJECT_SKILLS = 4;
 

@@ -97,16 +97,19 @@ const Skill = () => {
             {skillProjects && skillProjects.length > 0 && (
                 <>
                     <div className="skill-projects">
-                        <h2>Projects</h2>
+                        <div className="width-fit-content">
+                            <h2 className="mb-0 font-weight-bold">Projects</h2>
+                            <hr className="title-line m-0 mt-1" />
+                        </div>
                         <Row className="my-3">
                             {skillProjects.map((project, index) => {
                                 return (
                                     <ProjectTemplate
                                         project={project}
                                         col={4}
-                                        index={index}
                                         animate={"fade-right"}
                                         key={index}
+                                        containerClass={"mt-4"}
                                     />
                                 );
                             })}
@@ -118,9 +121,12 @@ const Skill = () => {
             {/* Check if there's blogs for this skill then loop over it */}
             {skillBlogs && skillBlogs.length > 0 && (
                 <>
+                    <hr className="custom-hr" />
                     <div className="skill-blogs">
-                        <hr className="custom-hr" />
-                        <h2>Blogs</h2>
+                        <div className="width-fit-content">
+                            <h2 className="mb-0 font-weight-bold">Blogs</h2>
+                            <hr className="title-line m-0 mt-1" />
+                        </div>
                         <Row className="my-3">
                             {skillBlogs.map((blog, index) => {
                                 return (
