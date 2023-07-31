@@ -53,9 +53,9 @@ return [
             ]
         ],
         // to backup the complete project files
-        'full_project' => true,
+        'full_project' => false,
         // to backup the storage folder only
-        'storage_only' => false,
+        'storage_only' => true,
         // location of project storage
         'storage_path' => "storage/",
         // to backup specific folders or files
