@@ -75,7 +75,6 @@ class SkillController extends Controller {
             ->where('project_images.highlight', 1)
             ->where('project_skills.skill_id', $skill->id)
             ->orderBy("projects.priority")
-            ->limit(3)
             ->orderBy('priority')
             ->with(['skills' => function ($query) {
                 $query->select(['skills.id', 'skills.name', 'skills.icon', 'skills.theme_icon']);

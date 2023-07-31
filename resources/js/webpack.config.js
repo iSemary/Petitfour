@@ -11,7 +11,7 @@ module.exports = [
                 .map((f) => path.resolve(__dirname, f)),
         },
         output: {
-            // Move bundle.min.js to public -> Production
+            // Move app.min.js to public -> Production
             filename: "../../../public/static/js/app.min.js",
         },
         module: {

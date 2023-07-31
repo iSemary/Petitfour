@@ -89,7 +89,6 @@ function Skills() {
                                             {skill.name}
                                         </h3>
                                     </div>
-                                    <h5>{skill.title}</h5>
                                     <p className="font-18">
                                         <RiDoubleQuotesL /> {skill.description}{" "}
                                         <RiDoubleQuotesR />

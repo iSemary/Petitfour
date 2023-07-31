@@ -55,8 +55,8 @@
                         name: 'subject'
                     },
                     {
-                        data: 'body',
-                        name: 'body'
+                        data: 'message',
+                        name: 'message'
                     },
                     {
                         data: 'created_at',
