@@ -22,3 +22,4 @@ yarn-error.log
 /resources/js/dist
 .sass-cache
 /public/sitemap.xml
+/storage/backup-sentry
