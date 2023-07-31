@@ -52,7 +52,7 @@ function BlogTemplate({ blog, col, fade }) {
                             </Card.Body>
                         </Link>
 
-                        <Card.Body>
+                        <Card.Body className="pt-0 blog-skills">
                             <Row className="justify-content-around">
                                 {blog.skills &&
                                     blog.skills.length > 0 &&

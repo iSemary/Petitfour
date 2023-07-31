@@ -620,8 +620,8 @@ body {
 
 .home-blogs .blog-description {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden; }
 
@@ -629,8 +629,14 @@ body {
   box-shadow: 0 0 7px #ffffff8c;
   border: 0; }
 .blog-item .card {
+  max-height: 480px;
+  min-height: 480px;
+  height: 480px;
   box-shadow: inset -1px -4px 20px #00000054;
   background-color: #e3e1fa; }
+  .blog-item .card .blog-skills {
+    display: grid;
+    align-items: end; }
 .blog-item a,
 .blog-item p {
   color: #0d161e;
@@ -640,15 +646,15 @@ body {
   font-weight: bold;
   text-align: left;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden; }
 .blog-item .blog-description {
   text-align: left;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden; }
 .blog-item:hover .card-img-top {
@@ -656,11 +662,11 @@ body {
 .blog-item .blog-card-image-container {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-  height: 250px;
+  height: 200px;
   overflow: hidden;
   box-shadow: 0 -1px 20px #0c001f; }
   .blog-item .blog-card-image-container img {
-    height: 250px;
+    height: 200px;
     transition: 650ms; }
 .blog-item .blog-date {
   font-weight: bold;
@@ -668,9 +674,9 @@ body {
   text-align: right; }
 
 .spinner {
-  animation: spin 1s infinite linear; }
+  animation: spinner 1s infinite linear; }
 
-@keyframes spin {
+@keyframes spinner {
   0% {
     transform: rotate(0deg); }
   100% {
@@ -1054,12 +1060,14 @@ body {
   .skill-card .img-container .skill-img {
     top: -115px;
     right: 10px; } }
-.project-box .project-description {
-  background: linear-gradient(transparent 50%, #c9c9c92e 15px);
-  display: inline;
-  white-space: pre-wrap;
-  background-position: right bottom;
+.project-box {
   text-align: center; }
+  .project-box .project-description {
+    background: linear-gradient(transparent 50%, #c9c9c92e 15px);
+    display: inline;
+    white-space: pre-wrap;
+    background-position: right bottom;
+    text-align: center; }
 
 .project-page .project-content img {
   max-width: -webkit-fill-available; }
