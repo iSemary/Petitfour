@@ -122,6 +122,17 @@ _OR_
 sass resources/js/src/assets/styles/style.scss:resources/js/src/assets/styles/style.css
 ```
 
+## For Building a new production version all you have to do is : 
+
+```
+npm run build
+```
+
+### And it will do everything : 
+- Generate a new bundle file
+- Convert SCSS files into one css file
+- Copy All media and styles to public dircectory
+  
 ---
 
 ## Contact
