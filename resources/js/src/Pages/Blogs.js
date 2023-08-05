@@ -80,7 +80,6 @@ function Blogs({ categories }) {
                     blogs.map((blog, key) => (
                         <BlogTemplate
                             blog={blog}
-                            col={4}
                             fade={true}
                             key={key}
                         />

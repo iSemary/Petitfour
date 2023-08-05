@@ -6,11 +6,11 @@ import SkillsListTemplate from "./SkillsListTemplate";
 import SquareLoader from "../../Loaders/SquareLoader";
 
 const MAX_BLOG_SKILLS = 4;
-function BlogTemplate({ blog, col, fade }) {
+function BlogTemplate({ blog, fade }) {
     const [imageLoading, setImageLoading] = useState(true);
     return (
         <>
-            <Col md={col} className="blog-item blog-min-card">
+            <Col sm={12} md={6} lg={4} className="blog-item blog-min-card">
                 <Fade delay={1} className={!fade && "reveal-fade"}>
                     <Card className="mb-4 border-0">
                         <Link to={`/blogs/${blog.slug}`}>

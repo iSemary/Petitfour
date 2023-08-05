@@ -19,6 +19,7 @@ function SideSkills({ sideSkills }) {
                 left="0"
                 strokeWidth="60px"
                 rotate="180"
+                zIndex="0"
             />
 
             <Container>
