@@ -118,8 +118,8 @@ class ConfigController extends Controller {
         // Find the record by ID and update the columns
         $config = SystemConfig::findOrFail(1);
 
-        $logo = Uploader::file($request->file('theme_logo'), $config, 'theme_logo', 'config');
-        $themeLogo = Uploader::file($request->file('logo'), $config, 'logo', 'config');
+        $themeLogo = Uploader::file($request->file('theme_logo'), $config, 'theme_logo', 'config');
+        $logo = Uploader::file($request->file('logo'), $config, 'logo', 'config');
         $contactImage = Uploader::image($request->file('contact_image'), $config->contact_image, 'config');
         $contactThemeImage = Uploader::image($request->file('contact_theme_image'), $config->contact_theme_image, 'config');
         $notFoundImage = Uploader::file($request->file('not_found_image'), $config, 'not_found_image', 'config');

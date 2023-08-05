@@ -8,8 +8,8 @@ class SystemConfig extends Model {
     protected $fillable = ['primary_color', 'secondary_color', 'contact_email', 'openai_api_token', 'google_analytics_id', 'logo', 'contact_image', 'contact_theme_image', 'not_found_image', 'sitemap_updated_at'];
 
     protected $appends = [
-        'theme_logo',
         'logo',
+        'theme_logo',
         'contact_image',
         'contact_theme_image',
         'not_found_image'
