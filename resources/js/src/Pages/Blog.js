@@ -116,7 +116,6 @@ function Blog() {
                                 <SplideSlide key={index}>
                                     <BlogTemplate
                                         blog={similarBlog}
-                                        col={12}
                                         fade={false}
                                     />
                                 </SplideSlide>

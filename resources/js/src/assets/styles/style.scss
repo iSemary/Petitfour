@@ -29,8 +29,28 @@ body {
     font-display: auto;
 }
 
+.glass-header {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-bottom: 1px solid #ffffff33;
+    padding: 2px 0;
+    .nav-links .links div a {
+        text-shadow: 0 0 5px #2125298c;
+    }
+    .header-logo {
+        width: 25px;
+    }
+}
 .main-nav {
+    position: sticky;
+    top: 0;
     z-index: 2;
+    transition: 200ms;
+    .container .row {
+        align-items: center;
+    }
     .nav-links {
         display: flex;
         justify-content: flex-end;
@@ -148,11 +168,13 @@ body {
         transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
         z-index: 1000;
         .links {
+            height: 100vh;
             transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
             display: grid !important;
-            margin: 30% 0;
+            padding: 30% 0;
             align-items: center !important;
             justify-content: center !important;
+            background-color: $primaryDark;
             div {
                 display: none;
                 margin: 15px 0;
@@ -1310,6 +1332,14 @@ $blurSvgDuration: 20s;
 .skills {
     position: relative;
     overflow: hidden;
+    svg {
+        z-index: 0;
+    }
+    .container {
+        position: relative;
+        z-index: 1;
+    }
+
     .skills-major-container {
         .skills-major {
             margin-top: 3%;
@@ -1849,6 +1879,13 @@ footer.home-footer {
         stroke-width: 0.89px;
     }
 }
+
+.splide__list {
+    .blog-item {
+        width: 100%;
+    }
+}
+
 /*  =============================================================================================
                         Custom Styles for pharaoh theme
     =============================================================================================
@@ -1858,6 +1895,9 @@ footer.home-footer {
 
     * {
         cursor: url("../images/scepter-cursor.png"), auto;
+    }
+    .logo-loader:after {
+        color: $themePrimaryColor;
     }
     // Start Header
     .main-nav {
@@ -1878,10 +1918,10 @@ footer.home-footer {
         }
     }
     @media screen and (max-width: 767px) {
-        .nav-links {
+        .nav-links, .links {
             background-color: $themePrimaryDark;
         }
-    }    
+    }
     .top-home-details {
         h1 {
             .gradient-text {
@@ -2061,7 +2101,6 @@ footer.home-footer {
         );
     }
 
-
     // SVG Colors
     .arrows-svg {
         .cls-1 {
@@ -2094,7 +2133,6 @@ footer.home-footer {
     .circles-pattern {
         .cls-1 {
             fill: $themePrimaryColor;
-
         }
     }
 }

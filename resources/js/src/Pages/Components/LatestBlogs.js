@@ -15,7 +15,6 @@ function LatestBlogs({ latestBlogs }) {
                         latestBlogs.map((blog, index) => (
                             <BlogTemplate
                                 blog={blog}
-                                col={4}
                                 animate={"fade-right"}
                                 key={index}
                             />
