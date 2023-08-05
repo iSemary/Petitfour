@@ -14,7 +14,7 @@ function SideSkills({ sideSkills }) {
                 width="75"
                 height="180"
                 stroke={styleVariables.primaryWhite}
-                bottom="-8%"
+                bottom="0"
                 right="0"
                 left="0"
                 strokeWidth="60px"

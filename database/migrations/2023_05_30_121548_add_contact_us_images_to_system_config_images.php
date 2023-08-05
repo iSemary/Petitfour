@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void {
         Schema::table('system_configs', function (Blueprint $table) {
-            $table->string('contact_image', 255)->nullable()->after('logo');
+            $table->string('contact_image', 255)->nullable()->after('theme_logo');
             $table->string('contact_theme_image', 255)->nullable()->after('contact_image');
         });
     }

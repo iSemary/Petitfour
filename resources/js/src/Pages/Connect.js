@@ -375,7 +375,7 @@ function Connect(props) {
                                 style={imageLoading ? { display: "none" } : {}}
                                 className="card-img-top h-100"
                                 onLoad={() => setImageLoading(false)}
-                                src={props.config.contact_image}
+                                src={props.theme ? props.config.contact_theme_image : props.config.contact_image}
                                 alt="contact"
                             />
                         )}

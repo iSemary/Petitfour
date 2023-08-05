@@ -1493,5 +1493,17 @@ footer.home-footer {
     background-color: #3e1d02; }
   .pharaoh-mode footer.home-footer {
     background: linear-gradient(360deg, #3e1d02 0%, #171a1c 100%); }
+  .pharaoh-mode .arrows-svg .cls-1 {
+    fill: #ffc823; }
+  .pharaoh-mode .dotted-square-svg .cls-2 {
+    stroke: #ffc823; }
+  .pharaoh-mode .zigzag-svg .cls-1 {
+    fill: #ffc823; }
+  .pharaoh-mode .contact-form-container .dotted-square-svg .cls-2 {
+    fill: #ffc823; }
+  .pharaoh-mode .squares-pattern .cls-2 {
+    fill: #ffc823; }
+  .pharaoh-mode .circles-pattern .cls-1 {
+    fill: #ffc823; }
 
 /*# sourceMappingURL=style.css.map */
