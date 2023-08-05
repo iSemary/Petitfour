@@ -13,7 +13,7 @@ function App() {
     AOS.init();
     const config = useSelector((state) => state.config.data);
     const dispatch = useDispatch();
-    const theme = localStorage.getItem("theme") === "true";
+    let theme = localStorage.getItem("theme") === "true";
 
     useEffect(() => {
         dispatch(getConfig());
@@ -22,6 +22,7 @@ function App() {
     return (
         <>
             <Header
+                theme={theme}
                 logo={config?.config?.system?.logo}
                 theme_logo={config?.config?.system?.theme_logo}
                 resume={config?.config?.user?.resume}
