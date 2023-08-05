@@ -8,6 +8,7 @@ class SystemConfig extends Model {
     protected $fillable = ['primary_color', 'secondary_color', 'contact_email', 'openai_api_token', 'google_analytics_id', 'logo', 'contact_image', 'contact_theme_image', 'not_found_image', 'sitemap_updated_at'];
 
     protected $appends = [
+        'theme_logo',
         'logo',
         'contact_image',
         'contact_theme_image',
@@ -16,6 +17,9 @@ class SystemConfig extends Model {
 
     public function getLogoAttribute() {
         return asset("storage/config/" . $this->attributes['logo']);
+    }
+    public function getThemeLogoAttribute() {
+        return asset("storage/config/" . $this->attributes['theme_logo']);
     }
     public function getContactImageAttribute() {
         return asset("storage/config/" . $this->attributes['contact_image']);

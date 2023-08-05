@@ -23,7 +23,7 @@ function Router(props) {
                 <Route path="/projects/:name" element={<Project/>} />
                 <Route path="/blogs" element={<Blogs categories={props.config?.categories} />} />
                 <Route path="/blogs/:slug" element={<Blog />} />
-                <Route path="/connect" element={<Connect config={props.config?.config?.system} />} />
+                <Route path="/connect" element={<Connect config={props.config?.config?.system} theme={props.theme} />} />
 
                 <Route path="*" element={<NotFound image={props.config?.config?.system?.not_found_image}/>} />
             </Routes>

@@ -2056,4 +2056,41 @@ footer.home-footer {
             $primaryBlack 100%
         );
     }
+
+
+    // SVG Colors
+    .arrows-svg {
+        .cls-1 {
+            fill: $themePrimaryColor;
+        }
+    }
+
+    .dotted-square-svg {
+        .cls-2 {
+            stroke: $themePrimaryColor;
+        }
+    }
+
+    .zigzag-svg {
+        .cls-1 {
+            fill: $themePrimaryColor;
+        }
+    }
+
+    .contact-form-container .dotted-square-svg .cls-2 {
+        fill: $themePrimaryColor;
+    }
+
+    .squares-pattern {
+        .cls-2 {
+            fill: $themePrimaryColor;
+        }
+    }
+
+    .circles-pattern {
+        .cls-1 {
+            fill: $themePrimaryColor;
+
+        }
+    }
 }

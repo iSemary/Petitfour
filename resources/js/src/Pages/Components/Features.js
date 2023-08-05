@@ -9,7 +9,7 @@ function Features(props) {
         <div className="bg-home-even">
             <Container>
                 <h3 className="text-center home-title">
-                    What can i do <span>best ?</span>
+                    What can i do <span>best?</span>
                 </h3>
                 <Row className="features m-auto">
                     {props.features ? (

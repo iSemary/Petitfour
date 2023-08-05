@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Models\Experience;
 use App\Models\Feature;
 use App\Models\Project;
-use App\Models\ProjectImage;
 use App\Models\Skill;
 use App\Models\SocialLink;
 use App\Models\SystemConfig;
@@ -24,8 +23,6 @@ class HomeController extends Controller {
 
     public function index(Request $request): JsonResponse {
         $data = new stdClass();
-
-
         // Returning all categories        
         $data->categories = Category::select([
             'id',
@@ -143,7 +140,7 @@ class HomeController extends Controller {
 
         $config['user'] = UserConfig::select(['first_name', 'last_name', 'email', 'country', 'city', 'phone_number', 'country_code', 'address', 'position', 'bio', 'slogan', 'home_image', 'theme_home_image', 'resume'])->where('id', 1)->first();
 
-        $config['system'] = SystemConfig::select(['primary_color', 'secondary_color', 'contact_email', 'logo', 'contact_image', 'contact_theme_image', 'not_found_image'])->where('id', 1)->first();
+        $config['system'] = SystemConfig::select(['primary_color', 'secondary_color', 'contact_email', 'theme_logo', 'logo', 'contact_image', 'contact_theme_image', 'not_found_image'])->where('id', 1)->first();
 
         $data->config = $config;
 

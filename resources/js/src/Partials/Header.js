@@ -79,7 +79,7 @@ function Header(props) {
                             {logoLoading && <div className="logo-loader-container"><div className="logo-loader"></div><div className="logo-loader"></div></div>}
 
                             <img
-                                src={props.logo}
+                                src={props.theme ? props.theme_logo : props.logo}
                                 alt="Main logo"
                                 style={logoLoading ? { display: "none" } : {}}
                                 onLoad={() => setLogoLoading(false)}

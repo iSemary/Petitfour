@@ -13,10 +13,10 @@ function App() {
     AOS.init();
     const config = useSelector((state) => state.config.data);
     const dispatch = useDispatch();
+    const theme = localStorage.getItem("theme") === "true";
 
     useEffect(() => {
         dispatch(getConfig());
-        const theme = localStorage.getItem("theme") === "true";
         if (theme) document.body.classList.add("pharaoh-mode");
     }, [dispatch]);
     return (
@@ -26,8 +26,7 @@ function App() {
                 theme_logo={config?.config?.system?.theme_logo}
                 resume={config?.config?.user?.resume}
             />
-            <Router config={config} />
-
+            <Router config={config} theme={theme} />
             <Footer
                 socialLinks={config?.social_links}
                 userInfo={config?.config?.user}
