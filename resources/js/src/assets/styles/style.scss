@@ -1877,7 +1877,11 @@ footer.home-footer {
             }
         }
     }
-
+    @media screen and (max-width: 767px) {
+        .nav-links {
+            background-color: $themePrimaryDark;
+        }
+    }    
     .top-home-details {
         h1 {
             .gradient-text {

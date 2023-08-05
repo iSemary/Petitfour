@@ -1414,6 +1414,9 @@ footer.home-footer {
       color: #ffc823; }
   .pharaoh-mode .main-nav .nav-links .links div a.active {
     color: #ffc823; }
+  @media screen and (max-width: 767px) {
+    .pharaoh-mode .nav-links {
+      background-color: #3e1d02; } }
   .pharaoh-mode .top-home-details h1 .gradient-text {
     color: transparent;
     background-image: linear-gradient(90deg, #ffc823 0, #3e1d02 100%);
