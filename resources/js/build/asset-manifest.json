@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.a1e1aa86.css",
+    "main.css": "/static/css/main.6d4b0ea3.css",
     "main.js": "/static/js/main.9183f8bc.js",
     "static/js/496.b63c837b.chunk.js": "/static/js/496.b63c837b.chunk.js",
     "static/media/landing.gif": "/static/media/landing.c32f9de59fb3d8a05f98.gif",
     "static/media/hesham-nazih-moon-knight.mp3": "/static/media/hesham-nazih-moon-knight.46d736371d640b3ab0e5.mp3",
     "static/media/Montserrat-VariableFont_wght.ttf": "/static/media/Montserrat-VariableFont_wght.3faa3eef13649db02044.ttf",
     "static/media/pharaoh.png": "/static/media/pharaoh.88dcee0a851be26dc4bd.png",
-    "static/media/stars.png": "/static/media/stars.05d1c5ba5ef48bd3536e.png",
+    "static/media/stars.png": "/static/media/stars.5e91fb60247cb3f20ca9.png",
     "static/media/moonfark.ttf": "/static/media/moonfark.4bc6685c8d75b3450489.ttf",
     "static/media/Lato-Regular.ttf": "/static/media/Lato-Regular.9d883d540ee2b4de8024.ttf",
     "static/media/moon-night-transition-sound-effect.mp3": "/static/media/moon-night-transition-sound-effect.a236fe43e8c066ee28ac.mp3",
     "static/media/Scarab_beetle_icon.png": "/static/media/Scarab_beetle_icon.08486f80366e850209cb.png",
     "static/media/AlphacodePharaohRegular.ttf": "/static/media/AlphacodePharaohRegular.b597528db9c191bede03.ttf",
     "index.html": "/index.html",
-    "main.a1e1aa86.css.map": "/static/css/main.a1e1aa86.css.map",
+    "main.6d4b0ea3.css.map": "/static/css/main.6d4b0ea3.css.map",
     "main.9183f8bc.js.map": "/static/js/main.9183f8bc.js.map",
     "496.b63c837b.chunk.js.map": "/static/js/496.b63c837b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a1e1aa86.css",
+    "static/css/main.6d4b0ea3.css",
     "static/js/main.9183f8bc.js"
   ]
 }
