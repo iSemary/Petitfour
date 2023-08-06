@@ -7,6 +7,7 @@ export default function HalfCirclePattern({
     left = "0%",
     strokeWidth = "50px",
     rotate = "180",
+    zIndex = "1",
 }) {
     return (
         <svg
@@ -20,6 +21,7 @@ export default function HalfCirclePattern({
                 bottom: bottom,
                 right: right,
                 left: left,
+                zIndex: zIndex,
                 transform: `rotate(${rotate}deg)`,
             }}
         >

@@ -14,6 +14,7 @@ class CreateSystemConfigsTable extends Migration {
             $table->string('openai_api_token')->nullable();
             $table->string('google_analytics_id')->nullable();
             $table->string('logo')->nullable();
+            $table->string('theme_logo')->nullable();
             $table->timestamps();
         });
     }

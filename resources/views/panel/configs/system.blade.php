@@ -37,7 +37,7 @@
                     </div>
                     <div class="row">
 
-                        <?php $inputs = ['logo', 'contact_image', 'contact_theme_image', 'not_found_image']; ?>
+                        <?php $inputs = ['logo', 'theme_logo', 'contact_image', 'contact_theme_image', 'not_found_image']; ?>
                         @foreach ($inputs as $input)
                             <?= \App\Helpers\FormInput::file($config, $input, $input) ?>
                         @endforeach

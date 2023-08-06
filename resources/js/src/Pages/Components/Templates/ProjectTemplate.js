@@ -9,7 +9,7 @@ function ProjectTemplate({ project, col, animate, containerClass = '', index = 0
     const MAX_PROJECT_SKILLS = 4;
 
     return (
-        <Col md={col} data-aos-offset={(index*100)} data-aos={animate} className={containerClass + " project-box"}>
+        <Col sm={12} md={6} lg={4} data-aos-offset={(index*100)} data-aos={animate} className={containerClass + " project-box"}>
             <Link
                 className="no-link"
                 to={`/projects/${project.name

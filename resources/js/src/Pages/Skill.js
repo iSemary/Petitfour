@@ -132,7 +132,6 @@ const Skill = () => {
                                 return (
                                     <BlogTemplate
                                         blog={blog}
-                                        col={4}
                                         animate={"fade-right"}
                                         key={index}
                                     />

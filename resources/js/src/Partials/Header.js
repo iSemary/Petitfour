@@ -68,8 +68,8 @@ function Header(props) {
     return (
         <Navbar
             className={
-                "main-nav w-100 mt-2" +
-                (useMatch("/") ? "position-absolute" : "nav-pages")
+                "main-nav w-100 " +
+                (useMatch("/") ? "" : "nav-pages")
             }
         >
             <Container>
@@ -79,7 +79,7 @@ function Header(props) {
                             {logoLoading && <div className="logo-loader-container"><div className="logo-loader"></div><div className="logo-loader"></div></div>}
 
                             <img
-                                src={props.logo}
+                                src={props.theme ? props.theme_logo : props.logo}
                                 alt="Main logo"
                                 style={logoLoading ? { display: "none" } : {}}
                                 onLoad={() => setLogoLoading(false)}

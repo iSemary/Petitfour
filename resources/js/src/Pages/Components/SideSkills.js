@@ -14,11 +14,12 @@ function SideSkills({ sideSkills }) {
                 width="75"
                 height="180"
                 stroke={styleVariables.primaryWhite}
-                bottom="-8%"
+                bottom="0"
                 right="0"
                 left="0"
                 strokeWidth="60px"
                 rotate="180"
+                zIndex="0"
             />
 
             <Container>
@@ -50,7 +51,7 @@ function SideSkills({ sideSkills }) {
                                             <Col md={9} className="text-left">
                                                 <h3>{sideSkill.title}</h3>
                                                 <p>{sideSkill.description}</p>
-                                                <Row className="skills m-auto">
+                                                <Row className="m-auto">
                                                     {sideSkill?.skills
                                                         ?.slice(
                                                             0,
