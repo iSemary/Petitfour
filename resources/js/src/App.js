@@ -27,7 +27,7 @@ function App() {
                 resume={config?.config?.user?.resume}
             />
             <Router config={config} />
-
+            <div className="overlay-background"></div>
             <Footer
                 socialLinks={config?.social_links}
                 userInfo={config?.config?.user}
