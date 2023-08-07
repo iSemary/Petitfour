@@ -18,7 +18,15 @@
   primaryDark: #0c001f;
   primaryGreen: #609966;
   secondaryColor: #e4058e;
-  secondaryTextColor: #ff8729; }
+  secondaryTextColor: #ff8729;
+  themePrimaryColor: #f2a71b;
+  themePrimaryBlue: #0ccde8;
+  themePrimaryBlack: #171a1c;
+  themePrimaryWhite: #e3e1fa;
+  themePrimaryDark: #594114;
+  themePrimaryGreen: #609966;
+  themeSecondaryColor: #e4058e;
+  themeSecondaryTextColor: #f28705; }
 
 body {
   background-color: #0c001f;
@@ -37,10 +45,16 @@ body {
   -webkit-backdrop-filter: blur(5px);
   border-bottom: 1px solid #ffffff33;
   padding: 2px 0; }
+  .glass-header .nav-row {
+    height: 40px; }
   .glass-header .nav-links .links div a {
     text-shadow: 0 0 5px #2125298c; }
   .glass-header .header-logo {
     width: 25px; }
+  .glass-header .logo-loader {
+    top: -10px;
+    width: 20px;
+    height: 20px; }
 
 .main-nav {
   position: sticky;
@@ -322,7 +336,7 @@ body {
     transform: rotate(0deg); } }
 .top-home-details {
   display: grid;
-  height: 100%;
+  height: 85%;
   align-items: center; }
   .top-home-details h1 {
     font-size: 3.5rem;
@@ -683,8 +697,7 @@ body {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   height: 200px;
-  overflow: hidden;
-  box-shadow: 0 -1px 20px #0c001f; }
+  overflow: hidden; }
   .blog-item .blog-card-image-container img {
     height: 200px;
     transition: 650ms; }
@@ -1440,7 +1453,7 @@ footer.home-footer {
     =============================================================================================
 */
 .pharaoh-mode {
-  background-color: #3e1d02; }
+  background-color: #594114; }
   .pharaoh-mode .content,
   .pharaoh-mode .skills,
   .pharaoh-mode .bg-home-even .container,
@@ -1450,40 +1463,43 @@ footer.home-footer {
   .pharaoh-mode * {
     cursor: url("../images/scepter-cursor.png"), auto; }
   .pharaoh-mode .logo-loader:after {
-    color: #ffc823; }
+    color: #f2a71b; }
   .pharaoh-mode .main-nav .nav-links .links div a {
     color: #e3e1fa; }
     .pharaoh-mode .main-nav .nav-links .links div a:hover {
-      color: #ffc823; }
+      color: #f2a71b; }
   .pharaoh-mode .main-nav .nav-links .links div a.active {
-    color: #ffc823; }
+    color: #f2a71b; }
   @media screen and (max-width: 767px) {
     .pharaoh-mode .nav-links,
     .pharaoh-mode .links {
-      background-color: #3e1d02; } }
+      background-color: #594114; } }
+  .pharaoh-mode .contact-container .contact-form {
+    background: #76470624; }
   .pharaoh-mode .top-home-details h1 .gradient-text {
     color: transparent;
-    background-image: linear-gradient(90deg, #ffc823 0, #3e1d02 100%);
+    background-image: linear-gradient(90deg, #e3e1fa 0, #F28705 100%);
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text; }
   .pharaoh-mode .top-home-details p span {
-    background: linear-gradient(transparent 50%, #3e1d02 15px); }
+    background: linear-gradient(transparent 50%, #f2a71b 15px);
+    color: #fff; }
   .pharaoh-mode .main-background-cover {
-    background-color: #3e1d02; }
+    background-color: #594114; }
   .pharaoh-mode .switch-button-content .switch-button.default {
-    background-color: #3e1d02;
-    box-shadow: -2px -2px 5px #ffc823; }
+    background-color: #594114;
+    box-shadow: -1px -1px 4px #f2a71b; }
   .pharaoh-mode .bg-home-even {
-    background-color: #3e1d02;
-    background: linear-gradient(180deg, #3e1d02 75%, #171a1c 100%); }
+    background-color: #594114;
+    background: linear-gradient(180deg, #594114 75%, #171a1c 100%); }
   .pharaoh-mode .bg-home-odd {
     background-color: #171a1c;
-    background: linear-gradient(180deg, #171a1c 85%, #3e1d02 100%); }
+    background: linear-gradient(180deg, #171a1c 85%, #594114 100%); }
   .pharaoh-mode .bg-main-dark {
-    background-color: #3e1d02; }
+    background-color: #594114; }
   .pharaoh-mode .text-main-dark {
-    color: #3e1d02; }
+    color: #594114; }
   .pharaoh-mode .home-experiences .experience-h-line .h-line {
     background-color: #3e1d02;
     background-image: linear-gradient(90deg, #ff8729, #3e1d02 74%); }
@@ -1491,14 +1507,14 @@ footer.home-footer {
     background-color: #3e1d02;
     background-image: linear-gradient(0deg, #ff8729, #3e1d02 74%); }
   .pharaoh-mode .home-experiences .experience .experience-date {
-    background-color: #3e1d02;
-    background-image: linear-gradient(326deg, #ffc823 0%, #3e1d02 74%);
+    background-color: #594114;
+    background-image: linear-gradient(326deg, #f2a71b 0%, #594114 74%);
     color: #ffffffe3; }
   .pharaoh-mode .home-experiences .experience .experience-info {
     color: #e3e1fa;
-    background-color: #3e1d02; }
+    background-color: #594114; }
     .pharaoh-mode .home-experiences .experience .experience-info .experience-title {
-      color: #ffc823; }
+      color: #f2a71b; }
   .pharaoh-mode .home-experiences .experience-even .h-line {
     background-image: linear-gradient(327deg, #ff8729, #3e1d02 74%); }
   .pharaoh-mode .side-skills .side-skills-item .card {
@@ -1507,50 +1523,48 @@ footer.home-footer {
     border: 0;
     color: #e3e1fa; }
   .pharaoh-mode .home-title span {
-    color: #ffc823; }
+    color: #f2a71b; }
   .pharaoh-mode .features .feature-item .feature-image,
   .pharaoh-mode .category-details .category-name .category-icon {
     filter: hue-rotate(132deg); }
   .pharaoh-mode .title-line {
-    color: #ffc823; }
+    color: #f2a71b; }
   .pharaoh-mode .btn-main-light {
-    color: #3e1d02; }
+    color: #594114; }
     .pharaoh-mode .btn-main-light:hover {
-      background-color: #3e1d02;
+      background-color: #594114;
       color: #e3e1fa; }
   .pharaoh-mode .btn-main-light.active {
     color: #e3e1fa; }
   .pharaoh-mode .blog-filter button span {
-    color: #3e1d02; }
+    color: #594114; }
   .pharaoh-mode .blog-filter button:hover span {
-    background-color: #3e1d02;
+    background-color: #594114;
     color: #e3e1fa; }
   .pharaoh-mode .blog-page .blog-details .blog-title {
-    color: #ffc823;
-    border-bottom: 2px solid #ffc823; }
+    color: #f2a71b;
+    border-bottom: 2px solid #f2a71b; }
   .pharaoh-mode .blog-page .blog-content {
-    border-left: 4px solid #ffc823; }
+    border-left: 4px solid #f2a71b; }
   .pharaoh-mode .badge-secondary {
-    color: #3e1d02; }
+    color: #594114; }
   .pharaoh-mode .contact-container .form-label b {
-    border-bottom: 3px dotted #ffc823; }
-  .pharaoh-mode .blog-item .blog-card-image-container {
-    box-shadow: 0 -1px 20px #3e1d02; }
+    border-bottom: 3px dotted #f2a71b; }
   .pharaoh-mode footer {
-    background-color: #3e1d02; }
+    background-color: #594114; }
   .pharaoh-mode footer.home-footer {
-    background: linear-gradient(360deg, #3e1d02 0%, #171a1c 100%); }
+    background: linear-gradient(360deg, #594114 0%, #171a1c 100%); }
   .pharaoh-mode .arrows-svg .cls-1 {
-    fill: #ffc823; }
+    fill: #f2a71b; }
   .pharaoh-mode .dotted-square-svg .cls-2 {
-    stroke: #ffc823; }
+    stroke: #f2a71b; }
   .pharaoh-mode .zigzag-svg .cls-1 {
-    fill: #ffc823; }
+    fill: #f2a71b; }
   .pharaoh-mode .contact-form-container .dotted-square-svg .cls-2 {
-    fill: #ffc823; }
+    fill: #f2a71b; }
   .pharaoh-mode .squares-pattern .cls-2 {
-    fill: #ffc823; }
+    fill: #f2a71b; }
   .pharaoh-mode .circles-pattern .cls-1 {
-    fill: #ffc823; }
+    fill: #f2a71b; }
 
 /*# sourceMappingURL=style.css.map */

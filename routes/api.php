@@ -20,7 +20,6 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('skills/{name}', [SkillController::class, 'show']);
 
         Route::get('blogs', [BlogController::class, 'index']);
-        Route::get('blogs/category/{slug}', [BlogController::class, 'showByCategory']);
         Route::get('blogs/{slug}', [BlogController::class, 'show']);
 
         Route::get('projects', [ProjectController::class, 'index']);

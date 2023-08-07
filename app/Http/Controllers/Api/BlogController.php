@@ -59,6 +59,21 @@ class BlogController extends Controller {
         ]);
     }
 
+    /**
+     * This PHP function retrieves a blog post and its related data, including similar blog posts, and
+     * returns it as a JSON response.
+     * 
+     * @param Request request The `` parameter is an instance of the `Illuminate\Http\Request`
+     * class. It represents the current HTTP request being handled by the application and contains
+     * information such as the request method, headers, and input data.
+     * @param slug The "slug" parameter is a string that represents the unique identifier for a specific
+     * blog post. It is used to retrieve the blog post from the database and display its details.
+     * 
+     * @return JsonResponse A JSON response is being returned. The response has a 'success' key with a
+     * boolean value, a 'status' key with an integer value, and a 'data' key with an array value. The
+     * 'data' array contains two keys: 'blog' and 'similar'. The 'blog' key contains the details of a
+     * specific blog post, including its id, slug, title, description
+     */
     public function show(Request $request, $slug = null): JsonResponse {
         if (!$slug) {
             return response()->json([

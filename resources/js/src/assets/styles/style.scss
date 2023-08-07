@@ -36,11 +36,19 @@ body {
     -webkit-backdrop-filter: blur(5px);
     border-bottom: 1px solid #ffffff33;
     padding: 2px 0;
+    .nav-row {
+        height: 40px;
+    }
     .nav-links .links div a {
         text-shadow: 0 0 5px #2125298c;
     }
     .header-logo {
         width: 25px;
+    }
+    .logo-loader {
+        top: -10px;
+        width: 20px;
+        height: 20px;
     }
 }
 .main-nav {
@@ -418,7 +426,7 @@ $blurSvgDuration: 20s;
 
 .top-home-details {
     display: grid;
-    height: 100%;
+    height: 85%;
     align-items: center;
     h1 {
         font-size: 3.5rem;
@@ -829,7 +837,7 @@ $blurSvgDuration: 20s;
         border-top-left-radius: 5px;
         height: 200px;
         overflow: hidden;
-        box-shadow: 0 -1px 20px $primaryDark;
+        // box-shadow: 0 -1px 20px $primaryDark;
         img {
             height: 200px;
             transition: 650ms;
@@ -1908,7 +1916,7 @@ footer.home-footer {
         background-size: 635px;
         background-image: url("../images/textures/pharaoh.png");
     }
-    
+
     * {
         cursor: url("../images/scepter-cursor.png"), auto;
     }
@@ -1939,18 +1947,14 @@ footer.home-footer {
             background-color: $themePrimaryDark;
         }
     }
-    // .contact-container .contact-form {
-    //     background: #3e1d0280;
-    // }
+    .contact-container .contact-form {
+        background: #76470624;
+    }
     .top-home-details {
         h1 {
             .gradient-text {
                 color: transparent;
-                background-image: linear-gradient(
-                    90deg,
-                    $themePrimaryColor 0,
-                    $themePrimaryDark 100%
-                );
+                background-image: linear-gradient(90deg, #e3e1fa 0, #F28705 100%);
                 -webkit-background-clip: text;
                 -moz-background-clip: text;
                 background-clip: text;
@@ -1961,8 +1965,9 @@ footer.home-footer {
             span {
                 background: linear-gradient(
                     transparent 50%,
-                    $themePrimaryDark 15px
+                    $themePrimaryColor 15px
                 );
+                color: #fff;
             }
         }
     }
@@ -1973,7 +1978,7 @@ footer.home-footer {
     }
     .switch-button-content .switch-button.default {
         background-color: $themePrimaryDark;
-        box-shadow: -2px -2px 5px $themePrimaryColor;
+        box-shadow: -1px -1px 4px $themePrimaryColor;
     }
     .bg-home-even {
         background-color: $themePrimaryDark;
@@ -2107,7 +2112,7 @@ footer.home-footer {
         border-bottom: 3px dotted $themePrimaryColor;
     }
     .blog-item .blog-card-image-container {
-        box-shadow: 0 -1px 20px $themePrimaryDark;
+        // box-shadow: 0 -1px 20px $themePrimaryDark;
     }
     // Footer
     footer {

@@ -7,14 +7,14 @@ $primaryGreen: #609966;
 $secondaryColor: #e4058e;
 $secondaryTextColor: #ff8729;
 
-$themePrimaryColor: #ffc823;
+$themePrimaryColor: #f2a71b;
 $themePrimaryBlue: #0ccde8;
 $themePrimaryBlack: #171a1c;
 $themePrimaryWhite: #e3e1fa;
-$themePrimaryDark: #3e1d02;
+$themePrimaryDark: #594114;
 $themePrimaryGreen: #609966;
 $themeSecondaryColor: #e4058e;
-$themeSecondaryTextColor: #ff8729;
+$themeSecondaryTextColor: #f28705;
 
 :export {
     primaryColor: $primaryColor;
@@ -25,4 +25,13 @@ $themeSecondaryTextColor: #ff8729;
     primaryGreen: $primaryGreen;
     secondaryColor: $secondaryColor;
     secondaryTextColor: $secondaryTextColor;
+
+    themePrimaryColor: $themePrimaryColor;
+    themePrimaryBlue: $themePrimaryBlue;
+    themePrimaryBlack: $themePrimaryBlack;
+    themePrimaryWhite: $themePrimaryWhite;
+    themePrimaryDark: $themePrimaryDark;
+    themePrimaryGreen: $themePrimaryGreen;
+    themeSecondaryColor: $themeSecondaryColor;
+    themeSecondaryTextColor: $themeSecondaryTextColor;
 }

@@ -73,7 +73,7 @@ function Header(props) {
             }
         >
             <Container>
-                <Row className="w-100">
+                <Row className="w-100 nav-row">
                     <Col md={3} sm={3} xs={3} className="main-logo">
                         <Link to="/" className="no-link">
                             {logoLoading && <div className="logo-loader-container"><div className="logo-loader"></div><div className="logo-loader"></div></div>}
