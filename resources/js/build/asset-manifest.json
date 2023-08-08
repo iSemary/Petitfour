@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.6d4b0ea3.css",
-    "main.js": "/static/js/main.9183f8bc.js",
+    "main.css": "/static/css/main.5a43193e.css",
+    "main.js": "/static/js/main.0fb6f21f.js",
     "static/js/496.b63c837b.chunk.js": "/static/js/496.b63c837b.chunk.js",
     "static/media/landing.gif": "/static/media/landing.c32f9de59fb3d8a05f98.gif",
     "static/media/hesham-nazih-moon-knight.mp3": "/static/media/hesham-nazih-moon-knight.46d736371d640b3ab0e5.mp3",
@@ -14,12 +14,12 @@
     "static/media/Scarab_beetle_icon.png": "/static/media/Scarab_beetle_icon.08486f80366e850209cb.png",
     "static/media/AlphacodePharaohRegular.ttf": "/static/media/AlphacodePharaohRegular.b597528db9c191bede03.ttf",
     "index.html": "/index.html",
-    "main.6d4b0ea3.css.map": "/static/css/main.6d4b0ea3.css.map",
-    "main.9183f8bc.js.map": "/static/js/main.9183f8bc.js.map",
+    "main.5a43193e.css.map": "/static/css/main.5a43193e.css.map",
+    "main.0fb6f21f.js.map": "/static/js/main.0fb6f21f.js.map",
     "496.b63c837b.chunk.js.map": "/static/js/496.b63c837b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6d4b0ea3.css",
-    "static/js/main.9183f8bc.js"
+    "static/css/main.5a43193e.css",
+    "static/js/main.0fb6f21f.js"
   ]
 }
