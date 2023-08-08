@@ -9,12 +9,12 @@ import Project from "../Pages/Project";
 import Blog from "../Pages/Blog";
 import Blogs from "../Pages/Blogs";
 import NotFound from "../Pages/NotFound";
-import ScrollToTop from "../Pages/Utilities/ScrollToTop"
+// import ScrollToTop from "../Pages/Utilities/ScrollToTop"
 
 function Router(props) {
     return (
         <div className="content">
-            <ScrollToTop />
+            {/* <ScrollToTop /> */}
             <Routes>
                 <Route path="/" element={<Home config={props.config} />} />
                 <Route path="/skills" element={<Skills />} />

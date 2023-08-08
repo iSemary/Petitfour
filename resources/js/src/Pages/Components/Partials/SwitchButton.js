@@ -19,6 +19,8 @@ export default function SwitchButton() {
         setIsPlayingTransition(false);
         setIsPlayingSoundtrack(theme === true);
         setScrollingDown(theme === true);
+
+        if(theme === true) scrollToDown();
     };
 
     const handleSoundtrackEnded = (e) => {
@@ -80,12 +82,38 @@ export default function SwitchButton() {
         document.body.style.filter = "blur(10px)";
     };
 
+    const scrollToDown = () => {
+        let scrollerID;
+        let speed = 6; // 1 - Fast | 2 - Medium | 3 - Slow
+        let interval = speed * 5;
+
+        function startScroll() {
+            let id = setInterval(function () {
+                window.scrollBy(0, 2);
+                if (
+                    window.innerHeight + window.scrollY >=
+                    document.body.offsetHeight
+                ) {
+                    // Reached end of page
+                    stopScroll();
+                }
+            }, interval);
+            return id;
+        }
+
+        function stopScroll() {
+            clearInterval(scrollerID);
+        }
+
+        startScroll();
+    };
+
     const switchTheme = (e) => {
         localStorage.setItem("theme", String(!theme));
         // Count user theme request for analytics uses
         countUserThemeRequest();
 
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
         setIsPlayingTransition(true);
 
         blurPage();

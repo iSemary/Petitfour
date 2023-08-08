@@ -34,6 +34,10 @@ body {
   filter: blur(0);
   transition: filter 1s; }
 
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: auto !important; } }
+
 * {
   font-family: "Lato", Arial, sans-serif;
   font-display: auto; }
@@ -1464,6 +1468,10 @@ footer.home-footer {
     cursor: url("../images/scepter-cursor.png"), auto; }
   .pharaoh-mode .logo-loader:after {
     color: #f2a71b; }
+  .pharaoh-mode .blur-background svg:first-of-type circle {
+    fill: #ffe800; }
+  .pharaoh-mode .blur-background svg:nth-of-type(2) circle {
+    fill: #fff; }
   .pharaoh-mode .main-nav .nav-links .links div a {
     color: #e3e1fa; }
     .pharaoh-mode .main-nav .nav-links .links div a:hover {
@@ -1474,11 +1482,9 @@ footer.home-footer {
     .pharaoh-mode .nav-links,
     .pharaoh-mode .links {
       background-color: #594114; } }
-  .pharaoh-mode .contact-container .contact-form {
-    background: #76470624; }
   .pharaoh-mode .top-home-details h1 .gradient-text {
     color: transparent;
-    background-image: linear-gradient(90deg, #e3e1fa 0, #F28705 100%);
+    background-image: linear-gradient(90deg, #e3e1fa 0, #f28705 100%);
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text; }
@@ -1527,6 +1533,41 @@ footer.home-footer {
   .pharaoh-mode .features .feature-item .feature-image,
   .pharaoh-mode .category-details .category-name .category-icon {
     filter: hue-rotate(132deg); }
+  .pharaoh-mode footer {
+    background-color: #594114; }
+  .pharaoh-mode footer.home-footer {
+    background: linear-gradient(360deg, #594114 0%, #171a1c 100%); }
+  .pharaoh-mode .arrows-svg .cls-1 {
+    fill: #f2a71b; }
+  .pharaoh-mode .dotted-square-svg .cls-2 {
+    stroke: #f2a71b; }
+  .pharaoh-mode .squares-pattern .cls-2 {
+    fill: #f2a71b; }
+  .pharaoh-mode .circles-pattern .cls-1 {
+    fill: #f2a71b; }
+  .pharaoh-mode .zigzag-svg .cls-1 {
+    fill: #f2a71b; }
+  .pharaoh-mode .contact-container .contact-form {
+    background: #76470624; }
+  .pharaoh-mode .contact-container .form-label b {
+    border-bottom: 3px dotted #f2a71b; }
+  .pharaoh-mode .form-custom-control:active,
+  .pharaoh-mode .form-custom-control:focus,
+  .pharaoh-mode .form-custom-control:focus-visible {
+    background-color: transparent;
+    color: #e3e1fa;
+    box-shadow: 0 0 0 0.15rem #f2a71b6e;
+    border-color: #ffc107; }
+  .pharaoh-mode .custom-form-select:active,
+  .pharaoh-mode .custom-form-select:focus,
+  .pharaoh-mode .custom-form-select:focus-visible {
+    box-shadow: 0 0 0 0.15rem #f2a71b6e;
+    border-color: #ffc107; }
+  .pharaoh-mode .custom-form-select option {
+    background: #f2a71b6e;
+    color: #212529; }
+  .pharaoh-mode .custom-form-select:disabled {
+    background-color: #261a0170; }
   .pharaoh-mode .title-line {
     color: #f2a71b; }
   .pharaoh-mode .btn-main-light {
@@ -1548,23 +1589,7 @@ footer.home-footer {
     border-left: 4px solid #f2a71b; }
   .pharaoh-mode .badge-secondary {
     color: #594114; }
-  .pharaoh-mode .contact-container .form-label b {
-    border-bottom: 3px dotted #f2a71b; }
-  .pharaoh-mode footer {
-    background-color: #594114; }
-  .pharaoh-mode footer.home-footer {
-    background: linear-gradient(360deg, #594114 0%, #171a1c 100%); }
-  .pharaoh-mode .arrows-svg .cls-1 {
-    fill: #f2a71b; }
-  .pharaoh-mode .dotted-square-svg .cls-2 {
-    stroke: #f2a71b; }
-  .pharaoh-mode .zigzag-svg .cls-1 {
-    fill: #f2a71b; }
   .pharaoh-mode .contact-form-container .dotted-square-svg .cls-2 {
-    fill: #f2a71b; }
-  .pharaoh-mode .squares-pattern .cls-2 {
-    fill: #f2a71b; }
-  .pharaoh-mode .circles-pattern .cls-1 {
     fill: #f2a71b; }
 
 /*# sourceMappingURL=style.css.map */

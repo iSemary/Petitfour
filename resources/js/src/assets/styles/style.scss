@@ -23,6 +23,11 @@ body {
     filter: blur(0);
     transition: filter 1s;
 }
+:root {
+    @media (prefers-reduced-motion: no-preference) {
+        scroll-behavior: auto !important;
+    }
+}
 
 * {
     font-family: "Lato", Arial, sans-serif;
@@ -1923,6 +1928,16 @@ footer.home-footer {
     .logo-loader:after {
         color: $themePrimaryColor;
     }
+
+    .blur-background {
+        svg:first-of-type circle {
+            fill: #ffe800;
+        }
+        svg:nth-of-type(2) circle {
+            fill: #fff;
+        }
+    }
+
     // Start Header
     .main-nav {
         .nav-links {
@@ -1947,14 +1962,16 @@ footer.home-footer {
             background-color: $themePrimaryDark;
         }
     }
-    .contact-container .contact-form {
-        background: #76470624;
-    }
+
     .top-home-details {
         h1 {
             .gradient-text {
                 color: transparent;
-                background-image: linear-gradient(90deg, #e3e1fa 0, #F28705 100%);
+                background-image: linear-gradient(
+                    90deg,
+                    #e3e1fa 0,
+                    #f28705 100%
+                );
                 -webkit-background-clip: text;
                 -moz-background-clip: text;
                 background-clip: text;
@@ -2069,51 +2086,6 @@ footer.home-footer {
         filter: hue-rotate(132deg);
     }
 
-    .title-line {
-        color: $themePrimaryColor;
-    }
-
-    .btn-main-light {
-        color: $themePrimaryDark;
-        &:hover {
-            background-color: $themePrimaryDark;
-            color: $themePrimaryWhite;
-        }
-    }
-    .btn-main-light.active {
-        color: $themePrimaryWhite;
-    }
-    .blog-filter {
-        button {
-            span {
-                color: $themePrimaryDark;
-            }
-            &:hover span {
-                background-color: $themePrimaryDark;
-                color: $themePrimaryWhite;
-            }
-        }
-    }
-    .blog-page {
-        .blog-details {
-            .blog-title {
-                color: $themePrimaryColor;
-                border-bottom: 2px solid $themePrimaryColor;
-            }
-        }
-        .blog-content {
-            border-left: 4px solid $themePrimaryColor;
-        }
-    }
-    .badge-secondary {
-        color: $themePrimaryDark;
-    }
-    .contact-container .form-label b {
-        border-bottom: 3px dotted $themePrimaryColor;
-    }
-    .blog-item .blog-card-image-container {
-        // box-shadow: 0 -1px 20px $themePrimaryDark;
-    }
     // Footer
     footer {
         background-color: $themePrimaryDark;
@@ -2139,16 +2111,6 @@ footer.home-footer {
         }
     }
 
-    .zigzag-svg {
-        .cls-1 {
-            fill: $themePrimaryColor;
-        }
-    }
-
-    .contact-form-container .dotted-square-svg .cls-2 {
-        fill: $themePrimaryColor;
-    }
-
     .squares-pattern {
         .cls-2 {
             fill: $themePrimaryColor;
@@ -2160,4 +2122,89 @@ footer.home-footer {
             fill: $themePrimaryColor;
         }
     }
+
+    // Non effected styles
+    .zigzag-svg {
+        .cls-1 {
+            fill: $themePrimaryColor;
+        }
+    }
+    .contact-container .contact-form {
+        background: #76470624;
+    }
+    .contact-container .form-label b {
+        border-bottom: 3px dotted $themePrimaryColor;
+    }
+    .form-custom-control:active,
+    .form-custom-control:focus,
+    .form-custom-control:focus-visible {
+        background-color: transparent;
+        color: #e3e1fa;
+        box-shadow: 0 0 0 0.15rem #f2a71b6e;
+        border-color: #ffc107;
+    }
+
+    .custom-form-select:active,
+    .custom-form-select:focus,
+    .custom-form-select:focus-visible {
+        box-shadow: 0 0 0 0.15rem #f2a71b6e;
+        border-color: #ffc107;
+    }
+
+    .custom-form-select option {
+        background: #f2a71b6e;
+        color: #212529;
+    }
+    .custom-form-select {
+        &:disabled {
+            background-color: #261a0170;
+        }
+    }
+
+    .title-line {
+        color: $themePrimaryColor;
+    }
+
+    .btn-main-light {
+        color: $themePrimaryDark;
+        &:hover {
+            background-color: $themePrimaryDark;
+            color: $themePrimaryWhite;
+        }
+    }
+    .btn-main-light.active {
+        color: $themePrimaryWhite;
+    }
+
+    .blog-filter {
+        button {
+            span {
+                color: $themePrimaryDark;
+            }
+            &:hover span {
+                background-color: $themePrimaryDark;
+                color: $themePrimaryWhite;
+            }
+        }
+    }
+    .blog-page {
+        .blog-details {
+            .blog-title {
+                color: $themePrimaryColor;
+                border-bottom: 2px solid $themePrimaryColor;
+            }
+        }
+        .blog-content {
+            border-left: 4px solid $themePrimaryColor;
+        }
+    }
+    .badge-secondary {
+        color: $themePrimaryDark;
+    }
+
+    .contact-form-container .dotted-square-svg .cls-2 {
+        fill: $themePrimaryColor;
+    }
+
+    // End non effected styles
 }
