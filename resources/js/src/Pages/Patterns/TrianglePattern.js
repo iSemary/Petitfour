@@ -5,7 +5,7 @@ export default function TrianglePattern({
     right,
     rotate = "45",
     color = "#fff",
-    width = "15",
+    width = "15px",
 }) {
     return (
         <svg

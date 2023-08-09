@@ -20,7 +20,7 @@ export default function DottedSquarePattern({
                 top: top,
                 right: right,
                 transform: `rotate(${rotate}deg)`,
-                width: width,
+                width: width + "px",
                 zIndex:zIndex
             }}
         >

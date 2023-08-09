@@ -10,7 +10,6 @@ import LatestExperience from "./Components/LatestExperience";
 import SideSkills from "./Components/SideSkills";
 import LatestBlogs from "./Components/LatestBlogs";
 import SwitchButton from "./Components/Partials/SwitchButton";
-import TrianglePattern from "../Pages/Patterns/TrianglePattern";
 import CirclePattern from "../Pages/Patterns/CirclePattern";
 import ScarabBeetleImage from "../assets/images/Scarab_beetle_icon.png";
 import LandingGif from "../assets/images/landing.gif";
@@ -103,7 +102,7 @@ function Home(props) {
                         top="5%"
                         right="88%"
                         rotate="45"
-                        width="150"
+                        width="150px"
                     />
 
                     <CirclePattern
@@ -111,7 +110,7 @@ function Home(props) {
                         top="1%"
                         right="70%"
                         rotate="45"
-                        width="150"
+                        width="150px"
                     />
                 </div>
                 <Container className="top-content">

@@ -46,9 +46,12 @@
     "web-vitals": "^3.3.1"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.14",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-sass": "^5.1.0",
+    "postcss": "^8.4.27",
+    "postcss-loader": "^7.3.3",
     "sass": "^1.62.1",
     "webpack": "^5.88.1",
     "webpack-cli": "^5.1.4"

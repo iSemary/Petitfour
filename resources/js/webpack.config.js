@@ -1,6 +1,7 @@
 const path = require("path");
 const glob = require("glob");
 const TerserPlugin = require("terser-webpack-plugin");
+const autoprefixer = require("autoprefixer");
 
 module.exports = [
     {
@@ -25,6 +26,23 @@ module.exports = [
                     use: [
                         {
                             loader: "file-loader",
+                        },
+                    ],
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        "style-loader",
+                        "css-loader",
+                        {
+                            loader: "postcss-loader",
+                            options: {
+                                postcssOptions: {
+                                    plugins: [
+                                        autoprefixer(),
+                                    ],
+                                },
+                            },
                         },
                     ],
                 },

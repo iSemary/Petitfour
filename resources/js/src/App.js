@@ -19,7 +19,7 @@ function App() {
     window.addEventListener("scroll", () => {
         let scrollPosition = window.scrollY;
         const headerElement = document.querySelector('.main-nav');
-        if (scrollPosition > 150) {
+        if (scrollPosition > 65) {
             headerElement.classList.add("glass-header");
         } else {
             headerElement.classList.remove("glass-header");

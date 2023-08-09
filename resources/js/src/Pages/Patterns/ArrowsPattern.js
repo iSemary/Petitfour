@@ -18,7 +18,7 @@ export default function ArrowsPattern({
                 top: top,
                 right: right,
                 transform: `rotate(${rotate}deg)`,
-                width: width,
+                width: width + "px",
             }}
         >
             <g id="Layer_2-2" data-name="Layer 2">

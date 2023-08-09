@@ -206,14 +206,14 @@ function Footer(props) {
                     top="75%"
                     rotate="20"
                     right="90%"
-                    width="17"
+                    width="17px"
                 />
                 <TrianglePattern
                     color={styleVariables.primaryColor}
                     top="45%"
                     rotate="45"
                     right="60%"
-                    width="15"
+                    width="15px"
                 />
 
                 <TrianglePattern
@@ -221,14 +221,14 @@ function Footer(props) {
                     top="40%"
                     rotate="60"
                     right="15%"
-                    width="15"
+                    width="15px"
                 />
                 <TrianglePattern
                     color={styleVariables.secondaryTextColor}
                     top="80%"
                     rotate="55"
                     right="30%"
-                    width="17"
+                    width="17px"
                 />
 
                 <CirclePattern
@@ -236,14 +236,14 @@ function Footer(props) {
                     top="37%"
                     rotate="20"
                     right="85%"
-                    width="10"
+                    width="10px"
                 />
                 <CirclePattern
                     color={styleVariables.primaryWhite}
                     top="80%"
                     rotate="45"
                     right="65%"
-                    width="15"
+                    width="15px"
                 />
 
                 <CirclePattern
@@ -251,14 +251,14 @@ function Footer(props) {
                     top="50%"
                     rotate="60"
                     right="40%"
-                    width="15"
+                    width="15px"
                 />
                 <CirclePattern
                     color={styleVariables.primaryBlue}
                     top="70%"
                     rotate="45"
                     right="10%"
-                    width="10"
+                    width="10px"
                 />
             </div>
         </footer>

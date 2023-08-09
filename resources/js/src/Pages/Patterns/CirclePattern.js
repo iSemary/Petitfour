@@ -4,7 +4,7 @@ export default function CirclePattern({
     top,
     right,
     color = "#fff",
-    width = "15",
+    width = "15px",
 }) {
     return (
         <svg
