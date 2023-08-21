@@ -38,7 +38,6 @@ function VideoPlayer({ firstVideo, secondVideo }) {
                 controls={false}
                 autoPlay={playFirstVideo}
                 playsinline
-                poster
             >
                 <source src={firstVideo} type="video/mp4" />
                 Your browser does not support the video tag.
@@ -51,7 +50,6 @@ function VideoPlayer({ firstVideo, secondVideo }) {
                 loop
                 muted
                 playsinline
-                poster
             >
                 <source src={secondVideo} type="video/mp4" />
                 Your browser does not support the video tag.
