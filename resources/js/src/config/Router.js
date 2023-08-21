@@ -16,7 +16,7 @@ function Router(props) {
         <div className="content">
             {/* <ScrollToTop /> */}
             <Routes>
-                <Route path="/" element={<Home config={props.config} />} />
+                <Route path="/" element={<Home config={props.config} theme={props.theme} />} />
                 <Route path="/skills" element={<Skills />} />
                 <Route path="/skills/:name" element={<Skill />} />
                 <Route path="/projects" element={<Projects categories={props.config?.categories} />} />

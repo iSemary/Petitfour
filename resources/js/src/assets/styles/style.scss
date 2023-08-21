@@ -494,6 +494,28 @@ $blurSvgDuration: 20s;
         text-shadow: unset;
     }
 }
+
+@media screen and (max-width: 767px) {
+    .main-background-cover {
+        .top-content {
+            padding-top: 1vh;
+        }
+        .blur-background {
+            visibility: hidden;
+        }
+        .top-home-details h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .top-home-videos {
+            padding-top: 20px;
+        }
+        .top-home-videos video {
+            width: 100%;
+        }
+    }
+}
+
 /* Global Styles for small screens */
 @media screen and (max-width: 767px) {
     @for $i from 0 through 6 {
@@ -1739,7 +1761,9 @@ footer.home-footer {
     transform: rotateY(70deg);
     animation-delay: 0.4s;
 }
-
+.top-home-videos video {
+    width: 560px;
+}
 @keyframes rotate {
     0% {
         transform: translate(-50%, -50%) rotateZ(0deg);

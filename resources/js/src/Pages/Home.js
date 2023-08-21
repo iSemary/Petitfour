@@ -12,7 +12,12 @@ import LatestBlogs from "./Components/LatestBlogs";
 import SwitchButton from "./Components/Partials/SwitchButton";
 import CirclePattern from "../Pages/Patterns/CirclePattern";
 import ScarabBeetleImage from "../assets/images/Scarab_beetle_icon.png";
-import LandingGif from "../assets/images/landing.gif";
+import VideoPlayer from "./Utilities/VideoPlayer";
+import defaultFirst from "../assets/images/optimized/default-first.mp4";
+import defaultSecond from "../assets/images/optimized/default-second.mp4";
+
+import themeFirst from "../assets/images/optimized/theme-first.mp4";
+import themeSecond from "../assets/images/optimized/theme-second.mp4";
 
 function Home(props) {
     const positionTitleRef = useRef(null);
@@ -126,9 +131,16 @@ function Home(props) {
                                 </Row>
                             </div>
                         </Col>
-                        <Col md={6}>
-                            <img src={LandingGif} loading="lazy" className="landing-icon" alt="landing page preview" />
-                            </Col>
+                        <Col md={6} className="top-home-videos px-0 mx-0">
+                            <VideoPlayer
+                                firstVideo={
+                                    props.theme ? themeFirst : defaultFirst
+                                }
+                                secondVideo={
+                                    props.theme ? themeSecond : defaultSecond
+                                }
+                            />
+                        </Col>
                     </Row>
                 </Container>
             </div>
@@ -154,7 +166,11 @@ function Home(props) {
                     {DummyCode}
                 </div>
                 <div className="pharaoh-container" id="pharaohContainer">
-                    <img src={ScarabBeetleImage} loading="lazy" alt="Scarab beetle" />
+                    <img
+                        src={ScarabBeetleImage}
+                        loading="lazy"
+                        alt="Scarab beetle"
+                    />
                     <p>{Talisman + " " + Talisman + " " + Talisman}</p>
                 </div>
             </div>
