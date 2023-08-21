@@ -1762,7 +1762,8 @@ footer.home-footer {
     animation-delay: 0.4s;
 }
 .top-home-videos video {
-    display: block;
+    position: absolute;
+    z-index: 10;
     width: 560px;
 }
 @keyframes rotate {
