@@ -57,6 +57,7 @@ class ConfigController extends Controller {
             'home_image' => $homeImage,
             'theme_home_image' => $themeHomeImage,
             'resume' => $resume,
+            'total_projects' => $request->total_projects,
         ]);
 
         // Update social links

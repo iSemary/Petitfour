@@ -54,17 +54,22 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-4 form-group">
+                        <div class="col-3 form-group">
+                            <label for="totalProjects">Total Projects:</label>
+                            <input type="number" name="total_projects" class="form-control" id="totalProjects"
+                                value="{{ $config->total_projects }}" placeholder="Total Projects">
+                        </div>
+                        <div class="col-3 form-group">
                             <label for="address">Address:</label>
                             <input type="text" name="address" class="form-control" id="address"
                                 value="{{ $config->address }}" placeholder="Address">
                         </div>
-                        <div class="col-4 form-group">
+                        <div class="col-3 form-group">
                             <label for="position">Position:</label>
                             <input type="text" name="position" class="form-control" id="position"
                                 value="{{ $config->position }}" placeholder="Position">
                         </div>
-                        <div class="col-4 form-group">
+                        <div class="col-3 form-group">
                             <label for="slogan">Slogan:</label>
                             <input type="text" name="slogan" class="form-control" id="slogan"
                                 value="{{ $config->slogan }}" placeholder="Slogan">

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import StarPattern from "../../Patterns/StarPattern";
 import AxiosConfig from "../../../config/AxiosConfig";
 import TransitionSound from "../../../assets/sounds/moon-night-transition-sound-effect.mp3";
@@ -8,6 +8,7 @@ export default function SwitchButton() {
     const theme = localStorage.getItem("theme") === "true";
     const [isPlayingTransition, setIsPlayingTransition] = useState(false);
     const [isPlayingSoundtrack, setIsPlayingSoundtrack] = useState(false);
+    const [isSoundTrackEnd, setIsSoundTrackEnd] = useState(false);
     const [scrollingDown, setScrollingDown] = useState(false);
 
     const transitionRef = useRef(null);
@@ -19,11 +20,12 @@ export default function SwitchButton() {
         setIsPlayingSoundtrack(theme === true);
         setScrollingDown(theme === true);
 
-        if(theme === true) scrollToDown();
+        if (theme === true) scrollToDown();
     };
 
     const handleSoundtrackEnded = (e) => {
         setIsPlayingSoundtrack(false);
+        setIsSoundTrackEnd(true);
     };
 
     const countUserThemeRequest = (e) => {
@@ -82,8 +84,7 @@ export default function SwitchButton() {
     };
 
     const scrollToDown = () => {
-        let scrollerID;
-        let speed = 6; // 1 - Fast | 2 - Medium | 3 - Slow
+        let speed = 5; // 1 - Fast | 2 - Medium | 3 - Slow
         let interval = speed * 5;
 
         function startScroll() {
@@ -94,14 +95,14 @@ export default function SwitchButton() {
                     document.body.offsetHeight
                 ) {
                     // Reached end of page
-                    stopScroll();
+                    stopScroll(id);
                 }
             }, interval);
             return id;
         }
 
-        function stopScroll() {
-            clearInterval(scrollerID);
+        function stopScroll(id) {
+            clearInterval(id);
         }
 
         startScroll();
@@ -109,10 +110,10 @@ export default function SwitchButton() {
 
     const switchTheme = (e) => {
         localStorage.setItem("theme", String(!theme));
+        window.scrollTo(0, 0);
         // Count user theme request for analytics uses
         countUserThemeRequest();
 
-        // window.scrollTo(0, 0);
         setIsPlayingTransition(true);
 
         blurPage();
@@ -120,6 +121,33 @@ export default function SwitchButton() {
             startCodeFlashing();
         }, 500);
     };
+    /**
+     *
+     * Scrolling
+     *
+     */
+
+    // if (isPlayingSoundtrack) {
+    window.addEventListener("scroll", function (e) {
+        if (window.scrollY < 340) {
+            document.getElementById("siteLogo").style.setProperty("opacity", 0);
+            document.getElementById("siteLogo").src = document
+                .getElementById("siteLogo")
+                .getAttribute("data-theme-logo");
+            document.getElementById("siteLogo").style.setProperty("opacity", 1);
+        }
+        if (window.scrollY >= 340 && window.scrollY <= 760) {
+            console.log("Scroll height: " + window.scrollY);
+        }
+    });
+    // }
+
+    useEffect(() => {
+        if (isSoundTrackEnd) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            document.body.classList.add("pharaoh-mode");
+        }
+    }, [isSoundTrackEnd]);
 
     return (
         <>

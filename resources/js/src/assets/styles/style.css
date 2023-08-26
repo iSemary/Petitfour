@@ -54,7 +54,8 @@ body {
   .glass-header .nav-links .links div a {
     text-shadow: 0 0 5px #2125298c; }
   .glass-header .header-logo {
-    width: 25px; }
+    width: 25px;
+    transition: all 0.3s ease; }
   .glass-header .logo-loader {
     top: -10px;
     width: 20px;

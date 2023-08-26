@@ -77,10 +77,11 @@ function Header(props) {
                     <Col md={3} sm={3} xs={3} className="main-logo">
                         <Link to="/" className="no-link">
                             {logoLoading && <div className="logo-loader-container"><div className="logo-loader"></div><div className="logo-loader"></div></div>}
-
                             <img
                                 src={props.theme ? props.theme_logo : props.logo}
+                                data-theme-logo={props.theme_logo}
                                 alt="Main logo"
+                                id="siteLogo"
                                 style={logoLoading ? { display: "none" } : {}}
                                 onLoad={() => setLogoLoading(false)}
                                 className="header-logo"
