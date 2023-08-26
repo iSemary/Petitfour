@@ -933,7 +933,8 @@ $blurSvgDuration: 20s;
 // Home Experience Styles
 .home-experiences {
     overflow: hidden;
-    .experience-h-line {
+    .experience-h-line,
+    .more-experience-h-line {
         width: 5%;
         display: grid;
         align-items: center;
@@ -1415,6 +1416,8 @@ $blurSvgDuration: 20s;
             background-color: #2e194e;
             box-shadow: -2px -2px 5px #e6b7f561;
             color: $primaryWhite;
+            border: 0;
+            border-radius: 10px;
         }
         .skills {
             .side-skill-icon {
@@ -1934,7 +1937,37 @@ footer.home-footer {
         width: 100%;
     }
 }
-
+.h-61 {
+    height: 61% !important;
+}
+.more-experience {
+    .more-projects-content {
+        margin: 0 auto;
+        display: flex;
+        position: relative;
+        text-align: center;
+        justify-content: center;
+        // top: 15px;
+        h5 {
+            margin: 0;
+            background-color: $primaryWhite;
+            color: $primaryDark;
+            padding: 0 7px;
+            border-radius: 5px;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .more-experience-h-line {
+            width: 35%;
+            position: absolute;
+            right: 17.5%;
+            top: 0;
+            bottom: 0;
+        }
+    }
+}
 /*  =============================================================================================
                         Custom Styles for pharaoh theme
     =============================================================================================
@@ -2051,7 +2084,8 @@ footer.home-footer {
 
     // Home Experience Styles
     .home-experiences {
-        .experience-h-line {
+        .experience-h-line,
+        .more-experience-h-line {
             .h-line {
                 background-color: #3e1d02;
                 background-image: linear-gradient(90deg, #ff8729, #3e1d02 74%);

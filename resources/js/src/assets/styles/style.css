@@ -761,11 +761,13 @@ body {
 
 .home-experiences {
   overflow: hidden; }
-  .home-experiences .experience-h-line {
+  .home-experiences .experience-h-line,
+  .home-experiences .more-experience-h-line {
     width: 5%;
     display: grid;
     align-items: center; }
-    .home-experiences .experience-h-line .h-line {
+    .home-experiences .experience-h-line .h-line,
+    .home-experiences .more-experience-h-line .h-line {
       display: block;
       height: 3px;
       border: 0;
@@ -1103,7 +1105,9 @@ body {
 .side-skills .side-skills-item .card {
   background-color: #2e194e;
   box-shadow: -2px -2px 5px #e6b7f561;
-  color: #e3e1fa; }
+  color: #e3e1fa;
+  border: 0;
+  border-radius: 10px; }
 .side-skills .side-skills-item .skills .side-skill-icon {
   width: 25px;
   height: 25px; }
@@ -1470,6 +1474,32 @@ footer.home-footer {
 .splide__list .blog-item {
   width: 100%; }
 
+.h-61 {
+  height: 61% !important; }
+
+.more-experience .more-projects-content {
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  text-align: center;
+  justify-content: center; }
+  .more-experience .more-projects-content h5 {
+    margin: 0;
+    background-color: #e3e1fa;
+    color: #0c001f;
+    padding: 0 7px;
+    border-radius: 5px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .more-experience .more-projects-content .more-experience-h-line {
+    width: 35%;
+    position: absolute;
+    right: 17.5%;
+    top: 0;
+    bottom: 0; }
+
 /*  =============================================================================================
                         Custom Styles for pharaoh theme
     =============================================================================================
@@ -1524,7 +1554,8 @@ footer.home-footer {
     background-color: #594114; }
   .pharaoh-mode .text-main-dark {
     color: #594114; }
-  .pharaoh-mode .home-experiences .experience-h-line .h-line {
+  .pharaoh-mode .home-experiences .experience-h-line .h-line,
+  .pharaoh-mode .home-experiences .more-experience-h-line .h-line {
     background-color: #3e1d02;
     background-image: linear-gradient(90deg, #ff8729, #3e1d02 74%); }
   .pharaoh-mode .home-experiences .experience-v-line .v-line {

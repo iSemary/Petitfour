@@ -2,7 +2,7 @@ import React from "react";
 import SkillsListTemplate from "./SkillsListTemplate";
 import { IoMdArrowDropright } from "react-icons/io";
 
-function ExperienceTemplate({ experience, index }) {
+function ExperienceTemplate({ experience, index, totals }) {
     const MAX_EXPERIENCE_SKILLS = 10;
     return (
         <div
@@ -73,7 +73,7 @@ function ExperienceTemplate({ experience, index }) {
                         alt={experience.company_name + " logo"}
                     />
                     <div className="experience-v-line">
-                        <div className="v-line"></div>
+                        <div className={"v-line " + ((index+1) === totals ? "h-61" : "")}></div>
                     </div>
                 </div>
             </div>

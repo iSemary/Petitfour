@@ -149,10 +149,11 @@ function Home(props) {
                 <Features features={props?.config.features} />
                 <HighlightedSkills
                     highlightedSkills={props?.config.highlighted_skills}
-                />
+                    />
                 <TopProjects topProjects={props?.config.top_projects} />
                 <LatestExperience
                     latestExperience={props?.config?.latest_experience}
+                    totalProjects={props?.config?.config?.user?.total_projects}
                 />
                 <SideSkills sideSkills={props?.config.side_skills} />
                 <LatestBlogs latestBlogs={props?.config?.latest_blogs} />
