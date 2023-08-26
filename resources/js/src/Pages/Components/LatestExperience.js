@@ -7,6 +7,7 @@ import styleVariables from "../../assets/styles/variables/variables.module.scss"
 function LatestExperience(props) {
     return (
         <div className="bg-home-odd">
+            <DotsPattern color={styleVariables.primaryWhite} bottom="5%" right="90%" height="60px" width="60px" />
             <Container>
                 <div className="home-experiences">
                     <h3 className="text-center home-title">
@@ -23,7 +24,6 @@ function LatestExperience(props) {
                     })}
                 </div>
             </Container>
-            <DotsPattern color={styleVariables.primaryWhite} bottom="5%" right="90%" height="60px" width="60px" />
         </div>
     );
 }

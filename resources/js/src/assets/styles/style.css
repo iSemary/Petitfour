@@ -385,16 +385,16 @@ body {
     text-shadow: unset; } }
 @media screen and (max-width: 767px) {
   .main-background-cover .top-content {
-    padding-top: 1vh; }
-  .main-background-cover .blur-background {
-    visibility: hidden; }
+    padding-top: 10vh; }
+    .main-background-cover .top-content .top-home-details {
+      height: 100%; }
   .main-background-cover .top-home-details h1 {
     font-size: 2.5rem;
     font-weight: bold; }
   .main-background-cover .top-home-videos {
     padding-top: 20px; }
   .main-background-cover .top-home-videos video {
-    width: 100%; } }
+    display: none; } }
 /* Global Styles for small screens */
 @media screen and (max-width: 767px) {
   .mt-sm-0 {
