@@ -15,7 +15,7 @@
   primaryBlue: #0ccde8;
   primaryBlack: #171a1c;
   primaryWhite: #e3e1fa;
-  primaryDark: #0c001f;
+  primaryDark: #0C001D;
   primaryGreen: #609966;
   secondaryColor: #e4058e;
   secondaryTextColor: #ff8729;
@@ -29,7 +29,7 @@
   themeSecondaryTextColor: #f28705; }
 
 body {
-  background-color: #0c001f;
+  background-color: #0C001D;
   color: #e3e1fa;
   filter: blur(0);
   transition: filter 1s; }
@@ -162,7 +162,7 @@ body {
       padding: 30% 0;
       align-items: center !important;
       justify-content: center !important;
-      background-color: #0c001f;
+      background-color: #0C001D;
       align-content: baseline; }
       .nav-links .links div {
         display: none;
@@ -204,12 +204,12 @@ body {
   overflow: hidden; }
 
 .bg-home-even {
-  background-color: #0c001f;
-  background: linear-gradient(180deg, #0c001f 75%, #171a1c 100%); }
+  background-color: #0C001D;
+  background: linear-gradient(180deg, #0C001D 75%, #171a1c 100%); }
 
 .bg-home-odd {
   background-color: #171a1c;
-  background: linear-gradient(180deg, #171a1c 85%, #0c001f 100%); }
+  background: linear-gradient(180deg, #171a1c 85%, #0C001D 100%); }
 
 .home-content > div:last-of-type {
   background: #171a1c; }
@@ -225,13 +225,13 @@ body {
   background-color: #e3e1fa; }
 
 .bg-main-dark {
-  background-color: #0c001f; }
+  background-color: #0C001D; }
 
 .bg-main-white {
   background-color: #e3e1fa; }
 
 .text-main-dark {
-  color: #0c001f; }
+  color: #0C001D; }
 
 .text-main-white {
   color: #e3e1fa; }
@@ -255,7 +255,7 @@ body {
     color: #f7f7f7; }
 
 .main-background-cover {
-  background-color: #0c001f;
+  background-color: #0C001D;
   width: 100%;
   height: 100vh; }
 
@@ -267,7 +267,10 @@ body {
   height: 100%;
   filter: blur(100px);
   z-index: 0;
-  overflow: hidden; }
+  overflow: hidden;
+  transition: all 1s ease; }
+  .blur-background svg circle {
+    transition: all 1s ease; }
 
 .top-content {
   padding-top: 13vh;
@@ -299,7 +302,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #0c001f;
+    background-color: #0C001D;
     box-shadow: -2px -2px 5px #283593; }
     .switch-button-content .switch-button.default span {
       font-family: "Lato", Arial, Helvetica, sans-serif;
@@ -632,7 +635,7 @@ body {
     background-color: #10012670; }
   .custom-form-select option {
     margin: 40px;
-    background: #0c001f;
+    background: #0C001D;
     color: #fff;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4); }
 
@@ -810,7 +813,7 @@ body {
       padding: 15px; }
     .home-experiences .experience .experience-info {
       color: #e3e1fa;
-      background-color: #0c001f;
+      background-color: #0C001D;
       font-weight: bold;
       padding: 15px;
       width: 80%; }
@@ -910,7 +913,7 @@ body {
 
 .badge-secondary {
   background-color: #e3e1fa;
-  color: #0c001f;
+  color: #0C001D;
   box-shadow: 3px 4px 3px #0009;
   transition: 0.2s ease; }
   .badge-secondary:hover, .badge-secondary:active {
@@ -1004,7 +1007,7 @@ body {
 
 .text-hack-animation:hover {
   background: linear-gradient(271deg, rgba(227, 225, 250, 0.2693452381) 0%, #e3e1fa 100%);
-  color: #0c001f; }
+  color: #0C001D; }
 
 .blog-filter {
   display: flex;
@@ -1013,7 +1016,7 @@ body {
     margin: 0 5px; }
     .blog-filter button span {
       background-color: #e3e1fa;
-      color: #0c001f;
+      color: #0C001D;
       padding: 0 5px;
       border-radius: 5px;
       font-size: 14px;
@@ -1021,7 +1024,7 @@ body {
       position: absolute;
       top: -10px; }
     .blog-filter button:hover span {
-      background-color: #0c001f;
+      background-color: #0C001D;
       color: #e3e1fa;
       box-shadow: 2px -4px 6px #ffffff5e; }
   .blog-filter::-webkit-scrollbar {
@@ -1059,15 +1062,15 @@ body {
 .btn-main-light {
   border: 1px solid #e3e1fa;
   background-color: #e3e1fa;
-  color: #0c001f; }
+  color: #0C001D; }
   .btn-main-light:hover {
-    background-color: #0c001f;
+    background-color: #0C001D;
     color: #e3e1fa;
     box-shadow: -3px -2px 7px #ffffff8f; }
 
 .badge-main-dark {
   display: contents;
-  background-color: #0c001f;
+  background-color: #0C001D;
   color: #e3e1fa; }
 
 .btn-counter {
@@ -1201,10 +1204,10 @@ body {
   overflow: hidden; }
 
 footer {
-  background-color: #0c001f; }
+  background-color: #0C001D; }
 
 footer.home-footer {
-  background: linear-gradient(360deg, #0c001f 0%, #171a1c 100%); }
+  background: linear-gradient(360deg, #0C001D 0%, #171a1c 100%); }
 
 .footer-container {
   position: relative; }
@@ -1287,7 +1290,7 @@ footer.home-footer {
   cursor: pointer;
   min-width: 32px;
   font-size: 13px;
-  text-shadow: 0 0 4px #0c001f; }
+  text-shadow: 0 0 4px #0C001D; }
   .more-skills-icon span {
     font-size: 13px;
     line-height: 1.2; }
@@ -1486,7 +1489,7 @@ footer.home-footer {
   .more-experience .more-projects-content h5 {
     margin: 0;
     background-color: #e3e1fa;
-    color: #0c001f;
+    color: #0C001D;
     padding: 0 7px;
     border-radius: 5px;
     z-index: 1;
@@ -1500,12 +1503,51 @@ footer.home-footer {
     top: 0;
     bottom: 0; }
 
+.image-mask-sm {
+  animation: imageMaskSm 3000ms linear;
+  transition: all 3000ms linear !important; }
+
+@keyframes imageMaskSm {
+  0% {
+    -webkit-mask-image: linear-gradient(273deg, #000 -15%, transparent); }
+  100% {
+    -webkit-mask-image: linear-gradient(90deg, #000 200%, transparent); } }
 /*  =============================================================================================
                         Custom Styles for pharaoh theme
     =============================================================================================
 */
-.pharaoh-mode {
+.pharaoh-nav .nav-links .links div a {
+  color: #e3e1fa; }
+  .pharaoh-nav .nav-links .links div a:hover {
+    color: #f2a71b; }
+.pharaoh-nav .nav-links .links div a.active {
+  color: #f2a71b; }
+
+.pharaoh-top-home-details h1 .gradient-text {
+  color: transparent;
+  background-image: linear-gradient(90deg, #e3e1fa 0, #f28705 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text; }
+.pharaoh-top-home-details p span {
+  background: linear-gradient(transparent 50%, #f2a71b 15px);
+  color: #fff; }
+
+.pharaoh-top-svg .blur-background svg:first-of-type circle {
+  fill: #ffe800; }
+.pharaoh-top-svg .blur-background svg:nth-of-type(2) circle {
+  fill: #fff; }
+
+.pharaoh-blur-background {
   background-color: #594114; }
+
+.pharaoh-mode {
+  background-color: #594114;
+  /** 
+  
+      Non effected styles 
+  
+  */ }
   .pharaoh-mode .content,
   .pharaoh-mode .skills,
   .pharaoh-mode .bg-home-even .container,

@@ -130,16 +130,23 @@ export default function SwitchButton() {
     // if (isPlayingSoundtrack) {
     window.addEventListener("scroll", function (e) {
         if (window.scrollY < 340) {
-            document.getElementById("siteLogo").style.setProperty("opacity", 0);
-            document.getElementById("siteLogo").src = document
-                .getElementById("siteLogo")
-                .getAttribute("data-theme-logo");
-            document.getElementById("siteLogo").style.setProperty("opacity", 1);
+            // document.getElementById("siteLogo").style.setProperty("opacity", 0);
+            // document.getElementById("siteLogo").src = document
+            //     .getElementById("siteLogo")
+            //     .getAttribute("data-theme-logo");
+            // document.getElementById("siteLogo").style.setProperty("opacity", 1);
+            document.getElementById("siteLogo").classList.add('image-mask-sm');
         }
         if (window.scrollY >= 340 && window.scrollY <= 760) {
             console.log("Scroll height: " + window.scrollY);
         }
     });
+    // }
+
+    // function maskImage(element, from, to, time) {
+    //     const animation = `linear-gradient(273deg, black ${from}%, transparent ${to}%)`;
+    //     element.style.webkitMaskImage = animation;
+    //     element.style.transition = `webkit-mask-image ${time}ms ease-in-out`;
     // }
 
     useEffect(() => {

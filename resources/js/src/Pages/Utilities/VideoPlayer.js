@@ -37,7 +37,7 @@ function VideoPlayer({ firstVideo, secondVideo }) {
                 muted
                 controls={false}
                 autoPlay={playFirstVideo}
-                playsinline
+                playsInline
             >
                 <source src={firstVideo} type="video/mp4" />
                 Your browser does not support the video tag.
@@ -49,7 +49,7 @@ function VideoPlayer({ firstVideo, secondVideo }) {
                 autoPlay={playSecondVideo}
                 loop
                 muted
-                playsinline
+                playsInline
             >
                 <source src={secondVideo} type="video/mp4" />
                 Your browser does not support the video tag.
