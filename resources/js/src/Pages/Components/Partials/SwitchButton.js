@@ -129,32 +129,109 @@ export default function SwitchButton() {
             startCodeFlashing();
         }, 500);
     };
+
+    /**
+     * The function checks if an element is currently visible within the viewport.
+     * @param element - The `el` parameter represents the element that you want to check if it is in the
+     * viewport.
+     * @returns a boolean value indicating whether or not the specified element is currently within the
+     * viewport.
+     */
+    function isElementInViewport(element) {
+        const position = element.getBoundingClientRect();
+        // checking whether fully visible OR partial visibility
+        return (
+            (position.top >= 0 && position.bottom <= window.innerHeight) ||
+            (position.top < window.innerHeight && position.bottom >= 0)
+        );
+    }
+    
     /**
      *
-     * Scrolling
+     * Scrolling Scripts
      *
      */
 
-    if (isPlayingSoundtrack) {
-        window.addEventListener("scroll", function (e) {
-            if (window.scrollY < 340) {
-                maskImage(document.getElementById("siteLogo"), 2000, 10, false);
-                setTimeout(() => {
-                    document.getElementById("siteLogo").src = document
-                        .getElementById("siteLogo")
-                        .getAttribute("data-theme-logo");
-                    maskImage(
-                        document.getElementById("siteLogo"),
-                        2000,
-                        10,
-                        true
-                    );
-                }, 2000);
-            }
-            if (window.scrollY >= 340 && window.scrollY <= 760) {
-            }
-        });
+    function switchTopContent() {
+        maskImage(document.getElementById("siteLogo"), 2000, 10, false);
+        setTimeout(() => {
+            document.getElementById("siteLogo").src = document
+                .getElementById("siteLogo")
+                .getAttribute("data-theme-logo");
+            maskImage(document.getElementById("siteLogo"), 2000, 10, true);
+        }, 2000);
     }
+
+    function switchFeaturesSection() {
+        console.log("switchFeaturesSection");
+    }
+    function switchHighlightedSkillsSection() {
+        console.log("switchHighlightedSkillsSection");
+    }
+    function switchTopProjectsSection() {
+        console.log("switchTopProjectsSection");
+    }
+    function switchLatestExperienceSection() {
+        console.log("switchLatestExperienceSection");
+    }
+    function switchSideSkillsSection() {
+        console.log("switchSideSkillsSection");
+    }
+    function switchLatestBlogsSection() {
+        console.log("switchLatestBlogsSection");
+    }
+
+
+    // Initialize the sections animated with null
+    var featuresAnimated = false;
+    var highlightedSkillsAnimated = false;
+    var topProjectsAnimated = false;
+    var latestExperienceAnimated = false;
+    var sideSkillsAnimated = false;
+    var latestBlogsAnimated = false;
+
+    function handleScroll() {
+        // Top Home Page Switching 
+        if (window.scrollY < 340) {
+            switchTopContent();
+        }
+        // Initialize the sections elements
+        let featuresSection = document.querySelector(".features-section");
+        let highlightedSkillsSection = document.querySelector(".highlighted-skills-section");
+        let topProjectsSection = document.querySelector(".top-projects-section");
+        let latestExperienceSection = document.querySelector(".latest-experience-section");
+        let sideSkillsSection = document.querySelector(".side-skills-section");
+        let latestBlogsSection = document.querySelector(".latest-blogs-section");
+
+        if (isElementInViewport(featuresSection) && !featuresAnimated) {
+            featuresAnimated = true;
+            switchFeaturesSection();
+        }
+        if (isElementInViewport(highlightedSkillsSection) && !highlightedSkillsAnimated) {
+            highlightedSkillsAnimated = true;
+            switchHighlightedSkillsSection();
+        }
+        if (isElementInViewport(topProjectsSection) && !topProjectsAnimated) {
+            topProjectsAnimated = true;
+            switchTopProjectsSection();
+        }
+        if (isElementInViewport(latestExperienceSection) && !latestExperienceAnimated) {
+            latestExperienceAnimated = true;
+            switchLatestExperienceSection();
+        }
+        if (isElementInViewport(sideSkillsSection) && !sideSkillsAnimated) {
+            sideSkillsAnimated = true;
+            switchSideSkillsSection();
+        }
+        if (isElementInViewport(latestBlogsSection) && !latestBlogsAnimated) {
+            latestBlogsAnimated = true;
+            switchLatestBlogsSection();
+        }
+    }
+
+    // if (isPlayingSoundtrack) {
+    window.addEventListener("scroll", handleScroll);
+    // }
 
     // This function uses -webkit-mask-image to make a smooth fade out animation from left to right
     function maskImage(element, time, interval, reverse) {

@@ -23,27 +23,27 @@ export default function ArrowsPattern({
         >
             <g id="Layer_2-2" data-name="Layer 2">
                 <polygon
-                    class="cls-1"
+                    className="cls-1"
                     fill={fill}
                     points="0 0 9.84 5.68 0 11.36 0 0"
                 />
                 <polygon
-                    class="cls-1"
+                    className="cls-1"
                     fill={fill}
                     points="14.22 0 24.06 5.68 14.22 11.36 14.22 0"
                 />
                 <polygon
-                    class="cls-1"
+                    className="cls-1"
                     fill={fill}
                     points="28.44 0 38.28 5.68 28.44 11.36 28.44 0"
                 />
                 <polygon
-                    class="cls-1"
+                    className="cls-1"
                     fill={fill}
                     points="42.66 0 52.5 5.68 42.66 11.36 42.66 0"
                 />
                 <polygon
-                    class="cls-1"
+                    className="cls-1"
                     fill={fill}
                     points="56.88 0 66.72 5.68 56.88 11.36 56.88 0"
                 />

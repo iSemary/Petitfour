@@ -6,7 +6,7 @@ import styleVariables from "../../assets/styles/variables/variables.module.scss"
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 function LatestExperience(props) {
     return (
-        <div className="bg-home-odd">
+        <div className="bg-home-odd latest-experience-section">
             <DotsPattern
                 color={styleVariables.primaryWhite}
                 bottom="5%"
@@ -35,8 +35,8 @@ function LatestExperience(props) {
                                 <AiOutlineFundProjectionScreen className="me-1" />{""}+
                                 {props.totalProjects}{" online and open-source projects"}
                             </h5>
-                            <div class="more-experience-h-line">
-                                <div class="h-line"></div>
+                            <div className="more-experience-h-line">
+                                <div className="h-line"></div>
                             </div>
                         </div>
                     </div>

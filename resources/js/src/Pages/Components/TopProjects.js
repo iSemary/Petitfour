@@ -13,7 +13,7 @@ import styleVariables from "../../assets/styles/variables/variables.module.scss"
 function TopProjects({ topProjects }) {
     return (
         <>
-            <div className="bg-home-even">
+            <div className="bg-home-even top-projects-section">
                 <Container>
                     <h3 className="text-center home-title">
                         Top <span>Projects</span>

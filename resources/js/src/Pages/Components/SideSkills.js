@@ -9,7 +9,7 @@ function SideSkills({ sideSkills }) {
     const MAX_SIDE_SKILLS = 5;
 
     return (
-        <div className="bg-home-even">
+        <div className="bg-home-even side-skills-section">
             <HalfCirclePattern
                 width="75"
                 height="180"

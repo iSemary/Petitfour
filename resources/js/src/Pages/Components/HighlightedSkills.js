@@ -15,7 +15,7 @@ import styleVariables from "../../assets/styles/variables/variables.module.scss"
 
 function HighlightedSkills({ highlightedSkills }) {
     return (
-        <div className="bg-home-odd">
+        <div className="bg-home-odd highlighted-skills-section">
             <Container>
                 <h3 className="text-center home-title">
                     Highlighted <span>Skills</span>
