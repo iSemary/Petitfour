@@ -1978,17 +1978,31 @@ footer.home-footer {
 // Transitions classes
 
 .image-mask-sm {
-    // -webkit-mask-image: linear-gradient(273deg, #000 -24%,  transparent);
-    // mask-image: linear-gradient(273deg, #000 -24%,  transparent);
-    animation: imageMaskSm 3000ms linear;
-    transition: all 3000ms linear !important;
+    -webkit-mask-image: linear-gradient(
+        270deg,
+        black -6.2%,
+        transparent 44.28%
+    );
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: cover;
+    // -webkit-animation: imageMaskSm 5s forwards;
+    // transition: imageMaskSm 5000ms linear !important;
 }
 @keyframes imageMaskSm {
     0% {
-        -webkit-mask-image: linear-gradient(273deg, #000 -15%, transparent);
+        -webkit-mask-image: linear-gradient(
+            270deg,
+            black -6.2%,
+            transparent 44.28%
+        );
     }
     100% {
-        -webkit-mask-image: linear-gradient(90deg, #000 200%, transparent);
+        -webkit-mask-image: linear-gradient(
+            270deg,
+            black -6.2%,
+            transparent 44.28%
+        );
     }
 }
 /*  =============================================================================================

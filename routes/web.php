@@ -56,4 +56,4 @@ Route::prefix('dashboard')->group(function () {
 });
 
 // Website routes
-Route::get('/{any}', [AppController::class, 'index'])->where('any', '^((?!app|static|css).)*$');
+Route::get('/{any}', [AppController::class, 'index'])->where('any', '^((?!app|static).)*$');

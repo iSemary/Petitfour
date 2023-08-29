@@ -15,7 +15,6 @@ export default function SwitchButton() {
     const soundtrackRef = useRef(null);
 
     const handleTransitionEnded = (e) => {
-        if (theme === false) document.body.classList.remove("pharaoh-mode");
         setIsPlayingTransition(false);
         setIsPlayingSoundtrack(theme === true);
         setScrollingDown(theme === true);
@@ -71,6 +70,11 @@ export default function SwitchButton() {
                 stopCodeFlashing();
             }
         }, 350);
+        setTimeout(function () {
+            if (theme === true) {
+                returnOriginalStyles();
+            }
+        }, 500);
     };
 
     const stopCodeFlashing = () => {
@@ -81,6 +85,10 @@ export default function SwitchButton() {
 
     const blurPage = () => {
         document.body.style.filter = "blur(10px)";
+    };
+
+    const returnOriginalStyles = () => {
+        document.body.classList.remove("pharaoh-mode");
     };
 
     const scrollToDown = () => {
@@ -127,27 +135,83 @@ export default function SwitchButton() {
      *
      */
 
-    // if (isPlayingSoundtrack) {
-    window.addEventListener("scroll", function (e) {
-        if (window.scrollY < 340) {
-            // document.getElementById("siteLogo").style.setProperty("opacity", 0);
-            // document.getElementById("siteLogo").src = document
-            //     .getElementById("siteLogo")
-            //     .getAttribute("data-theme-logo");
-            // document.getElementById("siteLogo").style.setProperty("opacity", 1);
-            document.getElementById("siteLogo").classList.add('image-mask-sm');
-        }
-        if (window.scrollY >= 340 && window.scrollY <= 760) {
-            console.log("Scroll height: " + window.scrollY);
-        }
-    });
-    // }
+    if (isPlayingSoundtrack) {
+        window.addEventListener("scroll", function (e) {
+            if (window.scrollY < 340) {
+                maskImage(document.getElementById("siteLogo"), 2000, 10, false);
+                setTimeout(() => {
+                    document.getElementById("siteLogo").src = document
+                        .getElementById("siteLogo")
+                        .getAttribute("data-theme-logo");
+                    maskImage(
+                        document.getElementById("siteLogo"),
+                        2000,
+                        10,
+                        true
+                    );
+                }, 2000);
+            }
+            if (window.scrollY >= 340 && window.scrollY <= 760) {
+            }
+        });
+    }
 
-    // function maskImage(element, from, to, time) {
-    //     const animation = `linear-gradient(273deg, black ${from}%, transparent ${to}%)`;
-    //     element.style.webkitMaskImage = animation;
-    //     element.style.transition = `webkit-mask-image ${time}ms ease-in-out`;
-    // }
+    // This function uses -webkit-mask-image to make a smooth fade out animation from left to right
+    function maskImage(element, time, interval, reverse) {
+        if (
+            (element.classList.contains("animation-in-progress") ||
+                element.classList.contains("animation-ended")) &&
+            reverse === false
+        ) {
+            return false;
+        }
+        if (element.classList.contains("animation-reverse-ended")) {
+            return false;
+        }
+
+        element.classList.add("animation-in-progress");
+        element.style.webkitMaskImage = `linear-gradient(270deg, black 120%, transparent 120%)`;
+
+        var timeExecuted = 0;
+        var timeInterval = interval;
+
+        var maxFrom, maxTo, currentFrom, currentTo;
+
+        if (reverse) {
+            maxFrom = 120;
+            maxTo = 120;
+            currentFrom = -80;
+            currentTo = 0;
+        } else {
+            maxFrom = -80;
+            maxTo = 0;
+            currentFrom = 120;
+            currentTo = 120;
+        }
+
+        let maskInterval = setInterval(() => {
+            timeExecuted = timeExecuted + timeInterval;
+
+            if (timeExecuted >= time) {
+                element.classList.remove("animation-in-progress");
+                element.classList.add("animation-ended");
+                if (reverse) {
+                    element.classList.add("animation-reverse-ended");
+                }
+                clearInterval(maskInterval);
+                return false;
+            }
+            if (currentFrom !== maxFrom) {
+                currentFrom = reverse ? currentFrom + 2 : currentFrom - 2;
+            }
+
+            if (currentTo !== maxTo) {
+                reverse ? currentTo++ : currentTo--;
+            }
+
+            element.style.webkitMaskImage = `linear-gradient(270deg, black ${currentFrom}%, transparent ${currentTo}%)`;
+        }, timeInterval);
+    }
 
     useEffect(() => {
         if (isSoundTrackEnd) {
