@@ -86,7 +86,7 @@ function Home(props) {
                                     .split(" ")
                                     .map((word, index, wordsArray) =>
                                         index === wordsArray.length - 1 ? (
-                                            <span key={index}>{word}</span>
+                                            <span className="top-paragraph-word" key={index}>{word}</span>
                                         ) : (
                                             word + " "
                                         )

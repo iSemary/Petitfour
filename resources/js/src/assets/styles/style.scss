@@ -312,6 +312,7 @@ body {
     background-color: $primaryDark;
     width: 100%;
     height: 100vh;
+    transition: 500ms;
 }
 $blurSvgDuration: 20s;
 .blur-background {
@@ -480,6 +481,7 @@ $blurSvgDuration: 20s;
         color: $primaryWhite;
         font-size: 23px;
         span {
+            transition: 500ms;
             background: linear-gradient(transparent 50%, $primaryColor 15px);
             display: inline;
             white-space: pre-wrap;
@@ -1975,36 +1977,6 @@ footer.home-footer {
     }
 }
 
-// Transitions classes
-
-.image-mask-sm {
-    -webkit-mask-image: linear-gradient(
-        270deg,
-        black -6.2%,
-        transparent 44.28%
-    );
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    -webkit-mask-size: cover;
-    // -webkit-animation: imageMaskSm 5s forwards;
-    // transition: imageMaskSm 5000ms linear !important;
-}
-@keyframes imageMaskSm {
-    0% {
-        -webkit-mask-image: linear-gradient(
-            270deg,
-            black -6.2%,
-            transparent 44.28%
-        );
-    }
-    100% {
-        -webkit-mask-image: linear-gradient(
-            270deg,
-            black -6.2%,
-            transparent 44.28%
-        );
-    }
-}
 /*  =============================================================================================
                         Custom Styles for pharaoh theme
     =============================================================================================
@@ -2065,6 +2037,20 @@ footer.home-footer {
     background-color: $themePrimaryDark;
 }
 
+.pharaoh-gradient-text {
+    background-image: linear-gradient(
+        90deg,
+        #e3e1fa 0,
+        #f28705 100%
+    ) !important;
+}
+.pharaoh-span-color {
+    background: linear-gradient(transparent 50%, $themePrimaryColor 15px)!important;
+    color: #fff;
+}
+
+
+// Main Styles
 .pharaoh-mode {
     background-color: $themePrimaryDark;
     .content,
@@ -2119,15 +2105,11 @@ footer.home-footer {
     .top-home-details {
         h1 {
             .gradient-text {
-                color: transparent;
                 background-image: linear-gradient(
                     90deg,
                     #e3e1fa 0,
                     #f28705 100%
                 );
-                -webkit-background-clip: text;
-                -moz-background-clip: text;
-                background-clip: text;
             }
         }
 

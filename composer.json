@@ -15,8 +15,6 @@
         "intervention/image": "^2.7",
         "isemary/backup-sentry": "^1.0",
         "laravel/framework": "^10.0",
-        "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.8",
         "spatie/laravel-sitemap": "^6.3",
         "yajra/laravel-datatables-oracle": "^10.4"
     },

@@ -257,7 +257,8 @@ body {
 .main-background-cover {
   background-color: #0C001D;
   width: 100%;
-  height: 100vh; }
+  height: 100vh;
+  transition: 500ms; }
 
 .blur-background {
   top: 0;
@@ -372,6 +373,7 @@ body {
     color: #e3e1fa;
     font-size: 23px; }
     .top-home-details p span {
+      transition: 500ms;
       background: linear-gradient(transparent 50%, #7455ff 15px);
       display: inline;
       white-space: pre-wrap;
@@ -1503,17 +1505,6 @@ footer.home-footer {
     top: 0;
     bottom: 0; }
 
-.image-mask-sm {
-  -webkit-mask-image: linear-gradient(270deg, black -6.2%, transparent 44.28%);
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: cover; }
-
-@keyframes imageMaskSm {
-  0% {
-    -webkit-mask-image: linear-gradient(270deg, black -6.2%, transparent 44.28%); }
-  100% {
-    -webkit-mask-image: linear-gradient(270deg, black -6.2%, transparent 44.28%); } }
 /*  =============================================================================================
                         Custom Styles for pharaoh theme
     =============================================================================================
@@ -1542,6 +1533,13 @@ footer.home-footer {
 
 .pharaoh-blur-background {
   background-color: #594114; }
+
+.pharaoh-gradient-text {
+  background-image: linear-gradient(90deg, #e3e1fa 0, #f28705 100%) !important; }
+
+.pharaoh-span-color {
+  background: linear-gradient(transparent 50%, #f2a71b 15px) !important;
+  color: #fff; }
 
 .pharaoh-mode {
   background-color: #594114;
@@ -1575,11 +1573,7 @@ footer.home-footer {
     .pharaoh-mode .links {
       background-color: #594114; } }
   .pharaoh-mode .top-home-details h1 .gradient-text {
-    color: transparent;
-    background-image: linear-gradient(90deg, #e3e1fa 0, #f28705 100%);
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text; }
+    background-image: linear-gradient(90deg, #e3e1fa 0, #f28705 100%); }
   .pharaoh-mode .top-home-details p span {
     background: linear-gradient(transparent 50%, #f2a71b 15px);
     color: #fff; }

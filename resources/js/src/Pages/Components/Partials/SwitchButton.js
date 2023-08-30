@@ -4,6 +4,8 @@ import AxiosConfig from "../../../config/AxiosConfig";
 import TransitionSound from "../../../assets/sounds/moon-night-transition-sound-effect.mp3";
 import soundtrackSound from "../../../assets/sounds/hesham-nazih-moon-knight.mp3";
 import { TbArrowBackUp } from "react-icons/tb";
+import styleVariables from "../../../assets/styles/variables/variables.module.scss";
+
 export default function SwitchButton() {
     const theme = localStorage.getItem("theme") === "true";
     const [isPlayingTransition, setIsPlayingTransition] = useState(false);
@@ -145,7 +147,7 @@ export default function SwitchButton() {
             (position.top < window.innerHeight && position.bottom >= 0)
         );
     }
-    
+
     /**
      *
      * Scrolling Scripts
@@ -153,16 +155,45 @@ export default function SwitchButton() {
      */
 
     function switchTopContent() {
+        // Logo Fade out
         maskImage(document.getElementById("siteLogo"), 2000, 10, false);
+        // Top Videos Fade out
+        maskImage(document.querySelector(".top-home-videos"), 2000, 10, false);
+        // Gradient Text Fade Out
+        maskImage(document.querySelector(".gradient-text"), 2000, 10, false);
+        // Header links
+        document.querySelector('.main-nav .nav-links .links div a.active').style.color = styleVariables.themePrimaryColor;
+
+        document.querySelector('.top-paragraph-word').classList.add('pharaoh-span-color');
+
+        document.querySelector('body').style.backgroundColor = styleVariables.themePrimaryDark;
+        document.querySelector('.main-background-cover').style.backgroundColor = styleVariables.themePrimaryDark;
+        
         setTimeout(() => {
+            // Change logo to fade in
             document.getElementById("siteLogo").src = document
                 .getElementById("siteLogo")
                 .getAttribute("data-theme-logo");
             maskImage(document.getElementById("siteLogo"), 2000, 10, true);
+
+            // Change videos to fade in
+
+            maskImage(document.querySelector(".top-home-videos"), 2000, 10, true);
+            // Change Gradient Text to fade in
+            document.querySelector('.gradient-text').classList.add('pharaoh-gradient-text');
+            maskImage(document.querySelector(".gradient-text"), 2000, 10, true);
         }, 2000);
     }
 
     function switchFeaturesSection() {
+        let allFeatures = document.querySelectorAll(
+            ".features-section .feature-item"
+        );
+        allFeatures.forEach((feature, i) => {
+            setTimeout(() => {
+                maskImage(feature, 2000, 10, false);
+            }, 200 * (10 * i));
+        });
         console.log("switchFeaturesSection");
     }
     function switchHighlightedSkillsSection() {
@@ -181,7 +212,6 @@ export default function SwitchButton() {
         console.log("switchLatestBlogsSection");
     }
 
-
     // Initialize the sections animated with null
     var featuresAnimated = false;
     var highlightedSkillsAnimated = false;
@@ -191,23 +221,34 @@ export default function SwitchButton() {
     var latestBlogsAnimated = false;
 
     function handleScroll() {
-        // Top Home Page Switching 
+        // Top Home Page Switching
         if (window.scrollY < 340) {
             switchTopContent();
         }
         // Initialize the sections elements
         let featuresSection = document.querySelector(".features-section");
-        let highlightedSkillsSection = document.querySelector(".highlighted-skills-section");
-        let topProjectsSection = document.querySelector(".top-projects-section");
-        let latestExperienceSection = document.querySelector(".latest-experience-section");
+        let highlightedSkillsSection = document.querySelector(
+            ".highlighted-skills-section"
+        );
+        let topProjectsSection = document.querySelector(
+            ".top-projects-section"
+        );
+        let latestExperienceSection = document.querySelector(
+            ".latest-experience-section"
+        );
         let sideSkillsSection = document.querySelector(".side-skills-section");
-        let latestBlogsSection = document.querySelector(".latest-blogs-section");
+        let latestBlogsSection = document.querySelector(
+            ".latest-blogs-section"
+        );
 
         if (isElementInViewport(featuresSection) && !featuresAnimated) {
             featuresAnimated = true;
             switchFeaturesSection();
         }
-        if (isElementInViewport(highlightedSkillsSection) && !highlightedSkillsAnimated) {
+        if (
+            isElementInViewport(highlightedSkillsSection) &&
+            !highlightedSkillsAnimated
+        ) {
             highlightedSkillsAnimated = true;
             switchHighlightedSkillsSection();
         }
@@ -215,7 +256,10 @@ export default function SwitchButton() {
             topProjectsAnimated = true;
             switchTopProjectsSection();
         }
-        if (isElementInViewport(latestExperienceSection) && !latestExperienceAnimated) {
+        if (
+            isElementInViewport(latestExperienceSection) &&
+            !latestExperienceAnimated
+        ) {
             latestExperienceAnimated = true;
             switchLatestExperienceSection();
         }
