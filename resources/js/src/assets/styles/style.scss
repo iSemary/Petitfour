@@ -346,10 +346,39 @@ $blurSvgDuration: 20s;
         user-select: none;
         background-color: #0e0e0e;
         text-align: center;
-        border-radius: 7px;
+        border-radius: 10px;
         padding: 10px 0;
         overflow: hidden;
         cursor: pointer;
+        width: 270px;
+        &::before {
+            animation: fx-plyr-play-button 2s ease-out infinite;
+            border: 4px solid #e3e1fab0;
+            border-radius: 150%;
+            box-shadow: 0 0 10px #e3e1fab0;
+            content: "";
+            left: 0%;
+            position: absolute;
+            top: -10%;
+            border-radius: 10px;
+            height: 120%;
+            width: 270px;
+        }
+
+        &:hover {
+            &::after {
+                animation: softGlassSlide 1.7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+                content: "";
+                left: -8%;
+                position: absolute;
+                top: -45%;
+                height: 106px;
+                width: 2px;
+                background-color: #d7d7d757;
+                box-shadow: 0 0 5px #d7d7d780;
+                transform: rotateZ(340deg);
+            }
+        }
 
         .stars-svg-container {
             position: relative;
@@ -402,6 +431,10 @@ $blurSvgDuration: 20s;
         &:hover {
             box-shadow: 5px 4px 9px #000000bf, inset 2px 4px 7px #ffffff1a;
             transform: scale(1.01);
+
+            &::before {
+                opacity: 0;
+            }
         }
 
         &:hover span {
@@ -409,7 +442,23 @@ $blurSvgDuration: 20s;
         }
     }
 }
-
+@keyframes fx-plyr-play-button {
+    0% {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.07);
+        opacity: 0;
+    }
+}
+@keyframes softGlassSlide {
+    0% {
+        left: -8%;
+    }
+    to {
+        left: 104%;
+    }
+}
 @keyframes starFade {
     0% {
         filter: drop-shadow(0 0 0 #fff);
@@ -2045,10 +2094,12 @@ footer.home-footer {
     ) !important;
 }
 .pharaoh-span-color {
-    background: linear-gradient(transparent 50%, $themePrimaryColor 15px)!important;
+    background: linear-gradient(
+        transparent 50%,
+        $themePrimaryColor 15px
+    ) !important;
     color: #fff;
 }
-
 
 // Main Styles
 .pharaoh-mode {
@@ -2131,6 +2182,9 @@ footer.home-footer {
     .switch-button-content .switch-button.default {
         background-color: $themePrimaryDark;
         box-shadow: -1px -1px 4px $themePrimaryColor;
+        &::before {
+            opacity: 0;
+        }
     }
     .bg-home-even {
         background-color: $themePrimaryDark;

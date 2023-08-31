@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 
-function VideoPlayer({ firstVideo, secondVideo }) {
+function VideoPlayer({theme, firstVideo, secondVideo, themeFirstVideo, themeSecondVideo }) {
     const firstVideoRef = useRef(null);
     const secondVideoRef = useRef(null);
     const [playFirstVideo, setPlayFirstVideo] = useState(false);
@@ -31,7 +31,7 @@ function VideoPlayer({ firstVideo, secondVideo }) {
     }, []);
 
     return (
-        <div>
+        <div className="videos-container" data-first-default={firstVideo} data-second-default={secondVideo} data-first-theme={themeFirstVideo} data-second-theme={themeSecondVideo}>
             <video
                 ref={firstVideoRef}
                 muted
@@ -39,7 +39,7 @@ function VideoPlayer({ firstVideo, secondVideo }) {
                 autoPlay={playFirstVideo}
                 playsInline
             >
-                <source src={firstVideo} type="video/mp4" />
+                <source src={!theme ? firstVideo : themeFirstVideo} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             <video
@@ -51,7 +51,7 @@ function VideoPlayer({ firstVideo, secondVideo }) {
                 muted
                 playsInline
             >
-                <source src={secondVideo} type="video/mp4" />
+                <source src={!theme ? secondVideo : themeSecondVideo} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
         </div>

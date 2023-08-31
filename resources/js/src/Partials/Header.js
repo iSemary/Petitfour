@@ -80,6 +80,7 @@ function Header(props) {
                             <img
                                 src={props.theme ? props.theme_logo : props.logo}
                                 data-theme-logo={props.theme_logo}
+                                data-logo={props.logo}
                                 alt="Main logo"
                                 id="siteLogo"
                                 style={logoLoading ? { display: "none" } : {}}

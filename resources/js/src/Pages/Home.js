@@ -86,7 +86,12 @@ function Home(props) {
                                     .split(" ")
                                     .map((word, index, wordsArray) =>
                                         index === wordsArray.length - 1 ? (
-                                            <span className="top-paragraph-word" key={index}>{word}</span>
+                                            <span
+                                                className="top-paragraph-word"
+                                                key={index}
+                                            >
+                                                {word}
+                                            </span>
                                         ) : (
                                             word + " "
                                         )
@@ -124,21 +129,19 @@ function Home(props) {
                             {TopTextContent}
                             <div className="top-home-buttons">
                                 <Row>
-                                    <Col md={6}>
+                                    <Col md={12}>
                                         <SwitchButton />
                                     </Col>
-                                    <Col md={6}></Col>
                                 </Row>
                             </div>
                         </Col>
                         <Col md={6} className="top-home-videos px-0 mx-0">
                             <VideoPlayer
-                                firstVideo={
-                                    props.theme ? themeFirst : defaultFirst
-                                }
-                                secondVideo={
-                                    props.theme ? themeSecond : defaultSecond
-                                }
+                                theme={props.theme}
+                                firstVideo={defaultFirst}
+                                secondVideo={defaultSecond}
+                                themeFirstVideo={themeFirst}
+                                themeSecondVideo={themeSecond}
                             />
                         </Col>
                     </Row>
@@ -149,7 +152,7 @@ function Home(props) {
                 <Features features={props?.config.features} />
                 <HighlightedSkills
                     highlightedSkills={props?.config.highlighted_skills}
-                    />
+                />
                 <TopProjects topProjects={props?.config.top_projects} />
                 <LatestExperience
                     latestExperience={props?.config?.latest_experience}

@@ -20,8 +20,12 @@ export default function SwitchButton() {
         setIsPlayingTransition(false);
         setIsPlayingSoundtrack(theme === true);
         setScrollingDown(theme === true);
-
-        if (theme === true) scrollToDown();
+        if (theme === true) {
+            switchTopContent();
+            setTimeout(() => {
+                scrollToDown();
+            }, 3000);
+        }
     };
 
     const handleSoundtrackEnded = (e) => {
@@ -130,6 +134,15 @@ export default function SwitchButton() {
         setTimeout(function () {
             startCodeFlashing();
         }, 500);
+
+        setTimeout(function () {
+            if (theme === true) {
+                changeVideosSource(theme);
+                document.getElementById("siteLogo").src = document
+                    .getElementById("siteLogo")
+                    .getAttribute("data-logo");
+            }
+        }, 1000);
     };
 
     /**
@@ -148,6 +161,37 @@ export default function SwitchButton() {
         );
     }
 
+    function changeVideosSource(theme) {
+        const videoContainer = document.querySelector(".videos-container");
+        const videos = videoContainer.querySelectorAll("video");
+
+        // Get the new video sources from data attributes
+        const firstDefaultSource =
+            videoContainer.getAttribute("data-first-default");
+        const secondDefaultSource = videoContainer.getAttribute(
+            "data-second-default"
+        );
+        const firstThemeSource =
+            videoContainer.getAttribute("data-first-theme");
+        const secondThemeSource =
+            videoContainer.getAttribute("data-second-theme");
+
+        // Update the source for the first video
+        videos[0].querySelector("source").src = theme
+            ? firstDefaultSource
+            : firstThemeSource;
+        videos[0].load(); // Load the new source
+
+        // Update the source for the second video
+        videos[1].querySelector("source").src = theme
+            ? secondDefaultSource
+            : secondThemeSource;
+        videos[1].load(); // Load the new source
+
+        videos[0].style.display = "block";
+        videos[1].style.display = "none";
+    }
+
     /**
      *
      * Scrolling Scripts
@@ -162,25 +206,39 @@ export default function SwitchButton() {
         // Gradient Text Fade Out
         maskImage(document.querySelector(".gradient-text"), 2000, 10, false);
         // Header links
-        document.querySelector('.main-nav .nav-links .links div a.active').style.color = styleVariables.themePrimaryColor;
+        document.querySelector(
+            ".main-nav .nav-links .links div a.active"
+        ).style.color = styleVariables.themePrimaryColor;
 
-        document.querySelector('.top-paragraph-word').classList.add('pharaoh-span-color');
+        document
+            .querySelector(".top-paragraph-word")
+            .classList.add("pharaoh-span-color");
 
-        document.querySelector('body').style.backgroundColor = styleVariables.themePrimaryDark;
-        document.querySelector('.main-background-cover').style.backgroundColor = styleVariables.themePrimaryDark;
-        
         setTimeout(() => {
+            document.querySelector("body").style.backgroundColor =
+                styleVariables.themePrimaryDark;
+            document.querySelector(
+                ".main-background-cover"
+            ).style.backgroundColor = styleVariables.themePrimaryDark;
             // Change logo to fade in
             document.getElementById("siteLogo").src = document
                 .getElementById("siteLogo")
                 .getAttribute("data-theme-logo");
-            maskImage(document.getElementById("siteLogo"), 2000, 10, true);
 
+            maskImage(document.getElementById("siteLogo"), 2000, 5, true);
+            // Change videos source
+            changeVideosSource(false);
             // Change videos to fade in
-
-            maskImage(document.querySelector(".top-home-videos"), 2000, 10, true);
+            maskImage(
+                document.querySelector(".top-home-videos"),
+                2000,
+                10,
+                true
+            );
             // Change Gradient Text to fade in
-            document.querySelector('.gradient-text').classList.add('pharaoh-gradient-text');
+            document
+                .querySelector(".gradient-text")
+                .classList.add("pharaoh-gradient-text");
             maskImage(document.querySelector(".gradient-text"), 2000, 10, true);
         }, 2000);
     }
@@ -213,6 +271,7 @@ export default function SwitchButton() {
     }
 
     // Initialize the sections animated with null
+    // var TopContentAnimated = false;
     var featuresAnimated = false;
     var highlightedSkillsAnimated = false;
     var topProjectsAnimated = false;
@@ -222,9 +281,10 @@ export default function SwitchButton() {
 
     function handleScroll() {
         // Top Home Page Switching
-        if (window.scrollY < 340) {
-            switchTopContent();
-        }
+        // if (window.scrollY < 340 && !TopContentAnimated) {
+        //     TopContentAnimated = true;
+        //     switchTopContent();
+        // }
         // Initialize the sections elements
         let featuresSection = document.querySelector(".features-section");
         let highlightedSkillsSection = document.querySelector(
@@ -274,7 +334,11 @@ export default function SwitchButton() {
     }
 
     // if (isPlayingSoundtrack) {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", function () { 
+        setTimeout(() => {
+            handleScroll();
+        }, 2500);
+     });
     // }
 
     // This function uses -webkit-mask-image to make a smooth fade out animation from left to right
@@ -323,21 +387,20 @@ export default function SwitchButton() {
                 return false;
             }
             if (currentFrom !== maxFrom) {
-                currentFrom = reverse ? currentFrom + 2 : currentFrom - 2;
+                currentFrom = reverse ? currentFrom + 1 : currentFrom - 2;
             }
 
             if (currentTo !== maxTo) {
-                reverse ? currentTo++ : currentTo--;
+                currentTo = reverse ? currentTo + 2 : currentTo - 1;
             }
-
             element.style.webkitMaskImage = `linear-gradient(270deg, black ${currentFrom}%, transparent ${currentTo}%)`;
         }, timeInterval);
     }
 
     useEffect(() => {
         if (isSoundTrackEnd) {
-            window.scrollTo({ top: 0, behavior: "smooth" });
             document.body.classList.add("pharaoh-mode");
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
     }, [isSoundTrackEnd]);
 
