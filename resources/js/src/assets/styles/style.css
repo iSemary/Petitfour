@@ -1,15 +1,19 @@
 @font-face {
   font-family: Lato;
-  src: url("../fonts/Lato/Lato-Regular.ttf"); }
+  src: url("../fonts/Lato/Lato-Regular.ttf");
+  font-display: swap; }
 @font-face {
   font-family: Montserrat;
-  src: url("../fonts/Montserrat/Montserrat-VariableFont_wght.ttf"); }
+  src: url("../fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+  font-display: swap; }
 @font-face {
   font-family: Moonfark;
-  src: url("../fonts/Moonfark/moonfark.ttf"); }
+  src: url("../fonts/Moonfark/moonfark.ttf");
+  font-display: swap; }
 @font-face {
   font-family: Pharaoh;
-  src: url("../fonts/Pharaoh/AlphacodePharaohRegular.ttf"); }
+  src: url("../fonts/Pharaoh/AlphacodePharaohRegular.ttf");
+  font-display: swap; }
 :export {
   primaryColor: #7455ff;
   primaryBlue: #0ccde8;
@@ -201,7 +205,8 @@ body {
   padding: 1% 0 3% 0;
   text-align: center;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  transition: all 3s ease-in-out; }
 
 .bg-home-even {
   background-color: #0C001D;
@@ -257,7 +262,7 @@ body {
 .main-background-cover {
   background-color: #0C001D;
   width: 100%;
-  height: 100vh;
+  height: 92vh;
   transition: 500ms; }
 
 .blur-background {
@@ -399,7 +404,7 @@ body {
       animation: fadeSlideText 1200ms cubic-bezier(0.68, -0.55, 0.27, 1.55); }
     .top-home-details h1 span:nth-of-type(2) {
       animation: fadeSlideText 1500ms cubic-bezier(0.68, -0.55, 0.27, 1.55); }
-  .top-home-details h4 {
+  .top-home-details h2 {
     position: relative;
     color: #e3e1fa;
     font-family: monospace;
@@ -1309,6 +1314,7 @@ footer.home-footer {
   font-weight: bold;
   padding-bottom: 2%; }
   .home-title span {
+    transition: 1s ease-in-out;
     color: #7455ff; }
 
 .circles-pattern .cls-2 {
@@ -1511,7 +1517,8 @@ footer.home-footer {
 .bg-home-even .container,
 .bg-home-odd .container {
   background-size: 635px;
-  background-image: url("../images/textures/stars.png"); }
+  background-image: url("../images/textures/stars.webp");
+  transition: all 2s ease-in-out; }
 
 .splide__list .blog-item {
   width: 100%; }
@@ -1578,6 +1585,43 @@ footer.home-footer {
   background: linear-gradient(transparent 50%, #f2a71b 15px) !important;
   color: #fff; }
 
+.features .feature-item .feature-image.pharaoh {
+  filter: hue-rotate(132deg); }
+
+.pharaoh-text {
+  color: #f2a71b !important; }
+
+.bg-home-even.pharaoh {
+  background-color: #594114;
+  background: linear-gradient(180deg, #594114 75%, #171a1c 100%); }
+
+.bg-home-odd.pharaoh {
+  background-color: #171a1c;
+  background: linear-gradient(180deg, #171a1c 85%, #594114 100%); }
+
+.container.pharaoh {
+  background-image: url("../images/textures/pharaoh.webp"); }
+
+.experience.pharaoh .experience-date {
+  background-color: #594114;
+  background-image: linear-gradient(326deg, #f2a71b 0%, #594114 74%);
+  color: #ffffffe3; }
+.experience.pharaoh .experience-info {
+  color: #e3e1fa;
+  background-color: #594114; }
+  .experience.pharaoh .experience-info .experience-title {
+    color: #f2a71b; }
+.experience.pharaoh .experience-h-line .h-line,
+.experience.pharaoh .more-experience-h-line .h-line {
+  background-color: #3e1d02;
+  background-image: linear-gradient(90deg, #ff8729, #3e1d02 74%); }
+.experience.pharaoh .experience-v-line .v-line {
+  background-color: #3e1d02;
+  background-image: linear-gradient(0deg, #ff8729, #3e1d02 74%); }
+
+.experience-even.pharaoh .h-line {
+  background-image: linear-gradient(327deg, #ff8729, #3e1d02 74%); }
+
 .pharaoh-mode {
   background-color: #594114;
   /** 
@@ -1589,8 +1633,7 @@ footer.home-footer {
   .pharaoh-mode .skills,
   .pharaoh-mode .bg-home-even .container,
   .pharaoh-mode .bg-home-odd .container {
-    background-size: 635px;
-    background-image: url("../images/textures/pharaoh.png"); }
+    background-image: url("../images/textures/pharaoh.webp"); }
   .pharaoh-mode * {
     cursor: url("../images/scepter-cursor.png"), auto; }
   .pharaoh-mode .logo-loader:after {

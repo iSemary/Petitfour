@@ -79,7 +79,7 @@ function Blog() {
                         {
                             <div className="blog-skills">
                                 {blogSkills.map((blogSkill, key) => (
-                                    <Link to={"/skills/" + blogSkill.name} key={key}>
+                                    <Link to={"/skills/" + blogSkill.name} key={key} aria-label={blogSkill.name}>
                                         <span
                                             
                                             className="badge badge-secondary me-1"

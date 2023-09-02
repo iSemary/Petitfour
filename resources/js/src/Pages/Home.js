@@ -11,7 +11,7 @@ import SideSkills from "./Components/SideSkills";
 import LatestBlogs from "./Components/LatestBlogs";
 import SwitchButton from "./Components/Partials/SwitchButton";
 import CirclePattern from "../Pages/Patterns/CirclePattern";
-import ScarabBeetleImage from "../assets/images/Scarab_beetle_icon.png";
+import ScarabBeetleImage from "../assets/images/Scarab_beetle_icon.webp";
 import VideoPlayer from "./Utilities/VideoPlayer";
 import defaultFirst from "../assets/images/optimized/default-first.mp4";
 import defaultSecond from "../assets/images/optimized/default-second.mp4";
@@ -71,14 +71,14 @@ function Home(props) {
                         <br />
                         <span>{props?.config?.config?.user?.last_name}</span>
                     </h1>
-                    <h4
+                    <h2
                         ref={positionTitleRef}
                         data-value={props?.config?.config?.user?.position}
                         className="text-hack-animation width-fit-content"
                         onMouseOver={() => animateHackText(positionTitleRef)}
                     >
                         {props?.config?.config?.user?.position}
-                    </h4>
+                    </h2>
                     <p>
                         {props?.config?.config?.user?.slogan && (
                             <>

@@ -1,18 +1,22 @@
 @font-face {
     font-family: Lato;
     src: url("../fonts/Lato/Lato-Regular.ttf");
+    font-display: swap;
 }
 @font-face {
     font-family: Montserrat;
     src: url("../fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+    font-display: swap;
 }
 @font-face {
     font-family: Moonfark;
     src: url("../fonts/Moonfark/moonfark.ttf");
+    font-display: swap;
 }
 @font-face {
     font-family: Pharaoh;
     src: url("../fonts/Pharaoh/AlphacodePharaohRegular.ttf");
+    font-display: swap;
 }
 
 @import "./variables/variables.module.scss";
@@ -243,6 +247,7 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
+    transition: all 3s ease-in-out;
 }
 
 .bg-home-even {
@@ -254,6 +259,7 @@ body {
     background-color: $primaryBlack;
     background: linear-gradient(180deg, $primaryBlack 85%, $primaryDark 100%);
 }
+
 .home-content > div:last-of-type {
     background: $primaryBlack;
 }
@@ -311,7 +317,7 @@ body {
 .main-background-cover {
     background-color: $primaryDark;
     width: 100%;
-    height: 100vh;
+    height: 92vh;
     transition: 500ms;
 }
 $blurSvgDuration: 20s;
@@ -367,7 +373,8 @@ $blurSvgDuration: 20s;
 
         &:hover {
             &::after {
-                animation: softGlassSlide 1.7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+                animation: softGlassSlide 1.7s
+                    cubic-bezier(0.18, 0.89, 0.32, 1.28);
                 content: "";
                 left: -8%;
                 position: absolute;
@@ -518,7 +525,7 @@ $blurSvgDuration: 20s;
         }
     }
 
-    h4 {
+    h2 {
         position: relative;
         color: $primaryWhite;
         font-family: monospace;
@@ -1708,6 +1715,7 @@ footer.home-footer {
     font-weight: bold;
     padding-bottom: 2%;
     span {
+        transition: 1s ease-in-out;
         color: $primaryColor;
     }
 }
@@ -1986,7 +1994,8 @@ footer.home-footer {
 .bg-home-even .container,
 .bg-home-odd .container {
     background-size: 635px;
-    background-image: url("../images/textures/stars.png");
+    background-image: url("../images/textures/stars.webp");
+    transition: all 2s ease-in-out;
 }
 
 .splide__list {
@@ -2101,6 +2110,74 @@ footer.home-footer {
     color: #fff;
 }
 
+.features .feature-item .feature-image.pharaoh {
+    filter: hue-rotate(132deg);
+}
+.pharaoh-text {
+    color: $themePrimaryColor !important;
+}
+
+.bg-home-even.pharaoh {
+    background-color: $themePrimaryDark;
+    background: linear-gradient(
+        180deg,
+        $themePrimaryDark 75%,
+        $primaryBlack 100%
+    );
+}
+
+.bg-home-odd.pharaoh {
+    background-color: $primaryBlack;
+    background: linear-gradient(
+        180deg,
+        $primaryBlack 85%,
+        $themePrimaryDark 100%
+    );
+}
+.container.pharaoh {
+    background-image: url("../images/textures/pharaoh.webp");
+}
+
+.experience.pharaoh {
+    .experience-date {
+        background-color: $themePrimaryDark;
+        background-image: linear-gradient(
+            326deg,
+            $themePrimaryColor 0%,
+            $themePrimaryDark 74%
+        );
+        color: #ffffffe3;
+    }
+    .experience-info {
+        color: $primaryWhite;
+        background-color: $themePrimaryDark;
+
+        .experience-title {
+            color: $themePrimaryColor;
+        }
+    }
+
+    .experience-h-line,
+    .more-experience-h-line {
+        .h-line {
+            background-color: #3e1d02;
+            background-image: linear-gradient(90deg, #ff8729, #3e1d02 74%);
+        }
+    }
+
+    .experience-v-line {
+        .v-line {
+            background-color: #3e1d02;
+            background-image: linear-gradient(0deg, #ff8729, #3e1d02 74%);
+        }
+    }
+}
+.experience-even.pharaoh {
+    .h-line {
+        background-image: linear-gradient(327deg, #ff8729, #3e1d02 74%);
+    }
+}
+
 // Main Styles
 .pharaoh-mode {
     background-color: $themePrimaryDark;
@@ -2108,8 +2185,7 @@ footer.home-footer {
     .skills,
     .bg-home-even .container,
     .bg-home-odd .container {
-        background-size: 635px;
-        background-image: url("../images/textures/pharaoh.png");
+        background-image: url("../images/textures/pharaoh.webp");
     }
 
     * {

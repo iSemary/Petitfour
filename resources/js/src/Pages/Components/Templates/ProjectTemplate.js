@@ -12,6 +12,7 @@ function ProjectTemplate({ project, col, animate, containerClass = '', index = 0
         <Col sm={12} md={6} lg={4} data-aos-offset={(index*100)} data-aos={animate} className={containerClass + " project-box"}>
             <Link
                 className="no-link"
+                aria-label={project.name}
                 to={`/projects/${project.name
                     .split(" ")
                     .join("-")

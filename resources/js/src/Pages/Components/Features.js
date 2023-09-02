@@ -7,8 +7,8 @@ import { Container } from "react-bootstrap";
 function Features(props) {
     return (
         <div className="bg-home-even features-section">
-            <Container>
-                <h3 className="text-center home-title">
+            <Container className="features-container">
+                <h3 className="text-center home-title features-title">
                     What can i do <span>best?</span>
                 </h3>
                 <Row className="features m-auto">

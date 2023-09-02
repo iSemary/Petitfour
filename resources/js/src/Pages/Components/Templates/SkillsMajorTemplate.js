@@ -20,6 +20,7 @@ function SkillsMajorTemplate({ skill, index }) {
                                 .split(" ")
                                 .join("-")
                                 .toLowerCase()}`}
+                            aria-label={skill.name}
                         >
                             {/* Show image loader until the image is totally loaded */}
                             {imageLoading && (

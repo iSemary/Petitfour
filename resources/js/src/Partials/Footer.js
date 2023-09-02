@@ -74,6 +74,7 @@ function Footer(props) {
                                                 socialLink.type
                                             }
                                             target="_blank"
+                                            aria-label={"Social #"+socialLink.type}
                                         >
                                             {linkIcons[socialLink.type]}
                                         </a>
@@ -109,24 +110,28 @@ function Footer(props) {
                             <Link
                                 className="text-reset d-block mb-2"
                                 to="projects"
+                                aria-label="Projects"
                             >
                                 Projects
                             </Link>
                             <Link
                                 className="text-reset d-block mb-2"
                                 to="skills"
+                                aria-label="Skills"
                             >
                                 Skills
                             </Link>
                             <Link
                                 className="text-reset d-block mb-2"
                                 to="blogs"
+                                aria-label="Blogs"
                             >
                                 Blogs
                             </Link>
                             <Link
                                 className="text-reset d-block mb-2"
                                 to="connect"
+                                aria-label="Connect"
                             >
                                 Connect
                             </Link>
@@ -173,6 +178,7 @@ function Footer(props) {
                                     className="text-reset"
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label="Resume"
                                     download
                                 >
                                     <ImProfile />
@@ -193,6 +199,7 @@ function Footer(props) {
                     className="text-reset fw-bold"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Portfolio"
                 >
                     &nbsp;Abdelrahman Mostafa   
                 </a>

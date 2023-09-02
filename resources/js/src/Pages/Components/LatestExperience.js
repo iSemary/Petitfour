@@ -14,11 +14,12 @@ function LatestExperience(props) {
                 height="60px"
                 width="60px"
             />
-            <Container>
+            <Container className="latest-experience-container">
                 <div className="home-experiences">
-                    <h3 className="text-center home-title">
+                    <h3 className="text-center home-title latest-experience-title">
                         Latest <span>Experience</span>
                     </h3>
+                    <div className="all-home-experiences">
                     {props?.latestExperience?.map((experience, index) => {
                         return (
                             <ExperienceTemplate
@@ -29,6 +30,7 @@ function LatestExperience(props) {
                             />
                         );
                     })}
+                    </div>
                     <div className="more-experience" data-aos={"fade-" + ((props?.latestExperience)?.length % 2 ? "left" : "right")}>
                         <div className="more-projects-content">
                             <h5>

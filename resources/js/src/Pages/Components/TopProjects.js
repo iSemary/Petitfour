@@ -14,8 +14,8 @@ function TopProjects({ topProjects }) {
     return (
         <>
             <div className="bg-home-even top-projects-section">
-                <Container>
-                    <h3 className="text-center home-title">
+                <Container className="top-projects-container">
+                    <h3 className="text-center home-title top-projects-title">
                         Top <span>Projects</span>
                     </h3>
                     <Row className="justify-content-center my-5">
@@ -45,7 +45,7 @@ function TopProjects({ topProjects }) {
                         )}
                     </Row>
                     <div className="mt-4">
-                        <Link to="projects" className="discover-more-btn">
+                        <Link to="projects" className="discover-more-btn" aria-label="Projects">
                             <span
                                 className="discover-circle"
                                 aria-hidden="true"

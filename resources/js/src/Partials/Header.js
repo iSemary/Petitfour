@@ -75,7 +75,7 @@ function Header(props) {
             <Container>
                 <Row className="w-100 nav-row">
                     <Col md={3} sm={3} xs={3} className="main-logo">
-                        <Link to="/" className="no-link">
+                        <Link to="/" className="no-link" aria-label="Home">
                             {logoLoading && <div className="logo-loader-container"><div className="logo-loader"></div><div className="logo-loader"></div></div>}
                             <img
                                 src={props.theme ? props.theme_logo : props.logo}
@@ -98,6 +98,7 @@ function Header(props) {
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/"
+                                    aria-label="Home"
                                     className={
                                         "no-link " +
                                         (useMatch("/") && " active")
@@ -110,6 +111,7 @@ function Header(props) {
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/skills"
+                                    aria-label="Skills"
                                     className={
                                         "no-link " +
                                         (useMatch("/skills") && " active")
@@ -122,6 +124,7 @@ function Header(props) {
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/projects"
+                                    aria-label="Projects"
                                     className={
                                         "no-link " +
                                         (useMatch("/projects") && " active")
@@ -134,6 +137,7 @@ function Header(props) {
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/blogs"
+                                    aria-label="Blogs"
                                     className={
                                         "no-link " +
                                         (useMatch("/blogs") && " active")
@@ -146,6 +150,7 @@ function Header(props) {
                                 <Link
                                     onClick={() => handleCloseMenu()}
                                     to="/connect"
+                                    aria-label="Connect"
                                     className={
                                         "no-link " +
                                         (useMatch("/connect") && " active")
@@ -161,6 +166,7 @@ function Header(props) {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     download
+                                    aria-label="Resume"
                                 >
                                     Resume
                                 </a>

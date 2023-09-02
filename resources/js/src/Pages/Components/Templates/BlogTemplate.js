@@ -13,7 +13,7 @@ function BlogTemplate({ blog, fade }) {
             <Col sm={12} md={6} lg={4} className="blog-item blog-min-card">
                 <Fade delay={1} className={!fade && "reveal-fade"}>
                     <Card className="mb-4 border-0">
-                        <Link to={`/blogs/${blog.slug}`}>
+                        <Link to={`/blogs/${blog.slug}`} aria-label={blog.title}>
                             <div className="blog-card-image-container">
                                 {/* Show image loader until the image is totally loaded */}
                                 {imageLoading && (

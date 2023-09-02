@@ -20,6 +20,7 @@ function SkillsListTemplate({ skill, imgClass, colClass, allowNavigate = true })
                                 .split(" ")
                                 .join("-")
                                 .toLowerCase()}`) : "#"}
+                                aria-label={skill.name}
                                 className={allowNavigate ? "" : "help-cursor"}
                         >
                             {/* Show image loader until the image is totally loaded */}

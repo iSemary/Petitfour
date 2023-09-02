@@ -22,8 +22,8 @@ function SideSkills({ sideSkills }) {
                 zIndex="0"
             />
 
-            <Container>
-                <h3 className="text-center home-title">
+            <Container className="side-skills-container">
+                <h3 className="text-center home-title side-skills-title">
                     Side <span>Skills</span>
                 </h3>
                 <Row className="side-skills">

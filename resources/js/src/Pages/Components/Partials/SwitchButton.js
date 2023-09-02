@@ -247,27 +247,101 @@ export default function SwitchButton() {
         let allFeatures = document.querySelectorAll(
             ".features-section .feature-item"
         );
+        document.querySelector(".features-section").classList.add("pharaoh");
+        document.querySelector(".features-container").classList.add("pharaoh");
+        document
+            .querySelector(".features-title span")
+            .classList.add("pharaoh-text");
         allFeatures.forEach((feature, i) => {
             setTimeout(() => {
                 maskImage(feature, 2000, 10, false);
+                setTimeout(() => {
+                    feature
+                        .querySelector(".feature-image")
+                        .classList.add("pharaoh");
+                    maskImage(feature, 2000, 10, true);
+                }, 2000);
             }, 200 * (10 * i));
         });
-        console.log("switchFeaturesSection");
     }
     function switchHighlightedSkillsSection() {
-        console.log("switchHighlightedSkillsSection");
+        setTimeout(function () {
+            document
+                .querySelector(".highlighted-skills-section")
+                .classList.add("pharaoh");
+            document
+                .querySelector(".highlighted-skills-container")
+                .classList.add("pharaoh");
+            document
+                .querySelector(".highlighted-skills-title span")
+                .classList.add("pharaoh-text");
+        }, 5000);
     }
     function switchTopProjectsSection() {
-        console.log("switchTopProjectsSection");
+        setTimeout(function () {
+            document
+                .querySelector(".top-projects-section")
+                .classList.add("pharaoh");
+            document
+                .querySelector(".top-projects-container")
+                .classList.add("pharaoh");
+            document
+                .querySelector(".top-projects-title span")
+                .classList.add("pharaoh-text");
+        }, 5000);
     }
     function switchLatestExperienceSection() {
-        console.log("switchLatestExperienceSection");
+        setTimeout(function () {
+            document
+                .querySelector(".latest-experience-section")
+                .classList.add("pharaoh");
+            document
+                .querySelector(".latest-experience-container")
+                .classList.add("pharaoh");
+            document
+                .querySelector(".latest-experience-title span")
+                .classList.add("pharaoh-text");
+
+            let allExperiences = document.querySelectorAll(
+                ".all-home-experiences .experience"
+            );
+
+            allExperiences.forEach((experience, i) => {
+                setTimeout(() => {
+                    maskImage(experience, 2000, 10, false);
+                    setTimeout(() => {
+                        experience.classList.add("pharaoh");
+                        maskImage(experience, 2000, 10, true);
+                    }, 2000);
+                }, 200 * (10 * i));
+            });
+        }, 5000);
     }
     function switchSideSkillsSection() {
-        console.log("switchSideSkillsSection");
+        setTimeout(function () {
+            document
+                .querySelector(".side-skills-section")
+                .classList.add("pharaoh");
+            document
+                .querySelector(".side-skills-container")
+                .classList.add("pharaoh");
+            document
+                .querySelector(".side-skills-title span")
+                .classList.add("pharaoh-text");
+        }, 5000);
     }
     function switchLatestBlogsSection() {
-        console.log("switchLatestBlogsSection");
+        setTimeout(function () {
+            document
+                .querySelector(".latest-blogs-section")
+                .classList.add("pharaoh");
+            document
+                .querySelector(".latest-blogs-container")
+                .classList.add("pharaoh");
+            document
+                .querySelector(".latest-blogs-title span")
+                .classList.add("pharaoh-text");
+        }, 5000);
     }
 
     // Initialize the sections animated with null
@@ -333,13 +407,13 @@ export default function SwitchButton() {
         }
     }
 
-    // if (isPlayingSoundtrack) {
-    window.addEventListener("scroll", function () { 
-        setTimeout(() => {
-            handleScroll();
-        }, 2500);
-     });
-    // }
+    if (isPlayingSoundtrack) {
+        window.addEventListener("scroll", function () {
+            setTimeout(() => {
+                handleScroll();
+            }, 2500);
+        });
+    }
 
     // This function uses -webkit-mask-image to make a smooth fade out animation from left to right
     function maskImage(element, time, interval, reverse) {

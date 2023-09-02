@@ -16,8 +16,8 @@ import styleVariables from "../../assets/styles/variables/variables.module.scss"
 function HighlightedSkills({ highlightedSkills }) {
     return (
         <div className="bg-home-odd highlighted-skills-section">
-            <Container>
-                <h3 className="text-center home-title">
+            <Container className="highlighted-skills-container">
+                <h3 className="text-center home-title highlighted-skills-title">
                     Highlighted <span>Skills</span>
                 </h3>
                 <Row className="justify-content-center my-5">
@@ -35,6 +35,7 @@ function HighlightedSkills({ highlightedSkills }) {
                                     {({ ref, ...triggerHandler }) => (
                                         <Link
                                             className="no-link"
+                                            aria-label={skill.name}
                                             to={`skills/${skill.name
                                                 .split(" ")
                                                 .join("-")
@@ -69,7 +70,7 @@ function HighlightedSkills({ highlightedSkills }) {
                     )}
                 </Row>
                 <div className="mt-4">
-                    <Link to="skills" className="discover-more-btn">
+                    <Link to="skills" className="discover-more-btn" aria-label="Skills">
                         <span className="discover-circle" aria-hidden="true">
                             <span>
                                 <BiNavigation className="discover-icon" />

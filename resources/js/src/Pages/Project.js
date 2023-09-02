@@ -129,8 +129,9 @@ function Project() {
                                         href={project.repository_link}
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        aria-label="Explore the code"
                                     >
-                                        <BsGithub /> Explore the Code
+                                        <BsGithub /> Explore The Code
                                     </a>
                                 </div>
                             )}
