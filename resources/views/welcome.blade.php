@@ -21,7 +21,7 @@
 
 <body>
     <div id="root"></div>
-    <script src="{{ asset('static/js/app.min.js') }}?v={{ filemtime('static/js/app.min.js') }}"></script>
+    <script src="{{ asset('static/js/app.min.js') }}?v={{ filemtime('static/js/app.min.js') }}" async></script>
     {{-- Google Analytics Script --}}
     @if (isset($config['system']['google_analytics_id']))
         <script async src="https://www.googletagmanager.com/gtag/js?id={{ $config['system']['google_analytics_id'] }}"></script>
