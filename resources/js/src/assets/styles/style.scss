@@ -960,7 +960,7 @@ $blurSvgDuration: 20s;
 
 .header-logo {
     width: 30px;
-    height: 50px;
+    height: 40px;
 }
 .contact-image {
     width: 100%;
@@ -1218,8 +1218,6 @@ $blurSvgDuration: 20s;
     }
 }
 
-.form-container {
-}
 .contact-form {
     transition: 500ms ease-in-out;
 }
@@ -2198,6 +2196,12 @@ span.pharaoh {
     }
 }
 
+.more-experience.pharaoh{
+    .h-line {
+        background-color: #3e1d02;
+        background-image: linear-gradient(90deg, #ff8729, #3e1d02 74%);
+    }
+}
 // Main Styles
 .pharaoh-mode {
     background-color: $themePrimaryDark;

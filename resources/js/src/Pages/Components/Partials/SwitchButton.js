@@ -299,6 +299,9 @@ export default function SwitchButton() {
             document
                 .querySelector(".latest-experience-title span")
                 .classList.add("pharaoh");
+            document
+                .querySelector(".more-experience")
+                .classList.add("pharaoh");
 
             let allExperiences = document.querySelectorAll(
                 ".all-home-experiences .experience"

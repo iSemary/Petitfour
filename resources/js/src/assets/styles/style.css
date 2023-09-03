@@ -781,7 +781,7 @@ body {
     transform: rotate(360deg); } }
 .header-logo {
   width: 30px;
-  height: 50px; }
+  height: 40px; }
 
 .contact-image {
   width: 100%;
@@ -1635,6 +1635,10 @@ span.pharaoh {
 
 .experience-even.pharaoh .h-line {
   background-image: linear-gradient(327deg, #ff8729, #3e1d02 74%); }
+
+.more-experience.pharaoh .h-line {
+  background-color: #3e1d02;
+  background-image: linear-gradient(90deg, #ff8729, #3e1d02 74%); }
 
 .pharaoh-mode {
   background-color: #594114;
