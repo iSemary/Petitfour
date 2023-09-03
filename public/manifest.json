@@ -4,23 +4,27 @@
     "icons": [
         {
             "src": "favicon.ico",
+            "type": "image/x-icon",
             "sizes": "64x64",
-            "type": "image/x-icon"
+            "purpose": "any"
         },
         {
             "src": "favicon-32x32.png",
             "type": "image/png",
-            "sizes": "32x32"
+            "sizes": "32x32",
+            "purpose": "any"
         },
         {
             "src": "favicon-16x16.png",
             "type": "image/png",
-            "sizes": "16x16"
+            "sizes": "16x16",
+            "purpose": "maskable"
         },
         {
             "src": "favicon-192x192.png",
             "type": "image/png",
-            "sizes": "192x192"
+            "sizes": "192x192",
+            "purpose": "maskable"
         }
     ],
     "start_url": ".",
