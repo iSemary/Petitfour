@@ -84,6 +84,8 @@ function Skills() {
                                             src={skill.icon}
                                             alt={"category icon " + i}
                                             className="category-icon"
+                                            width="35px"
+                                            height="35px"
                                         />
                                         <h3 className="font-weight-bold">
                                             {skill.name}

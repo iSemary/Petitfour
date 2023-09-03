@@ -87,6 +87,8 @@ const Skill = () => {
                                 src={skill.icon}
                                 className="skill-img"
                                 alt="Skill Icon"
+                                width="60px"
+                                height="60px"
                             />
                         }
                     </Col>
@@ -134,6 +136,7 @@ const Skill = () => {
                                         blog={blog}
                                         animate={"fade-right"}
                                         key={index}
+                                        index={index}
                                     />
                                 );
                             })}

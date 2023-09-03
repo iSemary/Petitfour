@@ -249,9 +249,7 @@ export default function SwitchButton() {
         );
         document.querySelector(".features-section").classList.add("pharaoh");
         document.querySelector(".features-container").classList.add("pharaoh");
-        document
-            .querySelector(".features-title span")
-            .classList.add("pharaoh-text");
+        document.querySelector(".features-title span").classList.add("pharaoh");
         allFeatures.forEach((feature, i) => {
             setTimeout(() => {
                 maskImage(feature, 2000, 10, false);
@@ -274,7 +272,7 @@ export default function SwitchButton() {
                 .classList.add("pharaoh");
             document
                 .querySelector(".highlighted-skills-title span")
-                .classList.add("pharaoh-text");
+                .classList.add("pharaoh");
         }, 5000);
     }
     function switchTopProjectsSection() {
@@ -287,7 +285,7 @@ export default function SwitchButton() {
                 .classList.add("pharaoh");
             document
                 .querySelector(".top-projects-title span")
-                .classList.add("pharaoh-text");
+                .classList.add("pharaoh");
         }, 5000);
     }
     function switchLatestExperienceSection() {
@@ -300,7 +298,7 @@ export default function SwitchButton() {
                 .classList.add("pharaoh");
             document
                 .querySelector(".latest-experience-title span")
-                .classList.add("pharaoh-text");
+                .classList.add("pharaoh");
 
             let allExperiences = document.querySelectorAll(
                 ".all-home-experiences .experience"
@@ -327,8 +325,21 @@ export default function SwitchButton() {
                 .classList.add("pharaoh");
             document
                 .querySelector(".side-skills-title span")
-                .classList.add("pharaoh-text");
+                .classList.add("pharaoh");
         }, 5000);
+
+        let allSideSkills = document.querySelectorAll(
+            ".side-skills .side-skills-item"
+        );
+        allSideSkills.forEach((sideSkill, i) => {
+            setTimeout(() => {
+                maskImage(sideSkill, 2000, 10, false);
+                setTimeout(() => {
+                    sideSkill.classList.add("pharaoh");
+                    maskImage(sideSkill, 2000, 10, true);
+                }, 2000);
+            }, 200 * (10 * i));
+        });
     }
     function switchLatestBlogsSection() {
         setTimeout(function () {
@@ -340,10 +351,12 @@ export default function SwitchButton() {
                 .classList.add("pharaoh");
             document
                 .querySelector(".latest-blogs-title span")
-                .classList.add("pharaoh-text");
+                .classList.add("pharaoh");
         }, 5000);
     }
-
+    function switchFooter() {
+        document.querySelector("footer").classList.add("pharaoh");
+    }
     // Initialize the sections animated with null
     // var TopContentAnimated = false;
     var featuresAnimated = false;
@@ -354,11 +367,6 @@ export default function SwitchButton() {
     var latestBlogsAnimated = false;
 
     function handleScroll() {
-        // Top Home Page Switching
-        // if (window.scrollY < 340 && !TopContentAnimated) {
-        //     TopContentAnimated = true;
-        //     switchTopContent();
-        // }
         // Initialize the sections elements
         let featuresSection = document.querySelector(".features-section");
         let highlightedSkillsSection = document.querySelector(
@@ -404,6 +412,9 @@ export default function SwitchButton() {
         if (isElementInViewport(latestBlogsSection) && !latestBlogsAnimated) {
             latestBlogsAnimated = true;
             switchLatestBlogsSection();
+            setTimeout(() => {
+                switchFooter();
+            }, 1000);
         }
     }
 
@@ -470,11 +481,28 @@ export default function SwitchButton() {
             element.style.webkitMaskImage = `linear-gradient(270deg, black ${currentFrom}%, transparent ${currentTo}%)`;
         }, timeInterval);
     }
+    function removeClassesBySelector(selector) {
+        var elementsWithClass = document.querySelectorAll(selector);
+        elementsWithClass.forEach(function (element) {
+            element.classList.remove(selector.slice(1)); // Removes the leading dot in the selector
+        });
+    }
+    function clearThemeClasses() {
+        removeClassesBySelector(".pharaoh");
+        removeClassesBySelector(".pharaoh-gradient-text");
+        removeClassesBySelector(".pharaoh-span-color");
+        removeClassesBySelector(".animation-in-progress");
+        removeClassesBySelector(".animation-ended");
+        removeClassesBySelector(".animation-reverse-ended");
 
+        document.querySelector('body').style.backgroundColor= "";
+        document.querySelector('.main-background-cover').style.backgroundColor= "";
+    }
     useEffect(() => {
         if (isSoundTrackEnd) {
             document.body.classList.add("pharaoh-mode");
             window.scrollTo({ top: 0, behavior: "smooth" });
+            clearThemeClasses();
         }
     }, [isSoundTrackEnd]);
 

@@ -4,7 +4,7 @@ function NotFound({ image }) {
     return (
         <Container>
             <div className="not-found-content">
-                <img src={image} loading="lazy" className="not-found" alt="not found" />
+                <img src={image} loading="lazy" className="not-found" width="100%" height="100%" alt="not found" />
                 <h1>
                      404 | Page Not Found
                 </h1>

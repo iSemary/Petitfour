@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SkillsListTemplate from "./SkillsListTemplate";
 import SquareLoader from "../../Loaders/SquareLoader";
 
-function ProjectTemplate({ project, col, animate, containerClass = '', index = 0 }) {
+function ProjectTemplate({ project, animate, containerClass = '', index = 0 }) {
     const [imageLoading, setImageLoading] = useState(true);
     const MAX_PROJECT_SKILLS = 4;
 
@@ -34,6 +34,8 @@ function ProjectTemplate({ project, col, animate, containerClass = '', index = 0
                             onLoad={() => setImageLoading(false)}
                             src={project.project_mocked_image}
                             alt={`Top Project ${project.name}`}
+                            height="195px"
+                            width="330px"
                         />
                     }
                 </div>

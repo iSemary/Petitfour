@@ -377,6 +377,8 @@ function Connect(props) {
                                 onLoad={() => setImageLoading(false)}
                                 src={props.theme ? props.config.contact_theme_image : props.config.contact_image}
                                 alt="contact"
+                                width="100%"
+                                height="100%"
                             />
                         )}
                     </Col>

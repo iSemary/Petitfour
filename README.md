@@ -44,7 +44,7 @@ N.B. **This project took me about month or more to finish it, Just because I did
 ### The website utilizes the following technologies:
 
 -   react-icons [Icons]
--   react-awesome-reveal [Animation]
+-   AOS [Animation]
 -   react-lottie [JSON Animation Canvas Library]
 -   react-spring [Animation Library]
 -   react-content-loader [Lazy Loading Components]

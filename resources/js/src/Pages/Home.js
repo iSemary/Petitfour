@@ -174,6 +174,8 @@ function Home(props) {
                         src={ScarabBeetleImage}
                         loading="lazy"
                         alt="Scarab beetle"
+                        width="150px"
+                        height="250px"
                     />
                     <p>{Talisman + " " + Talisman + " " + Talisman}</p>
                 </div>

@@ -17,6 +17,7 @@ function LatestBlogs({ latestBlogs }) {
                                 blog={blog}
                                 animate={"fade-right"}
                                 key={index}
+                                index={index}
                             />
                         ))
                     ) : (

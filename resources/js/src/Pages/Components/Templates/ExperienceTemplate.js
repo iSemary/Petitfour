@@ -71,6 +71,8 @@ function ExperienceTemplate({ experience, index, totals }) {
                     <img
                         src={experience.company_logo}
                         alt={experience.company_name + " logo"}
+                        width="90px"
+                        height="90px"
                     />
                     <div className="experience-v-line">
                         <div className={"v-line " + ((index+1) === totals ? "h-61" : "")}></div>

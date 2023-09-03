@@ -764,6 +764,7 @@ body {
   overflow: hidden; }
   .blog-item .blog-card-image-container img {
     height: 200px;
+    width: 100%;
     transition: 650ms; }
 .blog-item .blog-date {
   font-weight: bold;
@@ -779,7 +780,8 @@ body {
   100% {
     transform: rotate(360deg); } }
 .header-logo {
-  width: 30px; }
+  width: 30px;
+  height: 50px; }
 
 .contact-image {
   width: 100%;
@@ -790,6 +792,7 @@ body {
 
 .project-image {
   height: 195px;
+  width: 100%;
   transition: 250ms; }
   .project-image:hover {
     transform: scale(1.055) translateZ(20px) rotateZ(1deg) rotateX(1deg) rotateY(-1deg); }
@@ -1043,8 +1046,9 @@ body {
       position: absolute;
       top: -40px;
       right: -24px;
-      filter: drop-shadow(2px 4px 3px #000);
-      width: 15%; }
+      width: 15%;
+      height: 80%;
+      filter: drop-shadow(2px 4px 3px #000); }
 
 .custom-hr {
   border-top: 2px solid; }
@@ -1479,6 +1483,7 @@ footer.home-footer {
       text-shadow: 5px 4px 7px #daa520; }
     .theme-transition-container .pharaoh-container img {
       width: 150px;
+      height: 250px;
       position: absolute;
       margin-left: auto;
       margin-right: auto;
@@ -1549,6 +1554,15 @@ footer.home-footer {
     top: 0;
     bottom: 0; }
 
+.side-skills .side-skills-item.pharaoh .card {
+  background-color: #624116f0;
+  box-shadow: -2px -2px 5px #ffc10752;
+  border: 0;
+  color: #e3e1fa; }
+
+footer.pharaoh {
+  background: linear-gradient(360deg, #594114 0%, #171a1c 100%); }
+
 /*  =============================================================================================
                         Custom Styles for pharaoh theme
     =============================================================================================
@@ -1588,7 +1602,7 @@ footer.home-footer {
 .features .feature-item .feature-image.pharaoh {
   filter: hue-rotate(132deg); }
 
-.pharaoh-text {
+span.pharaoh {
   color: #f2a71b !important; }
 
 .bg-home-even.pharaoh {

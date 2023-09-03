@@ -117,6 +117,7 @@ function Blog() {
                                     <BlogTemplate
                                         blog={similarBlog}
                                         fade={false}
+                                        index={index}
                                     />
                                 </SplideSlide>
                             ))}

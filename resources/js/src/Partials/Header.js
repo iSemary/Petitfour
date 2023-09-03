@@ -86,6 +86,8 @@ function Header(props) {
                                 style={logoLoading ? { display: "none" } : {}}
                                 onLoad={() => setLogoLoading(false)}
                                 className="header-logo"
+                                width="30px"
+                                height="50px"
                             />
                         </Link>
                     </Col>

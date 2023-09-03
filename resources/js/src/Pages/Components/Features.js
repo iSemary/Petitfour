@@ -29,6 +29,8 @@ function Features(props) {
                                                 src={feature.image}
                                                 className="feature-image"
                                                 alt={"Feature " + index}
+                                                width="60px"
+                                                height="60px"
                                             />
                                         </Col>
                                         <Col md={10} className="text-left">

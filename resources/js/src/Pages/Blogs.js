@@ -82,6 +82,7 @@ function Blogs({ categories }) {
                             blog={blog}
                             fade={true}
                             key={key}
+                            index={key}
                         />
                     ))
                 ) : (

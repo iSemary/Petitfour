@@ -46,6 +46,8 @@ function SideSkills({ sideSkills }) {
                                                     className="side-skills-image"
                                                     src={sideSkill.icon}
                                                     alt="Side Category"
+                                                    width="50px"
+                                                    height="50px"
                                                 />
                                             </Col>
                                             <Col md={9} className="text-left">

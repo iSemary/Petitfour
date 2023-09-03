@@ -932,6 +932,7 @@ $blurSvgDuration: 20s;
         // box-shadow: 0 -1px 20px $primaryDark;
         img {
             height: 200px;
+            width: 100%;
             transition: 650ms;
         }
     }
@@ -959,6 +960,7 @@ $blurSvgDuration: 20s;
 
 .header-logo {
     width: 30px;
+    height: 50px;
 }
 .contact-image {
     width: 100%;
@@ -971,8 +973,8 @@ $blurSvgDuration: 20s;
 
 .project-image {
     height: 195px;
+    width: 100%;
     transition: 250ms;
-
     &:hover {
         transform: scale(1.055) translateZ(20px) rotateZ(1deg) rotateX(1deg)
             rotateY(-1deg);
@@ -1317,9 +1319,9 @@ $blurSvgDuration: 20s;
             position: absolute;
             top: -40px;
             right: -24px;
-
-            filter: drop-shadow(2px 4px 3px #000);
             width: 15%;
+            height: 80%;
+            filter: drop-shadow(2px 4px 3px #000);
         }
     }
 }
@@ -1931,6 +1933,7 @@ footer.home-footer {
         }
         img {
             width: 150px;
+            height: 250px;
             position: absolute;
             margin-left: auto;
             margin-right: auto;
@@ -2035,6 +2038,23 @@ footer.home-footer {
     }
 }
 
+.side-skills {
+    .side-skills-item.pharaoh {
+        .card {
+            background-color: #624116f0;
+            box-shadow: -2px -2px 5px #ffc10752;
+            border: 0;
+            color: $primaryWhite;
+        }
+    }
+}
+footer.pharaoh {
+    background: linear-gradient(
+        360deg,
+        $themePrimaryDark 0%,
+        $primaryBlack 100%
+    );
+}
 /*  =============================================================================================
                         Custom Styles for pharaoh theme
     =============================================================================================
@@ -2113,7 +2133,7 @@ footer.home-footer {
 .features .feature-item .feature-image.pharaoh {
     filter: hue-rotate(132deg);
 }
-.pharaoh-text {
+span.pharaoh {
     color: $themePrimaryColor !important;
 }
 
