@@ -11,13 +11,14 @@ class AppController extends Controller {
         $config = [];
         $config['system'] = SystemConfig::findOrFail(1);
 
-        $data = [
-            'type' => $request->t ?? 0,
-            'ip' => $request->ip(),
-            'agent' => $request->userAgent(),
-        ];
-        SaveViewJob::dispatchAfterResponse($data);
-
+        if(isset($request->t) && !empty($request->t) && $request->t != 0){
+            $data = [
+                'type' => $request->t,
+                'ip' => $request->ip(),
+                'agent' => $request->userAgent(),
+            ];
+            SaveViewJob::dispatchAfterResponse($data);
+        }
         return view('welcome', compact('config'));
     }
 }
