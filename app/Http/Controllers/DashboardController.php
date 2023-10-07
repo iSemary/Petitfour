@@ -39,7 +39,7 @@ class DashboardController extends Controller {
             $viewType->created_at = ViewType::where("type", $viewType->type)->latest()->first()->created_at;
             $viewType->count_group_by_ip = count(ViewType::select(DB::raw('COUNT(*) as count'))->where('type', $viewType->type)->groupBy('ip')->get());
 
-            $viewType->type = $this->types[$viewType->type];
+            $viewType->type = isset($this->types[$viewType->type]) ? $this->types[$viewType->type] : $viewType->type;
             return $viewType;
         });
 
