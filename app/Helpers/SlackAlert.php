@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Interfaces\ViewInterface;
+use App\Interfaces\ContactSubjectInterface;
 use App\Helpers\ApiHandler;
 
 class SlackAlert {
@@ -27,7 +28,7 @@ class SlackAlert {
                 $message = 'There is a new view on website from ' . (isset(ViewInterface::type[$data['type']]) ? ViewInterface::type[$data['type']] : $data['type']);
                 break;
             case 2:
-                $message = "There is a new {$data['subject']} message from {$data['name']} - {$data['email']} message \n {$data['message']}";
+                $message = "There is a new ".(isset(ContactSubjectInterface::type[$data['subject']]) ? ContactSubjectInterface::type[$data['subject']] : $data['subject'])." message from {$data['name']} | {$data['email']} \n {$data['message']}";
                 break;
             default:
                 break;
