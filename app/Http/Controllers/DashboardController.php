@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\ViewInterface;
 use App\Models\Blog;
 use App\Models\Experience;
 use App\Models\Project;
@@ -18,7 +19,7 @@ class DashboardController extends Controller {
     private $types;
 
     public function __construct() {
-        $this->types = ['Out-coming', 'Resume', 'Linked In', 'Facebook', 'Instagram', 'Github'];
+        $this->types = ViewInterface::type;
     }
     public function home() {
         $skills = Skill::count();
@@ -45,5 +46,4 @@ class DashboardController extends Controller {
 
         return view('panel.dashboard.views', compact('viewTypes'));
     }
-
 }
