@@ -28,7 +28,7 @@ class SlackAlert {
                 $message = 'There is a new view on website from ' . (isset(ViewInterface::type[$data['type']]) ? ViewInterface::type[$data['type']] : $data['type']);
                 break;
             case 2:
-                $message = "There is a new ".(isset(ContactSubjectInterface::type[$data['subject']]) ? ContactSubjectInterface::type[$data['subject']] : $data['subject'])." message from {$data['name']} | {$data['email']} \n {$data['message']}";
+                $message = "There is a new " . (isset(ContactSubjectInterface::type[$data['subject'] - 1]) ? ContactSubjectInterface::type[$data['subject'] - 1] : $data['subject']) . " message from {$data['name']} | {$data['email']} \n {$data['message']}";
                 break;
             default:
                 break;
