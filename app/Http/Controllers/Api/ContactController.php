@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\SlackAlert;
 use App\Http\Controllers\Controller;
 use App\Models\ContactMessage;
 use Illuminate\Http\JsonResponse;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller {
 
-    public function store(Request $request): JsonResponse  {
+    public function store(Request $request): JsonResponse {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
@@ -27,7 +28,7 @@ class ContactController extends Controller {
 
         // Create a new contact using the create method
         $contact = ContactMessage::create($validatedData);
-
+        (new SlackAlert)->send($validatedData, 2);
         return response()->json([
             'success' => true,
             'status' => 200,

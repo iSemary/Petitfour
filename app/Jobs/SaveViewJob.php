@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Helpers\SlackAlert;
 use App\Models\ViewType;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -28,5 +29,7 @@ class SaveViewJob implements ShouldQueue {
      */
     public function handle(): void {
         ViewType::create($this->data);
+        // Send Slack Alert
+        (new SlackAlert)->send($this->data, 1);
     }
 }
