@@ -58,6 +58,7 @@ class ProjectController extends Controller {
 
         $project = Project::create([
             'name' => $request->input('name'),
+            'slug' => $request->input('slug'),
             'description' => $request->input('description'),
             'content' => $request->input('content'),
             'type' => $request->input('type'),
@@ -88,6 +89,7 @@ class ProjectController extends Controller {
         // Validate the input
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:projects,name,' . $id,
+            'slug' => 'required|unique:projects,slug,' . $id,
             'description' => 'required',
             'type' => 'required',
             'priority' => 'required',

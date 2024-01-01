@@ -9,10 +9,17 @@
                 id="{{ isset($project) ? 'EditForm' : 'CreateForm' }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 {{ isset($project) ? method_field('PUT') : method_field('POST') }}
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" minlength="1" maxlength="225" class="form-control" name="name"
-                        value="{{ isset($project) ? $project->name : '' }}" placeholder="Name" required />
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label>Name</label>
+                        <input type="text" minlength="1" maxlength="225" class="form-control" name="name"
+                            value="{{ isset($project) ? $project->name : '' }}" placeholder="Name" required />
+                    </div>
+                    <div class="col-6 form-group">
+                        <label>Slug</label>
+                        <input type="text" minlength="1" maxlength="225" class="form-control" name="slug"
+                            value="{{ isset($project) ? $project->slug : '' }}" placeholder="Slug" required />
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Description</label>
@@ -143,14 +150,14 @@
             dataType: "json",
             url: `{{ route('projects.highlightImage') }}`,
             data: {
-                project_id:projectID,
-                project_image_id:projectImageID,
+                project_id: projectID,
+                project_image_id: projectImageID,
             },
             success: function(data) {
                 $('.highlight-btn').removeClass('btn-success').addClass('btn-danger');
                 $('.highlight-btn').html(`<i class="fas fa-times-circle"></i>`);
                 $('.highlight-btn').prop('disabled', false);
-                
+
                 currentBtn.removeClass('btn-danger').addClass('btn-success');
                 currentBtn.html(`<i class="fas fa-check-circle"></i>`);
                 currentBtn.prop('disabled', true);

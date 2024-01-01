@@ -8,7 +8,8 @@ class CreateProjectsTable extends Migration {
     public function up() {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 255);
+            $table->string('slug', 255);
             $table->string('description', 1024);
             $table->text('content')->nullable();
             $table->string('repository_link')->nullable();

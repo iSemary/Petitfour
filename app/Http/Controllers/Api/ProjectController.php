@@ -9,21 +9,27 @@ use App\Models\ProjectImage;
 use App\Models\Skill;
 use Illuminate\Http\JsonResponse;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller {
 
     /**
-     * It returns all the projects in the database to json array with status and success type
+     * The function retrieves projects with their associated skills and images, filters them based on a
+     * category, and returns a JSON response with the data.
      * 
-     * @return an array of objects.
+     * @param Request request The  parameter is an instance of the Request class, which represents
+     * an HTTP request. It contains information about the current request, such as the request method,
+     * request headers, request parameters, and more.
+     * 
+     * @return JsonResponse A JSON response is being returned. The response includes the following data:
      */
+
     public function index(Request $request): JsonResponse {
 
         $projects = Project::select([
             'projects.id',
             'projects.name',
+            'projects.slug',
             'projects.description',
         ])
             ->leftJoin('project_skills', 'project_skills.project_id', 'projects.id')
@@ -61,19 +67,29 @@ class ProjectController extends Controller {
         ]);
     }
 
-    public function show($name = null): JsonResponse {
-        if (!$name) {
+    /**
+     * The function retrieves project details based on a given slug and returns a JSON response with the
+     * project data.
+     * 
+     * @param slug The "slug" parameter is used to identify a specific project. It is a unique identifier
+     * for each project and is typically generated from the project's name by removing any special
+     * characters and replacing spaces with hyphens.
+     * 
+     * @return JsonResponse A JSON response is being returned.
+     */
+    public function show($slug = null): JsonResponse {
+        if (!$slug) {
             return response()->json([
                 'success' => false,
                 'status' => 400,
                 'data' => []
             ]);
         }
-        $name = str_replace("-", " ", $name);
 
         $project = Project::select([
             'id',
             'name',
+            'slug',
             'description',
             'content',
             'repository_link',
@@ -82,7 +98,7 @@ class ProjectController extends Controller {
             'priority',
             'start_date',
             'end_date',
-        ])->where('name', $name)->first();
+        ])->where('slug', $slug)->first();
 
         if (!$project) {
             return response()->json([

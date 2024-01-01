@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import lottie from 'lottie-web/build/player/lottie_light.min.js' // Lightweight source
 
-
 const LottieLoader = ({ jsonPath, loop = true, autoplay = true, playAnimation, speed = 1 }) => {
     const containerRef = useRef(null);
     const animationRef = useRef(null);

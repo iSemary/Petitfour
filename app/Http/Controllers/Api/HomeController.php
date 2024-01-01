@@ -57,6 +57,7 @@ class HomeController extends Controller {
         $data->top_projects = Project::leftJoin('project_images', 'project_images.project_id', 'projects.id')->select([
             'projects.id',
             'projects.name',
+            'projects.slug',
             'projects.description',
             DB::raw("CONCAT('$mockedImagePath/', project_images.project_image) AS project_mocked_image"),
         ])

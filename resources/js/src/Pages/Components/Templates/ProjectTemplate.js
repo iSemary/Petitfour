@@ -13,10 +13,7 @@ function ProjectTemplate({ project, animate, containerClass = '', index = 0 }) {
             <Link
                 className="no-link"
                 aria-label={project.name}
-                to={`/projects/${project.name
-                    .split(" ")
-                    .join("-")
-                    .toLowerCase()}`}
+                to={`/projects/${project.slug}`}
             >
                 <h5 className="project-title">{project.name}</h5>
 

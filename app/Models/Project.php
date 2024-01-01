@@ -8,7 +8,7 @@ use Spatie\Sitemap\Contracts\Sitemapable;
 use Spatie\Sitemap\Tags\Url;
 
 class Project extends Model implements Sitemapable{
-    protected $fillable = ['name', 'description', 'content', 'priority', 'repository_link', 'tags', 'type', 'start_date', 'end_date'];
+    protected $fillable = ['name', 'slug', 'description', 'content', 'priority', 'repository_link', 'tags', 'type', 'start_date', 'end_date'];
     protected $dates = ['start_date', 'end_date'];
 
     protected $casts = [

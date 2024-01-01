@@ -125,7 +125,19 @@ sass resources/js/src/assets/styles/style.scss:resources/js/src/assets/styles/st
 ## For Building a new production version all you have to do is : 
 
 ```
+npm install
+```
+
+```
+npm audit fix -force
+```
+
+```
 npm run build
+```
+OR
+```
+npm run build-linux
 ```
 
 ### And it will do everything : 
