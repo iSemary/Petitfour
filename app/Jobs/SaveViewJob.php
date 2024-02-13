@@ -30,6 +30,6 @@ class SaveViewJob implements ShouldQueue {
     public function handle(): void {
         ViewType::create($this->data);
         // Send Slack Alert
-        (new SlackAlert)->send($this->data, 1);
+        if (env("VIEWS_ALERTS")) (new SlackAlert)->send($this->data, 1);
     }
 }
