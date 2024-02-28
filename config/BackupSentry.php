@@ -72,7 +72,7 @@ return [
         // that's mean the original back up folders will be kept in "/storage/backup-sentry/files/" [Which will be kept uncompressed]
         'keep_original_backup_folders' => true,
         // cleanup
-        'cleanup' => false
+        'cleanup' => true
     ],
     'options' => [
         // put the emails to be alerted with the successful backup notification
