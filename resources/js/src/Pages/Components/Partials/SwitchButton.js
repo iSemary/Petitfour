@@ -509,8 +509,18 @@ export default function SwitchButton() {
         }
     }, [isSoundTrackEnd]);
 
+    // Set volume to 30% when audio elements are available
+    useEffect(() => {
+        if (transitionRef.current) {
+            transitionRef.current.volume = 0.3;
+        }
+        if (soundtrackRef.current) {
+            soundtrackRef.current.volume = 0.3;
+        }
+    }, [isPlayingTransition, isPlayingSoundtrack]);
+
     return (
-        <>
+        <div className="switch-button-container">
             <div
                 data-aos="zoom-in"
                 className="switch-button-content"
@@ -617,6 +627,6 @@ export default function SwitchButton() {
             )}
             {/* Scrolling Down
             {scrollingDown && <ScrollToDown />} */}
-        </>
+        </div>
     );
 }

@@ -262,7 +262,7 @@ body {
 .main-background-cover {
   background-color: #0C001D;
   width: 100%;
-  height: 92vh;
+  height: 95vh;
   transition: 500ms; }
 
 .blur-background {
@@ -279,7 +279,7 @@ body {
     transition: all 1s ease; }
 
 .top-content {
-  padding-top: 13vh;
+  padding-top: 25vh;
   z-index: 1;
   position: relative; }
 
@@ -431,17 +431,26 @@ body {
     opacity: 1;
     left: 0;
     text-shadow: unset; } }
+.switch-button-container {
+  width: 100%; }
+
 @media screen and (max-width: 767px) {
   .main-background-cover .top-content {
-    padding-top: 10vh; }
+    padding-top: 18vh; }
     .main-background-cover .top-content .top-home-details {
       height: 100%; }
   .main-background-cover .top-home-details h1 {
     font-size: 2.5rem;
     font-weight: bold; }
-  .main-background-cover .top-home-videos {
-    padding-top: 20px; }
-  .main-background-cover .top-home-videos video {
+  .main-background-cover .switch-button-container {
+    width: 100%;
+    justify-content: center;
+    display: flex; }
+
+  .top-home-details {
+    padding: 0px 12%; }
+
+  .top-home-videos {
     display: none; } }
 /* Global Styles for small screens */
 @media screen and (max-width: 767px) {

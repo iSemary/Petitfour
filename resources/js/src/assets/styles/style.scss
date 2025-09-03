@@ -317,7 +317,7 @@ body {
 .main-background-cover {
     background-color: $primaryDark;
     width: 100%;
-    height: 92vh;
+    height: 95vh;
     transition: 500ms;
 }
 $blurSvgDuration: 20s;
@@ -339,7 +339,7 @@ $blurSvgDuration: 20s;
 }
 
 .top-content {
-    padding-top: 13vh;
+    padding-top: 25vh;
     z-index: 1;
     position: relative;
 }
@@ -560,10 +560,13 @@ $blurSvgDuration: 20s;
     }
 }
 
+.switch-button-container {
+    width: 100%;
+}
 @media screen and (max-width: 767px) {
     .main-background-cover {
         .top-content {
-            padding-top: 10vh;
+            padding-top: 18vh;
             .top-home-details {
                 height: 100%;
             }
@@ -572,12 +575,17 @@ $blurSvgDuration: 20s;
             font-size: 2.5rem;
             font-weight: bold;
         }
-        .top-home-videos {
-            padding-top: 20px;
+        .switch-button-container {
+            width: 100%;
+            justify-content: center;
+            display: flex;
         }
-        .top-home-videos video {
-            display: none;
-        }
+    }
+    .top-home-details {
+        padding: 0px 12%;
+    }
+    .top-home-videos {
+        display: none;
     }
 }
 
